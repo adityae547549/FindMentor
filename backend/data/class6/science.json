@@ -1,0 +1,251 @@
+{
+  "class": 6,
+  "subject": "Science",
+  "chapters": [
+    {
+      "chapter": "Components of Food",
+      "topics": [
+        {
+          "topic": "Nutrients",
+          "intent": ["define"],
+          "content": "Nutrients are substances present in food that are needed by the body for energy, growth, and health."
+        },
+        {
+          "topic": "Carbohydrate",
+          "intent": ["define", "function"],
+          "content": "Carbohydrates provide energy to the body and are mainly found in rice, wheat, and potatoes."
+        },
+        {
+          "topic": "Proteins",
+          "intent": ["define", "function"],
+          "content": "Proteins help in growth and repair of the body and are found in pulses, milk, and eggs."
+        },
+        {
+          "topic": "Fats",
+          "intent": ["define", "function"],
+          "content": "Fats provide energy and help keep the body warm."
+        },
+        {
+          "topic": "Balanced Diet",
+          "intent": ["define", "importance"],
+          "content": "A balanced diet contains all nutrients in proper amounts required for good health."
+        }
+      ]
+    },
+    {
+      "chapter": "Sorting Materials into Groups",
+      "topics": [
+        {
+          "topic": "Objects and Materials",
+          "intent": ["define"],
+          "content": "Objects are things we see around us and materials are substances from which objects are made."
+        },
+        {
+          "topic": "Properties of Materials",
+          "intent": ["explain"],
+          "content": "Materials have properties like color, hardness, solubility, and transparency."
+        },
+        {
+          "topic": "Soluble and Insoluble",
+          "intent": ["difference"],
+          "content": "Soluble substances dissolve in water, while insoluble substances do not."
+        },
+        {
+          "topic": "Transparent, Translucent and Opaque",
+          "intent": ["difference"],
+          "content": "Transparent materials allow light to pass, translucent allow partial light, and opaque do not allow light."
+        }
+      ]
+    },
+    {
+      "chapter": "Separation of Substances",
+      "topics": [
+        {
+          "topic": "Need for Separation",
+          "intent": ["explain"],
+          "content": "Separation is needed to remove unwanted substances or obtain useful components."
+        },
+        {
+          "topic": "Handpicking",
+          "intent": ["define"],
+          "content": "Handpicking is the method of separating larger unwanted particles by hand."
+        },
+        {
+          "topic": "Sieving",
+          "intent": ["define"],
+          "content": "Sieving separates particles of different sizes using a sieve."
+        },
+        {
+          "topic": "Sedimentation and Decantation",
+          "intent": ["explain"],
+          "content": "Sedimentation allows heavy particles to settle, and decantation is pouring out clear liquid."
+        }
+      ]
+    },
+    {
+      "chapter": "Getting to Know Plants",
+      "topics": [
+        {
+          "topic": "Herbs, Shrubs and Trees",
+          "intent": ["difference"],
+          "content": "Herbs have soft stems, shrubs have woody stems, and trees are tall with strong trunks."
+        },
+        {
+          "topic": "Parts of a Plant",
+          "intent": ["explain"],
+          "content": "Plants have roots, stems, leaves, flowers, fruits, and seeds."
+        },
+        {
+          "topic": "Functions of Roots",
+          "intent": ["function"],
+          "content": "Roots absorb water and minerals and hold the plant firmly in soil."
+        },
+        {
+          "topic": "Photosynthesis",
+          "intent": ["process"],
+          "content": "Photosynthesis is the process by which plants make food using sunlight, water, carbon dioxide, and chlorophyll."
+        }
+      ]
+    },
+    {
+      "chapter": "Body Movements",
+      "topics": [
+        {
+          "topic": "Human Skeleton",
+          "intent": ["define"],
+          "content": "The skeleton gives shape, support, and protection to the body."
+        },
+        {
+          "topic": "Joints",
+          "intent": ["define"],
+          "content": "Joints are places where two bones meet and allow movement."
+        },
+        {
+          "topic": "Types of Joints",
+          "intent": ["explain"],
+          "content": "Different joints allow different movements like bending, rotating, and sliding."
+        }
+      ]
+    },
+    {
+      "chapter": "Living Organisms: Characteristics and Habitats",
+      "topics": [
+        {
+          "topic": "Living and Non-living",
+          "intent": ["difference"],
+          "content": "Living things grow, breathe, and reproduce, while non-living things do not."
+        },
+        {
+          "topic": "Habitat",
+          "intent": ["define"],
+          "content": "A habitat is the place where an organism lives."
+        },
+        {
+          "topic": "Adaptation",
+          "intent": ["define"],
+          "content": "Adaptation is the ability of organisms to survive in their surroundings."
+        }
+      ]
+    },
+    {
+      "chapter": "Motion and Measurement of Distances",
+      "topics": [
+        {
+          "topic": "Motion",
+          "intent": ["define"],
+          "content": "Motion is the change in position of an object with time."
+        },
+        {
+          "topic": "Types of Motion",
+          "intent": ["explain"],
+          "content": "Motion can be straight, circular, or periodic."
+        },
+        {
+          "topic": "Measurement of Length",
+          "intent": ["explain"],
+          "content": "Length is measured using standard units like meter and centimeter."
+        }
+      ]
+    },
+    {
+      "chapter": "Light, Shadows and Reflections",
+      "topics": [
+        {
+          "topic": "Sources of Light",
+          "intent": ["define"],
+          "content": "Objects that produce light are called sources of light."
+        },
+        {
+          "topic": "Shadow Formation",
+          "intent": ["explain"],
+          "content": "Shadows are formed when light is blocked by an opaque object."
+        },
+        {
+          "topic": "Reflection",
+          "intent": ["define"],
+          "content": "Reflection is the bouncing back of light from a surface."
+        }
+      ]
+    },
+    {
+      "chapter": "Electricity and Circuits",
+      "topics": [
+        {
+          "topic": "Electric Cell",
+          "intent": ["define"],
+          "content": "An electric cell produces electricity using chemicals."
+        },
+        {
+          "topic": "Electric Circuit",
+          "intent": ["define"],
+          "content": "An electric circuit is a complete path through which current flows."
+        },
+        {
+          "topic": "Switch",
+          "intent": ["function"],
+          "content": "A switch is used to open or close an electric circuit."
+        }
+      ]
+    },
+    {
+      "chapter": "Fun with Magnets",
+      "topics": [
+        {
+          "topic": "Magnet",
+          "intent": ["define"],
+          "content": "A magnet is an object that attracts materials like iron."
+        },
+        {
+          "topic": "Magnetic and Non-magnetic Materials",
+          "intent": ["difference"],
+          "content": "Magnetic materials are attracted by magnets, non-magnetic materials are not."
+        },
+        {
+          "topic": "Poles of a Magnet",
+          "intent": ["explain"],
+          "content": "Magnets have two poles called north and south poles."
+        }
+      ]
+    },
+    {
+      "chapter": "Air Around Us",
+      "topics": [
+        {
+          "topic": "Composition of Air",
+          "intent": ["explain"],
+          "content": "Air contains gases like nitrogen, oxygen, carbon dioxide, and water vapor."
+        },
+        {
+          "topic": "Uses of Air",
+          "intent": ["explain"],
+          "content": "Air is essential for breathing, burning, and plant growth."
+        },
+        {
+          "topic": "Importance of Air",
+          "intent": ["importance"],
+          "content": "Air supports life on Earth and helps regulate temperature."
+        }
+      ]
+    }
+  ]
+}

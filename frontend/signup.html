@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sign Up | FindMentor</title>
+<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,system-ui,sans-serif;}
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#fbcfe8,#f9a8d4);
+}
+.card{
+  background:#fff;
+  width:100%;
+  max-width:420px;
+  padding:32px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  text-align:center;
+}
+h1{margin-bottom:6px;}
+p{color:#6b7280;margin-bottom:20px;}
+input{
+  width:100%;
+  padding:14px;
+  margin-bottom:14px;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+  font-size:1rem;
+}
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:999px;
+  font-weight:600;
+  font-size:1rem;
+  cursor:pointer;
+}
+.primary{background:#db2777;color:#fff;}
+.google{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  color:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:16px;
+}
+.divider{
+  margin:16px 0;
+  color:#9ca3af;
+  font-size:.9rem;
+}
+.footer{
+  margin-top:16px;
+  font-size:.9rem;
+}
+.footer a{
+  color:#db2777;
+  font-weight:600;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Create Account 🚀</h1>
+  <p>Join FindMentor </p>
+
+  <!-- GOOGLE SIGNUP -->
+  <button class="google" onclick="googleAuth()">
+    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" alt="Google logo">
+    Continue with Google
+  </button>
+
+  <div class="divider">or</div>
+
+  <!-- EMAIL SIGNUP -->
+  <input id="email" type="email" placeholder="Email" />
+  <input id="password" type="password" placeholder="Password" />
+
+  <button class="primary" onclick="signup()">Sign Up</button>
+
+  <div class="footer">
+    Already have an account? <a href="login.html">Login</a>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+/* FIREBASE CONFIG */
+const firebaseConfig = {
+  apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+  authDomain: "studio-6680101022-359df.firebaseapp.com",
+  projectId: "studio-6680101022-359df",
+  storageBucket: "studio-6680101022-359df.firebasestorage.app",
+  messagingSenderId: "938584797960",
+  appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
+
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
+/* EMAIL SIGNUP */
+window.signup = async () => {
+  if (!emailInput.value || !passwordInput.value) {
+    alert("Please enter email and password");
+    return;
+  }
+
+  try {
+    const result = await createUserWithEmailAndPassword(
+      auth,
+      emailInput.value,
+      passwordInput.value
+    );
+
+    const user = result.user;
+
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        email: user.email,
+        name: "",          // filled later in settings
+        role: "student",
+        createdAt: serverTimestamp()
+      },
+      { merge: true }
+    );
+
+    window.location.href = "/frontend/roles.html";
+  } catch (err) {
+    alert(err.message);
+  }
+};
+
+/* GOOGLE SIGNUP */
+window.googleAuth = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName || "",
+        role: "student",
+        createdAt: serverTimestamp()
+      },
+      { merge: true }
+    );
+
+    window.location.href = "/frontend/roles.html";
+  } catch (err) {
+    alert(err.message);
+  }
+};
+</script>
+
+</body>
+</html>

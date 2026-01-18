@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mentor Dashboard | FindMentor</title>
+<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+:root{
+  --bg:#f9fafb;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --accent:#0d9488;
+}
+body{background:var(--bg);color:var(--text)}
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border)
+}
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+.logo{font-weight:700}
+.logo span{color:var(--accent)}
+.header-actions button{
+  margin-left:10px;
+  border:1px solid var(--border);
+  background:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer
+}
+
+main{
+  max-width:1200px;
+  margin:28px auto;
+  padding:0 20px
+}
+
+h2{margin-bottom:16px}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px
+}
+
+.request{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px;
+  margin-bottom:12px
+}
+.meta{
+  font-size:.8rem;
+  color:var(--muted);
+  margin-bottom:6px
+}
+.question{
+  margin-bottom:10px
+}
+
+button.accept{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600
+}
+
+.assigned{
+  background:#f1f5f9
+}
+
+.empty{
+  color:var(--muted);
+  font-size:.9rem
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Find<span>Mentor</span></div>
+      <div id="lastLogin" style="font-size:.9rem;color:var(--muted);margin-left:12px;display:none"></div>
+      <div class="header-actions">
+      <button onclick="goToSettings()">Settings</button>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<h2>Mentor Dashboard</h2>
+
+<div class="grid">
+
+  <!-- PENDING REQUESTS -->
+  <div class="card">
+    <h3>Pending Requests</h3>
+    <div id="pendingList" class="empty">Loading…</div>
+  </div>
+
+  <!-- MY ASSIGNED REQUESTS -->
+  <div class="card">
+    <h3>My Assigned Requests</h3>
+    <div id="myList" class="empty">Loading…</div>
+  </div>
+
+</div>
+
+</main>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  setDoc,
+  doc,
+  getDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+/* FIREBASE CONFIG */
+const firebaseConfig = {
+  apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+  authDomain: "studio-6680101022-359df.firebaseapp.com",
+  projectId: "studio-6680101022-359df",
+  storageBucket: "studio-6680101022-359df.firebasestorage.app",
+  messagingSenderId: "938584797960",
+  appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser;
+const lastLoginDiv = document.getElementById('lastLogin');
+const pendingList = document.getElementById('pendingList');
+const myList = document.getElementById('myList');
+
+/* AUTH GUARD + ROLE CHECK */
+onAuthStateChanged(auth, async user => {
+  if (!user) return location.href = "login.html";
+
+  currentUser = user;
+
+  try {
+    await setDoc(doc(db, "users", currentUser.uid), { lastlogin: serverTimestamp() }, { merge: true });
+  } catch (err) {
+    console.error('Failed to update lastlogin:', err);
+  }
+
+  const ref = doc(db,"users",user.uid);
+  const snap = await getDoc(ref);
+
+  // populate last login display
+  if (snap.exists() && snap.data().lastlogin) {
+    try {
+      const ts = snap.data().lastlogin;
+      const date = ts.toDate ? ts.toDate() : new Date(ts.seconds * 1000);
+      lastLoginDiv.innerText = `Last login: ${date.toLocaleString()}`;
+      lastLoginDiv.style.display = 'block';
+    } catch (err) {
+      console.error('Error formatting lastlogin:', err);
+    }
+  } else {
+    lastLoginDiv.style.display = 'none';
+  }
+
+  if (!snap.exists() || snap.data().role !== "mentor") {
+    alert("Access denied");
+    return location.href = "login.html";
+  }
+
+  loadRequests();
+});
+
+/* LOAD REQUESTS */
+async function loadRequests(){
+  await loadPending();
+  await loadMine();
+}
+
+async function loadPending(){
+  const q = query(
+    collection(db,"mentorRequests"),
+    where("status","==","pending")
+  );
+
+  const snap = await getDocs(q);
+  pendingList.innerHTML = "";
+
+  if (snap.empty){
+    pendingList.innerHTML = "<p class='empty'>No pending requests</p>";
+    return;
+  }
+
+  snap.forEach(d=>{
+    const r = d.data();
+    pendingList.innerHTML += `
+      <div class="request">
+        <div class="meta">Subject: ${r.subject}</div>
+        <div class="question">${r.question}</div>
+        <button class="accept" onclick="acceptRequest('${d.id}')">
+          Accept
+        </button>
+      </div>
+    `;
+  });
+}
+
+async function loadMine(){
+  const q = query(
+    collection(db,"mentorRequests"),
+    where("mentorId","==",currentUser.uid)
+  );
+
+  const snap = await getDocs(q);
+  myList.innerHTML = "";
+
+  if (snap.empty){
+    myList.innerHTML = "<p class='empty'>No assigned requests</p>";
+    return;
+  }
+
+  snap.forEach(d=>{
+    const r = d.data();
+    myList.innerHTML += `
+      <div class="request assigned">
+        <div class="meta">Subject: ${r.subject}</div>
+        <div class="question">${r.question}</div>
+        <div class="meta">Status: ${r.status}</div>
+      </div>
+    `;
+  });
+}
+
+/* ACCEPT REQUEST */
+window.acceptRequest = async (id) => {
+  await updateDoc(doc(db,"mentorRequests",id),{
+    mentorId: currentUser.uid,
+    status: "assigned"
+  });
+  loadRequests();
+};
+
+/* SETTINGS NAV */
+window.goToSettings = () => {
+  window.location.href = "mentor-settings.html";
+};
+
+/* LOGOUT */
+window.logout = () => signOut(auth);
+</script>
+
+</body>
+</html>

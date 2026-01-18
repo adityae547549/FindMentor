@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Student Dashboard | FindMentor</title>
+<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+/* ========== BASE ========== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+:root{
+  --bg:#f9fafb;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --accent:#4f46e5;
+}
+body{background:var(--bg);color:var(--text)}
+
+/* ========== HEADER ========== */
+header{background:#fff;border-bottom:1px solid var(--border)}
+.header-inner{
+  max-width:1200px;margin:auto;padding:14px 20px;
+  display:flex;justify-content:space-between;align-items:center
+}
+.logo{font-weight:700}
+.logo span{color:var(--accent)}
+.logout{border:1px solid var(--border);background:none;padding:8px 14px;border-radius:8px;cursor:pointer}
+
+/* ========== MAIN ========== */
+main{max-width:1200px;margin:28px auto;padding:0 20px}
+
+/* ========== STATS ========== */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:28px
+}
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px
+}
+.stat h3{font-size:1.5rem}
+.stat p{font-size:.85rem;color:var(--muted)}
+
+/* ========== CHARTS ========== */
+.charts{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+  margin-bottom:28px
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px
+}
+
+/* ========== GRID ========== */
+.grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:24px
+}
+
+/* ========== INPUTS ========== */
+textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:10px;
+  min-height:120px
+}
+select{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:8px;
+  margin-bottom:12px
+}
+.btn{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600
+}
+.btn.secondary{
+  background:#fff;
+  color:var(--accent);
+  border:1px solid var(--border);
+}
+.status{color:var(--muted);font-size:.9rem}
+
+/* ========== MENTORS ========== */
+.mentors-grid{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:12px
+}
+.mentor-card{
+  background:#f9fafb;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+  transition:all 0.2s
+}
+.mentor-card:hover{
+  background:#f3f4f6;
+  border-color:var(--accent)
+}
+.mentor-avatar{
+  font-size:2rem;
+  width:48px;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eef2ff;
+  border-radius:50%
+}
+.mentor-info strong{display:block;font-size:.95rem}
+.mentor-info p{font-size:.8rem;color:var(--muted);margin:4px 0 0 0}
+
+/* ========== FLOATING AI ========== */
+.floating-ai{
+  position:fixed;
+  bottom:24px;right:24px;
+  width:52px;height:52px;
+  background:var(--accent);
+  color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;cursor:pointer;
+  box-shadow:0 10px 25px rgba(79,70,229,.35)
+}
+
+/* ========== AI MODAL ========== */
+.ai-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.4);
+  display:flex;align-items:center;justify-content:center;
+  z-index:999
+}
+.ai-window{
+  background:#fff;
+  width:420px;height:540px;
+  border-radius:14px;
+  display:flex;flex-direction:column
+}
+.ai-header{
+  padding:12px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between
+}
+.ai-chat{flex:1;padding:16px;overflow-y:auto}
+.ai-msg{
+  background:#eef2ff;
+  padding:8px 10px;
+  border-radius:8px;
+  margin-bottom:6px;
+  font-size:.9rem
+}
+.ai-user{background:#e5e7eb}
+.ai-actions{padding:12px;border-top:1px solid var(--border)}
+
+/* ========== MENTOR CHAT MODAL ========== */
+.mentor-chat-overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.4);
+  display:flex;align-items:center;justify-content:center;
+  z-index:1000
+}
+.mentor-chat-window{
+  background:#fff;
+  width:500px;height:600px;
+  border-radius:14px;
+  display:flex;flex-direction:column
+}
+.mentor-chat-header{
+  padding:16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px
+}
+.mentor-chat-avatar{font-size:2rem}
+.mentor-chat-info{flex:1}
+.mentor-chat-info strong{display:block;font-size:1rem}
+.mentor-chat-info p{font-size:.85rem;color:var(--muted);margin:2px 0 0 0}
+.mentor-chat-messages{flex:1;padding:16px;overflow-y:auto;background:#f9fafb}
+.mentor-msg{
+  background:#eef2ff;
+  padding:10px 12px;
+  border-radius:10px;
+  margin-bottom:8px;
+  max-width:80%;
+  font-size:.9rem;
+  line-height:1.5
+}
+.mentor-msg.user{
+  background:var(--accent);
+  color:#fff;
+  margin-left:auto;
+  text-align:right
+}
+.mentor-chat-input-area{
+  padding:12px;
+  border-top:1px solid var(--border);
+  display:flex;gap:8px
+}
+.mentor-chat-input{
+  flex:1;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:8px 12px;
+  font-size:.9rem
+}
+@media(max-width:900px){
+  .header-inner{flex-direction:column;align-items:flex-start;gap:10px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .charts{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr}
+  .ai-window,.mentor-chat-window{width:100%;max-width:480px;margin:0 12px}
+  .floating-ai{bottom:16px;right:16px;width:44px;height:44px}
+}
+@media(max-width:600px){
+  main{padding:0 12px}
+  .stats{grid-template-columns:1fr}
+  textarea{min-height:100px}
+  .ai-window,.mentor-chat-window{height:80vh}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Find<span>Mentor</span></div>
+    <button class="logout secondary" onclick="goToSettings()">Settings</button>
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+</header>
+
+<main>
+
+  <div style="margin-bottom:20px">
+  <h2 id="greeting" style="font-weight:600"></h2>
+  <p style="color:#6b7280;font-size:.9rem">
+    Here’s your learning activity overview.
+  </p>
+</div>
+
+
+<!-- ===== STATS ===== -->
+<div class="stats">
+  <div class="stat"><h3 id="statTotal">0</h3><p>Doubts Asked</p></div>
+  <div class="stat"><h3 id="statMentor">0</h3><p>Mentor Help</p></div>
+  <div class="stat"><h3 id="statAI">0</h3><p>AI Solved</p></div>
+  <div class="stat"><h3 id="statDays">0</h3><p>Active Days</p></div>
+</div>
+
+<!-- ===== CHARTS ===== -->
+<div class="charts">
+  <div class="card">
+    <h3>Doubts (Weekly)</h3>
+    <canvas id="lineChart"></canvas>
+  </div>
+  <div class="card">
+    <h3>AI vs Mentor</h3>
+    <canvas id="donutChart"></canvas>
+  </div>
+</div>
+
+<!-- ===== MAIN GRID ===== -->
+<div class="grid">
+
+  <!-- ASK DOUBT -->
+  <div class="card">
+    <h3>Ask a Doubt</h3>
+
+    <textarea id="question" placeholder="Describe your question clearly…"></textarea>
+
+    <select id="subject" aria-label="Subject">
+      <option disabled selected>Select Subject</option>
+      <option value="maths">Mathematics</option>
+      <option value="physics">Physics</option>
+      <option value="chemistry">Chemistry</option>
+      <option value="biology">Biology</option>
+      <option value="cs">Computer Science</option>
+      <option value="other">General / Other</option>
+    </select>
+
+    <button class="btn" onclick="submitDoubt()">Submit Doubt</button>
+  </div>
+
+  <!-- MENTORS -->
+  <div class="card">
+    <h3>Mentors</h3>
+    <div class="mentors-grid">
+      <div class="mentor-card" onclick="openMentorChat('ankit-kumar')">
+        <div class="mentor-avatar">👨‍🏫</div>
+        <div class="mentor-info">
+          <strong>Ankit Kumar</strong>
+          <p>English & Social Studies</p>
+        </div>
+      </div>
+      <div class="mentor-card" onclick="openMentorChat('shubham-singh')">
+        <div class="mentor-avatar">👩‍🔬</div>
+        <div class="mentor-info">
+          <strong>Shubham Singh</strong>
+          <p>Biology</p>
+        </div>
+      </div>
+      <div class="mentor-card" onclick="openMentorChat('yash-kumar')">
+        <div class="mentor-avatar">👨‍⚕️</div>
+        <div class="mentor-info">
+          <strong>Yash Kumar</strong>
+          <p>Chemistry</p>
+        </div>
+      </div>
+      <div class="mentor-card" onclick="openMentorChat('ankush-kumar')">
+        <div class="mentor-avatar">👩‍💻</div>
+        <div class="mentor-info">
+          <strong>Ankush Kumar</strong>
+          <p>Mathematics</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<!-- FLOATING AI -->
+<div class="floating-ai" onclick="openAI()">🤖</div>
+
+<!-- ===== AI MODAL ===== -->
+<div id="aiModal" style="display:none">
+  <div class="ai-overlay">
+    <div class="ai-window">
+      <div class="ai-header">
+        <strong>AI Assistant</strong>
+        <button onclick="closeAI()">✕</button>
+      </div>
+
+      <div id="aiChat" class="ai-chat">
+        <div class="ai-msg">Hi! I'll try to help first 😊</div>
+      </div>
+
+      <div id="aiActions" class="ai-actions"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MENTOR CHAT MODAL ===== -->
+<div id="mentorChatModal" style="display:none">
+  <div class="mentor-chat-overlay">
+    <div class="mentor-chat-window">
+      <div class="mentor-chat-header">
+        <div class="mentor-chat-avatar" id="mentorChatAvatar">👨‍🏫</div>
+        <div class="mentor-chat-info">
+          <strong id="mentorChatName">Prof. Sharma</strong>
+          <p id="mentorChatSpecialty">Maths & Physics Expert</p>
+        </div>
+        <button onclick="closeMentorChat()" style="background:none;border:none;font-size:1.2rem;cursor:pointer">✕</button>
+      </div>
+
+      <div id="mentorChatMessages" class="mentor-chat-messages">
+        <div class="mentor-msg">Hello! I'm here to help you. Ask me anything! 😊</div>
+      </div>
+
+      <div class="mentor-chat-input-area">
+        <input type="text" id="mentorChatInput" class="mentor-chat-input" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendMentorMessage()">
+        <button class="btn" onclick="sendMentorMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FIREBASE + LOGIC ===== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, query, where, getDocs, addDoc, setDoc, serverTimestamp, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+  authDomain: "studio-6680101022-359df.firebaseapp.com",
+  projectId: "studio-6680101022-359df",
+  storageBucket: "studio-6680101022-359df.firebasestorage.app",
+  messagingSenderId: "938584797960",
+  appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser;
+let currentDoubt;
+
+const lineChartEl = document.getElementById("lineChart");
+const donutChartEl = document.getElementById("donutChart");
+const statTotal = document.getElementById("statTotal");
+const statMentor = document.getElementById("statMentor");
+const statAI = document.getElementById("statAI");
+const statDays = document.getElementById("statDays");
+const questionInput = document.getElementById("question");
+const subjectSelect = document.getElementById("subject");
+const aiModalEl = document.getElementById("aiModal");
+const aiChat = document.getElementById("aiChat");
+const aiActions = document.getElementById("aiActions");
+
+onAuthStateChanged(auth, async user=>{
+  if(!user) return location.href="login.html";
+  currentUser=user;
+  try {
+    await setDoc(doc(db, "users", currentUser.uid), { lastlogin: serverTimestamp() }, { merge: true });
+  } catch (err) {
+    console.error('Failed to update lastlogin:', err);
+  }
+  loadGreeting(user.uid);
+  loadDashboard(user.uid);
+});
+
+/* ===== DASHBOARD DATA ===== */
+async function loadDashboard(uid){
+  const mentorQ=query(collection(db,"mentorRequests"),where("studentId","==",uid));
+  const aiQ=query(collection(db,"aiLogs"),where("studentId","==",uid));
+
+  const [mentorSnap,aiSnap]=await Promise.all([getDocs(mentorQ),getDocs(aiQ)]);
+
+  let total=0,mentor=0,ai=0;
+  const days=new Set();
+  const weekly={Mon:0,Tue:0,Wed:0,Thu:0,Fri:0,Sat:0,Sun:0};
+
+  mentorSnap.forEach(d=>{
+    const r=d.data();
+    total++;
+    if(r.mentorId) mentor++;
+    const ts=r.createdAt;
+    if(ts&&ts.toDate){
+      const dt=ts.toDate();
+      days.add(dt.toDateString());
+      const k=dt.toLocaleDateString("en-US",{weekday:"short"});
+      if(weekly[k]!==undefined) weekly[k]++;
+    }
+  });
+
+  aiSnap.forEach(d=>{
+    const r=d.data();
+    total++;
+    ai++;
+    const ts=r.createdAt;
+    if(ts&&ts.toDate){
+      const dt=ts.toDate();
+      days.add(dt.toDateString());
+      const k=dt.toLocaleDateString("en-US",{weekday:"short"});
+      if(weekly[k]!==undefined) weekly[k]++;
+    }
+  });
+
+  statTotal.innerText=total;
+  statMentor.innerText=mentor;
+  statAI.innerText=ai;
+  statDays.innerText=days.size;
+
+  renderCharts(weekly,ai,mentor);
+}
+
+/* ===== CHARTS ===== */
+let lineChart, donutChart;
+function renderCharts(weekly,ai,mentor){
+  if(lineChart) lineChart.destroy();
+  if(donutChart) donutChart.destroy();
+
+  lineChart=new Chart(lineChartEl,{
+    type:"line",
+    data:{labels:Object.keys(weekly),
+      datasets:[{data:Object.values(weekly),borderColor:"#4f46e5",tension:.4}]
+    }
+  });
+
+  donutChart=new Chart(donutChartEl,{
+    type:"doughnut",
+    data:{labels:["AI","Mentor"],
+      datasets:[{data:[ai,mentor],backgroundColor:["#4f46e5","#a5b4fc"]}]
+    }
+  });
+}
+
+/* ===== MENTOR DATA ===== */
+const mentors = {
+  'ankit-kumar': {
+    name: 'Ankit Kumar',
+    specialty: 'English & Social Studies',
+    avatar: '👨‍🏫',
+    expertise: 'english social studies'
+  },
+  'shubham-singh': {
+    name: 'Shubham Singh',
+    specialty: 'Biology',
+    avatar: '🧬',
+    expertise: 'biology'
+  },
+  'yash-kumar': {
+    name: 'Yash Kumar',
+    specialty: 'Chemistry',
+    avatar: '⚗️',
+    expertise: 'chemistry'
+  },
+  'ankush-kumar': {
+    name: 'Ankush Kumar',
+    specialty: 'Mathematics',
+    avatar: '📐',
+    expertise: 'mathematics'
+  }
+};
+
+let currentMentorId = null;
+
+window.openMentorChat = (mentorId) => {
+  currentMentorId = mentorId;
+  const mentor = mentors[mentorId];
+  
+  document.getElementById('mentorChatAvatar').textContent = mentor.avatar;
+  document.getElementById('mentorChatName').textContent = mentor.name;
+  document.getElementById('mentorChatSpecialty').textContent = mentor.specialty;
+  document.getElementById('mentorChatMessages').innerHTML = `<div class="mentor-msg">Hello! I'm here to help you with ${mentor.specialty.toLowerCase()}. Ask me anything! 😊</div>`;
+  document.getElementById('mentorChatInput').value = '';
+  
+  document.getElementById('mentorChatModal').style.display = 'block';
+  document.getElementById('mentorChatInput').focus();
+};
+
+window.closeMentorChat = () => {
+  document.getElementById('mentorChatModal').style.display = 'none';
+  currentMentorId = null;
+};
+
+function typeMentorResponse(container, text) {
+  const msgEl = document.createElement("div");
+  msgEl.className = "mentor-msg";
+  container.appendChild(msgEl);
+
+  const content = String(text || "");
+  const length = content.length;
+
+  if (!length) return;
+
+  const minDuration = 2000;
+  const maxDuration = 12000;
+  const baseMsPerChar = 40;
+
+  let estimated = length * baseMsPerChar;
+  if (estimated < minDuration) estimated = minDuration;
+  if (estimated > maxDuration) estimated = maxDuration;
+
+  const stepInterval = 50;
+  const steps = Math.max(1, Math.floor(estimated / stepInterval));
+  const charsPerStep = Math.max(1, Math.floor(length / steps));
+
+  let index = 0;
+  const intervalId = setInterval(() => {
+    index += charsPerStep;
+    if (index >= length) {
+      msgEl.textContent = content;
+      container.scrollTop = container.scrollHeight;
+      clearInterval(intervalId);
+      return;
+    }
+    msgEl.textContent = content.slice(0, index);
+    container.scrollTop = container.scrollHeight;
+  }, stepInterval);
+}
+
+window.sendMentorMessage = async () => {
+  const input = document.getElementById('mentorChatInput');
+  const message = input.value.trim();
+  if (!message || !currentMentorId) return;
+
+  const messagesDiv = document.getElementById('mentorChatMessages');
+  
+  // Add user message
+  messagesDiv.innerHTML += `<div class="mentor-msg user">${message}</div>`;
+  input.value = '';
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+  // Show typing indicator
+  const typingId = Date.now();
+  messagesDiv.innerHTML += `<div id="typing-${typingId}" class="mentor-msg">Typing...</div>`;
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+  try {
+    const res = await fetch('/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: message })
+    });
+
+    const data = await res.json();
+    
+    // Remove typing indicator
+    const typingEl = document.getElementById(`typing-${typingId}`);
+    if (typingEl) typingEl.remove();
+
+    if (data.success && data.answer) {
+      typeMentorResponse(messagesDiv, data.answer);
+    } else {
+      messagesDiv.innerHTML += `<div class="mentor-msg">Sorry, I encountered an error. Please try again.</div>`;
+    }
+  } catch (err) {
+    const typingEl = document.getElementById(`typing-${typingId}`);
+    if (typingEl) typingEl.remove();
+    messagesDiv.innerHTML += `<div class="mentor-msg">Sorry, I'm having trouble connecting. Please check if the backend server is running.</div>`;
+    console.error('Mentor chat error:', err);
+  }
+
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+};
+
+/* ===== AI FIRST FLOW ===== */
+window.submitDoubt=()=>{
+  if(!questionInput.value||!subjectSelect.value) return alert("Fill all fields");
+  
+  const questionText = questionInput.value;
+  const subjectText = subjectSelect.value;
+  
+  localStorage.setItem('prefillQuestion', questionText);
+  localStorage.setItem('prefillSubject', subjectText);
+  
+  window.open('/ai_window.html', '_blank');
+  
+  // Clear the form
+  questionInput.value = '';
+  subjectSelect.value = '';
+};
+
+function runAI(){
+  aiChat.innerHTML+=`<div class="ai-msg ai-user">${currentDoubt.question}</div>`;
+  const confidence=calculateConfidence(currentDoubt.question,currentDoubt.subject);
+
+  setTimeout(()=>{
+    if(confidence>0.6){
+      aiChat.innerHTML+=`<div class="ai-msg">Here’s a step-by-step explanation…</div>`;
+    }else{
+      aiChat.innerHTML+=`<div class="ai-msg">This needs a mentor’s help.</div>`;
+      aiActions.innerHTML=`
+        <button class="btn" onclick="requestMentor()">Request Mentor</button>
+      `;
+    }
+  },1000);
+}
+
+function calculateConfidence(q,sub){
+  let score=1;
+  if(q.length>150) score-=0.3;
+  if(q.includes("prove")||q.includes("derivation")) score-=0.3;
+  if(sub==="maths"||sub==="physics") score-=0.2;
+  return Math.max(0,Math.min(1,score));
+}
+
+window.requestMentor=async()=>{
+  await addDoc(collection(db,"mentorRequests"),{
+    studentId:currentUser.uid,
+    question:currentDoubt.question,
+    subject:currentDoubt.subject,
+    status:"pending",
+    mentorId:null,
+    createdAt:serverTimestamp()
+  });
+  closeAI();
+  questionInput.value="";
+  loadDashboard(currentUser.uid);
+};
+
+/* ===== UI ===== */
+window.openAI=()=>{
+  window.open("/ai_window.html","_blank");
+};
+window.closeAI=()=>{
+  aiModalEl.style.display="none";
+  aiActions.innerHTML="";
+};
+window.logout=()=>signOut(auth);
+
+window.goToSettings = () => {
+  window.location.href = "settings.html";
+};
+
+async function loadGreeting(uid) {
+  const userRef = doc(db, "users", uid);
+  const snap = await getDoc(userRef);
+
+  let name = "Student";
+  if (snap.exists() && snap.data().name) {
+    name = snap.data().name.split(" ")[0]; // first name only
+  }
+
+  const hour = new Date().getHours();
+  const timeGreeting =
+    hour < 12 ? "Good morning" :
+    hour < 18 ? "Good afternoon" :
+    "Good evening";
+
+  document.getElementById("greeting").innerText =
+    `${timeGreeting}, ${name} 👋`;
+}
+
+
+</script>
+
+</body>
+</html>

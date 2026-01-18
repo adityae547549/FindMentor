@@ -1,0 +1,472 @@
+{
+  "class": 12,
+  "subject": "Mathematics",
+  "board": "CBSE / NCERT aligned",
+  "description": "Mathematics for Class 12 focuses on abstract reasoning, algebraic structures, and foundational calculus required for higher studies in science, engineering, and economics.",
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_name": "Relations and Functions",
+      "chapter_objective": "To understand relations between sets and study functions as special types of relations with well-defined input-output behaviour.",
+      "detailed_explanation": "In mathematics, relations describe how elements of one set are connected to elements of another set. Functions are special relations where each input corresponds to exactly one output. This chapter forms the foundation for calculus and higher mathematical analysis.",
+      "key_definitions": {
+        "relation": "A relation from a set A to a set B is a subset of the Cartesian product A × B.",
+        "function": "A function is a relation in which every element of the domain is associated with exactly one element of the codomain."
+      },
+      "representation_of_relations": [
+        "Roster form",
+        "Set-builder form",
+        "Arrow diagrams",
+        "Ordered pairs"
+      ],
+      "types_of_relations": {
+        "empty_relation": "A relation containing no ordered pairs.",
+        "universal_relation": "A relation containing all possible ordered pairs.",
+        "identity_relation": "Each element of a set is related to itself.",
+        "inverse_relation": "Relation obtained by reversing each ordered pair."
+      },
+      "properties_of_relations": {
+        "reflexive": "For every element a in A, (a, a) belongs to the relation.",
+        "symmetric": "If (a, b) is in the relation, then (b, a) is also in the relation.",
+        "transitive": "If (a, b) and (b, c) are in the relation, then (a, c) must also be in the relation."
+      },
+      "equivalence_relation": {
+        "definition": "A relation that is reflexive, symmetric, and transitive.",
+        "importance": "An equivalence relation divides a set into mutually exclusive equivalence classes."
+      },
+      "types_of_functions": [
+        "One-one (Injective)",
+        "Many-one",
+        "Onto (Surjective)",
+        "Into",
+        "Bijective"
+      ],
+      "applications": [
+        "Classification of data",
+        "Mapping real-life situations mathematically",
+        "Foundation for calculus and algebra"
+      ],
+      "learning_outcomes": [
+        "Identify relations and functions from given data",
+        "Check properties of relations",
+        "Classify functions correctly"
+      ]
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Inverse Trigonometric Functions",
+      "chapter_objective": "To define inverse trigonometric functions by restricting trigonometric functions to make them one-one.",
+      "detailed_explanation": "Trigonometric functions are periodic and hence not one-one over their complete domains. To define their inverses, their domains are restricted. Inverse trigonometric functions help in solving trigonometric equations and appear frequently in calculus.",
+      "need_for_restriction": "Without restricting the domain, inverse trigonometric functions would not satisfy the definition of a function.",
+      "principal_value_branches": {
+        "sin_inverse": "Range is [-π/2, π/2]",
+        "cos_inverse": "Range is [0, π]",
+        "tan_inverse": "Range is (-π/2, π/2)"
+      },
+      "important_properties": [
+        "sin⁻¹(sin x) is not equal to x for all x",
+        "cos⁻¹ x + sin⁻¹ x = π/2 (where defined)",
+        "Inverse trigonometric functions are monotonic in their principal domains"
+      ],
+      "graphs": [
+        "Graph of sin⁻¹x",
+        "Graph of cos⁻¹x",
+        "Graph of tan⁻¹x"
+      ],
+      "applications": [
+        "Solving trigonometric equations",
+        "Simplifying calculus expressions",
+        "Used in integration and differentiation"
+      ],
+      "learning_outcomes": [
+        "Understand principal value branches",
+        "Evaluate inverse trigonometric expressions",
+        "Solve equations involving inverse trigonometric functions"
+      ]
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Matrices",
+      "chapter_objective": "To introduce matrices as an efficient way to represent and manipulate data and solve systems of linear equations.",
+      "detailed_explanation": "Matrices provide a compact way of representing large sets of data and are widely used in mathematics, physics, computer science, and engineering. This chapter introduces matrix operations and their properties.",
+      "definition": "A matrix is a rectangular array of numbers arranged in rows and columns.",
+      "basic_terms": {
+        "order": "The number of rows and columns of a matrix",
+        "element": "An individual entry in a matrix"
+      },
+      "types_of_matrices": [
+        "Row matrix",
+        "Column matrix",
+        "Rectangular matrix",
+        "Square matrix",
+        "Zero matrix",
+        "Identity matrix",
+        "Diagonal matrix",
+        "Symmetric matrix",
+        "Skew-symmetric matrix"
+      ],
+      "matrix_operations": [
+        "Addition and subtraction of matrices",
+        "Scalar multiplication",
+        "Matrix multiplication"
+      ],
+      "transpose_of_matrix": {
+        "definition": "Matrix obtained by interchanging rows and columns",
+        "properties": [
+          "(Aᵀ)ᵀ = A",
+          "(A + B)ᵀ = Aᵀ + Bᵀ",
+          "(AB)ᵀ = BᵀAᵀ"
+        ]
+      },
+      "applications": [
+        "Solving linear equations",
+        "Computer graphics",
+        "Network analysis",
+        "Engineering models"
+      ],
+      "learning_outcomes": [
+        "Perform matrix operations correctly",
+        "Understand properties of transpose",
+        "Apply matrices to real-life problems"
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Determinants",
+      "chapter_objective": "To study determinants of square matrices, their properties, and their applications in solving systems of linear equations.",
+      "detailed_explanation": "Determinants are numerical values associated with square matrices. They play a crucial role in determining whether a system of linear equations has a unique solution. Determinants are also used to find the inverse of matrices and have important geometric interpretations.",
+      "definition": "A determinant is a scalar value obtained from a square matrix using a specific rule of expansion.",
+      "methods_of_evaluation": [
+        "Expansion along a row",
+        "Expansion along a column"
+      ],
+      "properties_of_determinants": [
+        "If two rows or columns are interchanged, the sign of the determinant changes",
+        "If any two rows or columns are identical, the determinant is zero",
+        "If all elements of a row or column are zero, the determinant is zero",
+        "Determinant of an identity matrix is equal to 1"
+      ],
+      "minors_and_cofactors": {
+        "minor": "The determinant obtained after deleting the row and column containing the element",
+        "cofactor": "The minor multiplied by (-1) raised to the sum of row and column indices"
+      },
+      "applications": [
+        "Finding the inverse of a matrix",
+        "Solving linear equations using Cramer’s Rule",
+        "Finding the area of a triangle using coordinates"
+      ],
+      "learning_outcomes": [
+        "Evaluate determinants accurately",
+        "Apply properties of determinants correctly",
+        "Solve systems of linear equations using determinants"
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Continuity and Differentiability",
+      "chapter_objective": "To study continuity of functions and introduce differentiation as a fundamental concept of calculus.",
+      "detailed_explanation": "Continuity describes the smoothness of a function, while differentiability measures the rate at which a function changes. This chapter lays the foundation of differential calculus and is essential for applications in physics, economics, and engineering.",
+      "limits": {
+        "definition": "The value that a function approaches as the independent variable approaches a given point"
+      },
+      "continuity": {
+        "definition": "A function is continuous at a point if the limit at that point exists and is equal to the value of the function at that point",
+        "conditions": [
+          "The function is defined at the point",
+          "The limit exists at that point",
+          "The limit equals the function value"
+        ]
+      },
+      "differentiability": {
+        "definition": "A function is differentiable at a point if its derivative exists at that point",
+        "important_result": "Differentiability implies continuity, but continuity does not necessarily imply differentiability"
+      },
+      "methods_of_differentiation": [
+        "Chain rule",
+        "Implicit differentiation",
+        "Logarithmic differentiation"
+      ],
+      "applications": [
+        "Finding slope of tangent",
+        "Calculating rate of change",
+        "Studying behaviour of functions"
+      ],
+      "learning_outcomes": [
+        "Check continuity of functions",
+        "Differentiate composite functions",
+        "Apply differentiation rules correctly"
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Applications of Derivatives",
+      "chapter_objective": "To apply derivatives to analyze the behaviour of functions and solve optimization problems.",
+      "detailed_explanation": "Derivatives are used to study how functions increase or decrease and to find maximum and minimum values. This chapter applies differentiation techniques to real-life and mathematical optimization problems.",
+      "interpretation_of_derivative": [
+        "Rate of change of one quantity with respect to another",
+        "Slope of the tangent to a curve at a given point"
+      ],
+      "increasing_and_decreasing_functions": {
+        "idea": "A function is increasing if its derivative is positive and decreasing if its derivative is negative"
+      },
+      "maxima_and_minima": {
+        "critical_points": "Points where the derivative is zero or undefined",
+        "first_derivative_test": "Used to determine local maxima and minima"
+      },
+      "optimization_problems": [
+        "Maximization of area or volume",
+        "Minimization of cost or distance",
+        "Applications in business and economics"
+      ],
+      "learning_outcomes": [
+        "Determine intervals of increase and decrease",
+        "Solve optimization problems using derivatives",
+        "Apply derivatives to real-life situations"
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Integrals",
+      "chapter_objective": "To introduce integration as the inverse process of differentiation and develop techniques to evaluate integrals.",
+      "detailed_explanation": "Integration is a fundamental concept of calculus used to find functions from their derivatives. It represents accumulation and is widely used in mathematics, physics, economics, and engineering. This chapter focuses on standard integrals and systematic methods of integration.",
+      "definition": "Integration is the process of finding a function whose derivative is given.",
+      "types_of_integrals": [
+        "Indefinite integrals",
+        "Definite integrals"
+      ],
+      "standard_integrals": [
+        "Integral of xⁿ",
+        "Integral of eˣ",
+        "Integral of 1/x",
+        "Integral of sin x and cos x"
+      ],
+      "methods_of_integration": [
+        "Substitution method",
+        "Integration by parts",
+        "Partial fractions"
+      ],
+      "constant_of_integration": "An arbitrary constant added in indefinite integrals because differentiation removes constants.",
+      "applications": [
+        "Solving mathematical problems",
+        "Used as foundation for applications of integrals",
+        "Used in physics for displacement, work, and energy"
+      ],
+      "learning_outcomes": [
+        "Evaluate integrals using standard formulas",
+        "Select appropriate method of integration",
+        "Apply integration techniques correctly"
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Applications of Integrals",
+      "chapter_objective": "To apply definite integrals to calculate areas of regions bounded by curves.",
+      "detailed_explanation": "Definite integrals can be interpreted as the area under a curve. This chapter focuses on finding areas of simple and composite regions bounded by curves, lines, and coordinate axes, using integration techniques.",
+      "area_concept": {
+        "idea": "Area is calculated as the limit of the sum of areas of infinitely small strips",
+        "mathematical_expression": "Area = ∫ y dx between appropriate limits"
+      },
+      "types_of_regions": [
+        "Area bounded by a curve and x-axis",
+        "Area bounded by a curve and y-axis",
+        "Area between two curves"
+      ],
+      "procedure": [
+        "Draw a rough sketch of the region",
+        "Identify the limits of integration",
+        "Evaluate the definite integral"
+      ],
+      "importance": [
+        "Connects geometry with calculus",
+        "Useful in physics and engineering problems"
+      ],
+      "learning_outcomes": [
+        "Visualize bounded regions correctly",
+        "Determine correct limits of integration",
+        "Calculate area accurately using integrals"
+      ]
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Differential Equations",
+      "chapter_objective": "To study equations involving derivatives and learn methods to find their solutions.",
+      "detailed_explanation": "A differential equation relates a function with its derivatives and is used to describe various physical, biological, and economic systems. This chapter focuses on first-order differential equations and their solution methods.",
+      "definition": "A differential equation is an equation involving derivatives of a dependent variable with respect to an independent variable.",
+      "basic_terms": {
+        "order": "Order of the highest derivative present in the equation",
+        "degree": "Power of the highest order derivative after simplification"
+      },
+      "formation_of_differential_equations": [
+        "By eliminating arbitrary constants"
+      ],
+      "methods_of_solution": [
+        "Variable separable method",
+        "Homogeneous differential equations"
+      ],
+      "solutions": {
+        "general_solution": "Solution containing arbitrary constants",
+        "particular_solution": "Solution obtained using given initial conditions"
+      },
+      "applications": [
+        "Modeling physical systems",
+        "Population growth models",
+        "Radioactive decay"
+      ],
+      "learning_outcomes": [
+        "Identify order and degree of differential equations",
+        "Solve first-order differential equations",
+        "Apply differential equations to real-life situations"
+      ]
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Vectors",
+      "chapter_objective": "To introduce vectors as quantities having both magnitude and direction and develop vector algebra for solving geometrical and physical problems.",
+      "detailed_explanation": "Vectors are mathematical quantities used to represent physical entities such as displacement, velocity, and force. Unlike scalars, vectors possess both magnitude and direction. This chapter develops the algebra of vectors and connects it with geometry and applications in physics.",
+      "basic_concepts": {
+        "scalar": "A quantity having magnitude only and no direction.",
+        "vector": "A quantity having both magnitude and direction.",
+        "position_vector": "A vector that represents the position of a point with respect to the origin."
+      },
+      "types_of_vectors": [
+        "Zero vector",
+        "Unit vector",
+        "Equal vectors",
+        "Parallel vectors",
+        "Collinear vectors"
+      ],
+      "vector_operations": [
+        "Addition of vectors using triangle and parallelogram law",
+        "Subtraction of vectors",
+        "Scalar multiplication of vectors"
+      ],
+      "products_of_vectors": {
+        "dot_product": {
+          "definition": "Scalar product of two vectors defined as the product of their magnitudes and the cosine of the angle between them.",
+          "applications": [
+            "Finding angle between two vectors",
+            "Work done by a force"
+          ]
+        },
+        "cross_product": {
+          "definition": "Vector product of two vectors defined as the product of their magnitudes and the sine of the angle between them in a direction perpendicular to the plane of vectors.",
+          "applications": [
+            "Finding area of parallelogram",
+            "Finding area of triangle"
+          ]
+        }
+      },
+      "learning_outcomes": [
+        "Perform vector operations accurately",
+        "Apply dot and cross products to solve problems",
+        "Interpret vectors geometrically"
+      ]
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Three Dimensional Geometry",
+      "chapter_objective": "To extend coordinate geometry to three dimensions and study the equations of lines and planes in space.",
+      "detailed_explanation": "Three dimensional geometry deals with the study of points, lines, and planes in space. This chapter introduces vector methods to represent lines and planes and helps in solving spatial geometry problems efficiently.",
+      "basic_concepts": {
+        "three_dimensional_coordinate_system": "A coordinate system consisting of three mutually perpendicular axes.",
+        "direction_cosines": "Cosines of angles made by a line with the coordinate axes.",
+        "direction_ratios": "Numbers proportional to direction cosines."
+      },
+      "equations_of_line": [
+        "Vector equation of a line",
+        "Cartesian equation of a line"
+      ],
+      "equations_of_plane": [
+        "Vector equation of a plane",
+        "Cartesian equation of a plane"
+      ],
+      "angle_and_distance_problems": [
+        "Angle between two lines",
+        "Angle between a line and a plane",
+        "Distance of a point from a plane"
+      ],
+      "applications": [
+        "Solving spatial geometry problems",
+        "Used in physics and engineering applications"
+      ],
+      "learning_outcomes": [
+        "Form equations of lines and planes",
+        "Solve problems involving angles and distances in space",
+        "Apply vector methods to three dimensional geometry"
+      ]
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Linear Programming",
+      "chapter_objective": "To optimize a linear objective function subject to given linear constraints using graphical methods.",
+      "detailed_explanation": "Linear Programming deals with problems of maximizing or minimizing a linear function under certain conditions expressed as linear inequalities. This chapter introduces the graphical method for solving such problems and highlights their practical importance in economics and business.",
+      "basic_terms": {
+        "linear_programming_problem": "A problem involving the maximization or minimization of a linear objective function.",
+        "objective_function": "The function that needs to be maximized or minimized.",
+        "constraints": "Linear inequalities that restrict the values of decision variables.",
+        "feasible_region": "The common region satisfying all constraints."
+      },
+      "graphical_method": {
+        "steps": [
+          "Formulate the linear programming problem",
+          "Graph the constraints",
+          "Identify the feasible region",
+          "Evaluate the objective function at corner points"
+        ]
+      },
+      "importance": [
+        "Useful in business decision making",
+        "Applied in resource allocation problems",
+        "Used in production planning"
+      ],
+      "learning_outcomes": [
+        "Formulate linear programming problems",
+        "Solve LPPs using graphical method",
+        "Interpret solutions in real-life context"
+      ]
+    },
+    {
+      "chapter_number": 13,
+      "chapter_name": "Probability",
+      "chapter_objective": "To develop a systematic understanding of probability using conditional probability and Bayes’ theorem.",
+      "detailed_explanation": "Probability is a measure of uncertainty and likelihood of events. In Class 12, probability is studied using a more rigorous and mathematical approach involving conditional probability, multiplication theorem, and Bayes’ theorem. These concepts are widely used in statistics, economics, science, and decision-making.",
+      "basic_concepts": {
+        "random_experiment": "An experiment whose outcome cannot be predicted with certainty.",
+        "sample_space": "The set of all possible outcomes of a random experiment.",
+        "event": "A subset of the sample space."
+      },
+      "types_of_events": [
+        "Impossible event",
+        "Sure event",
+        "Simple event",
+        "Compound event",
+        "Mutually exclusive events",
+        "Independent events"
+      ],
+      "conditional_probability": {
+        "definition": "Probability of occurrence of an event given that another event has already occurred.",
+        "expression": "P(A|B) = P(A ∩ B) / P(B), where P(B) ≠ 0"
+      },
+      "multiplication_theorem": {
+        "statement": "Probability of simultaneous occurrence of two events is the product of probability of one event and conditional probability of the other."
+      },
+      "bayes_theorem": {
+        "statement": "Provides a method to calculate conditional probability using prior probabilities.",
+        "importance": [
+          "Used in statistical inference",
+          "Applied in medical testing and decision analysis"
+        ]
+      },
+      "applications": [
+        "Risk assessment",
+        "Statistics and data analysis",
+        "Real-life decision making under uncertainty"
+      ],
+      "learning_outcomes": [
+        "Apply conditional probability correctly",
+        "Use Bayes’ theorem in problem solving",
+        "Analyze probability-based situations logically"
+      ]
+    }
+  ]
+}

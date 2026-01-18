@@ -1,0 +1,247 @@
+{
+  "class": 8,
+  "subject": "Computer Science",
+  "chapters": [
+    {
+      "chapter": "Computer System and Operating System",
+      "topics": [
+        {
+          "topic": "Computer System",
+          "intent": [
+            "define"
+          ],
+          "content": "A computer system is a combination of hardware, software, data, and users working together."
+        },
+        {
+          "topic": "Operating System",
+          "intent": [
+            "define"
+          ],
+          "content": "An operating system is system software that manages hardware and allows users to interact with the computer."
+        },
+        {
+          "topic": "Functions of Operating System",
+          "intent": [
+            "explain"
+          ],
+          "content": "An operating system manages memory, files, devices, and running programs."
+        }
+      ]
+    },
+    {
+      "chapter": "Memory and Storage Devices",
+      "topics": [
+        {
+          "topic": "Primary Memory",
+          "intent": [
+            "define"
+          ],
+          "content": "Primary memory is the main memory of a computer used to store data temporarily."
+        },
+        {
+          "topic": "Secondary Memory",
+          "intent": [
+            "define"
+          ],
+          "content": "Secondary memory is used to store data permanently such as hard disks and pen drives."
+        },
+        {
+          "topic": "Difference Between Primary and Secondary Memory",
+          "intent": [
+            "difference"
+          ],
+          "content": "Primary memory is fast and temporary, while secondary memory is slower and permanent."
+        }
+      ]
+    },
+    {
+      "chapter": "Internet Services",
+      "topics": [
+        {
+          "topic": "Internet",
+          "intent": [
+            "define"
+          ],
+          "content": "The Internet is a global network that connects millions of computers worldwide."
+        },
+        {
+          "topic": "Internet Services",
+          "intent": [
+            "explain"
+          ],
+          "content": "Internet services include email, websites, cloud storage, and online communication."
+        },
+        {
+          "topic": "Search Engines",
+          "intent": [
+            "define"
+          ],
+          "content": "A search engine helps users find information on the Internet."
+        }
+      ]
+    },
+    {
+      "chapter": "Cyber Safety and Ethics",
+      "topics": [
+        {
+          "topic": "Cyber Safety",
+          "intent": [
+            "define"
+          ],
+          "content": "Cyber safety means using the Internet responsibly and protecting personal information."
+        },
+        {
+          "topic": "Cyber Crimes",
+          "intent": [
+            "define"
+          ],
+          "content": "Cyber crimes are illegal activities carried out using computers and the Internet."
+        },
+        {
+          "topic": "Digital Ethics",
+          "intent": [
+            "explain"
+          ],
+          "content": "Digital ethics involve responsible and respectful behavior while using technology."
+        }
+      ]
+    },
+    {
+      "chapter": "Word Processing and Presentation Tools",
+      "topics": [
+        {
+          "topic": "Word Processor",
+          "intent": [
+            "define"
+          ],
+          "content": "A word processor is used to create, edit, and format text documents."
+        },
+        {
+          "topic": "Presentation Software",
+          "intent": [
+            "define"
+          ],
+          "content": "Presentation software is used to create slide-based presentations."
+        },
+        {
+          "topic": "Uses of Digital Documents",
+          "intent": [
+            "explain"
+          ],
+          "content": "Digital documents are used for assignments, reports, and presentations."
+        }
+      ]
+    },
+    {
+      "chapter": "Spreadsheets and Data Representation",
+      "topics": [
+        {
+          "topic": "Spreadsheet",
+          "intent": [
+            "define"
+          ],
+          "content": "A spreadsheet is a tool used to organize, calculate, and analyze data."
+        },
+        {
+          "topic": "Formulas and Functions",
+          "intent": [
+            "define"
+          ],
+          "content": "Formulas and functions are used to perform calculations automatically."
+        },
+        {
+          "topic": "Charts and Graphs",
+          "intent": [
+            "explain"
+          ],
+          "content": "Charts and graphs visually represent data for better understanding."
+        }
+      ]
+    },
+    {
+      "chapter": "Algorithmic Thinking",
+      "topics": [
+        {
+          "topic": "Problem Solving",
+          "intent": [
+            "define"
+          ],
+          "content": "Problem solving involves breaking a problem into smaller steps."
+        },
+        {
+          "topic": "Algorithm",
+          "intent": [
+            "define"
+          ],
+          "content": "An algorithm is a step-by-step solution to a problem."
+        },
+        {
+          "topic": "Flowchart Symbols",
+          "intent": [
+            "define"
+          ],
+          "content": "Flowchart symbols are used to visually represent algorithms."
+        }
+      ]
+    },
+    {
+      "chapter": "Python Programming",
+      "topics": [
+        {
+          "topic": "Python Programming Language",
+          "intent": [
+            "define"
+          ],
+          "content": "Python is a high-level programming language known for its simplicity and readability."
+        },
+        {
+          "topic": "Variables and Data Types",
+          "intent": [
+            "explain"
+          ],
+          "content": "Variables store data and data types define the type of value stored."
+        },
+        {
+          "topic": "Conditional Statements",
+          "intent": [
+            "define"
+          ],
+          "content": "Conditional statements are used to make decisions in a program."
+        },
+        {
+          "topic": "Loops",
+          "intent": [
+            "define"
+          ],
+          "content": "Loops are used to repeat a set of instructions multiple times."
+        }
+      ]
+    },
+    {
+      "chapter": "Introduction to Web Technologies",
+      "topics": [
+        {
+          "topic": "Website",
+          "intent": [
+            "define"
+          ],
+          "content": "A website is a collection of web pages available on the Internet."
+        },
+        {
+          "topic": "HTML Structure",
+          "intent": [
+            "define"
+          ],
+          "content": "HTML provides the basic structure of a web page."
+        },
+        {
+          "topic": "CSS Styling",
+          "intent": [
+            "define"
+          ],
+          "content": "CSS is used to control the layout and appearance of web pages."
+        }
+      ]
+    }
+  ]
+}

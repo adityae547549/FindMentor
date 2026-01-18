@@ -1,0 +1,195 @@
+{
+  "class": 7,
+  "subject": "Computer Science",
+  "chapters": [
+    {
+      "chapter": "Computer System and Its Components",
+      "topics": [
+        {
+          "topic": "Computer System",
+          "intent": [
+            "define"
+          ],
+          "content": "A computer system consists of hardware, software, data, and users working together."
+        },
+        {
+          "topic": "Hardware",
+          "intent": [
+            "define"
+          ],
+          "content": "Hardware refers to the physical parts of a computer such as keyboard, mouse, and monitor."
+        },
+        {
+          "topic": "Software",
+          "intent": [
+            "define"
+          ],
+          "content": "Software is a set of instructions that tells the computer what to do."
+        },
+        {
+          "topic": "System Software and Application Software",
+          "intent": [
+            "difference"
+          ],
+          "content": "System software controls the computer, while application software helps users perform tasks."
+        }
+      ]
+    },
+    {
+      "chapter": "Internet and Online Safety",
+      "topics": [
+        {
+          "topic": "Internet",
+          "intent": [
+            "define"
+          ],
+          "content": "The Internet is a worldwide network of computers that share information."
+        },
+        {
+          "topic": "Web Browser",
+          "intent": [
+            "define"
+          ],
+          "content": "A web browser is a software used to access websites on the Internet."
+        },
+        {
+          "topic": "Cyber Safety",
+          "intent": [
+            "explain"
+          ],
+          "content": "Cyber safety means using the Internet responsibly and protecting personal information."
+        },
+        {
+          "topic": "Digital Footprint",
+          "intent": [
+            "define"
+          ],
+          "content": "A digital footprint is the information left behind by users while using the Internet."
+        }
+      ]
+    },
+    {
+      "chapter": "Word Processing",
+      "topics": [
+        {
+          "topic": "Word Processor",
+          "intent": [
+            "define"
+          ],
+          "content": "A word processor is used to create, edit, and format text documents."
+        },
+        {
+          "topic": "Text Formatting",
+          "intent": [
+            "explain"
+          ],
+          "content": "Formatting includes changing font size, style, color, and alignment."
+        }
+      ]
+    },
+    {
+      "chapter": "Spreadsheets and Data Handling",
+      "topics": [
+        {
+          "topic": "Spreadsheet",
+          "intent": [
+            "define"
+          ],
+          "content": "A spreadsheet is used to store, organize, and analyze data in rows and columns."
+        },
+        {
+          "topic": "Cells and Ranges",
+          "intent": [
+            "define"
+          ],
+          "content": "A cell is the intersection of a row and column, and a range is a group of cells."
+        },
+        {
+          "topic": "Basic Formulas",
+          "intent": [
+            "define"
+          ],
+          "content": "Formulas are used to perform calculations in spreadsheets."
+        }
+      ]
+    },
+    {
+      "chapter": "Introduction to Programming",
+      "topics": [
+        {
+          "topic": "Programming",
+          "intent": [
+            "define"
+          ],
+          "content": "Programming is the process of writing instructions to make a computer perform tasks."
+        },
+        {
+          "topic": "Algorithm",
+          "intent": [
+            "define"
+          ],
+          "content": "An algorithm is a step-by-step method used to solve a problem."
+        },
+        {
+          "topic": "Flowchart",
+          "intent": [
+            "define"
+          ],
+          "content": "A flowchart represents an algorithm using symbols and arrows."
+        }
+      ]
+    },
+    {
+      "chapter": "Python Programming Basics",
+      "topics": [
+        {
+          "topic": "Python",
+          "intent": [
+            "define"
+          ],
+          "content": "Python is a high-level programming language that is easy to read and write."
+        },
+        {
+          "topic": "Variables and Data Types",
+          "intent": [
+            "define"
+          ],
+          "content": "Variables store data and data types specify the kind of value stored."
+        },
+        {
+          "topic": "Input and Output",
+          "intent": [
+            "define"
+          ],
+          "content": "Input is used to take data from the user and output is used to display results."
+        }
+      ]
+    },
+    {
+      "chapter": "Introduction to Web Development",
+      "topics": [
+        {
+          "topic": "Web Page",
+          "intent": [
+            "define"
+          ],
+          "content": "A web page is a document displayed on a web browser."
+        },
+        {
+          "topic": "HTML",
+          "intent": [
+            "define"
+          ],
+          "content": "HTML is used to create the structure of a web page."
+        },
+        {
+          "topic": "CSS",
+          "intent": [
+            "define"
+          ],
+          "content": "CSS is used to style and improve the appearance of web pages."
+        }
+      ]
+    }
+  ]
+}

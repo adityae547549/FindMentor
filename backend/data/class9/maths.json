@@ -1,0 +1,1953 @@
+{
+  "class": 9,
+  "subject": "Mathematics",
+  "board": "CBSE / NCERT aligned",
+  "description": "",
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_name": "Number Systems",
+      "chapter_objective": "",
+      "detailed_explanation": "Real numbers include rational numbers, such as integers and fractions, and irrational numbers, such as square root of 2 and pi. Class 9 introduces the idea that not all numbers can be written exactly as fractions, which is a major conceptual shift for students. Rational numbers include integers, fractions, terminating decimals, and recurring decimals. In Class 9, students learn to distinguish clearly between terminating, recurring, and non-recurring decimals. Irrational numbers challenged early mathematicians because they showed that not all quantities can be measured exactly. Examples include √2, √3, and π. Class 9 introduces geometric methods to locate irrational numbers accurately on the number line, showing that abstract numbers still have physical meaning.",
+      "concepts": [
+        {
+          "name": "Real Numbers",
+          "definition": "Real numbers are all numbers that can be represented on a number line.",
+          "intuition": "If you can point to it on a straight line of numbers, it is a real number. This includes numbers we can count, measure, or approximate.",
+          "explanation": "Real numbers include rational numbers, such as integers and fractions, and irrational numbers, such as square root of 2 and pi. Class 9 introduces the idea that not all numbers can be written exactly as fractions, which is a major conceptual shift for students.",
+          "why_it_matters": "Understanding real numbers is essential because all higher mathematics, physics, economics, and engineering calculations are built on them.",
+          "real_world_connection": "Lengths, weights, temperatures, time, and scientific measurements are all represented using real numbers.",
+          "common_mistakes": [
+            "Thinking irrational numbers are imaginary or unreal",
+            "Assuming every decimal number is rational"
+          ],
+          "exam_traps": [
+            "Misclassifying numbers like √4 or 0.25",
+            "Forgetting that terminating decimals are rational"
+          ],
+          "solver_steps": [
+            "Identify the given number",
+            "Check whether it can be written as p/q",
+            "If yes, it is rational; otherwise, it is irrational",
+            "Conclude that both are subsets of real numbers"
+          ],
+          "applications": [
+            "Scientific measurements",
+            "Engineering calculations",
+            "Financial modelling"
+          ],
+          "prerequisites": [
+            "Fractions",
+            "Decimals",
+            "Integers"
+          ]
+        },
+        {
+          "name": "Rational Numbers",
+          "definition": "A rational number is a number that can be written in the form p/q, where p and q are integers and q is not zero.",
+          "intuition": "If a number can be perfectly divided into a fraction without leaving anything unknown, it is rational.",
+          "explanation": "Rational numbers include integers, fractions, terminating decimals, and recurring decimals. In Class 9, students learn to distinguish clearly between terminating, recurring, and non-recurring decimals.",
+          "why_it_matters": "Rational numbers form the base of arithmetic used in daily life, commerce, and basic science.",
+          "real_world_connection": "Money, ratios, percentages, speed, and density are all expressed using rational numbers.",
+          "common_mistakes": [
+            "Assuming all decimals are rational",
+            "Forgetting that denominator cannot be zero"
+          ],
+          "exam_traps": [
+            "Incorrectly classifying non-terminating non-repeating decimals",
+            "Writing q = 0 in p/q form"
+          ],
+          "solver_steps": [
+            "Write the number in decimal or fractional form",
+            "Check if it terminates or repeats",
+            "Convert recurring decimals into fractions if required"
+          ],
+          "applications": [
+            "Banking calculations",
+            "Business ratios",
+            "Scientific data analysis"
+          ],
+          "prerequisites": [
+            "Division",
+            "Fractions",
+            "Decimals"
+          ]
+        },
+        {
+          "name": "Irrational Numbers",
+          "definition": "Irrational numbers are numbers that cannot be expressed in the form p/q and have non-terminating, non-repeating decimals.",
+          "intuition": "These numbers never end and never form a pattern, no matter how far you calculate them.",
+          "explanation": "Irrational numbers challenged early mathematicians because they showed that not all quantities can be measured exactly. Examples include √2, √3, and π.",
+          "why_it_matters": "Irrational numbers are unavoidable in geometry, physics, and real-world measurements.",
+          "real_world_connection": "Diagonal lengths of squares, circular paths, and wave motion involve irrational numbers.",
+          "common_mistakes": [
+            "Trying to convert irrational numbers into exact fractions",
+            "Thinking irrational means imaginary"
+          ],
+          "exam_traps": [
+            "Misidentifying √4 or √9 as irrational",
+            "Confusing recurring decimals with irrational numbers"
+          ],
+          "solver_steps": [
+            "Check if the number can be written as p/q",
+            "Check decimal expansion",
+            "If non-terminating and non-repeating, classify as irrational"
+          ],
+          "applications": [
+            "Architecture",
+            "Physics",
+            "Astronomy"
+          ],
+          "prerequisites": [
+            "Square roots",
+            "Decimals"
+          ]
+        },
+        {
+          "name": "Representation of Real Numbers on the Number Line",
+          "definition": "Real numbers can be represented as points on a number line.",
+          "intuition": "Every number has a unique position on a straight line, even irrational numbers.",
+          "explanation": "Class 9 introduces geometric methods to locate irrational numbers accurately on the number line, showing that abstract numbers still have physical meaning.",
+          "why_it_matters": "This builds the bridge between algebra and geometry.",
+          "real_world_connection": "Graphs, maps, coordinate systems, and timelines are based on number line concepts.",
+          "common_mistakes": [
+            "Assuming irrational numbers cannot be represented",
+            "Incorrect placement of negative values"
+          ],
+          "exam_traps": [
+            "Skipping construction steps",
+            "Wrong scale selection"
+          ],
+          "solver_steps": [
+            "Start with a unit length",
+            "Use geometric construction for roots",
+            "Mark the point accurately on the line"
+          ],
+          "applications": [
+            "Graph plotting",
+            "Navigation systems",
+            "Data visualization"
+          ],
+          "prerequisites": [
+            "Geometry basics",
+            "Positive and negative numbers"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Polynomials",
+      "chapter_objective": "",
+      "detailed_explanation": "Polynomials can have one term or many terms. The power of the variable must always be a whole number. Expressions involving division by variables or negative powers are not polynomials. A constant polynomial has degree 0, a linear polynomial has degree 1, a quadratic has degree 2, and so on. Degree helps classify polynomials and predict graph behavior. Based on terms, polynomials can be monomials, binomials, or trinomials. Based on degree, they can be linear, quadratic, cubic, etc. If substituting a value of x makes the polynomial equal to zero, that value is called a zero. Zeros help connect algebra with geometry. The shape of the graph depends on the degree and coefficients of the polynomial. Zeros correspond to x-intercepts.",
+      "concepts": [
+        {
+          "name": "Polynomial",
+          "definition": "A polynomial is an algebraic expression made up of variables, coefficients, and non-negative integer powers of variables.",
+          "intuition": "Think of a polynomial as a mathematical machine that takes a number as input and gives a number as output using only addition, subtraction, and multiplication.",
+          "explanation": "Polynomials can have one term or many terms. The power of the variable must always be a whole number. Expressions involving division by variables or negative powers are not polynomials.",
+          "why_it_matters": "Polynomials form the backbone of algebra and are used throughout higher mathematics, science, and engineering.",
+          "real_world_connection": "Polynomial expressions are used to model motion, profit growth, population change, and curves in physics.",
+          "common_mistakes": [
+            "Including negative or fractional powers",
+            "Dividing by a variable and still calling it a polynomial"
+          ],
+          "exam_traps": [
+            "Misclassifying expressions like 1/x as polynomials",
+            "Ignoring powers while identifying polynomials"
+          ],
+          "solver_steps": [
+            "Check the powers of all variables",
+            "Ensure all powers are whole numbers",
+            "Confirm no variable is in the denominator"
+          ],
+          "applications": [
+            "Motion equations",
+            "Economic modelling",
+            "Scientific graphing"
+          ],
+          "prerequisites": [
+            "Algebraic expressions",
+            "Exponents"
+          ]
+        },
+        {
+          "name": "Degree of a Polynomial",
+          "definition": "The degree of a polynomial is the highest power of the variable present in it.",
+          "intuition": "The degree tells you how complex or steep the polynomial behaves.",
+          "explanation": "A constant polynomial has degree 0, a linear polynomial has degree 1, a quadratic has degree 2, and so on. Degree helps classify polynomials and predict graph behavior.",
+          "why_it_matters": "Degree determines the shape of the graph and the maximum number of zeros a polynomial can have.",
+          "real_world_connection": "Higher-degree polynomials are used to model complex systems like satellite motion or curved structures.",
+          "common_mistakes": [
+            "Adding powers instead of taking the highest power",
+            "Assigning degree to a constant incorrectly"
+          ],
+          "exam_traps": [
+            "Wrong degree identification in multi-term expressions",
+            "Confusing coefficient with degree"
+          ],
+          "solver_steps": [
+            "Write the polynomial in standard form",
+            "Identify the term with the highest power",
+            "That power is the degree"
+          ],
+          "applications": [
+            "Graph analysis",
+            "Prediction models"
+          ],
+          "prerequisites": [
+            "Exponents",
+            "Algebraic terms"
+          ]
+        },
+        {
+          "name": "Types of Polynomials",
+          "definition": "Polynomials are classified based on the number of terms and their degree.",
+          "intuition": "More terms and higher degrees mean more complex behavior.",
+          "explanation": "Based on terms, polynomials can be monomials, binomials, or trinomials. Based on degree, they can be linear, quadratic, cubic, etc.",
+          "why_it_matters": "Classification helps in choosing the correct method to solve or factorize expressions.",
+          "real_world_connection": "Different polynomial models are chosen based on the complexity of real-world problems.",
+          "common_mistakes": [
+            "Mixing classification by degree and terms",
+            "Incorrectly counting terms"
+          ],
+          "exam_traps": [
+            "Calling a trinomial quadratic without checking degree",
+            "Ignoring coefficients"
+          ],
+          "solver_steps": [
+            "Count the number of terms",
+            "Find the degree",
+            "Classify accordingly"
+          ],
+          "applications": [
+            "Algebraic simplification",
+            "Equation solving"
+          ],
+          "prerequisites": [
+            "Polynomial definition",
+            "Degree of polynomial"
+          ]
+        },
+        {
+          "name": "Zeros of a Polynomial",
+          "definition": "A zero of a polynomial is a value of the variable for which the polynomial becomes zero.",
+          "intuition": "Zeros are the points where the polynomial graph touches or cuts the x-axis.",
+          "explanation": "If substituting a value of x makes the polynomial equal to zero, that value is called a zero. Zeros help connect algebra with geometry.",
+          "why_it_matters": "Zeros are essential for solving equations and understanding graphs.",
+          "real_world_connection": "Zeros can represent break-even points in business or points of rest in physics.",
+          "common_mistakes": [
+            "Confusing zeros with coefficients",
+            "Assuming every polynomial has whole number zeros"
+          ],
+          "exam_traps": [
+            "Not verifying the value actually makes the polynomial zero",
+            "Mixing factors with zeros"
+          ],
+          "solver_steps": [
+            "Substitute the given value into the polynomial",
+            "Simplify step by step",
+            "Check if the result is zero"
+          ],
+          "applications": [
+            "Graph interpretation",
+            "Equation solving",
+            "Physics motion analysis"
+          ],
+          "prerequisites": [
+            "Substitution",
+            "Basic algebra"
+          ]
+        },
+        {
+          "name": "Graphical Representation of Polynomials",
+          "definition": "The graph of a polynomial is a curve that represents the relationship between the variable and its values.",
+          "intuition": "Graphs turn algebra into pictures, making behavior easier to understand.",
+          "explanation": "The shape of the graph depends on the degree and coefficients of the polynomial. Zeros correspond to x-intercepts.",
+          "why_it_matters": "Graphs help visualize solutions and predict behavior without full calculations.",
+          "real_world_connection": "Graphs are used in economics, physics, engineering, and data science.",
+          "common_mistakes": [
+            "Plotting incorrect points",
+            "Ignoring scale consistency"
+          ],
+          "exam_traps": [
+            "Wrong axis labeling",
+            "Incorrect curve shape"
+          ],
+          "solver_steps": [
+            "Choose suitable x-values",
+            "Calculate corresponding y-values",
+            "Plot points and join smoothly"
+          ],
+          "applications": [
+            "Data visualization",
+            "Trend analysis"
+          ],
+          "prerequisites": [
+            "Coordinate geometry",
+            "Substitution"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Coordinate Geometry",
+      "chapter_objective": "",
+      "detailed_explanation": "The horizontal axis is called the x-axis and the vertical axis is called the y-axis. Their point of intersection is called the origin. Every point on the plane can be represented using an ordered pair (x, y). The x-coordinate shows horizontal movement from the origin, and the y-coordinate shows vertical movement. Order is important and cannot be changed. The x-axis and y-axis divide the plane into four quadrants. Each quadrant has a specific sign combination for x and y coordinates. To plot a point, move horizontally according to the x-coordinate and vertically according to the y-coordinate, then mark the point.",
+      "concepts": [
+        {
+          "name": "Cartesian Coordinate System",
+          "definition": "The Cartesian coordinate system is a plane formed by two perpendicular number lines called axes.",
+          "intuition": "It is like giving an exact address to a point using two directions: left–right and up–down.",
+          "explanation": "The horizontal axis is called the x-axis and the vertical axis is called the y-axis. Their point of intersection is called the origin. Every point on the plane can be represented using an ordered pair (x, y).",
+          "why_it_matters": "Coordinate geometry connects algebra and geometry and is the foundation for graphs, equations, and higher mathematics.",
+          "real_world_connection": "Maps, GPS systems, video game design, and data graphs all use coordinate systems.",
+          "common_mistakes": [
+            "Interchanging x and y coordinates",
+            "Forgetting the sign of coordinates"
+          ],
+          "exam_traps": [
+            "Plotting points in the wrong quadrant",
+            "Incorrectly identifying axes"
+          ],
+          "solver_steps": [
+            "Draw x-axis and y-axis perpendicular to each other",
+            "Mark the origin",
+            "Locate the point using x first, then y"
+          ],
+          "applications": [
+            "Navigation systems",
+            "Graph plotting",
+            "Engineering design"
+          ],
+          "prerequisites": [
+            "Number line",
+            "Positive and negative numbers"
+          ]
+        },
+        {
+          "name": "Coordinates of a Point",
+          "definition": "The coordinates of a point are written as an ordered pair (x, y) representing its position on the plane.",
+          "intuition": "The first value tells how far to move sideways, the second tells how far to move up or down.",
+          "explanation": "The x-coordinate shows horizontal movement from the origin, and the y-coordinate shows vertical movement. Order is important and cannot be changed.",
+          "why_it_matters": "Correct understanding of coordinates is essential for graphing equations and interpreting data.",
+          "real_world_connection": "Locations on maps, seating arrangements, and grid-based games use coordinates.",
+          "common_mistakes": [
+            "Writing coordinates in the wrong order",
+            "Ignoring negative signs"
+          ],
+          "exam_traps": [
+            "Swapping (x, y) as (y, x)",
+            "Misreading scale on axes"
+          ],
+          "solver_steps": [
+            "Read the horizontal distance from origin",
+            "Read the vertical distance from origin",
+            "Write the ordered pair correctly"
+          ],
+          "applications": [
+            "Graph reading",
+            "Data representation"
+          ],
+          "prerequisites": [
+            "Cartesian plane",
+            "Number line"
+          ]
+        },
+        {
+          "name": "Quadrants of the Cartesian Plane",
+          "definition": "The coordinate plane is divided into four regions called quadrants.",
+          "intuition": "Quadrants help quickly identify whether coordinates are positive or negative.",
+          "explanation": "The x-axis and y-axis divide the plane into four quadrants. Each quadrant has a specific sign combination for x and y coordinates.",
+          "why_it_matters": "Quadrants help in correct plotting and interpretation of graphs.",
+          "real_world_connection": "Quadrant-based thinking is used in navigation maps and data analysis.",
+          "common_mistakes": [
+            "Confusing quadrant numbers",
+            "Incorrect sign usage"
+          ],
+          "exam_traps": [
+            "Placing points in the wrong quadrant",
+            "Forgetting that points on axes are not in any quadrant"
+          ],
+          "solver_steps": [
+            "Identify the sign of x and y",
+            "Match the sign combination to the quadrant",
+            "Plot accordingly"
+          ],
+          "applications": [
+            "Graph plotting",
+            "Coordinate-based analysis"
+          ],
+          "prerequisites": [
+            "Coordinates",
+            "Positive and negative numbers"
+          ]
+        },
+        {
+          "name": "Plotting Points on the Cartesian Plane",
+          "definition": "Plotting a point means marking its exact position on the coordinate plane.",
+          "intuition": "Plotting turns numbers into visible positions.",
+          "explanation": "To plot a point, move horizontally according to the x-coordinate and vertically according to the y-coordinate, then mark the point.",
+          "why_it_matters": "Plotting points is the basis for drawing graphs and understanding equations visually.",
+          "real_world_connection": "Used in charts, maps, and design layouts.",
+          "common_mistakes": [
+            "Incorrect scale usage",
+            "Moving vertically before horizontally"
+          ],
+          "exam_traps": [
+            "Wrong direction movement",
+            "Improper axis labeling"
+          ],
+          "solver_steps": [
+            "Choose a suitable scale",
+            "Move horizontally first",
+            "Move vertically next",
+            "Mark the point clearly"
+          ],
+          "applications": [
+            "Graph construction",
+            "Data visualization"
+          ],
+          "prerequisites": [
+            "Coordinates",
+            "Cartesian plane"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Linear Equations in Two Variables",
+      "chapter_objective": "",
+      "detailed_explanation": "Unlike linear equations in one variable, which have a single solution, linear equations in two variables have infinitely many solutions that can be represented graphically as a straight line. There are infinitely many solutions because changing one variable changes the other in a predictable way. Each solution corresponds to a point on the graph of the equation. By plotting two or more solutions of the equation and joining them, we obtain a straight line that represents all solutions. The x-intercept is found by setting y = 0, and the y-intercept is found by setting x = 0.",
+      "concepts": [
+        {
+          "name": "Linear Equation in Two Variables",
+          "definition": "A linear equation in two variables is an equation of the form ax + by + c = 0, where a, b, and c are real numbers and a and b are not both zero.",
+          "intuition": "Instead of one unknown, you now deal with two unknowns working together, forming a relationship rather than a single answer.",
+          "explanation": "Unlike linear equations in one variable, which have a single solution, linear equations in two variables have infinitely many solutions that can be represented graphically as a straight line.",
+          "why_it_matters": "This concept introduces students to systems, relationships, and graphical thinking, which are essential for algebra, economics, and science.",
+          "real_world_connection": "Used in budgeting, distance–time relationships, cost calculations, and basic business planning.",
+          "common_mistakes": [
+            "Trying to find a single solution instead of a set of solutions",
+            "Assuming every equation gives a unique answer"
+          ],
+          "exam_traps": [
+            "Forgetting that both variables must satisfy the equation",
+            "Incorrectly rearranging the equation"
+          ],
+          "solver_steps": [
+            "Identify the variables and coefficients",
+            "Rewrite the equation in standard form if needed",
+            "Choose values for one variable and calculate the other"
+          ],
+          "applications": [
+            "Financial planning",
+            "Motion problems",
+            "Cost analysis"
+          ],
+          "prerequisites": [
+            "Linear equations in one variable",
+            "Algebraic manipulation"
+          ]
+        },
+        {
+          "name": "Solution of a Linear Equation",
+          "definition": "A solution of a linear equation in two variables is an ordered pair (x, y) that satisfies the equation.",
+          "intuition": "A solution is a pair of numbers that work together to make the equation true.",
+          "explanation": "There are infinitely many solutions because changing one variable changes the other in a predictable way. Each solution corresponds to a point on the graph of the equation.",
+          "why_it_matters": "Understanding solutions helps link algebraic equations with their graphical representation.",
+          "real_world_connection": "Solutions represent real-life combinations like price–quantity or speed–time pairs.",
+          "common_mistakes": [
+            "Substituting values incorrectly",
+            "Ignoring one of the variables"
+          ],
+          "exam_traps": [
+            "Writing solutions as single numbers",
+            "Incorrect substitution"
+          ],
+          "solver_steps": [
+            "Substitute the given values of x and y",
+            "Simplify both sides",
+            "Check whether the equation holds true"
+          ],
+          "applications": [
+            "Equation verification",
+            "Graph plotting"
+          ],
+          "prerequisites": [
+            "Substitution",
+            "Ordered pairs"
+          ]
+        },
+        {
+          "name": "Graph of a Linear Equation",
+          "definition": "The graph of a linear equation in two variables is a straight line.",
+          "intuition": "Every solution lies on a straight line when plotted on a graph.",
+          "explanation": "By plotting two or more solutions of the equation and joining them, we obtain a straight line that represents all solutions.",
+          "why_it_matters": "Graphs provide a visual understanding of relationships between variables.",
+          "real_world_connection": "Used in data analysis, economics graphs, and physics experiments.",
+          "common_mistakes": [
+            "Plotting incorrect points",
+            "Drawing a curve instead of a straight line"
+          ],
+          "exam_traps": [
+            "Choosing wrong scale",
+            "Incorrect axis labeling"
+          ],
+          "solver_steps": [
+            "Find at least two solutions",
+            "Plot the points on the graph",
+            "Join them with a straight line"
+          ],
+          "applications": [
+            "Trend analysis",
+            "Visual data interpretation"
+          ],
+          "prerequisites": [
+            "Coordinate geometry",
+            "Plotting points"
+          ]
+        },
+        {
+          "name": "Intercepts of a Linear Equation",
+          "definition": "Intercepts are the points where the graph of a linear equation cuts the x-axis or y-axis.",
+          "intuition": "Intercepts show where one variable becomes zero.",
+          "explanation": "The x-intercept is found by setting y = 0, and the y-intercept is found by setting x = 0.",
+          "why_it_matters": "Intercepts simplify graphing and help interpret real-life meaning of equations.",
+          "real_world_connection": "Intercepts can represent starting points or limits, such as maximum distance or minimum cost.",
+          "common_mistakes": [
+            "Setting wrong variable to zero",
+            "Confusing x-intercept with y-intercept"
+          ],
+          "exam_traps": [
+            "Incorrect calculation of intercepts",
+            "Swapping intercept values"
+          ],
+          "solver_steps": [
+            "Set y = 0 to find x-intercept",
+            "Set x = 0 to find y-intercept",
+            "Write intercepts as ordered pairs"
+          ],
+          "applications": [
+            "Quick graphing",
+            "Real-life interpretation"
+          ],
+          "prerequisites": [
+            "Linear equations",
+            "Coordinates"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Euclid’s Geometry",
+      "chapter_objective": "",
+      "detailed_explanation": "Euclid introduced geometry as a deductive system where complex results are built step by step from simple assumptions. This chapter marks the student’s first exposure to formal mathematical reasoning. Euclid gave definitions for terms like point, line, and surface. These definitions describe ideas rather than physical objects. Euclid’s axioms are common notions that apply to all mathematical reasoning, not just geometry. Euclid’s postulates describe fundamental geometric operations such as drawing a straight line between two points. Theorems form the core of mathematics, showing how complex truths arise from simple assumptions.",
+      "concepts": [
+        {
+          "name": "Geometry as a System of Logic",
+          "definition": "Geometry is a branch of mathematics based on logical reasoning using definitions, axioms, postulates, and theorems.",
+          "intuition": "Geometry is not about drawing figures; it is about thinking logically and proving why something is true.",
+          "explanation": "Euclid introduced geometry as a deductive system where complex results are built step by step from simple assumptions. This chapter marks the student’s first exposure to formal mathematical reasoning.",
+          "why_it_matters": "This chapter trains the mind to think logically, clearly, and systematically — skills required far beyond mathematics.",
+          "real_world_connection": "Logical reasoning is used in law, programming, engineering design, and scientific research.",
+          "common_mistakes": [
+            "Trying to memorize statements without understanding logic",
+            "Confusing observation with proof"
+          ],
+          "exam_traps": [
+            "Writing informal explanations instead of logical statements",
+            "Skipping reasoning steps"
+          ],
+          "solver_steps": [
+            "Read the statement carefully",
+            "Identify given information",
+            "Use logical reasoning step by step"
+          ],
+          "applications": [
+            "Proof writing",
+            "Logical problem solving"
+          ],
+          "prerequisites": [
+            "Basic geometry",
+            "Clear understanding of statements"
+          ]
+        },
+        {
+          "name": "Euclid’s Definitions",
+          "definition": "Definitions describe the meaning of basic geometric terms.",
+          "intuition": "Definitions tell us what we are talking about before we begin reasoning.",
+          "explanation": "Euclid gave definitions for terms like point, line, and surface. These definitions describe ideas rather than physical objects.",
+          "why_it_matters": "Definitions provide clarity and avoid confusion while reasoning.",
+          "real_world_connection": "Clear definitions are essential in science, law, and technology.",
+          "common_mistakes": [
+            "Treating definitions as physical objects",
+            "Trying to prove definitions"
+          ],
+          "exam_traps": [
+            "Explaining definitions incorrectly",
+            "Adding extra meaning not stated"
+          ],
+          "solver_steps": [
+            "Recall the definition accurately",
+            "Use it only where required"
+          ],
+          "applications": [
+            "Concept clarity",
+            "Accurate reasoning"
+          ],
+          "prerequisites": [
+            "Basic geometric terms"
+          ]
+        },
+        {
+          "name": "Euclid’s Axioms",
+          "definition": "Axioms are statements accepted as true without proof.",
+          "intuition": "Some truths are so obvious that they do not need proof.",
+          "explanation": "Euclid’s axioms are common notions that apply to all mathematical reasoning, not just geometry.",
+          "why_it_matters": "Axioms form the foundation of all logical proofs.",
+          "real_world_connection": "Every logical system, including programming and science, starts with basic assumptions.",
+          "common_mistakes": [
+            "Trying to prove axioms",
+            "Confusing axioms with theorems"
+          ],
+          "exam_traps": [
+            "Misidentifying axioms",
+            "Using axioms incorrectly"
+          ],
+          "solver_steps": [
+            "Identify the relevant axiom",
+            "Apply it directly without proof"
+          ],
+          "applications": [
+            "Logical arguments",
+            "Proof construction"
+          ],
+          "prerequisites": [
+            "Understanding of logical statements"
+          ]
+        },
+        {
+          "name": "Euclid’s Postulates",
+          "definition": "Postulates are assumptions specific to geometry accepted without proof.",
+          "intuition": "Postulates tell us what constructions are possible in geometry.",
+          "explanation": "Euclid’s postulates describe fundamental geometric operations such as drawing a straight line between two points.",
+          "why_it_matters": "Postulates define the structure and limits of geometric reasoning.",
+          "real_world_connection": "Engineering drawings and architectural plans depend on geometric postulates.",
+          "common_mistakes": [
+            "Confusing postulates with axioms",
+            "Applying postulates outside geometry"
+          ],
+          "exam_traps": [
+            "Incorrect classification",
+            "Misquoting postulates"
+          ],
+          "solver_steps": [
+            "Recall the correct postulate",
+            "Apply it where construction is involved"
+          ],
+          "applications": [
+            "Geometric constructions",
+            "Logical geometry proofs"
+          ],
+          "prerequisites": [
+            "Basic geometry",
+            "Axioms"
+          ]
+        },
+        {
+          "name": "Theorem",
+          "definition": "A theorem is a statement that is proved using axioms, postulates, and previously proven results.",
+          "intuition": "A theorem is a truth that must be earned through logic.",
+          "explanation": "Theorems form the core of mathematics, showing how complex truths arise from simple assumptions.",
+          "why_it_matters": "Proof-based thinking strengthens reasoning and analytical skills.",
+          "real_world_connection": "Theorems underpin scientific laws, engineering formulas, and computer algorithms.",
+          "common_mistakes": [
+            "Memorizing theorems without understanding proofs",
+            "Skipping logical steps"
+          ],
+          "exam_traps": [
+            "Incomplete proofs",
+            "Incorrect use of previous results"
+          ],
+          "solver_steps": [
+            "State what is given",
+            "Apply relevant axioms and postulates",
+            "Arrive at the conclusion logically"
+          ],
+          "applications": [
+            "Mathematical proofs",
+            "Logical analysis"
+          ],
+          "prerequisites": [
+            "Axioms",
+            "Postulates",
+            "Logical reasoning"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Lines and Angles",
+      "chapter_objective": "",
+      "detailed_explanation": "Understanding these basic angle relationships is the foundation for all higher geometry proofs involving lines and shapes. Corresponding angles, alternate interior angles, and interior angles on the same side of the transversal follow fixed relationships. When two straight lines intersect, the pair of vertically opposite angles are always equal, forming one of the simplest yet powerful geometric facts. Linear pairs help relate unknown angles to known ones using straight-line properties.",
+      "concepts": [
+        {
+          "name": "Basic Angle Relationships",
+          "definition": "Angles formed by lines follow fixed relationships such as complementary, supplementary, and vertically opposite angles.",
+          "intuition": "When lines intersect, angles are not random; they are connected by strict rules.",
+          "explanation": "Understanding these basic angle relationships is the foundation for all higher geometry proofs involving lines and shapes.",
+          "why_it_matters": "Angle relationships are used repeatedly in proofs, constructions, and real-life designs.",
+          "real_world_connection": "Road intersections, building corners, and mechanical joints rely on angle relationships.",
+          "common_mistakes": [
+            "Mixing up complementary and supplementary angles",
+            "Assuming all adjacent angles are equal"
+          ],
+          "exam_traps": [
+            "Incorrect identification of angle pairs",
+            "Ignoring given information in diagrams"
+          ],
+          "solver_steps": [
+            "Identify the type of angle relationship",
+            "Apply the correct angle rule",
+            "Solve step by step"
+          ],
+          "applications": [
+            "Geometric proofs",
+            "Construction design"
+          ],
+          "prerequisites": [
+            "Angle measurement",
+            "Basic geometry"
+          ]
+        },
+        {
+          "name": "Parallel Lines and a Transversal",
+          "definition": "When a line intersects two parallel lines, it is called a transversal and forms specific angle pairs.",
+          "intuition": "Parallel lines create repeating angle patterns when cut by another line.",
+          "explanation": "Corresponding angles, alternate interior angles, and interior angles on the same side of the transversal follow fixed relationships.",
+          "why_it_matters": "These relationships are heavily used in geometry proofs and problem-solving.",
+          "real_world_connection": "Railway tracks, road markings, and ladder positions use parallel line concepts.",
+          "common_mistakes": [
+            "Confusing corresponding angles with alternate angles",
+            "Assuming lines are parallel without proof"
+          ],
+          "exam_traps": [
+            "Using angle properties without establishing parallelism",
+            "Wrong angle pairing"
+          ],
+          "solver_steps": [
+            "Identify parallel lines",
+            "Locate the transversal",
+            "Apply the correct angle rule"
+          ],
+          "applications": [
+            "Proof writing",
+            "Engineering drawings"
+          ],
+          "prerequisites": [
+            "Parallel lines",
+            "Angle relationships"
+          ]
+        },
+        {
+          "name": "Vertically Opposite Angles",
+          "definition": "Vertically opposite angles are the angles formed opposite each other when two lines intersect.",
+          "intuition": "Opposite angles always mirror each other in size.",
+          "explanation": "When two straight lines intersect, the pair of vertically opposite angles are always equal, forming one of the simplest yet powerful geometric facts.",
+          "why_it_matters": "This concept simplifies many angle-based problems and proofs.",
+          "real_world_connection": "Crossing wires, scissors, and road junctions show vertically opposite angles.",
+          "common_mistakes": [
+            "Confusing adjacent angles with vertically opposite angles"
+          ],
+          "exam_traps": [
+            "Incorrect identification of opposite angles"
+          ],
+          "solver_steps": [
+            "Locate the intersection point",
+            "Identify opposite angle pairs",
+            "Set them equal"
+          ],
+          "applications": [
+            "Angle calculations",
+            "Proof simplification"
+          ],
+          "prerequisites": [
+            "Intersecting lines",
+            "Angle basics"
+          ]
+        },
+        {
+          "name": "Linear Pair of Angles",
+          "definition": "A linear pair is a pair of adjacent angles whose sum is 180 degrees.",
+          "intuition": "Two angles forming a straight line always add up to 180°.",
+          "explanation": "Linear pairs help relate unknown angles to known ones using straight-line properties.",
+          "why_it_matters": "This concept is frequently used in solving geometry problems involving straight lines.",
+          "real_world_connection": "Straight roads, beams, and edges demonstrate linear pairs.",
+          "common_mistakes": [
+            "Assuming linear pair angles are equal",
+            "Ignoring straight-line property"
+          ],
+          "exam_traps": [
+            "Wrong angle summation",
+            "Misidentifying linear pairs"
+          ],
+          "solver_steps": [
+            "Confirm angles form a straight line",
+            "Add angles and equate to 180°",
+            "Solve for unknown values"
+          ],
+          "applications": [
+            "Angle problem solving",
+            "Geometric proofs"
+          ],
+          "prerequisites": [
+            "Angle sum",
+            "Straight line concept"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Triangles",
+      "chapter_objective": "",
+      "detailed_explanation": "Triangles form the basic building blocks of geometry. Many complex shapes can be broken down into triangles for analysis and proof. Congruence means all corresponding sides and angles are equal. Congruence criteria provide methods to prove this equality without measuring every part. SSS, SAS, ASA, and RHS are valid congruence criteria. Each ensures complete equality of triangles without ambiguity. In an isosceles triangle, angles opposite equal sides are equal. This property is proved using congruence. This fundamental property is derived using parallel lines and transversals.",
+      "concepts": [
+        {
+          "name": "Triangle",
+          "definition": "A triangle is a closed figure formed by joining three non-collinear points with line segments.",
+          "intuition": "A triangle is the simplest polygon and the most stable shape in geometry.",
+          "explanation": "Triangles form the basic building blocks of geometry. Many complex shapes can be broken down into triangles for analysis and proof.",
+          "why_it_matters": "Understanding triangles is essential for geometry, trigonometry, construction, and engineering.",
+          "real_world_connection": "Bridges, roofs, trusses, and towers use triangular structures for strength and stability.",
+          "common_mistakes": [
+            "Assuming any three lengths can form a triangle",
+            "Ignoring triangle inequality condition"
+          ],
+          "exam_traps": [
+            "Not checking whether given sides can form a triangle"
+          ],
+          "solver_steps": [
+            "Check the lengths of all three sides",
+            "Verify triangle inequality",
+            "Confirm valid triangle formation"
+          ],
+          "applications": [
+            "Structural design",
+            "Geometric decomposition"
+          ],
+          "prerequisites": [
+            "Line segments",
+            "Basic geometry"
+          ]
+        },
+        {
+          "name": "Congruence of Triangles",
+          "definition": "Two triangles are congruent if they are identical in shape and size.",
+          "intuition": "Congruent triangles fit exactly on top of each other.",
+          "explanation": "Congruence means all corresponding sides and angles are equal. Congruence criteria provide methods to prove this equality without measuring every part.",
+          "why_it_matters": "Congruence is the foundation of geometric proof and logical reasoning in geometry.",
+          "real_world_connection": "Used in construction, design symmetry, and quality control.",
+          "common_mistakes": [
+            "Confusing congruence with similarity",
+            "Applying wrong congruence criterion"
+          ],
+          "exam_traps": [
+            "Using AAA instead of valid criteria",
+            "Not matching corresponding parts correctly"
+          ],
+          "solver_steps": [
+            "Identify corresponding sides and angles",
+            "Apply a valid congruence criterion",
+            "Conclude triangle congruence"
+          ],
+          "applications": [
+            "Proof construction",
+            "Structural verification"
+          ],
+          "prerequisites": [
+            "Triangles",
+            "Angle properties"
+          ]
+        },
+        {
+          "name": "Congruence Criteria (SSS, SAS, ASA, RHS)",
+          "definition": "Congruence criteria are conditions under which two triangles can be proved congruent.",
+          "intuition": "Certain combinations of equal sides and angles guarantee identical triangles.",
+          "explanation": "SSS, SAS, ASA, and RHS are valid congruence criteria. Each ensures complete equality of triangles without ambiguity.",
+          "why_it_matters": "These criteria allow structured proof writing and logical conclusions.",
+          "real_world_connection": "Used in design replication and engineering checks.",
+          "common_mistakes": [
+            "Using incorrect angle-side order",
+            "Misapplying RHS without right angle"
+          ],
+          "exam_traps": [
+            "Using SSA (which is invalid)",
+            "Ignoring right angle condition in RHS"
+          ],
+          "solver_steps": [
+            "List given equal parts",
+            "Choose matching congruence rule",
+            "State conclusion clearly"
+          ],
+          "applications": [
+            "Geometric proofs",
+            "Construction accuracy"
+          ],
+          "prerequisites": [
+            "Triangle properties",
+            "Angle equality"
+          ]
+        },
+        {
+          "name": "Properties of Isosceles Triangle",
+          "definition": "An isosceles triangle is a triangle with two equal sides.",
+          "intuition": "Equal sides create symmetry in the triangle.",
+          "explanation": "In an isosceles triangle, angles opposite equal sides are equal. This property is proved using congruence.",
+          "why_it_matters": "This property simplifies many geometric proofs and constructions.",
+          "real_world_connection": "Symmetric designs in architecture and art use isosceles triangles.",
+          "common_mistakes": [
+            "Assuming all angles are equal",
+            "Incorrectly identifying equal sides"
+          ],
+          "exam_traps": [
+            "Mixing isosceles with equilateral triangles"
+          ],
+          "solver_steps": [
+            "Identify equal sides",
+            "Apply congruence reasoning",
+            "Conclude angle equality"
+          ],
+          "applications": [
+            "Proof simplification",
+            "Design symmetry"
+          ],
+          "prerequisites": [
+            "Congruent triangles",
+            "Angle properties"
+          ]
+        },
+        {
+          "name": "Angle Sum Property of a Triangle",
+          "definition": "The sum of the interior angles of a triangle is always 180 degrees.",
+          "intuition": "No matter the shape, triangle angles always close perfectly.",
+          "explanation": "This fundamental property is derived using parallel lines and transversals.",
+          "why_it_matters": "It allows calculation of unknown angles and supports many proofs.",
+          "real_world_connection": "Used in navigation, surveying, and construction.",
+          "common_mistakes": [
+            "Incorrect subtraction",
+            "Ignoring given angle information"
+          ],
+          "exam_traps": [
+            "Forgetting to use angle sum = 180°"
+          ],
+          "solver_steps": [
+            "Add known angles",
+            "Subtract from 180°",
+            "Find the unknown angle"
+          ],
+          "applications": [
+            "Angle calculations",
+            "Geometric reasoning"
+          ],
+          "prerequisites": [
+            "Angles",
+            "Parallel lines"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Quadrilaterals",
+      "chapter_objective": "",
+      "detailed_explanation": "Quadrilaterals can have different side lengths, angles, and parallel sides. Class 9 focuses on understanding their properties logically rather than memorizing shapes. In a parallelogram, opposite sides are equal, opposite angles are equal, and diagonals bisect each other. These properties are proved using triangle congruence. Rectangles inherit all properties of parallelograms and add right-angle conditions, making them especially useful in measurement problems. In a rhombus, diagonals are perpendicular bisectors of each other, adding unique geometric properties. Squares inherit properties of parallelograms, rectangles, and rhombuses, making them one of the most powerful shapes in geometry.",
+      "concepts": [
+        {
+          "name": "Quadrilateral",
+          "definition": "A quadrilateral is a polygon with four sides, four angles, and four vertices.",
+          "intuition": "A quadrilateral is like a triangle with one extra side, opening up many new shapes and properties.",
+          "explanation": "Quadrilaterals can have different side lengths, angles, and parallel sides. Class 9 focuses on understanding their properties logically rather than memorizing shapes.",
+          "why_it_matters": "Quadrilaterals form the basis of many structures and designs in real life and advanced geometry.",
+          "real_world_connection": "Rooms, screens, plots of land, books, and tiles are all quadrilateral-shaped.",
+          "common_mistakes": [
+            "Assuming all quadrilaterals have equal sides",
+            "Confusing properties of different quadrilaterals"
+          ],
+          "exam_traps": [
+            "Applying properties of one quadrilateral to another",
+            "Ignoring given conditions in diagrams"
+          ],
+          "solver_steps": [
+            "Identify the type of quadrilateral",
+            "Recall its defining properties",
+            "Apply only relevant properties"
+          ],
+          "applications": [
+            "Architectural layouts",
+            "Geometric proofs"
+          ],
+          "prerequisites": [
+            "Polygons",
+            "Lines and angles"
+          ]
+        },
+        {
+          "name": "Parallelogram",
+          "definition": "A parallelogram is a quadrilateral in which both pairs of opposite sides are parallel.",
+          "intuition": "Parallel sides create balance and symmetry in a shape.",
+          "explanation": "In a parallelogram, opposite sides are equal, opposite angles are equal, and diagonals bisect each other. These properties are proved using triangle congruence.",
+          "why_it_matters": "Parallelogram properties are widely used in geometric proofs and constructions.",
+          "real_world_connection": "Bridges, floor patterns, and mechanical linkages use parallelogram structures.",
+          "common_mistakes": [
+            "Assuming all quadrilaterals are parallelograms",
+            "Forgetting diagonals bisect each other"
+          ],
+          "exam_traps": [
+            "Using parallelogram properties without proof",
+            "Mixing parallelogram and rectangle properties"
+          ],
+          "solver_steps": [
+            "Identify parallel sides",
+            "Apply triangle congruence",
+            "Derive required properties"
+          ],
+          "applications": [
+            "Structural analysis",
+            "Geometric reasoning"
+          ],
+          "prerequisites": [
+            "Triangles",
+            "Parallel lines"
+          ]
+        },
+        {
+          "name": "Rectangle",
+          "definition": "A rectangle is a parallelogram with all angles equal to 90 degrees.",
+          "intuition": "A rectangle is a perfectly aligned parallelogram.",
+          "explanation": "Rectangles inherit all properties of parallelograms and add right-angle conditions, making them especially useful in measurement problems.",
+          "why_it_matters": "Rectangles are central to area, coordinate geometry, and real-world measurements.",
+          "real_world_connection": "Books, doors, screens, and rooms are rectangular.",
+          "common_mistakes": [
+            "Assuming diagonals are perpendicular",
+            "Forgetting diagonals are equal"
+          ],
+          "exam_traps": [
+            "Confusing rectangle with square",
+            "Applying square-only properties"
+          ],
+          "solver_steps": [
+            "Confirm right angles",
+            "Use parallelogram properties",
+            "Apply rectangle-specific rules"
+          ],
+          "applications": [
+            "Design layouts",
+            "Measurement problems"
+          ],
+          "prerequisites": [
+            "Parallelogram",
+            "Right angles"
+          ]
+        },
+        {
+          "name": "Rhombus",
+          "definition": "A rhombus is a parallelogram with all sides equal.",
+          "intuition": "Equal sides create symmetry, but angles can still differ.",
+          "explanation": "In a rhombus, diagonals are perpendicular bisectors of each other, adding unique geometric properties.",
+          "why_it_matters": "Rhombus properties are important in symmetry-based proofs and constructions.",
+          "real_world_connection": "Kite designs, diamond shapes, and decorative patterns use rhombuses.",
+          "common_mistakes": [
+            "Assuming all angles are 90 degrees",
+            "Confusing rhombus with square"
+          ],
+          "exam_traps": [
+            "Ignoring diagonal properties",
+            "Applying rectangle rules incorrectly"
+          ],
+          "solver_steps": [
+            "Confirm all sides equal",
+            "Use diagonal properties",
+            "Apply parallelogram logic"
+          ],
+          "applications": [
+            "Symmetric designs",
+            "Geometric constructions"
+          ],
+          "prerequisites": [
+            "Parallelogram",
+            "Diagonals"
+          ]
+        },
+        {
+          "name": "Square",
+          "definition": "A square is a quadrilateral with all sides equal and all angles equal to 90 degrees.",
+          "intuition": "A square is a rectangle and a rhombus combined.",
+          "explanation": "Squares inherit properties of parallelograms, rectangles, and rhombuses, making them one of the most powerful shapes in geometry.",
+          "why_it_matters": "Squares simplify many proofs and measurement problems.",
+          "real_world_connection": "Chessboards, tiles, city blocks, and screens use square grids.",
+          "common_mistakes": [
+            "Forgetting squares are also rectangles and rhombuses"
+          ],
+          "exam_traps": [
+            "Using only square-specific properties and ignoring inherited ones"
+          ],
+          "solver_steps": [
+            "Confirm equal sides and right angles",
+            "Apply inherited properties",
+            "Use diagonals when required"
+          ],
+          "applications": [
+            "Grid systems",
+            "Design symmetry"
+          ],
+          "prerequisites": [
+            "Rectangle",
+            "Rhombus"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Areas of Parallelograms and Triangles",
+      "chapter_objective": "",
+      "detailed_explanation": "This chapter shifts focus from memorizing formulas to understanding why certain figures have equal areas under specific conditions. The height of a parallelogram depends on the distance between parallel lines, not the slanted sides. Since a triangle is half a parallelogram with the same base and height, area equality follows logically. This result follows directly from the area formula and shared height concept.",
+      "concepts": [
+        {
+          "name": "Area",
+          "definition": "Area is the measure of the surface enclosed by a plane figure.",
+          "intuition": "Area tells how much space a shape covers, not how long its sides are.",
+          "explanation": "This chapter shifts focus from memorizing formulas to understanding why certain figures have equal areas under specific conditions.",
+          "why_it_matters": "Area concepts are essential for land measurement, construction, design, and advanced geometry.",
+          "real_world_connection": "Land plots, rooms, fields, and construction layouts depend on area calculations.",
+          "common_mistakes": [
+            "Confusing area with perimeter",
+            "Using wrong units"
+          ],
+          "exam_traps": [
+            "Applying formulas blindly without checking base and height"
+          ],
+          "solver_steps": [
+            "Identify the figure",
+            "Determine base and height",
+            "Apply the correct area relation"
+          ],
+          "applications": [
+            "Land surveying",
+            "Architecture planning"
+          ],
+          "prerequisites": [
+            "Measurement",
+            "Basic geometry"
+          ]
+        },
+        {
+          "name": "Parallelograms on the Same Base and Between the Same Parallels",
+          "definition": "Parallelograms on the same base and between the same parallels have equal areas.",
+          "intuition": "If two shapes share the same base and height, their covered space is the same.",
+          "explanation": "The height of a parallelogram depends on the distance between parallel lines, not the slanted sides.",
+          "why_it_matters": "This concept helps avoid unnecessary calculations and builds logical reasoning.",
+          "real_world_connection": "Used in land division and design layouts.",
+          "common_mistakes": [
+            "Using slant height instead of perpendicular height",
+            "Ignoring parallel condition"
+          ],
+          "exam_traps": [
+            "Assuming equal sides imply equal areas"
+          ],
+          "solver_steps": [
+            "Check if bases are equal",
+            "Confirm figures lie between the same parallels",
+            "Conclude equal areas"
+          ],
+          "applications": [
+            "Proof-based geometry",
+            "Construction design"
+          ],
+          "prerequisites": [
+            "Parallelogram properties",
+            "Parallel lines"
+          ]
+        },
+        {
+          "name": "Triangles on the Same Base and Between the Same Parallels",
+          "definition": "Triangles on the same base and between the same parallels have equal areas.",
+          "intuition": "Half of equal parallelograms gives equal triangles.",
+          "explanation": "Since a triangle is half a parallelogram with the same base and height, area equality follows logically.",
+          "why_it_matters": "This builds a bridge between triangle and parallelogram area concepts.",
+          "real_world_connection": "Used in dividing land and architectural layouts.",
+          "common_mistakes": [
+            "Comparing triangles without checking parallels"
+          ],
+          "exam_traps": [
+            "Forgetting the base must be common"
+          ],
+          "solver_steps": [
+            "Identify base",
+            "Check parallel lines",
+            "Apply area relationship"
+          ],
+          "applications": [
+            "Geometric proofs",
+            "Area comparison"
+          ],
+          "prerequisites": [
+            "Triangle area",
+            "Parallel lines"
+          ]
+        },
+        {
+          "name": "Triangles and Parallelograms Between the Same Parallels",
+          "definition": "A triangle and a parallelogram on the same base and between the same parallels have a fixed area relationship.",
+          "intuition": "The triangle always occupies exactly half the space of the parallelogram.",
+          "explanation": "This result follows directly from the area formula and shared height concept.",
+          "why_it_matters": "This relationship simplifies complex area problems.",
+          "real_world_connection": "Used in architectural planning and design optimization.",
+          "common_mistakes": [
+            "Assuming equal area instead of half"
+          ],
+          "exam_traps": [
+            "Misinterpreting base alignment"
+          ],
+          "solver_steps": [
+            "Confirm same base",
+            "Check same parallels",
+            "Apply 1:2 area ratio"
+          ],
+          "applications": [
+            "Area comparison",
+            "Proof construction"
+          ],
+          "prerequisites": [
+            "Area of triangle",
+            "Area of parallelogram"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Circles",
+      "chapter_objective": "",
+      "detailed_explanation": "The fixed point is called the center and the fixed distance is called the radius. Circles are perfectly symmetric figures. Every diameter divides the circle into two equal halves and is the longest chord of the circle. The diameter is the longest chord. Chords help study symmetry and distances inside a circle. This theorem uses triangle congruence and symmetry of circles. This theorem is the converse of the perpendicular chord theorem.",
+      "concepts": [
+        {
+          "name": "Circle",
+          "definition": "A circle is the set of all points in a plane that are at a fixed distance from a fixed point.",
+          "intuition": "Every point on a circle is equally far from its center.",
+          "explanation": "The fixed point is called the center and the fixed distance is called the radius. Circles are perfectly symmetric figures.",
+          "why_it_matters": "Circles appear everywhere in mathematics, physics, engineering, and nature.",
+          "real_world_connection": "Wheels, gears, clocks, orbits, and round tables are circular.",
+          "common_mistakes": [
+            "Confusing radius with diameter",
+            "Assuming all round shapes are circles"
+          ],
+          "exam_traps": [
+            "Using diameter value as radius",
+            "Incorrectly identifying center"
+          ],
+          "solver_steps": [
+            "Identify the center",
+            "Measure or identify radius",
+            "Apply circle properties"
+          ],
+          "applications": [
+            "Mechanical design",
+            "Astronomy",
+            "Architecture"
+          ],
+          "prerequisites": [
+            "Distance",
+            "Basic geometry"
+          ]
+        },
+        {
+          "name": "Radius and Diameter",
+          "definition": "The radius is the distance from the center to the circle, and the diameter is twice the radius.",
+          "intuition": "Diameter stretches across the circle through the center.",
+          "explanation": "Every diameter divides the circle into two equal halves and is the longest chord of the circle.",
+          "why_it_matters": "Many circle properties depend directly on radius and diameter.",
+          "real_world_connection": "Wheel sizes, pipe widths, and circular tracks depend on diameter.",
+          "common_mistakes": [
+            "Using wrong formula relationships",
+            "Mixing up radius and diameter"
+          ],
+          "exam_traps": [
+            "Not converting diameter to radius when required"
+          ],
+          "solver_steps": [
+            "Check given value",
+            "Convert if necessary",
+            "Use correct relation"
+          ],
+          "applications": [
+            "Measurement",
+            "Engineering calculations"
+          ],
+          "prerequisites": [
+            "Circle basics"
+          ]
+        },
+        {
+          "name": "Chord of a Circle",
+          "definition": "A chord is a line segment joining any two points on a circle.",
+          "intuition": "A chord cuts across the circle.",
+          "explanation": "The diameter is the longest chord. Chords help study symmetry and distances inside a circle.",
+          "why_it_matters": "Chord properties are used to prove symmetry-based theorems.",
+          "real_world_connection": "Bridge arches and circular windows use chord-like structures.",
+          "common_mistakes": [
+            "Assuming all chords pass through center"
+          ],
+          "exam_traps": [
+            "Confusing chord with tangent"
+          ],
+          "solver_steps": [
+            "Identify chord endpoints",
+            "Check relation with center"
+          ],
+          "applications": [
+            "Structural design",
+            "Geometric proofs"
+          ],
+          "prerequisites": [
+            "Line segments",
+            "Circle"
+          ]
+        },
+        {
+          "name": "Perpendicular from the Centre to a Chord",
+          "definition": "The perpendicular drawn from the center of a circle to a chord bisects the chord.",
+          "intuition": "The center balances the chord equally.",
+          "explanation": "This theorem uses triangle congruence and symmetry of circles.",
+          "why_it_matters": "This property simplifies many geometric proofs.",
+          "real_world_connection": "Used in mechanical balancing and design.",
+          "common_mistakes": [
+            "Dropping perpendicular from wrong point"
+          ],
+          "exam_traps": [
+            "Assuming bisector without perpendicular"
+          ],
+          "solver_steps": [
+            "Draw perpendicular from center",
+            "Apply congruence logic",
+            "Conclude bisection"
+          ],
+          "applications": [
+            "Geometric reasoning",
+            "Engineering design"
+          ],
+          "prerequisites": [
+            "Triangles",
+            "Congruence"
+          ]
+        },
+        {
+          "name": "Equal Chords and Their Distances from Centre",
+          "definition": "Equal chords of a circle are equidistant from the center.",
+          "intuition": "Equal cuts stay equally far from the balance point.",
+          "explanation": "This theorem is the converse of the perpendicular chord theorem.",
+          "why_it_matters": "It strengthens logical reasoning through converse proofs.",
+          "real_world_connection": "Used in manufacturing symmetry.",
+          "common_mistakes": [
+            "Ignoring perpendicular condition"
+          ],
+          "exam_traps": [
+            "Mixing theorem and converse"
+          ],
+          "solver_steps": [
+            "Compare chord lengths",
+            "Check distances from center"
+          ],
+          "applications": [
+            "Proof construction",
+            "Design symmetry"
+          ],
+          "prerequisites": [
+            "Chord properties",
+            "Circle symmetry"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Constructions",
+      "chapter_objective": "",
+      "detailed_explanation": "This chapter focuses on constructing figures based on given conditions, emphasizing logic and accuracy over appearance. Instead of measuring unknown sides directly, constructions use geometric relationships to ensure correctness. Precision in drawing arcs, lines, and intersections ensures the validity of the construction.",
+      "concepts": [
+        {
+          "name": "Geometrical Construction",
+          "definition": "Geometrical construction is the process of drawing figures accurately using only a ruler and a compass.",
+          "intuition": "Constructions are about precision, not drawing skill.",
+          "explanation": "This chapter focuses on constructing figures based on given conditions, emphasizing logic and accuracy over appearance.",
+          "why_it_matters": "Construction develops discipline, accuracy, and logical sequencing — skills essential in mathematics and engineering.",
+          "real_world_connection": "Architectural plans, engineering blueprints, and technical drawings rely on precise constructions.",
+          "common_mistakes": [
+            "Using scale or measurements instead of construction logic",
+            "Drawing approximate figures"
+          ],
+          "exam_traps": [
+            "Skipping construction steps",
+            "Messy or unclear diagrams"
+          ],
+          "solver_steps": [
+            "Read the given conditions carefully",
+            "Identify what needs to be constructed",
+            "Use ruler and compass step by step"
+          ],
+          "applications": [
+            "Technical drafting",
+            "Design planning"
+          ],
+          "prerequisites": [
+            "Lines",
+            "Angles",
+            "Triangles"
+          ]
+        },
+        {
+          "name": "Construction of a Triangle (Given Base, Base Angle, and Sum/Difference of Other Two Sides)",
+          "definition": "This construction involves drawing a triangle when specific measurements or relationships are given.",
+          "intuition": "You build the triangle indirectly using logical steps rather than guessing side lengths.",
+          "explanation": "Instead of measuring unknown sides directly, constructions use geometric relationships to ensure correctness.",
+          "why_it_matters": "This teaches indirect problem-solving and logical thinking.",
+          "real_world_connection": "Used in engineering design when full measurements are not directly available.",
+          "common_mistakes": [
+            "Placing compass arcs incorrectly",
+            "Misreading given conditions"
+          ],
+          "exam_traps": [
+            "Wrong interpretation of sum vs difference",
+            "Incorrect arc intersections"
+          ],
+          "solver_steps": [
+            "Draw the base",
+            "Construct the given angle",
+            "Use arcs to satisfy sum or difference condition",
+            "Complete the triangle"
+          ],
+          "applications": [
+            "Geometric design",
+            "Construction planning"
+          ],
+          "prerequisites": [
+            "Triangle properties",
+            "Compass usage"
+          ]
+        },
+        {
+          "name": "Accuracy in Construction",
+          "definition": "Accuracy in construction means following exact steps to produce correct geometric figures.",
+          "intuition": "Even a small error early can ruin the entire construction.",
+          "explanation": "Precision in drawing arcs, lines, and intersections ensures the validity of the construction.",
+          "why_it_matters": "Accuracy reflects logical correctness and impacts final results.",
+          "real_world_connection": "Engineering failures often occur due to small inaccuracies.",
+          "common_mistakes": [
+            "Using blunt pencil or loose compass",
+            "Rushing steps"
+          ],
+          "exam_traps": [
+            "Untidy diagrams",
+            "Missing construction marks"
+          ],
+          "solver_steps": [
+            "Use sharp pencil",
+            "Keep compass width fixed",
+            "Mark all construction arcs"
+          ],
+          "applications": [
+            "Engineering drawing",
+            "Technical sketches"
+          ],
+          "prerequisites": [
+            "Basic construction tools"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Heron’s Formula",
+      "chapter_objective": "",
+      "detailed_explanation": "If the sides of a triangle are a, b, and c, then its semi-perimeter s = (a + b + c) / 2. The area is given by √[s(s − a)(s − b)(s − c)]. Many real-world regions are irregular. Dividing them into triangles allows area calculation using Heron’s formula repeatedly.",
+      "concepts": [
+        {
+          "name": "Heron’s Formula",
+          "definition": "Heron’s formula is used to find the area of a triangle when the lengths of all three sides are known.",
+          "intuition": "Even without height, a triangle’s area can still be calculated using side lengths.",
+          "explanation": "If the sides of a triangle are a, b, and c, then its semi-perimeter s = (a + b + c) / 2. The area is given by √[s(s − a)(s − b)(s − c)].",
+          "why_it_matters": "Heron’s formula is powerful because it removes the need to find height, which is often difficult or impossible directly.",
+          "real_world_connection": "Used in land surveying, navigation, and architecture where direct height measurement is not feasible.",
+          "common_mistakes": [
+            "Incorrect calculation of semi-perimeter",
+            "Forgetting to take square root at the end"
+          ],
+          "exam_traps": [
+            "Plugging values incorrectly into the formula",
+            "Using full perimeter instead of semi-perimeter"
+          ],
+          "solver_steps": [
+            "Write down all three sides",
+            "Calculate the semi-perimeter",
+            "Substitute values into the formula",
+            "Simplify step by step",
+            "Take square root to get area"
+          ],
+          "applications": [
+            "Land measurement",
+            "Surveying",
+            "Construction planning"
+          ],
+          "prerequisites": [
+            "Triangle",
+            "Square roots",
+            "Arithmetic operations"
+          ]
+        },
+        {
+          "name": "Application of Heron’s Formula",
+          "definition": "Heron’s formula can be applied to find areas of complex shapes by dividing them into triangles.",
+          "intuition": "Break a difficult shape into manageable triangles.",
+          "explanation": "Many real-world regions are irregular. Dividing them into triangles allows area calculation using Heron’s formula repeatedly.",
+          "why_it_matters": "This teaches decomposition — a key problem-solving strategy in mathematics.",
+          "real_world_connection": "Used in mapping, city planning, and land division.",
+          "common_mistakes": [
+            "Incorrect triangle division",
+            "Miscalculating side lengths"
+          ],
+          "exam_traps": [
+            "Missing one triangular region",
+            "Adding areas incorrectly"
+          ],
+          "solver_steps": [
+            "Divide shape into triangles",
+            "Apply Heron’s formula to each",
+            "Add all areas"
+          ],
+          "applications": [
+            "Survey maps",
+            "Architectural layouts"
+          ],
+          "prerequisites": [
+            "Heron’s formula",
+            "Basic geometry"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 13,
+      "chapter_name": "Surface Areas and Volumes",
+      "chapter_objective": "",
+      "detailed_explanation": "This chapter introduces solids like cubes, cuboids, cylinders, cones, and spheres, focusing on how much space they cover and how much surface they expose. Surface area can be curved, flat, or a combination of both, depending on the solid. Correct identification of faces is crucial. Volume depends on base area and height or radius, depending on the solid. Units must always be cubic. When a solid is melted and reshaped, volume remains constant. This concept tests conservation reasoning.",
+      "concepts": [
+        {
+          "name": "Three-Dimensional Solids",
+          "definition": "Three-dimensional solids are objects that have length, breadth, and height.",
+          "intuition": "Unlike flat shapes, 3D solids occupy real space.",
+          "explanation": "This chapter introduces solids like cubes, cuboids, cylinders, cones, and spheres, focusing on how much space they cover and how much surface they expose.",
+          "why_it_matters": "Understanding 3D solids is essential for real-world measurement, design, and manufacturing.",
+          "real_world_connection": "Buildings, containers, tanks, boxes, and balls are all three-dimensional solids.",
+          "common_mistakes": [
+            "Confusing 2D shapes with 3D solids",
+            "Ignoring height or depth"
+          ],
+          "exam_traps": [
+            "Using area formulas instead of surface area formulas"
+          ],
+          "solver_steps": [
+            "Identify the solid",
+            "Note given dimensions",
+            "Choose correct formula"
+          ],
+          "applications": [
+            "Packaging design",
+            "Construction planning"
+          ],
+          "prerequisites": [
+            "Mensuration basics",
+            "Area formulas"
+          ]
+        },
+        {
+          "name": "Surface Area",
+          "definition": "Surface area is the total area of all the faces or curved surfaces of a solid.",
+          "intuition": "Surface area tells how much material is needed to cover an object.",
+          "explanation": "Surface area can be curved, flat, or a combination of both, depending on the solid. Correct identification of faces is crucial.",
+          "why_it_matters": "Surface area calculations are used to estimate material usage and cost.",
+          "real_world_connection": "Painting walls, wrapping gifts, and coating tanks depend on surface area.",
+          "common_mistakes": [
+            "Forgetting one or more faces",
+            "Mixing curved and total surface area"
+          ],
+          "exam_traps": [
+            "Using total surface area instead of curved surface area"
+          ],
+          "solver_steps": [
+            "List all surfaces",
+            "Apply respective area formulas",
+            "Add them carefully"
+          ],
+          "applications": [
+            "Material estimation",
+            "Industrial coating"
+          ],
+          "prerequisites": [
+            "Area of basic shapes"
+          ]
+        },
+        {
+          "name": "Volume",
+          "definition": "Volume is the measure of space occupied by a solid.",
+          "intuition": "Volume tells how much a container can hold.",
+          "explanation": "Volume depends on base area and height or radius, depending on the solid. Units must always be cubic.",
+          "why_it_matters": "Volume is essential in storage, capacity planning, and fluid measurement.",
+          "real_world_connection": "Water tanks, fuel storage, and containers rely on volume calculations.",
+          "common_mistakes": [
+            "Using square units instead of cubic units",
+            "Incorrect substitution of dimensions"
+          ],
+          "exam_traps": [
+            "Unit conversion errors",
+            "Wrong formula selection"
+          ],
+          "solver_steps": [
+            "Identify the solid",
+            "Substitute dimensions into formula",
+            "Calculate carefully with units"
+          ],
+          "applications": [
+            "Capacity estimation",
+            "Engineering design"
+          ],
+          "prerequisites": [
+            "Multiplication",
+            "Mensuration"
+          ]
+        },
+        {
+          "name": "Conversion of Solids",
+          "definition": "Conversion of solids involves transforming one solid into another without loss of volume.",
+          "intuition": "Material is reshaped, not created or destroyed.",
+          "explanation": "When a solid is melted and reshaped, volume remains constant. This concept tests conservation reasoning.",
+          "why_it_matters": "It builds logical thinking and real-world conservation principles.",
+          "real_world_connection": "Melting metal, recycling materials, and manufacturing processes use this idea.",
+          "common_mistakes": [
+            "Assuming surface area is conserved",
+            "Ignoring volume equality"
+          ],
+          "exam_traps": [
+            "Not equating volumes of original and new solids"
+          ],
+          "solver_steps": [
+            "Write volume of original solid",
+            "Write volume of new solid",
+            "Equate and solve"
+          ],
+          "applications": [
+            "Manufacturing",
+            "Recycling"
+          ],
+          "prerequisites": [
+            "Volume formulas"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 14,
+      "chapter_name": "Statistics",
+      "chapter_objective": "",
+      "detailed_explanation": "In Class 9, statistics focuses on understanding data representation and measures of central tendency, helping students read and interpret real-world information. Data can be collected through observation, surveys, experiments, or records. The quality of data affects the accuracy of conclusions. Data tables help compare values and prepare data for further analysis. Visual representation allows quick comparison and trend identification. Mean is calculated by dividing the sum of observations by the number of observations. In grouped data, class marks are used.",
+      "concepts": [
+        {
+          "name": "Statistics",
+          "definition": "Statistics is the branch of mathematics that deals with the collection, organization, analysis, and interpretation of data.",
+          "intuition": "Statistics helps us make sense of large amounts of information.",
+          "explanation": "In Class 9, statistics focuses on understanding data representation and measures of central tendency, helping students read and interpret real-world information.",
+          "why_it_matters": "Statistics is essential for decision-making, research, economics, science, and everyday life.",
+          "real_world_connection": "Used in surveys, weather reports, sports analysis, market research, and population studies.",
+          "common_mistakes": [
+            "Ignoring data context",
+            "Misreading tables or graphs"
+          ],
+          "exam_traps": [
+            "Using wrong formula for mean",
+            "Arithmetic calculation errors"
+          ],
+          "solver_steps": [
+            "Understand the given data",
+            "Organize data systematically",
+            "Apply the correct statistical measure"
+          ],
+          "applications": [
+            "Data analysis",
+            "Decision making"
+          ],
+          "prerequisites": [
+            "Basic arithmetic",
+            "Tables and charts"
+          ]
+        },
+        {
+          "name": "Collection of Data",
+          "definition": "Collection of data is the process of gathering information for statistical analysis.",
+          "intuition": "Good results depend on good data.",
+          "explanation": "Data can be collected through observation, surveys, experiments, or records. The quality of data affects the accuracy of conclusions.",
+          "why_it_matters": "Incorrect or biased data leads to incorrect conclusions.",
+          "real_world_connection": "Census surveys, opinion polls, and experiments rely on data collection.",
+          "common_mistakes": [
+            "Collecting incomplete data",
+            "Biased sampling"
+          ],
+          "exam_traps": [
+            "Ignoring units or categories"
+          ],
+          "solver_steps": [
+            "Identify what data is required",
+            "Choose a collection method",
+            "Record data accurately"
+          ],
+          "applications": [
+            "Research studies",
+            "Surveys"
+          ],
+          "prerequisites": [
+            "Understanding of quantities"
+          ]
+        },
+        {
+          "name": "Tabular Representation of Data",
+          "definition": "Tabular representation arranges data in rows and columns for easy understanding.",
+          "intuition": "Tables turn messy data into readable form.",
+          "explanation": "Data tables help compare values and prepare data for further analysis.",
+          "why_it_matters": "Tables are the foundation for graphs and charts.",
+          "real_world_connection": "Used in reports, textbooks, and databases.",
+          "common_mistakes": [
+            "Incorrect headings",
+            "Misplaced values"
+          ],
+          "exam_traps": [
+            "Wrong frequency totals"
+          ],
+          "solver_steps": [
+            "List categories clearly",
+            "Fill values carefully",
+            "Check totals"
+          ],
+          "applications": [
+            "Data organization",
+            "Report preparation"
+          ],
+          "prerequisites": [
+            "Basic counting"
+          ]
+        },
+        {
+          "name": "Graphical Representation of Data",
+          "definition": "Graphical representation shows data visually using graphs such as bar graphs and histograms.",
+          "intuition": "Graphs help see patterns quickly.",
+          "explanation": "Visual representation allows quick comparison and trend identification.",
+          "why_it_matters": "Graphs communicate information effectively and clearly.",
+          "real_world_connection": "Used in news reports, economics, and scientific presentations.",
+          "common_mistakes": [
+            "Wrong scale selection",
+            "Incorrect labeling"
+          ],
+          "exam_traps": [
+            "Misinterpreting bar height",
+            "Ignoring graph scale"
+          ],
+          "solver_steps": [
+            "Choose appropriate graph",
+            "Select correct scale",
+            "Label axes properly"
+          ],
+          "applications": [
+            "Trend analysis",
+            "Visual reporting"
+          ],
+          "prerequisites": [
+            "Coordinate geometry basics"
+          ]
+        },
+        {
+          "name": "Mean of Grouped Data",
+          "definition": "Mean is the average value of a data set.",
+          "intuition": "Mean represents the central value of data.",
+          "explanation": "Mean is calculated by dividing the sum of observations by the number of observations. In grouped data, class marks are used.",
+          "why_it_matters": "Mean helps summarize large data sets into a single representative value.",
+          "real_world_connection": "Used in exam results, salary analysis, and performance evaluation.",
+          "common_mistakes": [
+            "Incorrect class marks",
+            "Arithmetic errors"
+          ],
+          "exam_traps": [
+            "Forgetting frequency multiplication"
+          ],
+          "solver_steps": [
+            "Find class marks",
+            "Multiply by frequency",
+            "Divide total by sum of frequencies"
+          ],
+          "applications": [
+            "Performance analysis",
+            "Statistical summaries"
+          ],
+          "prerequisites": [
+            "Multiplication",
+            "Division"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 15,
+      "chapter_name": "Probability",
+      "chapter_objective": "",
+      "detailed_explanation": "In Class 9, probability is introduced using simple experiments with equally likely outcomes. The probability of an event is given by the ratio of favorable outcomes to total possible outcomes. Random experiments have outcomes that cannot be predicted with certainty. Each result is called an outcome. Accurate probability calculation depends on correctly identifying the sample space. Events can be simple or compound, depending on the number of outcomes involved. All probabilities fall in the range 0 ≤ P(E) ≤ 1, ensuring logical consistency.",
+      "concepts": [
+        {
+          "name": "Probability",
+          "definition": "Probability is a measure of the likelihood of an event occurring.",
+          "intuition": "Probability tells how likely something is to happen — from impossible to certain.",
+          "explanation": "In Class 9, probability is introduced using simple experiments with equally likely outcomes. The probability of an event is given by the ratio of favorable outcomes to total possible outcomes.",
+          "why_it_matters": "Probability helps in decision-making under uncertainty and forms the base for statistics, data science, and risk analysis.",
+          "real_world_connection": "Weather forecasting, games, insurance, elections, and risk assessment use probability.",
+          "common_mistakes": [
+            "Confusing probability with certainty",
+            "Ignoring total number of outcomes"
+          ],
+          "exam_traps": [
+            "Incorrect counting of outcomes",
+            "Including impossible events"
+          ],
+          "solver_steps": [
+            "Identify all possible outcomes",
+            "Identify favorable outcomes",
+            "Divide favorable by total outcomes"
+          ],
+          "applications": [
+            "Prediction models",
+            "Risk analysis"
+          ],
+          "prerequisites": [
+            "Fractions",
+            "Counting"
+          ]
+        },
+        {
+          "name": "Experiment and Outcome",
+          "definition": "An experiment is an activity with a well-defined set of possible outcomes.",
+          "intuition": "An outcome is what actually happens when you try something.",
+          "explanation": "Random experiments have outcomes that cannot be predicted with certainty. Each result is called an outcome.",
+          "why_it_matters": "Understanding experiments and outcomes is essential before calculating probability.",
+          "real_world_connection": "Tossing coins, rolling dice, drawing cards are all experiments.",
+          "common_mistakes": [
+            "Treating outcomes as events",
+            "Missing possible outcomes"
+          ],
+          "exam_traps": [
+            "Incomplete outcome lists"
+          ],
+          "solver_steps": [
+            "Define the experiment",
+            "List all possible outcomes"
+          ],
+          "applications": [
+            "Game analysis",
+            "Simulation"
+          ],
+          "prerequisites": [
+            "Basic logic"
+          ]
+        },
+        {
+          "name": "Sample Space",
+          "definition": "The sample space is the set of all possible outcomes of an experiment.",
+          "intuition": "Sample space is the full list of everything that can happen.",
+          "explanation": "Accurate probability calculation depends on correctly identifying the sample space.",
+          "why_it_matters": "Wrong sample space leads to wrong probability.",
+          "real_world_connection": "Used in simulations and statistical modelling.",
+          "common_mistakes": [
+            "Missing outcomes",
+            "Repeating outcomes"
+          ],
+          "exam_traps": [
+            "Incorrect sample space for multiple events"
+          ],
+          "solver_steps": [
+            "Understand the experiment",
+            "List outcomes systematically"
+          ],
+          "applications": [
+            "Probability calculations",
+            "Data science foundations"
+          ],
+          "prerequisites": [
+            "Experiments",
+            "Sets"
+          ]
+        },
+        {
+          "name": "Event",
+          "definition": "An event is a subset of the sample space.",
+          "intuition": "An event is what you are interested in happening.",
+          "explanation": "Events can be simple or compound, depending on the number of outcomes involved.",
+          "why_it_matters": "Probability is always calculated for an event.",
+          "real_world_connection": "Winning a game, rain tomorrow, or passing an exam are events.",
+          "common_mistakes": [
+            "Confusing event with outcome"
+          ],
+          "exam_traps": [
+            "Incorrect event definition"
+          ],
+          "solver_steps": [
+            "Define the event clearly",
+            "Count favorable outcomes"
+          ],
+          "applications": [
+            "Decision making",
+            "Risk evaluation"
+          ],
+          "prerequisites": [
+            "Sample space"
+          ]
+        },
+        {
+          "name": "Probability Scale",
+          "definition": "The probability of an event lies between 0 and 1.",
+          "intuition": "0 means impossible, 1 means certain.",
+          "explanation": "All probabilities fall in the range 0 ≤ P(E) ≤ 1, ensuring logical consistency.",
+          "why_it_matters": "This prevents invalid probability values.",
+          "real_world_connection": "Used in forecasts and predictions.",
+          "common_mistakes": [
+            "Probability greater than 1",
+            "Negative probability values"
+          ],
+          "exam_traps": [
+            "Invalid probability statements"
+          ],
+          "solver_steps": [
+            "Check favorable ≤ total outcomes",
+            "Verify probability range"
+          ],
+          "applications": [
+            "Prediction validation",
+            "Statistical modelling"
+          ],
+          "prerequisites": [
+            "Fractions",
+            "Logic"
+          ]
+        }
+      ]
+    }
+  ]
+}

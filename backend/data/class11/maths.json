@@ -1,0 +1,878 @@
+{
+    "class": 11,
+    "subject": "Mathematics",
+    "board": "CBSE",
+  "description": "",
+    "chapters": [
+      {
+        "chapter_number": 1,
+        "chapter_name": "Sets",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+        "introduction": "Sets form the foundation of modern mathematics and are used to define relations, functions, probability, and logic.",
+        "definitions": {
+          "set": "A well-defined collection of distinct objects",
+          "element": "An object belonging to a set",
+          "notation": "If x is an element of set A, it is written as x ∈ A"
+        },
+        "representation_of_sets": {
+          "roster_form": "Elements are listed within curly brackets",
+          "set_builder_form": "Elements are described using a common property"
+        },
+        "types_of_sets": {
+          "empty_set": "A set with no elements",
+          "singleton_set": "A set with exactly one element",
+          "finite_set": "A set with limited number of elements",
+          "infinite_set": "A set with unlimited number of elements",
+          "equal_sets": "Sets having exactly the same elements",
+          "equivalent_sets": "Sets having the same number of elements",
+          "subset": "Set A is a subset of B if every element of A belongs to B",
+          "power_set": "Set of all subsets of a given set"
+        },
+        "operations_on_sets": {
+          "union": "Set of all elements belonging to either A or B",
+          "intersection": "Set of all elements common to both A and B",
+          "difference": "Set of elements belonging to A but not to B",
+          "complement": "Elements not belonging to a given set"
+        },
+        "properties_of_operations": {
+          "commutative": [
+            "A ∪ B = B ∪ A",
+            "A ∩ B = B ∩ A"
+          ],
+          "associative": [
+            "(A ∪ B) ∪ C = A ∪ (B ∪ C)",
+            "(A ∩ B) ∩ C = A ∩ (B ∩ C)"
+          ],
+          "distributive": [
+            "A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)",
+            "A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)"
+          ],
+          "de_morgans_laws": [
+            "(A ∪ B)' = A' ∩ B'",
+            "(A ∩ B)' = A' ∪ B'"
+          ]
+        },
+        "venn_diagrams": {
+          "use": "Visual representation of sets and their relationships",
+          "application": "Useful in solving problems involving union, intersection, and complement"
+        },
+        "applications": [
+          "Foundation for relations and functions",
+          "Used in probability and statistics",
+          "Logical reasoning and computer science"
+        ],
+        "one_liner": "Sets look basic, but they quietly control half of Class 11 maths."
+      },
+      {
+        "chapter_number": 2,
+        "chapter_name": "Relations and Functions",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+        "introduction": "Relations and functions formalise the idea of dependency between quantities and are central to calculus and higher mathematics.",
+        "cartesian_product": {
+          "definition": "Set of all ordered pairs (a, b) where a ∈ A and b ∈ B",
+          "notation": "A × B"
+        },
+        "relations": {
+          "definition": "A relation is a subset of the Cartesian product of two sets",
+          "domain": "Set of all first elements of ordered pairs",
+          "range": "Set of all second elements of ordered pairs",
+          "types_of_relations": {
+            "reflexive": "Every element is related to itself",
+            "symmetric": "If (a, b) belongs to R, then (b, a) also belongs to R",
+            "transitive": "If (a, b) and (b, c) belong to R, then (a, c) belongs to R",
+            "equivalence_relation": "Relation that is reflexive, symmetric, and transitive"
+          }
+        },
+        "functions": {
+          "definition": "A function is a relation in which every element of the domain has exactly one image in the codomain",
+          "notation": "f: A → B",
+          "domain": "Set of all possible inputs",
+          "codomain": "Set of all possible outputs",
+          "range": "Set of actual outputs"
+        },
+        "types_of_functions": {
+          "one_one": "Distinct elements of domain have distinct images",
+          "many_one": "Different elements of domain have same image",
+          "onto": "Every element of codomain has a pre-image",
+          "into": "Some elements of codomain have no pre-image",
+          "bijective": "Both one-one and onto"
+        },
+        "special_functions": {
+          "identity_function": "f(x) = x",
+          "constant_function": "f(x) = c",
+          "polynomial_function": "f(x) = ax^n + ...",
+          "rational_function": "f(x) = p(x)/q(x), q(x) ≠ 0",
+          "modulus_function": "f(x) = |x|"
+        },
+        "graphical_representation": {
+          "importance": "Helps visualise behaviour of functions",
+          "key_idea": "Each x has exactly one y-value"
+        },
+        "applications": [
+          "Foundation of calculus",
+          "Physics and chemistry equations",
+          "Economics and computer science models"
+        ],
+        "one_liner": "Functions are the backbone of calculus—mess this up and Class 11 will humble you."
+        },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Chapter 3",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "class": 11,
+      "subject": "Mathematics",
+      "board": "CBSE",
+      "chapters": [
+        {
+          "chapter_number": 3,
+          "chapter_name": "Trigonometric Functions",
+          "introduction": "Trigonometry in Class 11 extends beyond ratios to functions, identities, and graphical behaviour, forming the base for calculus and physics.",
+          "angle_measurement": {
+            "degree_measure": "Angle measured in degrees (°)",
+            "radian_measure": "Angle measured in radians",
+            "relation": "π radians = 180°"
+          },
+          "trigonometric_functions": {
+            "sine": "sin x",
+            "cosine": "cos x",
+            "tangent": "tan x",
+            "cosecant": "cosec x",
+            "secant": "sec x",
+            "cotangent": "cot x"
+          },
+          "domain_and_range": {
+            "sin_cos": "Domain = ℝ, Range = [-1, 1]",
+            "tan_sec": "Domain excludes odd multiples of π/2",
+            "cosec_cot": "Domain excludes multiples of π"
+          },
+          "trigonometric_identities": {
+            "basic_identities": [
+              "sin²x + cos²x = 1",
+              "1 + tan²x = sec²x",
+              "1 + cot²x = cosec²x"
+            ],
+            "compound_angle": [
+              "sin(A ± B)",
+              "cos(A ± B)",
+              "tan(A ± B)"
+            ]
+          },
+          "special_angles": {
+            "values": [
+              "0",
+              "π/6",
+              "π/4",
+              "π/3",
+              "π/2"
+            ]
+          },
+          "graphs": {
+            "functions": [
+              "y = sin x",
+              "y = cos x",
+              "y = tan x"
+            ],
+            "importance": "Helps understand periodicity and symmetry"
+          },
+          "applications": [
+            "Physics (waves, oscillations)",
+            "Calculus foundations",
+            "Engineering mathematics"
+          ],
+          "one_liner": "Class 11 trigonometry is not about remembering values—it’s about understanding behaviour."
+        },
+        {
+          "chapter_number": 4,
+          "chapter_name": "Principle of Mathematical Induction",
+          "introduction": "Mathematical Induction is a proof technique used to establish the truth of statements involving natural numbers.",
+          "principle": {
+            "step_1": "Prove the statement is true for n = 1",
+            "step_2": "Assume the statement is true for n = k",
+            "step_3": "Prove it is true for n = k + 1"
+          },
+          "logical_basis": {
+            "assumption": "If true for k, then true for k + 1",
+            "conclusion": "Statement holds for all natural numbers"
+          },
+          "types_of_statements": [
+            "Sum of series",
+            "Inequalities",
+            "Divisibility properties"
+          ],
+          "common_forms": {
+            "summation": "1 + 2 + 3 + ... + n = n(n + 1)/2",
+            "squares": "1² + 2² + ... + n² = n(n + 1)(2n + 1)/6"
+          },
+          "common_mistakes": [
+            "Not proving base case properly",
+            "Wrong assumption in induction step",
+            "Algebraic errors"
+          ],
+          "importance": [
+            "Foundation of higher mathematics",
+            "Used in algorithms and computer science",
+            "Develops mathematical reasoning"
+          ],
+          "one_liner": "Induction doesn’t calculate—it convinces."
+        }
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Chapter 4",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "class": 11,
+      "subject": "Mathematics",
+      "board": "CBSE",
+      "chapters": [
+        {
+          "chapter_number": 5,
+          "chapter_name": "Complex Numbers and Quadratic Equations",
+          "introduction": "This chapter extends the number system beyond real numbers and provides algebraic tools essential for higher mathematics, physics, and engineering.",
+          "complex_numbers": {
+            "definition": "A number of the form z = a + ib, where a and b are real numbers and i^2 = -1",
+            "real_part": "Re(z) = a",
+            "imaginary_part": "Im(z) = b",
+            "pure_imaginary_number": "When real part is zero (a = 0, b ≠ 0)"
+          },
+          "algebra_of_complex_numbers": {
+            "addition": "(a + ib) + (c + id) = (a + c) + i(b + d)",
+            "subtraction": "(a + ib) − (c + id) = (a − c) + i(b − d)",
+            "multiplication": "(a + ib)(c + id) = (ac − bd) + i(ad + bc)",
+            "division": "Multiply numerator and denominator by conjugate of denominator"
+          },
+          "conjugate_of_complex_number": {
+            "definition": "If z = a + ib, then its conjugate is a − ib",
+            "property": "z × z̄ = a^2 + b^2"
+          },
+          "modulus_of_complex_number": {
+            "definition": "|z| = √(a^2 + b^2)",
+            "properties": [
+              "|z| ≥ 0",
+              "|z| = 0 iff z = 0",
+              "|z1z2| = |z1||z2|"
+            ]
+          },
+          "polar_form": {
+            "representation": "z = r(cosθ + i sinθ)",
+            "where": [
+              "r = |z|",
+              "θ = argument of z"
+            ]
+          },
+          "quadratic_equations": {
+            "general_form": "ax^2 + bx + c = 0, a ≠ 0",
+            "solution_formula": "x = (-b ± √(b^2 − 4ac)) / (2a)",
+            "nature_of_roots": {
+              "D > 0": "Two distinct real roots",
+              "D = 0": "Two equal real roots",
+              "D < 0": "Complex conjugate roots"
+            }
+          },
+          "location_of_roots": {
+            "method": "Using nature of discriminant and sign of coefficients"
+          },
+          "applications": [
+            "Solving equations with no real solutions",
+            "Foundation for calculus and engineering maths",
+            "Used extensively in physics and signal processing"
+          ],
+          "one_liner": "Complex numbers don’t complicate maths—they complete it."
+        },
+        {
+          "chapter_number": 6,
+          "chapter_name": "Linear Inequalities",
+          "introduction": "This chapter deals with inequalities and their solutions, forming the basis for optimisation problems and higher algebra.",
+          "inequality": {
+            "definition": "A mathematical statement comparing two expressions using <, >, ≤, ≥",
+            "linear_inequality": "An inequality involving a linear expression"
+          },
+          "linear_inequalities_in_one_variable": {
+            "solution": "All real values that satisfy the inequality",
+            "representation": "Shown on number line"
+          },
+          "linear_inequalities_in_two_variables": {
+            "general_form": "ax + by < c, ax + by > c, ax + by ≤ c, ax + by ≥ c",
+            "solution": "Region in the Cartesian plane"
+          },
+          "graphical_method": {
+            "steps": [
+              "Replace inequality with equality to get boundary line",
+              "Draw the boundary line",
+              "Test a point to determine the solution region"
+            ]
+          },
+          "system_of_linear_inequalities": {
+            "definition": "Set of two or more inequalities considered simultaneously",
+            "solution": "Common region satisfying all inequalities"
+          },
+          "feasible_region": {
+            "definition": "Region satisfying all constraints",
+            "importance": "Used in optimisation problems"
+          },
+          "applications": [
+            "Linear programming foundations",
+            "Economics and business constraints",
+            "Real-life decision making models"
+          ],
+          "one_liner": "Equations give answers—inequalities give possibilities."
+        }
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Chapter 5",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "class": 11,
+      "subject": "Mathematics",
+      "board": "CBSE",
+      "chapters": [
+        {
+          "chapter_number": 7,
+          "chapter_name": "Permutations and Combinations",
+          "introduction": "This chapter develops systematic counting techniques, essential for probability, algebra, and discrete mathematics.",
+          "basic_principles": {
+            "fundamental_principle_of_counting": {
+              "addition_principle": "If an event can occur in m ways and another in n ways, total ways = m + n",
+              "multiplication_principle": "If an event can occur in m ways and another in n ways, total ways = m × n"
+            },
+            "factorial": {
+              "definition": "n! = n × (n−1) × (n−2) × ... × 1",
+              "special_cases": [
+                "0! = 1",
+                "1! = 1"
+              ]
+            }
+          },
+          "permutations": {
+            "definition": "Arrangement of objects where order matters",
+            "formula": "nPr = n! / (n−r)!",
+            "permutations_with_repetition": "Number of permutations of n objects taken all at a time when repetition is allowed = n^r",
+            "circular_permutations": {
+              "definition": "Arrangements of objects in a circle",
+              "formula": "(n−1)!",
+              "note": "Clockwise and anticlockwise arrangements are considered same"
+            }
+          },
+          "combinations": {
+            "definition": "Selection of objects where order does not matter",
+            "formula": "nCr = n! / [r!(n−r)!]",
+            "properties": [
+              "nCr = nC(n−r)",
+              "nC0 = 1",
+              "nC1 = n"
+            ]
+          },
+          "relationship_between_npr_and_ncr": {
+            "relation": "nPr = nCr × r!"
+          },
+          "applications": [
+            "Counting problems",
+            "Probability",
+            "Arrangement and selection problems",
+            "Competitive exam foundations"
+          ],
+          "common_mistakes": [
+            "Confusing permutations with combinations",
+            "Forgetting circular permutation adjustment",
+            "Incorrect factorial simplification"
+          ],
+          "one_liner": "If order matters, permute—if it doesn’t, combine."
+        },
+        {
+          "chapter_number": 8,
+          "chapter_name": "Binomial Theorem",
+          "introduction": "The Binomial Theorem provides a method to expand expressions of the form (a + b)^n efficiently.",
+          "binomial_theorem": {
+            "statement": "(a + b)^n = nC0 a^n + nC1 a^(n−1)b + nC2 a^(n−2)b^2 + ... + nCn b^n",
+            "valid_for": "n ∈ ℕ"
+          },
+          "general_term": {
+            "definition": "The (r+1)th term in the expansion",
+            "formula": "T(r+1) = nCr a^(n−r) b^r"
+          },
+          "middle_term": {
+            "when_n_is_even": "Single middle term at (n/2 + 1)th position",
+            "when_n_is_odd": "Two middle terms at (n+1)/2 and (n+3)/2 positions"
+          },
+          "properties": {
+            "symmetry": "nCr = nC(n−r)",
+            "sum_of_coefficients": "Putting a = 1, b = 1 gives sum = 2^n"
+          },
+          "special_cases": [
+            "(1 + x)^n",
+            "(1 − x)^n",
+            "(a − b)^n"
+          ],
+          "applications": [
+            "Finding specific terms",
+            "Coefficient comparison",
+            "Approximation techniques",
+            "Probability expansions"
+          ],
+          "common_mistakes": [
+            "Wrong identification of general term",
+            "Algebraic sign errors",
+            "Incorrect use of combinations"
+          ],
+          "one_liner": "Binomial Theorem turns long expansions into structured logic."
+        }
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Chapter 6",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "class": 11,
+      "subject": "Mathematics",
+      "board": "CBSE",
+      "chapters": [
+        {
+          "chapter_number": 9,
+          "chapter_name": "Sequences and Series",
+          "introduction": "This chapter studies ordered lists of numbers and the sum of their terms. It is fundamental for calculus, algebra, and financial mathematics.",
+          "basic_terms": {
+            "sequence": "An ordered list of numbers following a specific pattern",
+            "series": "Sum of the terms of a sequence"
+          },
+          "arithmetic_progression": {
+            "definition": "A sequence in which the difference between consecutive terms is constant",
+            "first_term": "a",
+            "common_difference": "d",
+            "nth_term": {
+              "formula": "a_n = a + (n − 1)d"
+            },
+            "sum_of_n_terms": {
+              "formula": "S_n = n/2 [2a + (n − 1)d]"
+            },
+            "properties": [
+              "AP is linear in nature",
+              "Difference between consecutive terms is constant"
+            ]
+          },
+          "geometric_progression": {
+            "definition": "A sequence in which each term is obtained by multiplying the previous term by a constant",
+            "first_term": "a",
+            "common_ratio": "r",
+            "nth_term": {
+              "formula": "a_n = ar^(n − 1)"
+            },
+            "sum_of_n_terms": {
+              "formula": "S_n = a(r^n − 1)/(r − 1), r ≠ 1"
+            },
+            "special_case": {
+              "infinite_gp": "If |r| < 1, sum = a / (1 − r)"
+            }
+          },
+          "arithmetic_mean": {
+            "definition": "A number inserted between two numbers such that all three are in AP",
+            "formula": "(a + b) / 2"
+          },
+          "geometric_mean": {
+            "definition": "A number inserted between two numbers such that all three are in GP",
+            "formula": "√(ab)"
+          },
+          "applications": [
+            "Population growth models",
+            "Compound interest",
+            "Physics and engineering problems",
+            "Financial calculations"
+          ],
+          "common_mistakes": [
+            "Mixing AP and GP formulas",
+            "Incorrect identification of a, d, or r",
+            "Sign errors in sum formulas"
+          ],
+          "one_liner": "Sequences define patterns—series reveal their total impact."
+        },
+        {
+          "chapter_number": 10,
+          "chapter_name": "Straight Lines",
+          "introduction": "This chapter introduces coordinate geometry of straight lines, forming the base for conic sections and analytic geometry.",
+          "basic_concepts": {
+            "coordinate_plane": "A plane formed by the intersection of x-axis and y-axis",
+            "distance_between_two_points": {
+              "formula": "√[(x2 − x1)^2 + (y2 − y1)^2]"
+            },
+            "section_formula": {
+              "internal_division": "[(mx2 + nx1)/(m + n), (my2 + ny1)/(m + n)]",
+              "external_division": "[(mx2 − nx1)/(m − n), (my2 − ny1)/(m − n)]"
+            }
+          },
+          "slope_of_line": {
+            "definition": "Measure of steepness of a line",
+            "formula": "m = (y2 − y1)/(x2 − x1)",
+            "special_cases": [
+              "m = 0 for horizontal line",
+              "Undefined slope for vertical line"
+            ]
+          },
+          "equations_of_straight_line": {
+            "slope_intercept_form": "y = mx + c",
+            "point_slope_form": "y − y1 = m(x − x1)",
+            "two_point_form": "(y − y1)/(y2 − y1) = (x − x1)/(x2 − x1)",
+            "intercept_form": "x/a + y/b = 1",
+            "normal_form": "x cosα + y sinα = p"
+          },
+          "angle_between_two_lines": {
+            "formula": "tanθ = |(m1 − m2)/(1 + m1m2)|"
+          },
+          "parallel_and_perpendicular_lines": {
+            "parallel": "Slopes are equal",
+            "perpendicular": "Product of slopes = −1"
+          },
+          "distance_of_point_from_line": {
+            "formula": "|ax + by + c| / √(a^2 + b^2)"
+          },
+          "applications": [
+            "Physics motion graphs",
+            "Engineering drawings",
+            "Coordinate geometry problems"
+          ],
+          "common_mistakes": [
+            "Using wrong form of equation",
+            "Slope sign errors",
+            "Incorrect distance calculation"
+          ],
+          "one_liner": "Straight lines look simple—but they define all of coordinate geometry."
+        }
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Chapter 7",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "class": 11,
+      "subject": "Mathematics",
+      "board": "CBSE",
+      "chapters": [
+        {
+          "chapter_number": 11,
+          "chapter_name": "Conic Sections",
+          "introduction": "Conic sections study curves obtained by the intersection of a plane with a cone. This chapter builds the analytical foundation for advanced geometry and calculus.",
+          "basic_concepts": {
+            "conic_section": "A curve obtained by cutting a cone with a plane",
+            "focus": "A fixed point used to define conic curves",
+            "directrix": "A fixed line used in the definition of conics",
+            "eccentricity": "Ratio of distance from focus to distance from directrix"
+          },
+          "circle": {
+            "definition": "Set of all points in a plane at a fixed distance from a fixed point",
+            "standard_equation": "(x − h)^2 + (y − k)^2 = r^2",
+            "general_equation": "x^2 + y^2 + 2gx + 2fy + c = 0",
+            "radius": "√(g^2 + f^2 − c)",
+            "centre": "(-g, -f)"
+          },
+          "parabola": {
+            "definition": "Set of all points equidistant from a fixed point and a fixed line",
+            "standard_equations": [
+              "y^2 = 4ax",
+              "x^2 = 4ay"
+            ],
+            "focus": "(a, 0) or (0, a)",
+            "directrix": "x = −a or y = −a",
+            "latus_rectum": "4a"
+          },
+          "ellipse": {
+            "definition": "Set of all points such that the sum of distances from two fixed points is constant",
+            "standard_equation": "x^2/a^2 + y^2/b^2 = 1",
+            "foci": "(±ae, 0)",
+            "eccentricity": "e = √(1 − b^2/a^2)"
+          },
+          "hyperbola": {
+            "definition": "Set of all points such that the difference of distances from two fixed points is constant",
+            "standard_equation": "x^2/a^2 − y^2/b^2 = 1",
+            "foci": "(±ae, 0)",
+            "eccentricity": "e = √(1 + b^2/a^2)",
+            "asymptotes": "y = ±(b/a)x"
+          },
+          "applications": [
+            "Planetary motion",
+            "Satellite paths",
+            "Engineering design",
+            "Optics and physics"
+          ],
+          "common_mistakes": [
+            "Confusing ellipse and hyperbola equations",
+            "Incorrect identification of axes",
+            "Sign errors in equations"
+          ],
+          "one_liner": "Conic sections turn geometry into motion and structure."
+        },
+        {
+          "chapter_number": 12,
+          "chapter_name": "Introduction to Three Dimensional Geometry",
+          "introduction": "This chapter extends coordinate geometry from a plane to space, forming the base for vectors and 3D calculus.",
+          "three_dimensional_system": {
+            "axes": [
+              "x-axis",
+              "y-axis",
+              "z-axis"
+            ],
+            "origin": "(0, 0, 0)",
+            "octants": "Space divided into eight regions"
+          },
+          "coordinates_of_point": {
+            "representation": "(x, y, z)",
+            "interpretation": "Position of a point in space"
+          },
+          "distance_between_two_points": {
+            "formula": "√[(x2 − x1)^2 + (y2 − y1)^2 + (z2 − z1)^2]"
+          },
+          "section_formula": {
+            "internal_division": "[(mx2 + nx1)/(m + n), (my2 + ny1)/(m + n), (mz2 + nz1)/(m + n)]",
+            "external_division": "[(mx2 − nx1)/(m − n), (my2 − ny1)/(m − n), (mz2 − nz1)/(m − n)]"
+          },
+          "direction_cosines": {
+            "definition": "Cosines of angles made by a line with coordinate axes",
+            "relation": "l^2 + m^2 + n^2 = 1"
+          },
+          "direction_ratios": {
+            "definition": "Numbers proportional to direction cosines"
+          },
+          "applications": [
+            "Physics vectors",
+            "Engineering mechanics",
+            "Computer graphics",
+            "3D modelling"
+          ],
+          "common_mistakes": [
+            "Ignoring z-coordinate",
+            "Incorrect distance calculation",
+            "Confusing direction ratios with cosines"
+          ],
+          "one_liner": "3D geometry teaches maths to think in space."
+        }
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Chapter 8",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "class": 11,
+      "subject": "Mathematics",
+      "board": "CBSE",
+      "chapters": [
+        {
+          "chapter_number": 13,
+          "chapter_name": "Limits and Derivatives",
+          "introduction": "This chapter introduces the fundamental ideas of calculus. Limits describe the behavior of functions near a point, while derivatives measure the rate of change.",
+          "limits": {
+            "definition": "The value that a function approaches as the independent variable approaches a particular value",
+            "notation": "lim (x→a) f(x)",
+            "types_of_limits": [
+              "Left-hand limit (LHL)",
+              "Right-hand limit (RHL)",
+              "Finite limits",
+              "Infinite limits"
+            ],
+            "existence_of_limit": {
+              "condition": "Limit exists if LHL = RHL"
+            }
+          },
+          "algebra_of_limits": {
+            "sum_rule": "lim [f(x) + g(x)] = lim f(x) + lim g(x)",
+            "difference_rule": "lim [f(x) − g(x)] = lim f(x) − lim g(x)",
+            "product_rule": "lim [f(x)g(x)] = lim f(x) · lim g(x)",
+            "quotient_rule": "lim [f(x)/g(x)] = lim f(x)/lim g(x), provided denominator ≠ 0"
+          },
+          "standard_limits": [
+            "lim (x→0) sinx/x = 1",
+            "lim (x→0) (1 − cosx)/x = 0",
+            "lim (x→0) (e^x − 1)/x = 1"
+          ],
+          "derivatives": {
+            "definition": "Derivative of a function represents the rate of change of the function with respect to its variable",
+            "notation": [
+              "dy/dx",
+              "f'(x)"
+            ],
+            "derivative_as_limit": {
+              "formula": "f'(x) = lim (h→0) [f(x + h) − f(x)] / h"
+            }
+          },
+          "basic_derivatives": {
+            "constant": "d/dx (c) = 0",
+            "power_function": "d/dx (x^n) = nx^(n−1)",
+            "sum_difference": "d/dx [f(x) ± g(x)] = f'(x) ± g'(x)"
+          },
+          "applications": [
+            "Foundation for continuity and differentiability",
+            "Motion and velocity problems",
+            "Physics and engineering models"
+          ],
+          "common_mistakes": [
+            "Incorrect handling of indeterminate forms",
+            "Forgetting to rationalise expressions",
+            "Algebraic simplification errors"
+          ],
+          "one_liner": "Limits explain behavior—derivatives explain change."
+        },
+        {
+          "chapter_number": 14,
+          "chapter_name": "Mathematical Reasoning",
+          "introduction": "This chapter focuses on logical thinking and reasoning, essential for understanding proofs and developing mathematical arguments.",
+          "statements": {
+            "definition": "A sentence that is either true or false, but not both",
+            "simple_statement": "Contains no logical connectives",
+            "compound_statement": "Formed using logical connectives"
+          },
+          "logical_connectives": {
+            "negation": "NOT (¬)",
+            "conjunction": "AND (∧)",
+            "disjunction": "OR (∨)",
+            "implication": "IF…THEN (→)",
+            "biconditional": "IF AND ONLY IF (↔)"
+          },
+          "truth_tables": {
+            "use": "Determine truth value of compound statements"
+          },
+          "quantifiers": {
+            "universal": "For all (∀)",
+            "existential": "There exists (∃)"
+          },
+          "validating_statements": {
+            "methods": [
+              "Direct reasoning",
+              "Counter-example",
+              "Truth table method"
+            ]
+          },
+          "applications": [
+            "Proof writing",
+            "Computer algorithms",
+            "Competitive examinations",
+            "Logical analysis"
+          ],
+          "common_mistakes": [
+            "Confusing implication with converse",
+            "Incorrect negation of statements",
+            "Misuse of quantifiers"
+          ],
+          "one_liner": "Mathematical reasoning trains the brain to think correctly, not quickly."
+        }
+      ]
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Chapter 9",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "class": 11,
+      "subject": "Mathematics",
+      "board": "CBSE",
+      "chapters": [
+        {
+          "chapter_number": 15,
+          "chapter_name": "Statistics",
+          "introduction": "Statistics deals with the collection, analysis, interpretation, and presentation of numerical data. It helps in understanding variability and making informed decisions.",
+          "basic_terms": {
+            "data": "Collection of numerical facts",
+            "raw_data": "Data collected in original form",
+            "frequency_distribution": "Arrangement of data according to frequencies"
+          },
+          "measures_of_central_tendency": {
+            "mean": {
+              "definition": "Average value of the data",
+              "formula": "Mean = Σxi / n",
+              "step_deviation_method": "Mean = a + (Σfi ui / Σfi) × h"
+            }
+          },
+          "measures_of_dispersion": {
+            "range": {
+              "definition": "Difference between highest and lowest values",
+              "formula": "Range = Max − Min"
+            },
+            "mean_deviation": {
+              "definition": "Average of absolute deviations from mean",
+              "formula": "MD = Σ|xi − x̄| / n"
+            },
+            "variance": {
+              "definition": "Mean of squares of deviations from mean",
+              "formula": "σ² = Σ(xi − x̄)² / n"
+            },
+            "standard_deviation": {
+              "definition": "Square root of variance",
+              "formula": "σ = √[Σ(xi − x̄)² / n]"
+            }
+          },
+          "comparison_of_data": {
+            "coefficient_of_variation": {
+              "definition": "Measure of relative variability",
+              "formula": "(σ / x̄) × 100"
+            }
+          },
+          "applications": [
+            "Economics and finance",
+            "Quality control",
+            "Scientific experiments",
+            "Data analysis"
+          ],
+          "common_mistakes": [
+            "Arithmetic errors in calculations",
+            "Wrong choice of assumed mean",
+            "Ignoring units"
+          ],
+          "one_liner": "Statistics doesn’t lie—but careless calculation does."
+        },
+        {
+          "chapter_number": 16,
+          "chapter_name": "Probability",
+          "introduction": "Probability measures the likelihood of occurrence of an event and forms the foundation for statistics and decision-making under uncertainty.",
+          "basic_concepts": {
+            "random_experiment": "An experiment with more than one possible outcome",
+            "outcome": "Result of a random experiment",
+            "sample_space": "Set of all possible outcomes"
+          },
+          "event": {
+            "definition": "Subset of the sample space",
+            "types": [
+              "Impossible event",
+              "Sure event",
+              "Simple event",
+              "Compound event"
+            ]
+          },
+          "classical_probability": {
+            "definition": "Probability when outcomes are equally likely",
+            "formula": "P(E) = Number of favourable outcomes / Total number of outcomes"
+          },
+          "properties_of_probability": [
+            "0 ≤ P(E) ≤ 1",
+            "P(S) = 1",
+            "P(∅) = 0"
+          ],
+          "complementary_event": {
+            "definition": "Event that an event does not occur",
+            "formula": "P(E') = 1 − P(E)"
+          },
+          "simple_examples": [
+            "Tossing a coin",
+            "Rolling a die",
+            "Drawing a card from a deck"
+          ],
+          "applications": [
+            "Risk assessment",
+            "Statistics",
+            "Economics",
+            "Games of chance"
+          ],
+          "common_mistakes": [
+            "Incorrect counting of outcomes",
+            "Forgetting complementary events",
+            "Assuming unequal outcomes as equal"
+          ],
+          "one_liner": "Probability quantifies uncertainty—logic decides the rest."
+        }
+      ]
+    }
+  ]
+}

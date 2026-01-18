@@ -1,0 +1,1995 @@
+{
+  "class": 9,
+  "subject": "Science",
+  "board": "CBSE / NCERT aligned",
+  "description": "",
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_name": "Matter in Our Surroundings",
+      "chapter_objective": "",
+      "detailed_explanation": "Matter exists all around us in different forms. In Class 9, students move from simple observation to understanding particle nature of matter. Particles of matter have spaces between them, are in constant motion, and attract each other. The state of matter depends on inter-particle force and kinetic energy. Processes like melting, freezing, evaporation, condensation, and sublimation involve energy changes. Evaporation depends on surface area, temperature, humidity, and wind speed.",
+      "concepts": [
+        {
+          "name": "Matter",
+          "definition": "Matter is anything that has mass and occupies space.",
+          "intuition": "If it takes up space and you can weigh it, it is matter.",
+          "explanation": "Matter exists all around us in different forms. In Class 9, students move from simple observation to understanding particle nature of matter.",
+          "why_it_matters": "Understanding matter is the foundation of chemistry and physics.",
+          "real_world_connection": "Air, water, food, metals, and plastics are all forms of matter.",
+          "common_mistakes": [
+            "Thinking air is not matter",
+            "Confusing energy with matter"
+          ],
+          "exam_traps": [
+            "Incorrect examples of matter",
+            "Ignoring mass or space condition"
+          ],
+          "solver_steps": [
+            "Check if it has mass",
+            "Check if it occupies space",
+            "Conclude whether it is matter"
+          ],
+          "applications": [
+            "Material identification",
+            "Scientific classification"
+          ],
+          "prerequisites": [
+            "Basic observation skills"
+          ]
+        },
+        {
+          "name": "Physical Nature of Matter",
+          "definition": "Matter is made up of extremely small particles.",
+          "intuition": "Even solid objects are made of tiny particles you cannot see.",
+          "explanation": "Particles of matter have spaces between them, are in constant motion, and attract each other.",
+          "why_it_matters": "This concept explains diffusion, compressibility, and changes of state.",
+          "real_world_connection": "Smell of food spreading, ink mixing in water, and air compression are based on this.",
+          "common_mistakes": [
+            "Assuming particles are static",
+            "Ignoring inter-particle spaces"
+          ],
+          "exam_traps": [
+            "Incorrect reasoning in diffusion questions"
+          ],
+          "solver_steps": [
+            "Identify particle behavior",
+            "Relate motion to temperature"
+          ],
+          "applications": [
+            "Diffusion studies",
+            "Gas behavior analysis"
+          ],
+          "prerequisites": [
+            "Matter"
+          ]
+        },
+        {
+          "name": "States of Matter",
+          "definition": "Matter exists in three main states: solid, liquid, and gas.",
+          "intuition": "Solids are rigid, liquids flow, gases spread everywhere.",
+          "explanation": "The state of matter depends on inter-particle force and kinetic energy.",
+          "why_it_matters": "Explains why substances behave differently under different conditions.",
+          "real_world_connection": "Ice, water, and steam are the same substance in different states.",
+          "common_mistakes": [
+            "Thinking states depend on substance type only",
+            "Ignoring temperature and pressure"
+          ],
+          "exam_traps": [
+            "Wrong examples of states"
+          ],
+          "solver_steps": [
+            "Identify shape and volume",
+            "Relate to particle movement"
+          ],
+          "applications": [
+            "Material usage",
+            "Environmental science"
+          ],
+          "prerequisites": [
+            "Physical nature of matter"
+          ]
+        },
+        {
+          "name": "Change of State",
+          "definition": "Change of state is the transformation of matter from one state to another.",
+          "intuition": "Heating and cooling can change how matter behaves.",
+          "explanation": "Processes like melting, freezing, evaporation, condensation, and sublimation involve energy changes.",
+          "why_it_matters": "Helps understand weather, refrigeration, and industrial processes.",
+          "real_world_connection": "Water cycle, air conditioning, and cooking involve change of state.",
+          "common_mistakes": [
+            "Ignoring latent heat",
+            "Confusing evaporation with boiling"
+          ],
+          "exam_traps": [
+            "Wrong temperature values",
+            "Incorrect process naming"
+          ],
+          "solver_steps": [
+            "Identify initial and final states",
+            "Check temperature and pressure"
+          ],
+          "applications": [
+            "Climate science",
+            "Industrial cooling"
+          ],
+          "prerequisites": [
+            "States of matter",
+            "Heat"
+          ]
+        },
+        {
+          "name": "Evaporation",
+          "definition": "Evaporation is the process of change of liquid into vapor at any temperature below boiling point.",
+          "intuition": "Liquids slowly disappear even without boiling.",
+          "explanation": "Evaporation depends on surface area, temperature, humidity, and wind speed.",
+          "why_it_matters": "Explains cooling effect and drying processes.",
+          "real_world_connection": "Sweating cools our body; clothes dry faster in wind.",
+          "common_mistakes": [
+            "Equating evaporation with boiling",
+            "Ignoring environmental factors"
+          ],
+          "exam_traps": [
+            "Wrong explanation of cooling effect"
+          ],
+          "solver_steps": [
+            "Identify factors affecting evaporation",
+            "Relate evaporation to cooling"
+          ],
+          "applications": [
+            "Cooling systems",
+            "Weather phenomena"
+          ],
+          "prerequisites": [
+            "Change of state",
+            "Heat"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Is Matter Around Us Pure?",
+      "chapter_objective": "",
+      "detailed_explanation": "Pure substances include elements and compounds. They have fixed composition and uniform properties. Mixtures can be homogeneous or heterogeneous and their components retain individual properties. Solutions consist of solute and solvent and have uniform composition. Common methods include filtration, evaporation, distillation, and chromatography.",
+      "concepts": [
+        {
+          "name": "Pure Substance",
+          "definition": "A pure substance is made up of only one kind of particle.",
+          "intuition": "Pure means no mixing at the particle level.",
+          "explanation": "Pure substances include elements and compounds. They have fixed composition and uniform properties.",
+          "why_it_matters": "This helps distinguish between substances and mixtures in chemistry.",
+          "real_world_connection": "Distilled water, gold, and oxygen are examples of pure substances.",
+          "common_mistakes": [
+            "Thinking pure means clean",
+            "Confusing pure substances with mixtures"
+          ],
+          "exam_traps": [
+            "Calling solutions pure substances"
+          ],
+          "solver_steps": [
+            "Check number of particle types",
+            "Identify fixed composition"
+          ],
+          "applications": [
+            "Chemical identification",
+            "Material classification"
+          ],
+          "prerequisites": [
+            "Matter"
+          ]
+        },
+        {
+          "name": "Mixture",
+          "definition": "A mixture is a combination of two or more substances that are not chemically combined.",
+          "intuition": "Things mixed together but still themselves.",
+          "explanation": "Mixtures can be homogeneous or heterogeneous and their components retain individual properties.",
+          "why_it_matters": "Most materials around us are mixtures.",
+          "real_world_connection": "Air, soil, salt water, and food items are mixtures.",
+          "common_mistakes": [
+            "Assuming mixtures have fixed composition"
+          ],
+          "exam_traps": [
+            "Misclassifying compounds as mixtures"
+          ],
+          "solver_steps": [
+            "Identify components",
+            "Check variability of composition"
+          ],
+          "applications": [
+            "Material separation",
+            "Chemical analysis"
+          ],
+          "prerequisites": [
+            "Pure substances"
+          ]
+        },
+        {
+          "name": "Solution",
+          "definition": "A solution is a homogeneous mixture of two or more substances.",
+          "intuition": "Everything looks the same throughout.",
+          "explanation": "Solutions consist of solute and solvent and have uniform composition.",
+          "why_it_matters": "Solutions are fundamental in chemistry and daily life.",
+          "real_world_connection": "Salt water, sugar solution, and air are solutions.",
+          "common_mistakes": [
+            "Thinking solutions are always liquids"
+          ],
+          "exam_traps": [
+            "Incorrect identification of solute and solvent"
+          ],
+          "solver_steps": [
+            "Identify solute",
+            "Identify solvent"
+          ],
+          "applications": [
+            "Chemical reactions",
+            "Medicine preparation"
+          ],
+          "prerequisites": [
+            "Mixtures"
+          ]
+        },
+        {
+          "name": "Methods of Separation",
+          "definition": "Methods of separation are techniques used to separate components of a mixture.",
+          "intuition": "Different materials need different ways to separate.",
+          "explanation": "Common methods include filtration, evaporation, distillation, and chromatography.",
+          "why_it_matters": "Separation techniques are widely used in industries and laboratories.",
+          "real_world_connection": "Water purification, oil refining, and food processing use separation methods.",
+          "common_mistakes": [
+            "Using wrong method for a mixture"
+          ],
+          "exam_traps": [
+            "Choosing inappropriate separation technique"
+          ],
+          "solver_steps": [
+            "Identify type of mixture",
+            "Choose suitable separation method"
+          ],
+          "applications": [
+            "Industrial processing",
+            "Laboratory work"
+          ],
+          "prerequisites": [
+            "Mixtures"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Atoms and Molecules",
+      "chapter_objective": "",
+      "detailed_explanation": "Atoms are extremely small and cannot be seen with the naked eye. Different elements have different types of atoms. Molecules can be of elements or compounds and represent the smallest unit that shows properties of a substance. The law of conservation of mass and the law of constant proportions explain predictable chemical behavior. The mole links atomic mass to measurable quantities, allowing calculations in chemistry.",
+      "concepts": [
+        {
+          "name": "Atom",
+          "definition": "An atom is the smallest unit of matter that retains the chemical properties of an element.",
+          "intuition": "Atoms are the building blocks of everything around us.",
+          "explanation": "Atoms are extremely small and cannot be seen with the naked eye. Different elements have different types of atoms.",
+          "why_it_matters": "Understanding atoms helps explain chemical reactions and the composition of substances.",
+          "real_world_connection": "Everything from air to metals is made of atoms.",
+          "common_mistakes": [
+            "Thinking atoms can exist independently for all elements",
+            "Confusing atoms with molecules"
+          ],
+          "exam_traps": [
+            "Incorrect definition of atom"
+          ],
+          "solver_steps": [
+            "Identify the substance",
+            "Determine the basic unit involved"
+          ],
+          "applications": [
+            "Chemical reactions",
+            "Material science"
+          ],
+          "prerequisites": [
+            "Matter",
+            "Pure substances"
+          ]
+        },
+        {
+          "name": "Molecule",
+          "definition": "A molecule is a group of two or more atoms chemically bonded together.",
+          "intuition": "Molecules are atoms working together as a unit.",
+          "explanation": "Molecules can be of elements or compounds and represent the smallest unit that shows properties of a substance.",
+          "why_it_matters": "Most substances exist as molecules, not single atoms.",
+          "real_world_connection": "Water (H₂O), oxygen (O₂), and carbon dioxide (CO₂) are molecules.",
+          "common_mistakes": [
+            "Assuming molecules always contain different atoms"
+          ],
+          "exam_traps": [
+            "Misidentifying atomicity"
+          ],
+          "solver_steps": [
+            "Count atoms involved",
+            "Identify bonding"
+          ],
+          "applications": [
+            "Chemical formulas",
+            "Reaction equations"
+          ],
+          "prerequisites": [
+            "Atom"
+          ]
+        },
+        {
+          "name": "Laws of Chemical Combination",
+          "definition": "These laws describe how substances combine to form new substances.",
+          "intuition": "Nature follows fixed rules when substances react.",
+          "explanation": "The law of conservation of mass and the law of constant proportions explain predictable chemical behavior.",
+          "why_it_matters": "These laws form the foundation of chemical calculations.",
+          "real_world_connection": "Industrial reactions rely on mass conservation.",
+          "common_mistakes": [
+            "Ignoring mass balance in reactions"
+          ],
+          "exam_traps": [
+            "Incorrect application of laws"
+          ],
+          "solver_steps": [
+            "Write reactants and products",
+            "Compare masses"
+          ],
+          "applications": [
+            "Chemical equation balancing"
+          ],
+          "prerequisites": [
+            "Atoms",
+            "Molecules"
+          ]
+        },
+        {
+          "name": "Mole Concept",
+          "definition": "A mole is the amount of substance that contains 6.022 × 10²³ particles.",
+          "intuition": "A mole is like a counting unit, just very large.",
+          "explanation": "The mole links atomic mass to measurable quantities, allowing calculations in chemistry.",
+          "why_it_matters": "It makes chemical calculations practical and measurable.",
+          "real_world_connection": "Used in laboratories and industries to measure substances.",
+          "common_mistakes": [
+            "Mixing up atomic mass and molar mass"
+          ],
+          "exam_traps": [
+            "Wrong unit usage"
+          ],
+          "solver_steps": [
+            "Identify given quantity",
+            "Use molar mass",
+            "Apply mole formula"
+          ],
+          "applications": [
+            "Stoichiometry",
+            "Chemical measurements"
+          ],
+          "prerequisites": [
+            "Atomic mass",
+            "Basic arithmetic"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Structure of the Atom",
+      "chapter_objective": "",
+      "detailed_explanation": "Electrons are negatively charged, protons are positively charged, and neutrons have no charge. Protons and neutrons are present in the nucleus, while electrons revolve around it. This model explained electrical neutrality of atoms but failed to explain experimental observations later. Based on gold foil experiment, this model explained scattering of alpha particles. This model explained atomic stability and emission spectra. Atomic number determines chemical properties, while mass number determines isotopic identity.",
+      "concepts": [
+        {
+          "name": "Subatomic Particles",
+          "definition": "Atoms are made up of three main subatomic particles: electrons, protons, and neutrons.",
+          "intuition": "Atoms are not solid balls; they have internal structure.",
+          "explanation": "Electrons are negatively charged, protons are positively charged, and neutrons have no charge. Protons and neutrons are present in the nucleus, while electrons revolve around it.",
+          "why_it_matters": "Understanding subatomic particles explains atomic behavior, chemical bonding, and electricity.",
+          "real_world_connection": "Electricity, batteries, and electronics depend on electron movement.",
+          "common_mistakes": [
+            "Thinking electrons are inside the nucleus",
+            "Forgetting neutron has no charge"
+          ],
+          "exam_traps": [
+            "Wrong charge or location of particles"
+          ],
+          "solver_steps": [
+            "Identify the particle",
+            "Recall charge and mass",
+            "State its position in the atom"
+          ],
+          "applications": [
+            "Electronics",
+            "Chemical reactions"
+          ],
+          "prerequisites": [
+            "Atom"
+          ]
+        },
+        {
+          "name": "Thomson’s Model of Atom",
+          "definition": "Thomson proposed that an atom is a positively charged sphere with electrons embedded in it.",
+          "intuition": "Like raisins embedded in a pudding.",
+          "explanation": "This model explained electrical neutrality of atoms but failed to explain experimental observations later.",
+          "why_it_matters": "It was the first attempt to describe internal atomic structure.",
+          "real_world_connection": "Early atomic theory development shaped modern science.",
+          "common_mistakes": [
+            "Assuming this model is correct today"
+          ],
+          "exam_traps": [
+            "Not mentioning limitations"
+          ],
+          "solver_steps": [
+            "State the model",
+            "Mention key idea",
+            "Add limitation"
+          ],
+          "applications": [
+            "History of science"
+          ],
+          "prerequisites": [
+            "Subatomic particles"
+          ]
+        },
+        {
+          "name": "Rutherford’s Model of Atom",
+          "definition": "Rutherford proposed that an atom has a small, dense, positively charged nucleus at the center.",
+          "intuition": "Most of the atom is empty space.",
+          "explanation": "Based on gold foil experiment, this model explained scattering of alpha particles.",
+          "why_it_matters": "It introduced the concept of nucleus and empty space in atoms.",
+          "real_world_connection": "Nuclear science and radiation studies are based on this concept.",
+          "common_mistakes": [
+            "Thinking electrons move randomly"
+          ],
+          "exam_traps": [
+            "Forgetting experimental basis"
+          ],
+          "solver_steps": [
+            "Describe the experiment",
+            "State observations",
+            "Give conclusions"
+          ],
+          "applications": [
+            "Nuclear physics"
+          ],
+          "prerequisites": [
+            "Thomson model"
+          ]
+        },
+        {
+          "name": "Bohr’s Model of Atom",
+          "definition": "Bohr proposed that electrons revolve around the nucleus in fixed energy levels.",
+          "intuition": "Electrons move in fixed paths like planets.",
+          "explanation": "This model explained atomic stability and emission spectra.",
+          "why_it_matters": "It forms the basis of modern atomic structure at school level.",
+          "real_world_connection": "Used in spectroscopy and chemical analysis.",
+          "common_mistakes": [
+            "Thinking electrons can exist anywhere"
+          ],
+          "exam_traps": [
+            "Ignoring energy levels"
+          ],
+          "solver_steps": [
+            "State energy level concept",
+            "Explain electron transition"
+          ],
+          "applications": [
+            "Spectral analysis"
+          ],
+          "prerequisites": [
+            "Rutherford model"
+          ]
+        },
+        {
+          "name": "Atomic Number and Mass Number",
+          "definition": "Atomic number is the number of protons, and mass number is the sum of protons and neutrons.",
+          "intuition": "Atomic number defines the element.",
+          "explanation": "Atomic number determines chemical properties, while mass number determines isotopic identity.",
+          "why_it_matters": "Helps identify elements and calculate neutrons.",
+          "real_world_connection": "Used in periodic table and nuclear reactions.",
+          "common_mistakes": [
+            "Confusing atomic number with mass number"
+          ],
+          "exam_traps": [
+            "Wrong neutron calculation"
+          ],
+          "solver_steps": [
+            "Use Z for protons",
+            "Subtract to find neutrons"
+          ],
+          "applications": [
+            "Element identification"
+          ],
+          "prerequisites": [
+            "Subatomic particles"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "The Fundamental Unit of Life",
+      "chapter_objective": "",
+      "detailed_explanation": "All living organisms are made up of cells. Cells carry out all life processes such as respiration, nutrition, growth, and reproduction. Robert Hooke observed dead cork cells. Later scientists discovered living cells and their components. Prokaryotic cells lack a true nucleus, while eukaryotic cells have a well-defined nucleus and organelles. Organelles such as nucleus, mitochondria, ribosomes, and endoplasmic reticulum work together to keep the cell alive. Mitosis leads to growth and repair, while meiosis produces reproductive cells.",
+      "concepts": [
+        {
+          "name": "Cell",
+          "definition": "A cell is the basic structural and functional unit of life.",
+          "intuition": "Just like bricks make a building, cells make living organisms.",
+          "explanation": "All living organisms are made up of cells. Cells carry out all life processes such as respiration, nutrition, growth, and reproduction.",
+          "why_it_matters": "Understanding cells is essential to understand how life functions at the smallest level.",
+          "real_world_connection": "Medical science, genetics, and biotechnology are based on cell biology.",
+          "common_mistakes": [
+            "Thinking cells are only present in animals",
+            "Assuming all cells are the same"
+          ],
+          "exam_traps": [
+            "Incorrect definition of cell"
+          ],
+          "solver_steps": [
+            "Identify the organism",
+            "Determine cellular structure"
+          ],
+          "applications": [
+            "Medicine",
+            "Biotechnology"
+          ],
+          "prerequisites": [
+            "Living organisms"
+          ]
+        },
+        {
+          "name": "Discovery of the Cell",
+          "definition": "The cell was discovered by Robert Hooke in 1665.",
+          "intuition": "Cells were first observed using a microscope.",
+          "explanation": "Robert Hooke observed dead cork cells. Later scientists discovered living cells and their components.",
+          "why_it_matters": "This discovery laid the foundation of modern biology.",
+          "real_world_connection": "Microscopy is essential in medical diagnosis and research.",
+          "common_mistakes": [
+            "Assuming Hooke discovered living cells"
+          ],
+          "exam_traps": [
+            "Wrong scientist attribution"
+          ],
+          "solver_steps": [
+            "Recall scientist name",
+            "Mention year and observation"
+          ],
+          "applications": [
+            "Scientific research"
+          ],
+          "prerequisites": [
+            "Basic science history"
+          ]
+        },
+        {
+          "name": "Types of Cells",
+          "definition": "Cells are classified as unicellular or multicellular based on number, and prokaryotic or eukaryotic based on structure.",
+          "intuition": "Some organisms are one cell, others are many.",
+          "explanation": "Prokaryotic cells lack a true nucleus, while eukaryotic cells have a well-defined nucleus and organelles.",
+          "why_it_matters": "Cell type determines complexity and function of organisms.",
+          "real_world_connection": "Bacteria are prokaryotic; plants and animals are eukaryotic.",
+          "common_mistakes": [
+            "Confusing prokaryotic and eukaryotic cells"
+          ],
+          "exam_traps": [
+            "Wrong classification of organisms"
+          ],
+          "solver_steps": [
+            "Check presence of nucleus",
+            "Identify cell type"
+          ],
+          "applications": [
+            "Microbiology",
+            "Genetics"
+          ],
+          "prerequisites": [
+            "Cell concept"
+          ]
+        },
+        {
+          "name": "Cell Organelles",
+          "definition": "Cell organelles are specialized structures within a cell that perform specific functions.",
+          "intuition": "Each organelle is like a department with a specific job.",
+          "explanation": "Organelles such as nucleus, mitochondria, ribosomes, and endoplasmic reticulum work together to keep the cell alive.",
+          "why_it_matters": "Organelles explain how cells perform complex life processes.",
+          "real_world_connection": "Mitochondrial disorders affect energy production in humans.",
+          "common_mistakes": [
+            "Mixing functions of organelles"
+          ],
+          "exam_traps": [
+            "Incorrect organelle-function matching"
+          ],
+          "solver_steps": [
+            "Name the organelle",
+            "State its function"
+          ],
+          "applications": [
+            "Medical diagnosis",
+            "Cell research"
+          ],
+          "prerequisites": [
+            "Cell structure"
+          ]
+        },
+        {
+          "name": "Cell Division",
+          "definition": "Cell division is the process by which a cell divides to form new cells.",
+          "intuition": "Cells divide to grow, repair, and reproduce.",
+          "explanation": "Mitosis leads to growth and repair, while meiosis produces reproductive cells.",
+          "why_it_matters": "Cell division explains growth, healing, and reproduction.",
+          "real_world_connection": "Cancer involves uncontrolled cell division.",
+          "common_mistakes": [
+            "Confusing mitosis with meiosis"
+          ],
+          "exam_traps": [
+            "Wrong function of cell division types"
+          ],
+          "solver_steps": [
+            "Identify type of division",
+            "State purpose"
+          ],
+          "applications": [
+            "Medicine",
+            "Genetics"
+          ],
+          "prerequisites": [
+            "Cell organelles"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Tissues",
+      "chapter_objective": "",
+      "detailed_explanation": "In multicellular organisms, similar cells organize into tissues to increase efficiency and specialization. Plant tissues are classified into meristematic and permanent tissues based on their ability to divide. These tissues are found at growing regions such as root tips and shoot tips. Permanent tissues perform functions like support, storage, and transport. Animal tissues are classified into epithelial, connective, muscular, and nervous tissues.",
+      "concepts": [
+        {
+          "name": "Tissue",
+          "definition": "A tissue is a group of similar cells that work together to perform a specific function.",
+          "intuition": "Cells team up to do bigger jobs efficiently.",
+          "explanation": "In multicellular organisms, similar cells organize into tissues to increase efficiency and specialization.",
+          "why_it_matters": "Tissues explain how complex organisms function smoothly.",
+          "real_world_connection": "Muscles, blood, and skin are all tissues.",
+          "common_mistakes": [
+            "Thinking tissues exist only in animals",
+            "Confusing tissue with organ"
+          ],
+          "exam_traps": [
+            "Incorrect definition of tissue"
+          ],
+          "solver_steps": [
+            "Identify group of similar cells",
+            "Determine common function"
+          ],
+          "applications": [
+            "Biology",
+            "Medical science"
+          ],
+          "prerequisites": [
+            "Cell"
+          ]
+        },
+        {
+          "name": "Plant Tissues",
+          "definition": "Plant tissues are groups of cells in plants that perform specific functions.",
+          "intuition": "Plants also divide work among different tissues.",
+          "explanation": "Plant tissues are classified into meristematic and permanent tissues based on their ability to divide.",
+          "why_it_matters": "Helps understand plant growth and structure.",
+          "real_world_connection": "Wood formation and crop growth depend on plant tissues.",
+          "common_mistakes": [
+            "Mixing plant and animal tissues"
+          ],
+          "exam_traps": [
+            "Wrong classification of tissues"
+          ],
+          "solver_steps": [
+            "Identify tissue type",
+            "State its function"
+          ],
+          "applications": [
+            "Agriculture",
+            "Botany"
+          ],
+          "prerequisites": [
+            "Tissue concept"
+          ]
+        },
+        {
+          "name": "Meristematic Tissue",
+          "definition": "Meristematic tissue consists of actively dividing cells responsible for plant growth.",
+          "intuition": "Growth happens where cells keep dividing.",
+          "explanation": "These tissues are found at growing regions such as root tips and shoot tips.",
+          "why_it_matters": "Explains how plants increase in length and girth.",
+          "real_world_connection": "Used in plant breeding and tissue culture.",
+          "common_mistakes": [
+            "Assuming all plant tissues divide"
+          ],
+          "exam_traps": [
+            "Wrong location identification"
+          ],
+          "solver_steps": [
+            "Locate tissue",
+            "Identify division ability"
+          ],
+          "applications": [
+            "Plant growth studies"
+          ],
+          "prerequisites": [
+            "Plant tissues"
+          ]
+        },
+        {
+          "name": "Permanent Tissue",
+          "definition": "Permanent tissues are made up of cells that have lost the ability to divide.",
+          "intuition": "Once specialized, cells stop dividing.",
+          "explanation": "Permanent tissues perform functions like support, storage, and transport.",
+          "why_it_matters": "Explains how plants maintain structure and function.",
+          "real_world_connection": "Fibers, wood, and leaves depend on permanent tissues.",
+          "common_mistakes": [
+            "Confusing permanent tissue with dead tissue"
+          ],
+          "exam_traps": [
+            "Wrong examples"
+          ],
+          "solver_steps": [
+            "Check division ability",
+            "Identify function"
+          ],
+          "applications": [
+            "Plant anatomy"
+          ],
+          "prerequisites": [
+            "Meristematic tissue"
+          ]
+        },
+        {
+          "name": "Animal Tissues",
+          "definition": "Animal tissues are groups of cells in animals that perform specific functions.",
+          "intuition": "Animals divide work at tissue level too.",
+          "explanation": "Animal tissues are classified into epithelial, connective, muscular, and nervous tissues.",
+          "why_it_matters": "Helps understand body structure and functions.",
+          "real_world_connection": "Medical diagnosis relies on understanding animal tissues.",
+          "common_mistakes": [
+            "Mixing tissue types"
+          ],
+          "exam_traps": [
+            "Incorrect classification"
+          ],
+          "solver_steps": [
+            "Identify tissue type",
+            "State function"
+          ],
+          "applications": [
+            "Medicine",
+            "Physiology"
+          ],
+          "prerequisites": [
+            "Tissue concept"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Diversity in Living Organisms",
+      "chapter_objective": "",
+      "detailed_explanation": "Organisms differ in structure, function, habitat, and behavior. Studying diversity helps us understand relationships among living beings. Classification helps scientists study millions of organisms systematically. This system is based on cell structure, mode of nutrition, and body organization. Each lower level has more similarities than the level above. The first name indicates genus and the second indicates species, written in Latin.",
+      "concepts": [
+        {
+          "name": "Biological Diversity",
+          "definition": "Biological diversity refers to the variety of living organisms found on Earth.",
+          "intuition": "Life exists in many forms, not just one type.",
+          "explanation": "Organisms differ in structure, function, habitat, and behavior. Studying diversity helps us understand relationships among living beings.",
+          "why_it_matters": "Diversity ensures balance in ecosystems and survival of life.",
+          "real_world_connection": "Forests, oceans, and grasslands show vast biological diversity.",
+          "common_mistakes": [
+            "Thinking diversity means only number of species"
+          ],
+          "exam_traps": [
+            "Ignoring ecological importance"
+          ],
+          "solver_steps": [
+            "Observe differences",
+            "Group organisms logically"
+          ],
+          "applications": [
+            "Ecology",
+            "Conservation biology"
+          ],
+          "prerequisites": [
+            "Living organisms"
+          ]
+        },
+        {
+          "name": "Classification",
+          "definition": "Classification is the process of grouping organisms based on similarities and differences.",
+          "intuition": "Grouping makes study easier and organized.",
+          "explanation": "Classification helps scientists study millions of organisms systematically.",
+          "why_it_matters": "Without classification, studying biology would be chaotic.",
+          "real_world_connection": "Libraries, databases, and files also use classification systems.",
+          "common_mistakes": [
+            "Classifying based on one feature only"
+          ],
+          "exam_traps": [
+            "Incorrect grouping logic"
+          ],
+          "solver_steps": [
+            "Identify characteristics",
+            "Group based on similarities"
+          ],
+          "applications": [
+            "Scientific research",
+            "Education"
+          ],
+          "prerequisites": [
+            "Observation skills"
+          ]
+        },
+        {
+          "name": "Five Kingdom Classification",
+          "definition": "Living organisms are classified into five kingdoms: Monera, Protista, Fungi, Plantae, and Animalia.",
+          "intuition": "Life is divided into five major groups.",
+          "explanation": "This system is based on cell structure, mode of nutrition, and body organization.",
+          "why_it_matters": "It provides a broad framework to study life forms.",
+          "real_world_connection": "Used globally in biology education.",
+          "common_mistakes": [
+            "Mixing characteristics of kingdoms"
+          ],
+          "exam_traps": [
+            "Wrong kingdom identification"
+          ],
+          "solver_steps": [
+            "Identify cell type",
+            "Check nutrition and organization"
+          ],
+          "applications": [
+            "Biological classification"
+          ],
+          "prerequisites": [
+            "Cell structure"
+          ]
+        },
+        {
+          "name": "Hierarchy of Classification",
+          "definition": "Classification hierarchy includes kingdom, phylum, class, order, family, genus, and species.",
+          "intuition": "From broad groups to very specific ones.",
+          "explanation": "Each lower level has more similarities than the level above.",
+          "why_it_matters": "Helps in precise identification of organisms.",
+          "real_world_connection": "Used in naming organisms scientifically.",
+          "common_mistakes": [
+            "Wrong order of hierarchy"
+          ],
+          "exam_traps": [
+            "Skipping levels"
+          ],
+          "solver_steps": [
+            "Start from kingdom",
+            "Move down step by step"
+          ],
+          "applications": [
+            "Taxonomy",
+            "Research"
+          ],
+          "prerequisites": [
+            "Classification"
+          ]
+        },
+        {
+          "name": "Binomial Nomenclature",
+          "definition": "Binomial nomenclature is the system of naming organisms using two scientific names.",
+          "intuition": "Every organism has a universal name.",
+          "explanation": "The first name indicates genus and the second indicates species, written in Latin.",
+          "why_it_matters": "Avoids confusion caused by local names.",
+          "real_world_connection": "Used worldwide in scientific communication.",
+          "common_mistakes": [
+            "Wrong capitalization",
+            "Not italicizing names"
+          ],
+          "exam_traps": [
+            "Incorrect scientific naming format"
+          ],
+          "solver_steps": [
+            "Write genus first",
+            "Write species second",
+            "Use correct format"
+          ],
+          "applications": [
+            "Scientific documentation"
+          ],
+          "prerequisites": [
+            "Classification hierarchy"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Motion",
+      "chapter_objective": "",
+      "detailed_explanation": "An object is said to be in motion if its position changes relative to a reference point with time. Distance is a scalar quantity, while displacement is a vector quantity with direction. Speed is a scalar quantity and does not include direction. Velocity is a vector quantity and changes if either speed or direction changes. Acceleration occurs whenever there is a change in velocity over time.",
+      "concepts": [
+        {
+          "name": "Motion",
+          "definition": "Motion is the change in position of an object with respect to time.",
+          "intuition": "If something changes its position, it is in motion.",
+          "explanation": "An object is said to be in motion if its position changes relative to a reference point with time.",
+          "why_it_matters": "Motion is the foundation of physics and helps explain how objects move in the universe.",
+          "real_world_connection": "Cars moving on roads, planets revolving around the Sun, and people walking involve motion.",
+          "common_mistakes": [
+            "Assuming motion without a reference point",
+            "Confusing motion with speed"
+          ],
+          "exam_traps": [
+            "Not mentioning reference point"
+          ],
+          "solver_steps": [
+            "Choose a reference point",
+            "Observe change in position over time"
+          ],
+          "applications": [
+            "Transportation",
+            "Astronomy"
+          ],
+          "prerequisites": [
+            "Basic observation"
+          ]
+        },
+        {
+          "name": "Distance and Displacement",
+          "definition": "Distance is the total path length travelled, while displacement is the shortest distance between initial and final positions.",
+          "intuition": "Distance depends on path; displacement depends on start and end.",
+          "explanation": "Distance is a scalar quantity, while displacement is a vector quantity with direction.",
+          "why_it_matters": "This distinction is crucial for understanding motion accurately.",
+          "real_world_connection": "A runner completing a lap has distance but zero displacement.",
+          "common_mistakes": [
+            "Treating distance and displacement as same",
+            "Ignoring direction in displacement"
+          ],
+          "exam_traps": [
+            "Wrong numerical substitution"
+          ],
+          "solver_steps": [
+            "Trace the path",
+            "Identify initial and final points"
+          ],
+          "applications": [
+            "Navigation",
+            "Physics calculations"
+          ],
+          "prerequisites": [
+            "Motion"
+          ]
+        },
+        {
+          "name": "Speed",
+          "definition": "Speed is the distance travelled per unit time.",
+          "intuition": "Speed tells how fast something is moving.",
+          "explanation": "Speed is a scalar quantity and does not include direction.",
+          "why_it_matters": "Speed helps compare motion of different objects.",
+          "real_world_connection": "Speedometers in vehicles measure speed.",
+          "common_mistakes": [
+            "Confusing speed with velocity"
+          ],
+          "exam_traps": [
+            "Wrong unit usage"
+          ],
+          "solver_steps": [
+            "Measure distance",
+            "Divide by time"
+          ],
+          "applications": [
+            "Transportation analysis"
+          ],
+          "prerequisites": [
+            "Distance",
+            "Time"
+          ]
+        },
+        {
+          "name": "Velocity",
+          "definition": "Velocity is the speed of an object in a given direction.",
+          "intuition": "Velocity is speed with direction.",
+          "explanation": "Velocity is a vector quantity and changes if either speed or direction changes.",
+          "why_it_matters": "Velocity gives complete information about motion.",
+          "real_world_connection": "Wind velocity affects weather systems.",
+          "common_mistakes": [
+            "Ignoring direction"
+          ],
+          "exam_traps": [
+            "Using speed formula for velocity"
+          ],
+          "solver_steps": [
+            "Calculate speed",
+            "Include direction"
+          ],
+          "applications": [
+            "Meteorology",
+            "Physics modelling"
+          ],
+          "prerequisites": [
+            "Speed",
+            "Displacement"
+          ]
+        },
+        {
+          "name": "Acceleration",
+          "definition": "Acceleration is the rate of change of velocity.",
+          "intuition": "Acceleration means speeding up, slowing down, or changing direction.",
+          "explanation": "Acceleration occurs whenever there is a change in velocity over time.",
+          "why_it_matters": "Acceleration explains forces and motion changes.",
+          "real_world_connection": "Braking cars and falling objects experience acceleration.",
+          "common_mistakes": [
+            "Thinking acceleration means only increase in speed"
+          ],
+          "exam_traps": [
+            "Wrong sign convention"
+          ],
+          "solver_steps": [
+            "Find change in velocity",
+            "Divide by time"
+          ],
+          "applications": [
+            "Vehicle design",
+            "Safety analysis"
+          ],
+          "prerequisites": [
+            "Velocity"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Force and Laws of Motion",
+      "chapter_objective": "",
+      "detailed_explanation": "Forces can be contact forces or non-contact forces and are responsible for changes in motion or deformation. When net force is zero, the object remains at rest or in uniform motion. Non-zero net force causes acceleration. This law introduces the concept of inertia. This law gives the equation F = ma, linking force, mass, and acceleration. Action and reaction forces act on different objects and never cancel each other.",
+      "concepts": [
+        {
+          "name": "Force",
+          "definition": "A force is a push or a pull that can change the shape, speed, or direction of an object.",
+          "intuition": "Whenever something moves, stops, or changes shape, a force is involved.",
+          "explanation": "Forces can be contact forces or non-contact forces and are responsible for changes in motion or deformation.",
+          "why_it_matters": "Force explains how objects interact and respond to each other in the physical world.",
+          "real_world_connection": "Pushing a door, pulling a cart, gravity pulling objects downwards are all forces.",
+          "common_mistakes": [
+            "Thinking force is needed only to start motion",
+            "Ignoring forces acting in opposite directions"
+          ],
+          "exam_traps": [
+            "Wrong identification of force type"
+          ],
+          "solver_steps": [
+            "Identify the interaction",
+            "Determine push or pull",
+            "Check effect on motion or shape"
+          ],
+          "applications": [
+            "Engineering",
+            "Everyday mechanics"
+          ],
+          "prerequisites": [
+            "Motion"
+          ]
+        },
+        {
+          "name": "Balanced and Unbalanced Forces",
+          "definition": "Balanced forces do not change the state of motion, while unbalanced forces do.",
+          "intuition": "If forces cancel out, nothing changes.",
+          "explanation": "When net force is zero, the object remains at rest or in uniform motion. Non-zero net force causes acceleration.",
+          "why_it_matters": "This distinction explains why some objects move while others do not.",
+          "real_world_connection": "A book resting on a table experiences balanced forces.",
+          "common_mistakes": [
+            "Assuming motion always means unbalanced force"
+          ],
+          "exam_traps": [
+            "Forgetting net force concept"
+          ],
+          "solver_steps": [
+            "List all forces",
+            "Find net force"
+          ],
+          "applications": [
+            "Statics",
+            "Dynamics"
+          ],
+          "prerequisites": [
+            "Force"
+          ]
+        },
+        {
+          "name": "Newton’s First Law of Motion",
+          "definition": "An object remains at rest or in uniform motion unless acted upon by an external force.",
+          "intuition": "Objects resist change in their state of motion.",
+          "explanation": "This law introduces the concept of inertia.",
+          "why_it_matters": "Explains why seat belts are necessary and why objects resist motion changes.",
+          "real_world_connection": "Passengers fall forward when a moving bus stops suddenly.",
+          "common_mistakes": [
+            "Ignoring inertia",
+            "Thinking force is needed to keep motion going"
+          ],
+          "exam_traps": [
+            "Incorrect law statement"
+          ],
+          "solver_steps": [
+            "Identify initial state",
+            "Check external force presence"
+          ],
+          "applications": [
+            "Vehicle safety",
+            "Motion analysis"
+          ],
+          "prerequisites": [
+            "Balanced forces"
+          ]
+        },
+        {
+          "name": "Newton’s Second Law of Motion",
+          "definition": "The rate of change of momentum of an object is proportional to the applied force.",
+          "intuition": "More force causes more acceleration.",
+          "explanation": "This law gives the equation F = ma, linking force, mass, and acceleration.",
+          "why_it_matters": "It is the most widely used law in physics calculations.",
+          "real_world_connection": "Heavier objects need more force to move.",
+          "common_mistakes": [
+            "Ignoring mass effect",
+            "Wrong unit substitution"
+          ],
+          "exam_traps": [
+            "Incorrect formula usage"
+          ],
+          "solver_steps": [
+            "Identify mass",
+            "Find acceleration",
+            "Apply F = ma"
+          ],
+          "applications": [
+            "Engineering design",
+            "Mechanics"
+          ],
+          "prerequisites": [
+            "Acceleration",
+            "Force"
+          ]
+        },
+        {
+          "name": "Newton’s Third Law of Motion",
+          "definition": "For every action, there is an equal and opposite reaction.",
+          "intuition": "Forces always come in pairs.",
+          "explanation": "Action and reaction forces act on different objects and never cancel each other.",
+          "why_it_matters": "Explains motion in rockets, walking, and swimming.",
+          "real_world_connection": "Rocket propulsion and walking are based on this law.",
+          "common_mistakes": [
+            "Thinking action and reaction cancel out"
+          ],
+          "exam_traps": [
+            "Wrong force pair identification"
+          ],
+          "solver_steps": [
+            "Identify interacting objects",
+            "State action-reaction pair"
+          ],
+          "applications": [
+            "Rocket science",
+            "Biomechanics"
+          ],
+          "prerequisites": [
+            "Force"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Gravitation",
+      "chapter_objective": "",
+      "detailed_explanation": "Gravitational force depends on the masses of objects and the distance between them. It is always attractive. Mathematically expressed as F = G(m₁m₂)/r², where G is the gravitational constant. In free fall, all objects accelerate at the same rate regardless of mass (ignoring air resistance). Its value on Earth is approximately 9.8 m/s² and acts toward the center of the Earth. Weight depends on gravitational acceleration, whereas mass is constant everywhere.",
+      "concepts": [
+        {
+          "name": "Gravitation",
+          "definition": "Gravitation is the force of attraction between any two objects with mass.",
+          "intuition": "Everything pulls everything else, even if we don’t notice it.",
+          "explanation": "Gravitational force depends on the masses of objects and the distance between them. It is always attractive.",
+          "why_it_matters": "Gravitation explains why objects fall, planets revolve, and the universe holds together.",
+          "real_world_connection": "Falling objects, satellite motion, and tides are effects of gravitation.",
+          "common_mistakes": [
+            "Thinking gravity acts only on Earth",
+            "Assuming gravity is the strongest force"
+          ],
+          "exam_traps": [
+            "Incorrect explanation of attraction"
+          ],
+          "solver_steps": [
+            "Identify interacting masses",
+            "Consider distance between them"
+          ],
+          "applications": [
+            "Astronomy",
+            "Space science"
+          ],
+          "prerequisites": [
+            "Force"
+          ]
+        },
+        {
+          "name": "Universal Law of Gravitation",
+          "definition": "Every object in the universe attracts every other object with a force proportional to the product of their masses and inversely proportional to the square of the distance between them.",
+          "intuition": "Bigger objects pull harder; farther objects pull weaker.",
+          "explanation": "Mathematically expressed as F = G(m₁m₂)/r², where G is the gravitational constant.",
+          "why_it_matters": "This law unifies motion on Earth and motion in space.",
+          "real_world_connection": "Used to calculate satellite orbits and planetary motion.",
+          "common_mistakes": [
+            "Forgetting square of distance",
+            "Wrong unit substitution"
+          ],
+          "exam_traps": [
+            "Incorrect formula application"
+          ],
+          "solver_steps": [
+            "Write the formula",
+            "Substitute correct values",
+            "Solve carefully"
+          ],
+          "applications": [
+            "Orbital mechanics",
+            "Space missions"
+          ],
+          "prerequisites": [
+            "Newton’s laws",
+            "Algebra"
+          ]
+        },
+        {
+          "name": "Free Fall",
+          "definition": "Free fall is the motion of an object under the influence of gravity alone.",
+          "intuition": "Only gravity is acting, nothing else.",
+          "explanation": "In free fall, all objects accelerate at the same rate regardless of mass (ignoring air resistance).",
+          "why_it_matters": "This concept removes misconceptions about heavier objects falling faster.",
+          "real_world_connection": "Objects dropped from height fall freely.",
+          "common_mistakes": [
+            "Assuming heavier objects fall faster"
+          ],
+          "exam_traps": [
+            "Ignoring air resistance condition"
+          ],
+          "solver_steps": [
+            "Check forces acting",
+            "Apply acceleration due to gravity"
+          ],
+          "applications": [
+            "Motion analysis",
+            "Physics experiments"
+          ],
+          "prerequisites": [
+            "Acceleration"
+          ]
+        },
+        {
+          "name": "Acceleration Due to Gravity",
+          "definition": "Acceleration due to gravity is the acceleration experienced by an object due to Earth's gravitational pull.",
+          "intuition": "Gravity constantly speeds objects downward.",
+          "explanation": "Its value on Earth is approximately 9.8 m/s² and acts toward the center of the Earth.",
+          "why_it_matters": "It is used in almost all motion calculations involving falling objects.",
+          "real_world_connection": "Used in sports, construction safety, and engineering.",
+          "common_mistakes": [
+            "Using wrong sign convention",
+            "Confusing g with G"
+          ],
+          "exam_traps": [
+            "Incorrect unit usage"
+          ],
+          "solver_steps": [
+            "Identify direction",
+            "Use correct value of g"
+          ],
+          "applications": [
+            "Engineering calculations",
+            "Safety analysis"
+          ],
+          "prerequisites": [
+            "Free fall",
+            "Motion equations"
+          ]
+        },
+        {
+          "name": "Mass and Weight",
+          "definition": "Mass is the amount of matter in an object, while weight is the force exerted by gravity on that mass.",
+          "intuition": "Mass stays same; weight changes with gravity.",
+          "explanation": "Weight depends on gravitational acceleration, whereas mass is constant everywhere.",
+          "why_it_matters": "Clarifies differences between Earth and space conditions.",
+          "real_world_connection": "Astronauts feel weightless in space but still have mass.",
+          "common_mistakes": [
+            "Using mass and weight interchangeably"
+          ],
+          "exam_traps": [
+            "Wrong unit comparison"
+          ],
+          "solver_steps": [
+            "Identify given quantity",
+            "Use W = mg if needed"
+          ],
+          "applications": [
+            "Physics calculations",
+            "Space science"
+          ],
+          "prerequisites": [
+            "Gravitation",
+            "Force"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Work and Energy",
+      "chapter_objective": "",
+      "detailed_explanation": "In physics, work depends on force and displacement, not just effort. If there is no displacement, work done is zero. Energy exists in different forms such as kinetic energy and potential energy. Kinetic energy depends on mass and square of velocity. Gravitational potential energy depends on height and mass. Total energy of an isolated system remains constant.",
+      "concepts": [
+        {
+          "name": "Work",
+          "definition": "Work is said to be done when a force causes displacement of an object in the direction of the force.",
+          "intuition": "Pushing something but it doesn’t move means no work is done.",
+          "explanation": "In physics, work depends on force and displacement, not just effort. If there is no displacement, work done is zero.",
+          "why_it_matters": "This concept separates physical work from everyday language.",
+          "real_world_connection": "Lifting objects, pulling carts, and pushing boxes involve work.",
+          "common_mistakes": [
+            "Thinking work is done without displacement",
+            "Using everyday meaning instead of physics meaning"
+          ],
+          "exam_traps": [
+            "Forgetting direction of force"
+          ],
+          "solver_steps": [
+            "Check force applied",
+            "Check displacement",
+            "Confirm same direction"
+          ],
+          "applications": [
+            "Mechanical systems",
+            "Engineering basics"
+          ],
+          "prerequisites": [
+            "Force",
+            "Motion"
+          ]
+        },
+        {
+          "name": "Energy",
+          "definition": "Energy is the capacity to do work.",
+          "intuition": "If you can make something move, you have energy.",
+          "explanation": "Energy exists in different forms such as kinetic energy and potential energy.",
+          "why_it_matters": "Energy explains motion, heat, electricity, and life processes.",
+          "real_world_connection": "Food gives energy, fuel gives energy, batteries store energy.",
+          "common_mistakes": [
+            "Confusing energy with force"
+          ],
+          "exam_traps": [
+            "Wrong unit usage"
+          ],
+          "solver_steps": [
+            "Identify type of energy",
+            "Apply correct formula"
+          ],
+          "applications": [
+            "Power generation",
+            "Daily life activities"
+          ],
+          "prerequisites": [
+            "Work"
+          ]
+        },
+        {
+          "name": "Kinetic Energy",
+          "definition": "Kinetic energy is the energy possessed by an object due to its motion.",
+          "intuition": "If something is moving, it has kinetic energy.",
+          "explanation": "Kinetic energy depends on mass and square of velocity.",
+          "why_it_matters": "Explains why faster or heavier objects cause more damage.",
+          "real_world_connection": "Moving vehicles and flowing water have kinetic energy.",
+          "common_mistakes": [
+            "Ignoring velocity squared"
+          ],
+          "exam_traps": [
+            "Incorrect formula substitution"
+          ],
+          "solver_steps": [
+            "Identify mass",
+            "Identify velocity",
+            "Apply KE formula"
+          ],
+          "applications": [
+            "Vehicle safety",
+            "Mechanical design"
+          ],
+          "prerequisites": [
+            "Motion",
+            "Energy"
+          ]
+        },
+        {
+          "name": "Potential Energy",
+          "definition": "Potential energy is the energy possessed by an object due to its position or configuration.",
+          "intuition": "Stored energy waiting to be used.",
+          "explanation": "Gravitational potential energy depends on height and mass.",
+          "why_it_matters": "Explains stored energy and energy conversion.",
+          "real_world_connection": "Water stored in dams has potential energy.",
+          "common_mistakes": [
+            "Ignoring reference level"
+          ],
+          "exam_traps": [
+            "Wrong height selection"
+          ],
+          "solver_steps": [
+            "Identify mass",
+            "Identify height",
+            "Use correct reference"
+          ],
+          "applications": [
+            "Hydroelectric power",
+            "Energy storage"
+          ],
+          "prerequisites": [
+            "Gravitation",
+            "Energy"
+          ]
+        },
+        {
+          "name": "Law of Conservation of Energy",
+          "definition": "Energy can neither be created nor destroyed; it can only be transformed from one form to another.",
+          "intuition": "Energy just changes form, it never disappears.",
+          "explanation": "Total energy of an isolated system remains constant.",
+          "why_it_matters": "This is one of the most fundamental laws of physics.",
+          "real_world_connection": "Roller coasters, pendulums, and power plants follow this law.",
+          "common_mistakes": [
+            "Thinking energy is lost"
+          ],
+          "exam_traps": [
+            "Ignoring system boundaries"
+          ],
+          "solver_steps": [
+            "Identify initial energy",
+            "Identify final energy",
+            "Compare total energy"
+          ],
+          "applications": [
+            "Energy systems",
+            "Engineering analysis"
+          ],
+          "prerequisites": [
+            "Kinetic energy",
+            "Potential energy"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Sound",
+      "chapter_objective": "",
+      "detailed_explanation": "Sound is produced due to vibrations of objects and travels through a medium as waves. When an object vibrates, it causes surrounding particles to vibrate, producing sound waves. Sound travels as longitudinal waves through solids, liquids, and gases but not through vacuum. Loudness depends on amplitude, pitch depends on frequency, and quality depends on waveform. Human hearing range is approximately 20 Hz to 20,000 Hz. Below this is infrasonic and above is ultrasonic.",
+      "concepts": [
+        {
+          "name": "Sound",
+          "definition": "Sound is a form of energy that produces the sensation of hearing.",
+          "intuition": "If something vibrates, it can make sound.",
+          "explanation": "Sound is produced due to vibrations of objects and travels through a medium as waves.",
+          "why_it_matters": "Sound helps in communication and understanding the environment.",
+          "real_world_connection": "Speech, music, alarms, and animal calls depend on sound.",
+          "common_mistakes": [
+            "Thinking sound can travel in vacuum"
+          ],
+          "exam_traps": [
+            "Incorrect definition of sound"
+          ],
+          "solver_steps": [
+            "Identify vibrating source",
+            "Check presence of medium"
+          ],
+          "applications": [
+            "Communication systems",
+            "Music technology"
+          ],
+          "prerequisites": [
+            "Energy",
+            "Waves (basic idea)"
+          ]
+        },
+        {
+          "name": "Production of Sound",
+          "definition": "Sound is produced by vibrating objects.",
+          "intuition": "No vibration means no sound.",
+          "explanation": "When an object vibrates, it causes surrounding particles to vibrate, producing sound waves.",
+          "why_it_matters": "This explains how different instruments and voices produce sound.",
+          "real_world_connection": "Guitar strings, drums, and vocal cords vibrate to produce sound.",
+          "common_mistakes": [
+            "Assuming blowing air alone produces sound"
+          ],
+          "exam_traps": [
+            "Ignoring vibration source"
+          ],
+          "solver_steps": [
+            "Identify the vibrating object",
+            "Explain particle vibration"
+          ],
+          "applications": [
+            "Instrument design",
+            "Speech science"
+          ],
+          "prerequisites": [
+            "Sound"
+          ]
+        },
+        {
+          "name": "Propagation of Sound",
+          "definition": "Propagation of sound refers to the way sound travels through a medium.",
+          "intuition": "Sound moves by passing vibrations from one particle to another.",
+          "explanation": "Sound travels as longitudinal waves through solids, liquids, and gases but not through vacuum.",
+          "why_it_matters": "Explains why sound needs a medium.",
+          "real_world_connection": "Hearing underwater, sound insulation, and echoes.",
+          "common_mistakes": [
+            "Thinking sound travels like light"
+          ],
+          "exam_traps": [
+            "Wrong wave type identification"
+          ],
+          "solver_steps": [
+            "Identify medium",
+            "Describe particle motion"
+          ],
+          "applications": [
+            "Acoustics",
+            "Sound engineering"
+          ],
+          "prerequisites": [
+            "Sound",
+            "Particles of matter"
+          ]
+        },
+        {
+          "name": "Characteristics of Sound",
+          "definition": "The main characteristics of sound are loudness, pitch, and quality.",
+          "intuition": "Sound can be loud or soft, high or low.",
+          "explanation": "Loudness depends on amplitude, pitch depends on frequency, and quality depends on waveform.",
+          "why_it_matters": "These properties explain differences between sounds.",
+          "real_world_connection": "Music tuning and noise control rely on sound characteristics.",
+          "common_mistakes": [
+            "Confusing pitch with loudness"
+          ],
+          "exam_traps": [
+            "Wrong parameter association"
+          ],
+          "solver_steps": [
+            "Identify property",
+            "Link to physical quantity"
+          ],
+          "applications": [
+            "Music production",
+            "Noise management"
+          ],
+          "prerequisites": [
+            "Waves",
+            "Sound basics"
+          ]
+        },
+        {
+          "name": "Audible and Inaudible Sounds",
+          "definition": "Audible sounds can be heard by humans, while inaudible sounds cannot.",
+          "intuition": "Humans hear only a limited range.",
+          "explanation": "Human hearing range is approximately 20 Hz to 20,000 Hz. Below this is infrasonic and above is ultrasonic.",
+          "why_it_matters": "Explains medical imaging and animal communication.",
+          "real_world_connection": "Ultrasound is used in medical diagnosis.",
+          "common_mistakes": [
+            "Wrong frequency range values"
+          ],
+          "exam_traps": [
+            "Incorrect classification of sound type"
+          ],
+          "solver_steps": [
+            "Check frequency value",
+            "Compare with hearing range"
+          ],
+          "applications": [
+            "Medical imaging",
+            "Animal studies"
+          ],
+          "prerequisites": [
+            "Frequency",
+            "Sound characteristics"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 13,
+      "chapter_name": "Why Do We Fall Ill?",
+      "chapter_objective": "",
+      "detailed_explanation": "Health depends on physical condition, mental peace, and social environment. Disease disrupts one or more of these aspects. Immediate causes include bacteria, viruses, and parasites, while contributing causes weaken the body’s defenses. Infectious diseases are transmissible, whereas non-infectious diseases may result from genetic or lifestyle factors. Different diseases have different modes of transmission, which determine prevention methods. Prevention includes hygiene, vaccination, balanced diet, and clean environment.",
+      "concepts": [
+        {
+          "name": "Health and Disease",
+          "definition": "Health is a state of complete physical, mental, and social well-being, while disease is a condition that disturbs normal functioning of the body.",
+          "intuition": "Being healthy is more than just not being sick.",
+          "explanation": "Health depends on physical condition, mental peace, and social environment. Disease disrupts one or more of these aspects.",
+          "why_it_matters": "Understanding health helps prevent diseases and improve quality of life.",
+          "real_world_connection": "Public health systems aim to maintain community health.",
+          "common_mistakes": [
+            "Thinking health means only absence of disease"
+          ],
+          "exam_traps": [
+            "Incomplete definition of health"
+          ],
+          "solver_steps": [
+            "Define health",
+            "Differentiate from disease"
+          ],
+          "applications": [
+            "Healthcare planning",
+            "Personal well-being"
+          ],
+          "prerequisites": [
+            "Basic biology"
+          ]
+        },
+        {
+          "name": "Causes of Disease",
+          "definition": "Diseases are caused by immediate causes such as pathogens and contributing causes such as poor nutrition or environment.",
+          "intuition": "Illness usually has more than one reason.",
+          "explanation": "Immediate causes include bacteria, viruses, and parasites, while contributing causes weaken the body’s defenses.",
+          "why_it_matters": "Helps in prevention and treatment of diseases.",
+          "real_world_connection": "Malnutrition increases susceptibility to infections.",
+          "common_mistakes": [
+            "Ignoring contributing causes"
+          ],
+          "exam_traps": [
+            "Listing only pathogens as causes"
+          ],
+          "solver_steps": [
+            "Identify immediate cause",
+            "Identify contributing cause"
+          ],
+          "applications": [
+            "Disease prevention",
+            "Public health"
+          ],
+          "prerequisites": [
+            "Health and disease"
+          ]
+        },
+        {
+          "name": "Infectious and Non-infectious Diseases",
+          "definition": "Infectious diseases are caused by pathogens and can spread, while non-infectious diseases do not spread.",
+          "intuition": "Some diseases spread, some don’t.",
+          "explanation": "Infectious diseases are transmissible, whereas non-infectious diseases may result from genetic or lifestyle factors.",
+          "why_it_matters": "Determines control strategies and treatment approaches.",
+          "real_world_connection": "Tuberculosis is infectious; diabetes is non-infectious.",
+          "common_mistakes": [
+            "Assuming all diseases spread"
+          ],
+          "exam_traps": [
+            "Wrong classification of diseases"
+          ],
+          "solver_steps": [
+            "Identify cause",
+            "Check transmissibility"
+          ],
+          "applications": [
+            "Epidemiology",
+            "Medical diagnosis"
+          ],
+          "prerequisites": [
+            "Causes of disease"
+          ]
+        },
+        {
+          "name": "Means of Spread of Diseases",
+          "definition": "Diseases spread through air, water, food, contact, or vectors.",
+          "intuition": "Pathogens need routes to move between people.",
+          "explanation": "Different diseases have different modes of transmission, which determine prevention methods.",
+          "why_it_matters": "Understanding spread helps break the chain of infection.",
+          "real_world_connection": "Mosquitoes spread malaria; water spreads cholera.",
+          "common_mistakes": [
+            "Assuming same spread method for all diseases"
+          ],
+          "exam_traps": [
+            "Wrong mode of transmission"
+          ],
+          "solver_steps": [
+            "Identify disease",
+            "Determine transmission route"
+          ],
+          "applications": [
+            "Disease control",
+            "Public awareness"
+          ],
+          "prerequisites": [
+            "Infectious diseases"
+          ]
+        },
+        {
+          "name": "Prevention of Diseases",
+          "definition": "Prevention involves measures taken to avoid disease occurrence.",
+          "intuition": "It’s better to prevent than cure.",
+          "explanation": "Prevention includes hygiene, vaccination, balanced diet, and clean environment.",
+          "why_it_matters": "Prevention reduces disease burden and healthcare costs.",
+          "real_world_connection": "Vaccination programs prevent epidemics.",
+          "common_mistakes": [
+            "Ignoring lifestyle factors"
+          ],
+          "exam_traps": [
+            "Incomplete prevention measures"
+          ],
+          "solver_steps": [
+            "Identify disease type",
+            "Suggest appropriate preventive measures"
+          ],
+          "applications": [
+            "Public health planning",
+            "Personal healthcare"
+          ],
+          "prerequisites": [
+            "Causes of disease"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 14,
+      "chapter_name": "Why Do We Fall Ill?",
+      "chapter_objective": "",
+      "detailed_explanation": "Health depends on physical condition, mental peace, and social environment. Disease disrupts one or more of these aspects. Immediate causes include bacteria, viruses, and parasites, while contributing causes weaken the body’s defenses. Infectious diseases are transmissible, whereas non-infectious diseases may result from genetic or lifestyle factors. Different diseases have different modes of transmission, which determine prevention methods. Prevention includes hygiene, vaccination, balanced diet, and clean environment.",
+      "concepts": [
+        {
+          "name": "Health and Disease",
+          "definition": "Health is a state of complete physical, mental, and social well-being, while disease is a condition that disturbs normal functioning of the body.",
+          "intuition": "Being healthy is more than just not being sick.",
+          "explanation": "Health depends on physical condition, mental peace, and social environment. Disease disrupts one or more of these aspects.",
+          "why_it_matters": "Understanding health helps prevent diseases and improve quality of life.",
+          "real_world_connection": "Public health systems aim to maintain community health.",
+          "common_mistakes": [
+            "Thinking health means only absence of disease"
+          ],
+          "exam_traps": [
+            "Incomplete definition of health"
+          ],
+          "solver_steps": [
+            "Define health",
+            "Differentiate from disease"
+          ],
+          "applications": [
+            "Healthcare planning",
+            "Personal well-being"
+          ],
+          "prerequisites": [
+            "Basic biology"
+          ]
+        },
+        {
+          "name": "Causes of Disease",
+          "definition": "Diseases are caused by immediate causes such as pathogens and contributing causes such as poor nutrition or environment.",
+          "intuition": "Illness usually has more than one reason.",
+          "explanation": "Immediate causes include bacteria, viruses, and parasites, while contributing causes weaken the body’s defenses.",
+          "why_it_matters": "Helps in prevention and treatment of diseases.",
+          "real_world_connection": "Malnutrition increases susceptibility to infections.",
+          "common_mistakes": [
+            "Ignoring contributing causes"
+          ],
+          "exam_traps": [
+            "Listing only pathogens as causes"
+          ],
+          "solver_steps": [
+            "Identify immediate cause",
+            "Identify contributing cause"
+          ],
+          "applications": [
+            "Disease prevention",
+            "Public health"
+          ],
+          "prerequisites": [
+            "Health and disease"
+          ]
+        },
+        {
+          "name": "Infectious and Non-infectious Diseases",
+          "definition": "Infectious diseases are caused by pathogens and can spread, while non-infectious diseases do not spread.",
+          "intuition": "Some diseases spread, some don’t.",
+          "explanation": "Infectious diseases are transmissible, whereas non-infectious diseases may result from genetic or lifestyle factors.",
+          "why_it_matters": "Determines control strategies and treatment approaches.",
+          "real_world_connection": "Tuberculosis is infectious; diabetes is non-infectious.",
+          "common_mistakes": [
+            "Assuming all diseases spread"
+          ],
+          "exam_traps": [
+            "Wrong classification of diseases"
+          ],
+          "solver_steps": [
+            "Identify cause",
+            "Check transmissibility"
+          ],
+          "applications": [
+            "Epidemiology",
+            "Medical diagnosis"
+          ],
+          "prerequisites": [
+            "Causes of disease"
+          ]
+        },
+        {
+          "name": "Means of Spread of Diseases",
+          "definition": "Diseases spread through air, water, food, contact, or vectors.",
+          "intuition": "Pathogens need routes to move between people.",
+          "explanation": "Different diseases have different modes of transmission, which determine prevention methods.",
+          "why_it_matters": "Understanding spread helps break the chain of infection.",
+          "real_world_connection": "Mosquitoes spread malaria; water spreads cholera.",
+          "common_mistakes": [
+            "Assuming same spread method for all diseases"
+          ],
+          "exam_traps": [
+            "Wrong mode of transmission"
+          ],
+          "solver_steps": [
+            "Identify disease",
+            "Determine transmission route"
+          ],
+          "applications": [
+            "Disease control",
+            "Public awareness"
+          ],
+          "prerequisites": [
+            "Infectious diseases"
+          ]
+        },
+        {
+          "name": "Prevention of Diseases",
+          "definition": "Prevention involves measures taken to avoid disease occurrence.",
+          "intuition": "It’s better to prevent than cure.",
+          "explanation": "Prevention includes hygiene, vaccination, balanced diet, and clean environment.",
+          "why_it_matters": "Prevention reduces disease burden and healthcare costs.",
+          "real_world_connection": "Vaccination programs prevent epidemics.",
+          "common_mistakes": [
+            "Ignoring lifestyle factors"
+          ],
+          "exam_traps": [
+            "Incomplete prevention measures"
+          ],
+          "solver_steps": [
+            "Identify disease type",
+            "Suggest appropriate preventive measures"
+          ],
+          "applications": [
+            "Public health planning",
+            "Personal healthcare"
+          ],
+          "prerequisites": [
+            "Causes of disease"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_number": 15,
+      "chapter_name": "Improvement in Food Resources",
+      "chapter_objective": "",
+      "detailed_explanation": "As population increases, improving food production becomes essential to ensure food security. Improved varieties aim for higher yield, disease resistance, and better quality. It includes nutrient management, irrigation, and cropping patterns. It includes breeding, feeding, and disease control of animals. It balances productivity with environmental protection.",
+      "concepts": [
+        {
+          "name": "Food Resources",
+          "definition": "Food resources are materials obtained from plants and animals that provide nutrition to humans.",
+          "intuition": "Food is not just eating — it’s planned production.",
+          "explanation": "As population increases, improving food production becomes essential to ensure food security.",
+          "why_it_matters": "Adequate food production is necessary for survival and national development.",
+          "real_world_connection": "Agriculture and animal husbandry support human food needs.",
+          "common_mistakes": [
+            "Thinking food resources are unlimited"
+          ],
+          "exam_traps": [
+            "Ignoring sustainability aspect"
+          ],
+          "solver_steps": [
+            "Identify food source",
+            "Explain need for improvement"
+          ],
+          "applications": [
+            "Agriculture planning",
+            "Food security"
+          ],
+          "prerequisites": [
+            "Natural resources"
+          ]
+        },
+        {
+          "name": "Crop Variety Improvement",
+          "definition": "Crop variety improvement involves developing better crop varieties through scientific methods.",
+          "intuition": "Better seeds mean better harvest.",
+          "explanation": "Improved varieties aim for higher yield, disease resistance, and better quality.",
+          "why_it_matters": "Improves productivity and farmer income.",
+          "real_world_connection": "High-yield varieties helped during the Green Revolution.",
+          "common_mistakes": [
+            "Ignoring environmental suitability"
+          ],
+          "exam_traps": [
+            "Listing aims incorrectly"
+          ],
+          "solver_steps": [
+            "Identify desired trait",
+            "Explain breeding method"
+          ],
+          "applications": [
+            "Agricultural development"
+          ],
+          "prerequisites": [
+            "Plant biology"
+          ]
+        },
+        {
+          "name": "Crop Production Management",
+          "definition": "Crop production management includes practices used to grow crops efficiently.",
+          "intuition": "Good care leads to good crops.",
+          "explanation": "It includes nutrient management, irrigation, and cropping patterns.",
+          "why_it_matters": "Efficient management maximizes yield.",
+          "real_world_connection": "Modern farming uses planned crop management.",
+          "common_mistakes": [
+            "Ignoring soil nutrition"
+          ],
+          "exam_traps": [
+            "Incomplete process description"
+          ],
+          "solver_steps": [
+            "Prepare soil",
+            "Manage nutrients and water"
+          ],
+          "applications": [
+            "Farming practices"
+          ],
+          "prerequisites": [
+            "Soil and water resources"
+          ]
+        },
+        {
+          "name": "Animal Husbandry",
+          "definition": "Animal husbandry is the scientific management of domestic animals for food and other products.",
+          "intuition": "Healthy animals give better output.",
+          "explanation": "It includes breeding, feeding, and disease control of animals.",
+          "why_it_matters": "Supports food supply and rural economy.",
+          "real_world_connection": "Dairy, poultry, and fisheries rely on animal husbandry.",
+          "common_mistakes": [
+            "Ignoring animal health"
+          ],
+          "exam_traps": [
+            "Wrong examples"
+          ],
+          "solver_steps": [
+            "Identify animal type",
+            "Explain management practices"
+          ],
+          "applications": [
+            "Dairy farming",
+            "Poultry farming"
+          ],
+          "prerequisites": [
+            "Biology basics"
+          ]
+        },
+        {
+          "name": "Sustainable Food Production",
+          "definition": "Sustainable food production meets present food needs without harming future resources.",
+          "intuition": "Produce food today without ruining tomorrow.",
+          "explanation": "It balances productivity with environmental protection.",
+          "why_it_matters": "Ensures long-term food security.",
+          "real_world_connection": "Organic farming and conservation agriculture promote sustainability.",
+          "common_mistakes": [
+            "Confusing sustainability with low production"
+          ],
+          "exam_traps": [
+            "Ignoring environmental aspect"
+          ],
+          "solver_steps": [
+            "Identify sustainability practices",
+            "Explain benefits"
+          ],
+          "applications": [
+            "Environmental conservation",
+            "Agricultural policy"
+          ],
+          "prerequisites": [
+            "Natural resources",
+            "Food resources"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Settings | FindMentor</title>
+<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+:root{
+  --bg:#f9fafb;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --accent:#4f46e5;
+}
+body{background:var(--bg);color:var(--text)}
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border)
+}
+.header-inner{
+  max-width:800px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+.logo{font-weight:700}
+.logo span{color:var(--accent)}
+.back{
+  background:none;
+  border:1px solid var(--border);
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer
+}
+
+main{
+  max-width:800px;
+  margin:32px auto;
+  padding:0 20px
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px
+}
+
+h1{margin-bottom:6px}
+p.subtitle{color:var(--muted);margin-bottom:24px}
+
+label{
+  font-size:.85rem;
+  color:var(--muted);
+  display:block;
+  margin-bottom:6px
+}
+input,select{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  margin-bottom:18px
+}
+
+/* Checkbox */
+.checkbox-group{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:14px 24px;
+  margin-bottom:20px
+}
+.checkbox-item{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+.checkbox-item input{
+  width:16px;height:16px;cursor:pointer
+}
+.checkbox-item label{
+  font-size:.95rem;cursor:pointer
+}
+
+/* Save */
+button.save{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer
+}
+
+#status{
+  margin-top:14px;
+  font-size:.9rem;
+  color:green;
+  display:none
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Find<span>Mentor</span></div>
+    <button class="back" onclick="goBack()">← Dashboard</button>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <h1>Student Settings</h1>
+    <p class="subtitle">Manage your profile and learning preferences.</p>
+
+    <div id="lastLogin" class="status" style="display:none;margin-bottom:12px"></div>
+
+    <!-- NAME -->
+    <label for="name">Full Name</label>
+    <input id="name" placeholder="Your name" />
+
+    <!-- LEVEL -->
+    <label for="level">Class / Level</label>
+    <select id="level" onchange="handleLevelChange()">
+      <option value="">Select level</option>
+      <option value="school">School Student</option>
+      <option value="college">College Student</option>
+      <option value="self">Self Learner</option>
+    </select>
+
+    <!-- SCHOOL CLASS -->
+    <div id="schoolClassBox" style="display:none">
+      <label for="schoolClass">Class</label>
+      <select id="schoolClass">
+        <option value="">Select class</option>
+        <option value="6">Class 6</option>
+        <option value="7">Class 7</option>
+        <option value="8">Class 8</option>
+        <option value="9">Class 9</option>
+        <option value="10">Class 10</option>
+        <option value="11">Class 11</option>
+        <option value="12">Class 12</option>
+      </select>
+    </div>
+
+    <!-- COLLEGE YEAR -->
+    <div id="collegeYearBox" style="display:none">
+      <label for="collegeYear">Year</label>
+      <select id="collegeYear">
+        <option value="">Select year</option>
+        <option value="1">1st Year</option>
+        <option value="2">2nd Year</option>
+        <option value="3">3rd Year</option>
+        <option value="4">4th Year</option>
+      </select>
+    </div>
+
+    <!-- SUBJECTS -->
+    <label>Preferred Subjects</label>
+    <div class="checkbox-group">
+      <div class="checkbox-item"><input id="student-subject-maths" type="checkbox" value="maths"><label for="student-subject-maths">Mathematics</label></div>
+      <div class="checkbox-item"><input id="student-subject-physics" type="checkbox" value="physics"><label for="student-subject-physics">Physics</label></div>
+      <div class="checkbox-item"><input id="student-subject-chemistry" type="checkbox" value="chemistry"><label for="student-subject-chemistry">Chemistry</label></div>
+      <div class="checkbox-item"><input id="student-subject-biology" type="checkbox" value="biology"><label for="student-subject-biology">Biology</label></div>
+      <div class="checkbox-item"><input id="student-subject-cs" type="checkbox" value="cs"><label for="student-subject-cs">Computer Science</label></div>
+      <div class="checkbox-item"><input id="student-subject-other" type="checkbox" value="other"><label for="student-subject-other">General</label></div>
+    </div>
+
+    <button class="save" onclick="saveSettings()">Save Changes</button>
+    <div id="status">✅ Settings saved successfully</div>
+  </div>
+</main>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+  authDomain: "studio-6680101022-359df.firebaseapp.com",
+  projectId: "studio-6680101022-359df",
+  storageBucket: "studio-6680101022-359df.firebasestorage.app",
+  messagingSenderId: "938584797960",
+  appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser;
+// Cache DOM references (avoid using ids as implicit globals like `name`)
+const nameInput = document.getElementById('name');
+const levelSelect = document.getElementById('level');
+const schoolClassBox = document.getElementById('schoolClassBox');
+const schoolClass = document.getElementById('schoolClass');
+const collegeYearBox = document.getElementById('collegeYearBox');
+const collegeYear = document.getElementById('collegeYear');
+const statusDiv = document.getElementById('status');
+const lastLoginDiv = document.getElementById('lastLogin');
+
+onAuthStateChanged(auth, async user => {
+  if (!user) return location.href = "login.html";
+  currentUser = user;
+  try {
+    await setDoc(doc(db, "users", currentUser.uid), { lastlogin: serverTimestamp() }, { merge: true });
+  } catch (err) {
+    console.error('Failed to update lastlogin:', err);
+  }
+  try {
+    await loadSettings();
+  } catch (err) {
+    console.error('Error loading settings:', err);
+  }
+});
+
+window.handleLevelChange = () => {
+  const level = levelSelect.value;
+  schoolClassBox.style.display = level === "school" ? "block" : "none";
+  collegeYearBox.style.display = level === "college" ? "block" : "none";
+};
+
+async function loadSettings(){
+  if (!currentUser) return;
+  const ref = doc(db, "users", currentUser.uid);
+  const snap = await getDoc(ref);
+  if(!snap.exists()) return;
+
+  const d = snap.data();
+  nameInput.value = d.name || "";
+  levelSelect.value = d.level || "";
+  handleLevelChange();
+
+  if (d.lastlogin) {
+    try {
+      const date = d.lastlogin.toDate ? d.lastlogin.toDate() : new Date(d.lastlogin.seconds * 1000);
+      lastLoginDiv.innerText = `Last login: ${date.toLocaleString()}`;
+      lastLoginDiv.style.display = 'block';
+    } catch (err) {
+      console.error('Error formatting lastlogin:', err);
+    }
+  } else {
+    lastLoginDiv.style.display = 'none';
+  }
+
+  if(d.class) schoolClass.value = d.class;
+  if(d.year) collegeYear.value = d.year;
+
+  if(d.subjects){
+    document.querySelectorAll(".checkbox-group input")
+      .forEach(cb => cb.checked = d.subjects.includes(cb.value));
+  }
+}
+
+window.saveSettings = async () => {
+  if (!currentUser) return alert('Not signed in');
+
+  const levelVal = levelSelect.value;
+  const data = {
+    name: nameInput.value,
+    level: levelVal,
+    subjects: [...document.querySelectorAll(".checkbox-group input")]
+      .filter(cb => cb.checked)
+      .map(cb => cb.value),
+    role: "student"
+  };
+
+  if(levelVal === "school") data.class = schoolClass.value;
+  if(levelVal === "college") data.year = collegeYear.value;
+
+  try {
+    await setDoc(doc(db, "users", currentUser.uid), data, { merge:true });
+    statusDiv.style.display = "block";
+    setTimeout(() => statusDiv.style.display = "none", 2500);
+  } catch (err) {
+    console.error('Failed to save settings:', err);
+    alert('Could not save settings. Check console for details.');
+  }
+};
+
+window.goBack = () => location.href = "dashboard.html";
+</script>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+{
+  "class": 6,
+  "subject": "Computer Science",
+  "chapters": [
+    {
+      "chapter": "Types of Computers and Languages",
+      "topics": [
+        {
+          "topic": "Computer",
+          "intent": [
+            "define"
+          ],
+          "content": "A computer is an electronic machine that takes input, processes it, and gives output."
+        },
+        {
+          "topic": "Types of Computers",
+          "intent": [
+            "explain"
+          ],
+          "content": "Computers can be classified as desktop, laptop, tablet, and smartphone based on their size and use."
+        },
+        {
+          "topic": "Computer Languages",
+          "intent": [
+            "define"
+          ],
+          "content": "Computer languages are used to give instructions to a computer."
+        },
+        {
+          "topic": "Translator Programs",
+          "intent": [
+            "define"
+          ],
+          "content": "Translator programs convert human-readable instructions into machine language."
+        }
+      ]
+    },
+    {
+      "chapter": "Services on the Internet",
+      "topics": [
+        {
+          "topic": "Internet",
+          "intent": [
+            "define"
+          ],
+          "content": "The Internet is a global network that connects computers worldwide."
+        },
+        {
+          "topic": "Popular Internet Services",
+          "intent": [
+            "example"
+          ],
+          "content": "Email, search engines, and websites are popular Internet services."
+        },
+        {
+          "topic": "Threats on the Internet",
+          "intent": [
+            "explain"
+          ],
+          "content": "Internet threats include viruses, hacking, and online fraud."
+        },
+        {
+          "topic": "Safe Use of Internet",
+          "intent": [
+            "explain"
+          ],
+          "content": "Using strong passwords and avoiding unknown links helps stay safe online."
+        }
+      ]
+    },
+    {
+      "chapter": "Features in a Presentation",
+      "topics": [
+        {
+          "topic": "Presentation",
+          "intent": [
+            "define"
+          ],
+          "content": "A presentation is a set of slides used to show information visually."
+        },
+        {
+          "topic": "Animation Effects",
+          "intent": [
+            "define"
+          ],
+          "content": "Animations are visual effects applied to text or objects in slides."
+        },
+        {
+          "topic": "Google Slides Features",
+          "intent": [
+            "explain"
+          ],
+          "content": "Google Slides allows creating, editing, and sharing presentations online."
+        }
+      ]
+    },
+    {
+      "chapter": "Editing and Formatting Data in Google Sheets",
+      "topics": [
+        {
+          "topic": "Spreadsheet",
+          "intent": [
+            "define"
+          ],
+          "content": "A spreadsheet is used to organize data in rows and columns."
+        },
+        {
+          "topic": "Entering Data",
+          "intent": [
+            "explain"
+          ],
+          "content": "Data in Google Sheets can be entered as text or numbers."
+        },
+        {
+          "topic": "Formatting Data",
+          "intent": [
+            "explain"
+          ],
+          "content": "Formatting makes data clearer by changing font, color, and alignment."
+        }
+      ]
+    },
+    {
+      "chapter": "Let Us Design in Canva",
+      "topics": [
+        {
+          "topic": "Canva",
+          "intent": [
+            "define"
+          ],
+          "content": "Canva is an online design tool used to create posters, presentations, and graphics."
+        },
+        {
+          "topic": "Adding Shapes and Graphics",
+          "intent": [
+            "explain"
+          ],
+          "content": "Shapes and graphics can be added in Canva to make designs attractive."
+        },
+        {
+          "topic": "Editing an Image",
+          "intent": [
+            "explain"
+          ],
+          "content": "Images can be resized, cropped, and adjusted using Canva tools."
+        }
+      ]
+    },
+    {
+      "chapter": "Creating Mind Maps with Canva",
+      "topics": [
+        {
+          "topic": "Mind Map",
+          "intent": [
+            "define"
+          ],
+          "content": "A mind map is a diagram used to organize ideas visually."
+        },
+        {
+          "topic": "Creating a Mind Map",
+          "intent": [
+            "explain"
+          ],
+          "content": "Canva provides templates to easily create mind maps."
+        },
+        {
+          "topic": "Formatting Mind Maps",
+          "intent": [
+            "explain"
+          ],
+          "content": "Text, colors, and branches can be edited to improve clarity."
+        }
+      ]
+    },
+    {
+      "chapter": "Learn to Think Using Algorithms",
+      "topics": [
+        {
+          "topic": "Algorithm",
+          "intent": [
+            "define"
+          ],
+          "content": "An algorithm is a step-by-step method to solve a problem."
+        },
+        {
+          "topic": "Characteristics of an Algorithm",
+          "intent": [
+            "explain"
+          ],
+          "content": "An algorithm must be clear, finite, and easy to understand."
+        },
+        {
+          "topic": "Flowchart",
+          "intent": [
+            "define"
+          ],
+          "content": "A flowchart is a diagram that represents the steps of an algorithm."
+        }
+      ]
+    },
+    {
+      "chapter": "Introduction to Python",
+      "topics": [
+        {
+          "topic": "Python",
+          "intent": [
+            "define"
+          ],
+          "content": "Python is a simple programming language used to give instructions to a computer."
+        },
+        {
+          "topic": "Data Types",
+          "intent": [
+            "define"
+          ],
+          "content": "Data types specify the type of value such as numbers or text."
+        },
+        {
+          "topic": "Variables",
+          "intent": [
+            "define"
+          ],
+          "content": "Variables are used to store values in a program."
+        }
+      ]
+    },
+    {
+      "chapter": "Operators in Python",
+      "topics": [
+        {
+          "topic": "Operators",
+          "intent": [
+            "define"
+          ],
+          "content": "Operators are symbols used to perform operations on values."
+        },
+        {
+          "topic": "Arithmetic Operators",
+          "intent": [
+            "explain"
+          ],
+          "content": "Arithmetic operators are used for addition, subtraction, multiplication, and division."
+        }
+      ]
+    },
+    {
+      "chapter": "Conditional Statements in Python",
+      "topics": [
+        {
+          "topic": "Conditional Statements",
+          "intent": [
+            "define"
+          ],
+          "content": "Conditional statements are used to make decisions in a program."
+        },
+        {
+          "topic": "If Statement",
+          "intent": [
+            "define"
+          ],
+          "content": "The if statement checks a condition and executes code if it is true."
+        }
+      ]
+    },
+    {
+      "chapter": "Web Development Basics",
+      "topics": [
+        {
+          "topic": "HTML",
+          "intent": [
+            "define"
+          ],
+          "content": "HTML is used to create the structure of a web page."
+        },
+        {
+          "topic": "HTML Tags",
+          "intent": [
+            "define"
+          ],
+          "content": "HTML tags are used to define elements on a web page."
+        },
+        {
+          "topic": "CSS",
+          "intent": [
+            "define"
+          ],
+          "content": "CSS is used to style and design web pages."
+        }
+      ]
+    }
+  ]
+}

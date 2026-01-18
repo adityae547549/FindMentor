@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chat | FindMentor</title>
+<style>
+body{font-family:Inter,sans-serif;background:#f9fafb}
+.chat{max-width:600px;margin:40px auto;background:#fff;border-radius:12px;padding:16px}
+.msg{margin-bottom:8px;padding:8px;border-radius:8px}
+.me{background:#e0e7ff;text-align:right}
+.other{background:#f1f5f9}
+input{width:100%;padding:10px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="chat">
+  <div id="messages"></div>
+  <input id="text" placeholder="Type a message…" />
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  getFirestore, collection, addDoc,
+  query, orderBy, onSnapshot, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+  authDomain: "studio-6680101022-359df.firebaseapp.com",
+  projectId: "studio-6680101022-359df",
+  storageBucket: "studio-6680101022-359df.firebasestorage.app",
+  messagingSenderId: "938584797960",
+  appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const requestId = new URLSearchParams(location.search).get("id");
+const messagesDiv = document.getElementById("messages");
+const textInput = document.getElementById("text");
+
+onAuthStateChanged(auth, user => {
+  if (!user) {
+    location.href = "login.html";
+    return;
+  }
+
+  if (!requestId) {
+    messagesDiv.innerHTML = "<div class=\"msg other\">No chat selected.</div>";
+    return;
+  }
+
+  const q = query(
+    collection(db,"chats",requestId,"messages"),
+    orderBy("createdAt")
+  );
+
+  onSnapshot(q, snap => {
+    messagesDiv.innerHTML = "";
+    snap.forEach(d=>{
+      const m=d.data();
+      messagesDiv.innerHTML += `
+        <div class="msg ${m.senderId===user.uid?"me":"other"}">
+          ${m.text}
+        </div>
+      `;
+    });
+  });
+
+  textInput.addEventListener("keydown", async e=>{
+    if(e.key==="Enter" && textInput.value.trim()){
+      await addDoc(collection(db,"chats",requestId,"messages"),{
+        senderId:user.uid,
+        text:textInput.value,
+        createdAt:serverTimestamp()
+      });
+      textInput.value="";
+    }
+  });
+});
+</script>
+</body>
+</html>

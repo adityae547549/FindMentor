@@ -1,0 +1,266 @@
+{
+  "class": 6,
+  "subject": "Mathematics",
+  "chapters": [
+    {
+      "chapter": "Number System",
+      "topics": [
+        {
+          "topic": "Natural Numbers",
+          "intent": ["define"],
+          "content": "Natural numbers are counting numbers starting from 1, such as 1, 2, 3 and so on."
+        },
+        {
+          "topic": "Whole Numbers",
+          "intent": ["define"],
+          "content": "Whole numbers include all natural numbers and zero."
+        },
+        {
+          "topic": "Number Line",
+          "intent": ["explain"],
+          "content": "A number line is a straight line on which numbers are shown at equal distances."
+        }
+      ]
+    },
+    {
+      "chapter": "Whole Numbers",
+      "topics": [
+        {
+          "topic": "Successor and Predecessor",
+          "intent": ["define"],
+          "content": "The successor of a number is one more than the number, and the predecessor is one less."
+        },
+        {
+          "topic": "Properties of Whole Numbers",
+          "intent": ["explain"],
+          "content": "Whole numbers follow properties like closure, commutativity and associativity."
+        }
+      ]
+    },
+    {
+      "chapter": "Integers",
+      "topics": [
+        {
+          "topic": "Integers",
+          "intent": ["define"],
+          "content": "Integers include positive numbers, negative numbers and zero."
+        },
+        {
+          "topic": "Addition of Integers",
+          "intent": ["explain"],
+          "content": "Addition of integers depends on the signs of the numbers being added."
+        },
+        {
+          "topic": "Subtraction of Integers",
+          "intent": ["explain"],
+          "content": "Subtraction of integers can be understood using a number line."
+        }
+      ]
+    },
+    {
+      "chapter": "Simplification",
+      "topics": [
+        {
+          "topic": "Order of Operations",
+          "intent": ["define", "explain"],
+          "content": "Operations are performed in a fixed order: brackets, multiplication, division, addition and subtraction."
+        },
+        {
+          "topic": "Use of Brackets",
+          "intent": ["explain"],
+          "content": "Brackets are used to group numbers and decide the order of operations."
+        }
+      ]
+    },
+    {
+      "chapter": "Factors and Multiples",
+      "topics": [
+        {
+          "topic": "Factors",
+          "intent": ["define"],
+          "content": "Factors are numbers that divide another number exactly."
+        },
+        {
+          "topic": "Multiples",
+          "intent": ["define"],
+          "content": "Multiples are numbers obtained by multiplying a number by whole numbers."
+        },
+        {
+          "topic": "Prime and Composite Numbers",
+          "intent": ["difference"],
+          "content": "Prime numbers have only two factors, while composite numbers have more than two factors."
+        }
+      ]
+    },
+    {
+      "chapter": "Fractions",
+      "topics": [
+        {
+          "topic": "Fraction",
+          "intent": ["define"],
+          "content": "A fraction represents a part of a whole."
+        },
+        {
+          "topic": "Types of Fractions",
+          "intent": ["explain"],
+          "content": "Fractions can be proper, improper or mixed."
+        },
+        {
+          "topic": "Equivalent Fractions",
+          "intent": ["explain"],
+          "content": "Equivalent fractions represent the same value though they look different."
+        }
+      ]
+    },
+    {
+      "chapter": "Decimals",
+      "topics": [
+        {
+          "topic": "Decimal Numbers",
+          "intent": ["define"],
+          "content": "Decimal numbers are numbers with a decimal point."
+        },
+        {
+          "topic": "Place Value of Decimals",
+          "intent": ["explain"],
+          "content": "Digits after the decimal point represent tenths, hundredths and so on."
+        }
+      ]
+    },
+    {
+      "chapter": "Algebraic Expressions",
+      "topics": [
+        {
+          "topic": "Variables",
+          "intent": ["define"],
+          "content": "A variable is a symbol used to represent an unknown number."
+        },
+        {
+          "topic": "Algebraic Expression",
+          "intent": ["define"],
+          "content": "An algebraic expression is a combination of variables and numbers using operations."
+        }
+      ]
+    },
+    {
+      "chapter": "Linear Equations in One Variable",
+      "topics": [
+        {
+          "topic": "Linear Equation",
+          "intent": ["define"],
+          "content": "A linear equation in one variable has only one variable with power one."
+        },
+        {
+          "topic": "Solution of Linear Equation",
+          "intent": ["explain"],
+          "content": "Solving a linear equation means finding the value of the variable that makes the equation true."
+        }
+      ]
+    },
+    {
+      "chapter": "Ratio, Proportion and Unitary Method",
+      "topics": [
+        {
+          "topic": "Ratio",
+          "intent": ["define"],
+          "content": "Ratio compares two quantities of the same kind."
+        },
+        {
+          "topic": "Proportion",
+          "intent": ["define"],
+          "content": "Proportion states that two ratios are equal."
+        },
+        {
+          "topic": "Unitary Method",
+          "intent": ["explain"],
+          "content": "Unitary method is used to find the value of a single unit."
+        }
+      ]
+    },
+    {
+      "chapter": "Line Segment, Ray and Line",
+      "topics": [
+        {
+          "topic": "Line",
+          "intent": ["define"],
+          "content": "A line has no fixed length and extends endlessly in both directions."
+        },
+        {
+          "topic": "Line Segment",
+          "intent": ["define"],
+          "content": "A line segment has a fixed length with two end points."
+        },
+        {
+          "topic": "Ray",
+          "intent": ["define"],
+          "content": "A ray has one end point and extends endlessly in one direction."
+        }
+      ]
+    },
+    {
+      "chapter": "Parallel Lines, Angles and Their Measurements",
+      "topics": [
+        {
+          "topic": "Parallel Lines",
+          "intent": ["define"],
+          "content": "Parallel lines never meet and are always at the same distance from each other."
+        },
+        {
+          "topic": "Angles",
+          "intent": ["define"],
+          "content": "An angle is formed when two lines meet at a point."
+        },
+        {
+          "topic": "Types of Angles",
+          "intent": ["explain"],
+          "content": "Angles can be acute, obtuse, right or straight."
+        }
+      ]
+    },
+    {
+      "chapter": "Perimeter and Area",
+      "topics": [
+        {
+          "topic": "Perimeter",
+          "intent": ["define"],
+          "content": "Perimeter is the total distance around a closed shape."
+        },
+        {
+          "topic": "Area",
+          "intent": ["define"],
+          "content": "Area is the space covered by a closed shape."
+        }
+      ]
+    },
+    {
+      "chapter": "Symmetry",
+      "topics": [
+        {
+          "topic": "Line of Symmetry",
+          "intent": ["define"],
+          "content": "A line of symmetry divides a shape into two equal halves."
+        },
+        {
+          "topic": "Symmetrical Shapes",
+          "intent": ["explain"],
+          "content": "Shapes that can be divided into equal halves are called symmetrical shapes."
+        }
+      ]
+    },
+    {
+      "chapter": "Data Handling",
+      "topics": [
+        {
+          "topic": "Data",
+          "intent": ["define"],
+          "content": "Data is a collection of information in numerical form."
+        },
+        {
+          "topic": "Bar Graph",
+          "intent": ["explain"],
+          "content": "A bar graph represents data using rectangular bars."
+        }
+      ]
+    }
+  ]
+}

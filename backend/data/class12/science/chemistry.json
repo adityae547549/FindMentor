@@ -1,0 +1,620 @@
+{
+  "class": 12,
+  "subject": "Chemistry",
+  "board": "CBSE / NCERT aligned",
+  "description": "",
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_name": "The Solid State",
+      "chapter_objective": "To understand the structure, classification, and properties of solid substances based on the arrangement of their constituent particles.",
+      "detailed_explanation": "Solids are substances in which particles are closely packed and possess a definite shape and volume. This chapter explains crystalline and amorphous solids, unit cells, packing efficiency, and defects in solids that influence physical properties such as density, conductivity, and hardness.",
+      "basic_concepts": {
+        "solid": "A state of matter having definite shape and volume.",
+        "constituent_particles": [
+          "Atoms",
+          "Ions",
+          "Molecules"
+        ]
+      },
+      "classification_of_solids": [
+        "Crystalline solids",
+        "Amorphous solids"
+      ],
+      "crystalline_solids": {
+        "characteristics": [
+          "Long-range order",
+          "Definite geometrical shape",
+          "Sharp melting point"
+        ],
+        "examples": [
+          "Sodium chloride",
+          "Quartz",
+          "Diamond"
+        ]
+      },
+      "amorphous_solids": {
+        "characteristics": [
+          "Irregular particle arrangement",
+          "No definite melting point",
+          "Isotropic nature"
+        ],
+        "examples": [
+          "Glass",
+          "Rubber",
+          "Plastic"
+        ]
+      },
+      "unit_cell": {
+        "definition": "The smallest repeating unit in a crystal lattice.",
+        "types": [
+          "Simple cubic",
+          "Body-centered cubic",
+          "Face-centered cubic"
+        ]
+      },
+      "packing_efficiency": [
+        "Simple cubic – 52%",
+        "Body-centered cubic – 68%",
+        "Face-centered cubic – 74%"
+      ],
+      "defects_in_solids": [
+        "Vacancy defect",
+        "Interstitial defect",
+        "Schottky defect",
+        "Frenkel defect"
+      ],
+      "learning_outcomes": [
+        "Differentiate crystalline and amorphous solids",
+        "Understand crystal structures and unit cells",
+        "Explain defects and their effects on properties"
+      ]
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Solutions",
+      "chapter_objective": "To study different types of solutions and express concentration in various quantitative terms.",
+      "detailed_explanation": "A solution is a homogeneous mixture of solute and solvent. This chapter covers types of solutions, ways to express concentration, solubility, and colligative properties which depend on the number of solute particles present.",
+      "basic_terms": {
+        "solution": "A homogeneous mixture of solute and solvent.",
+        "solute": "Substance that gets dissolved.",
+        "solvent": "Substance that dissolves the solute."
+      },
+      "types_of_solutions": [
+        "Solid in liquid",
+        "Liquid in liquid",
+        "Gas in liquid",
+        "Gas in gas"
+      ],
+      "concentration_terms": [
+        "Mass percentage",
+        "Volume percentage",
+        "Mole fraction",
+        "Molarity",
+        "Molality"
+      ],
+      "solubility": {
+        "definition": "Maximum amount of solute that dissolves in a given amount of solvent at a specified temperature.",
+        "factors": [
+          "Nature of solute and solvent",
+          "Temperature",
+          "Pressure (for gases)"
+        ]
+      },
+      "colligative_properties": [
+        "Relative lowering of vapour pressure",
+        "Elevation of boiling point",
+        "Depression of freezing point",
+        "Osmotic pressure"
+      ],
+      "abnormal_molar_mass": {
+        "causes": [
+          "Association of solute particles",
+          "Dissociation of solute particles"
+        ]
+      },
+      "learning_outcomes": [
+        "Use concentration formulas correctly",
+        "Understand colligative properties",
+        "Solve numerical problems related to solutions"
+      ]
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Electrochemistry",
+      "chapter_objective": "To understand the relationship between chemical reactions and electrical energy.",
+      "detailed_explanation": "Electrochemistry deals with the conversion of chemical energy into electrical energy and vice versa. This chapter explains electrochemical cells, redox reactions, electrode potentials, Nernst equation, and Faraday’s laws of electrolysis.",
+      "basic_concepts": {
+        "electrochemical_cell": "A device that converts chemical energy into electrical energy.",
+        "redox_reaction": "A reaction involving simultaneous oxidation and reduction."
+      },
+      "types_of_cells": [
+        "Galvanic cell",
+        "Electrolytic cell"
+      ],
+      "electrode_potential": {
+        "standard_electrode_potential": "Electrode potential measured under standard conditions."
+      },
+      "emf_of_cell": {
+        "definition": "Difference between electrode potentials of cathode and anode."
+      },
+      "nernst_equation": {
+        "purpose": "Relates electrode potential with concentration of ions."
+      },
+      "electrolysis": {
+        "definition": "Chemical decomposition caused by passage of electric current."
+      },
+      "faradays_laws": [
+        "Mass deposited is proportional to charge passed",
+        "Mass deposited is proportional to equivalent weight"
+      ],
+      "learning_outcomes": [
+        "Calculate cell emf",
+        "Apply Nernst equation",
+        "Solve numerical problems based on electrochemistry"
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Chemical Kinetics",
+      "chapter_objective": "To study the rate of chemical reactions and understand the factors that influence reaction speed.",
+      "detailed_explanation": "Chemical kinetics deals with the speed at which chemical reactions occur and the factors that affect these rates. Understanding reaction rates helps in controlling industrial processes and predicting reaction behaviour.",
+      "basic_concepts": {
+        "rate_of_reaction": "Change in concentration of reactants or products per unit time.",
+        "average_rate": "Rate calculated over a finite time interval.",
+        "instantaneous_rate": "Rate of reaction at a particular moment."
+      },
+      "factors_affecting_rate": [
+        "Nature of reactants",
+        "Concentration of reactants",
+        "Temperature",
+        "Presence of catalyst",
+        "Surface area"
+      ],
+      "rate_law": {
+        "definition": "Mathematical expression relating rate of reaction with concentration of reactants.",
+        "order_of_reaction": "Sum of powers of concentration terms in rate law."
+      },
+      "integrated_rate_equations": [
+        "Zero order reactions",
+        "First order reactions"
+      ],
+      "half_life": {
+        "definition": "Time required for concentration of reactant to reduce to half of its initial value.",
+        "characteristic": "Independent of initial concentration for first order reactions."
+      },
+      "activation_energy": {
+        "definition": "Minimum energy required for a reaction to occur.",
+        "arrhenius_equation": "Relates rate constant to temperature."
+      },
+      "learning_outcomes": [
+        "Determine order of reactions",
+        "Apply rate laws correctly",
+        "Solve numerical problems using kinetics equations"
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Surface Chemistry",
+      "chapter_objective": "To study chemical phenomena occurring at surfaces and interfaces.",
+      "detailed_explanation": "Surface chemistry focuses on processes that take place at the surface of materials. It plays an important role in catalysis, colloidal systems, and industrial applications.",
+      "adsorption": {
+        "definition": "Accumulation of substances on the surface of solids or liquids.",
+        "types": [
+          "Physical adsorption",
+          "Chemical adsorption"
+        ]
+      },
+      "factors_affecting_adsorption": [
+        "Nature of adsorbent",
+        "Nature of adsorbate",
+        "Pressure",
+        "Temperature"
+      ],
+      "catalysis": {
+        "definition": "Increase in rate of reaction due to presence of a catalyst.",
+        "types": [
+          "Homogeneous catalysis",
+          "Heterogeneous catalysis"
+        ]
+      },
+      "colloids": {
+        "definition": "Heterogeneous systems with particle size between true solutions and suspensions.",
+        "classification": [
+          "Sol",
+          "Gel",
+          "Emulsion",
+          "Aerosol"
+        ]
+      },
+      "properties_of_colloids": [
+        "Tyndall effect",
+        "Brownian motion",
+        "Electrophoresis"
+      ],
+      "learning_outcomes": [
+        "Differentiate adsorption and absorption",
+        "Understand catalytic processes",
+        "Explain properties of colloidal systems"
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "General Principles and Processes of Isolation of Elements",
+      "chapter_objective": "To understand the methods of extraction and purification of metals from their ores.",
+      "detailed_explanation": "This chapter explains the principles of metallurgy, including concentration of ores, extraction of metals, and refining processes. These methods are essential for industrial production of metals.",
+      "metallurgy": {
+        "definition": "Science and technology of extraction of metals from their ores."
+      },
+      "types_of_ores": [
+        "Oxide ores",
+        "Sulphide ores",
+        "Carbonate ores"
+      ],
+      "concentration_of_ores": [
+        "Hydraulic washing",
+        "Froth flotation process",
+        "Magnetic separation"
+      ],
+      "extraction_processes": [
+        "Roasting",
+        "Calcination",
+        "Reduction"
+      ],
+      "refining_methods": [
+        "Electrolytic refining",
+        "Zone refining",
+        "Vapour phase refining"
+      ],
+      "learning_outcomes": [
+        "Select appropriate extraction methods",
+        "Understand refining techniques",
+        "Explain metallurgy processes logically"
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Haloalkanes and Haloarenes",
+      "chapter_objective": "To study the preparation, properties, reactions, and uses of haloalkanes and haloarenes.",
+      "detailed_explanation": "Haloalkanes and haloarenes are organic compounds in which one or more hydrogen atoms of hydrocarbons are replaced by halogen atoms. This chapter explains their classification, methods of preparation, physical and chemical properties, and reaction mechanisms such as nucleophilic substitution.",
+      "basic_concepts": {
+        "haloalkanes": "Aliphatic hydrocarbons containing halogen atoms.",
+        "haloarenes": "Aromatic hydrocarbons containing halogen atoms."
+      },
+      "classification": [
+        "Monohaloalkanes",
+        "Dihaloalkanes",
+        "Trihaloalkanes",
+        "Aryl halides"
+      ],
+      "methods_of_preparation": [
+        "From alcohols",
+        "From alkanes",
+        "Halogen exchange reactions"
+      ],
+      "chemical_reactions": {
+        "nucleophilic_substitution": [
+          "SN1 mechanism",
+          "SN2 mechanism"
+        ],
+        "elimination_reaction": "Dehydrohalogenation",
+        "reaction_with_metals": "Formation of Grignard reagents"
+      },
+      "environmental_effects": [
+        "Ozone layer depletion by chlorofluorocarbons",
+        "Toxicity of some halogen compounds"
+      ],
+      "learning_outcomes": [
+        "Differentiate haloalkanes and haloarenes",
+        "Understand reaction mechanisms",
+        "Predict products of substitution and elimination reactions"
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Alcohols, Phenols and Ethers",
+      "chapter_objective": "To study the structure, preparation, properties, and reactions of alcohols, phenols, and ethers.",
+      "detailed_explanation": "Alcohols, phenols, and ethers are organic compounds containing oxygen. Their chemical behaviour is influenced by the nature of the functional group and structure of the molecule. This chapter explains their preparation methods, physical properties, and important chemical reactions.",
+      "classification": {
+        "alcohols": [
+          "Primary alcohols",
+          "Secondary alcohols",
+          "Tertiary alcohols"
+        ],
+        "phenols": "Compounds in which hydroxyl group is directly attached to an aromatic ring.",
+        "ethers": "Organic compounds having R–O–R structure."
+      },
+      "methods_of_preparation": [
+        "From haloalkanes",
+        "From alkenes",
+        "From Grignard reagents"
+      ],
+      "important_reactions": [
+        "Oxidation of alcohols",
+        "Dehydration of alcohols",
+        "Reactions of phenols",
+        "Cleavage of ethers"
+      ],
+      "uses": [
+        "Alcohols as solvents and fuels",
+        "Phenols as disinfectants",
+        "Ethers as anesthetics"
+      ],
+      "learning_outcomes": [
+        "Compare acidity of alcohols and phenols",
+        "Identify reaction products",
+        "Understand structure–property relationship"
+      ]
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Aldehydes, Ketones and Carboxylic Acids",
+      "chapter_objective": "To understand the structure, preparation, properties, and reactions of carbonyl compounds.",
+      "detailed_explanation": "Aldehydes, ketones, and carboxylic acids contain the carbonyl group and show characteristic chemical behaviour. This chapter focuses on their preparation methods, nucleophilic addition reactions, oxidation-reduction reactions, and distinguishing tests.",
+      "functional_groups": {
+        "aldehyde": "-CHO",
+        "ketone": ">C=O",
+        "carboxylic_acid": "-COOH"
+      },
+      "methods_of_preparation": [
+        "Oxidation of alcohols",
+        "Hydration of alkynes",
+        "Hydrolysis of nitriles"
+      ],
+      "chemical_reactions": [
+        "Nucleophilic addition reactions",
+        "Oxidation and reduction reactions",
+        "Reactions of carboxylic acids"
+      ],
+      "important_tests": [
+        "Tollens’ test",
+        "Fehling’s test"
+      ],
+      "uses": [
+        "Formaldehyde in resins",
+        "Acetic acid in food and vinegar"
+      ],
+      "learning_outcomes": [
+        "Distinguish aldehydes and ketones using tests",
+        "Predict reaction products",
+        "Understand importance of carbonyl compounds"
+      ]
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Amines",
+      "chapter_objective": "To study the classification, preparation, properties, and chemical reactions of amines.",
+      "detailed_explanation": "Amines are organic compounds derived from ammonia by replacement of one or more hydrogen atoms by alkyl or aryl groups. They play an important role in organic chemistry due to their basic nature and wide applications in pharmaceuticals, dyes, and polymers.",
+      "basic_concepts": {
+        "amines": "Organic compounds containing one or more amino groups (-NH2, -NHR, -NR2)."
+      },
+      "classification": [
+        "Primary amines",
+        "Secondary amines",
+        "Tertiary amines",
+        "Aliphatic amines",
+        "Aromatic amines"
+      ],
+      "methods_of_preparation": [
+        "Reduction of nitro compounds",
+        "Gabriel phthalimide synthesis",
+        "Hoffmann bromamide degradation"
+      ],
+      "chemical_properties": [
+        "Basic nature of amines",
+        "Alkylation and acylation reactions",
+        "Diazotization of aromatic amines"
+      ],
+      "important_test": {
+        "carbylamine_test": "Used to distinguish primary amines from secondary and tertiary amines."
+      },
+      "uses": [
+        "Manufacture of drugs and dyes",
+        "Preparation of polymers and rubber chemicals"
+      ],
+      "learning_outcomes": [
+        "Classify different types of amines",
+        "Predict reactions of amines",
+        "Apply chemical tests for identification"
+      ]
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Biomolecules",
+      "chapter_objective": "To understand the structure and function of biologically important organic compounds.",
+      "detailed_explanation": "Biomolecules are naturally occurring organic compounds essential for life. This chapter explains carbohydrates, proteins, lipids, nucleic acids, and enzymes, emphasizing their structure–function relationships.",
+      "major_biomolecules": [
+        "Carbohydrates",
+        "Proteins",
+        "Lipids",
+        "Nucleic acids"
+      ],
+      "carbohydrates": {
+        "types": [
+          "Monosaccharides",
+          "Disaccharides",
+          "Polysaccharides"
+        ],
+        "examples": [
+          "Glucose",
+          "Sucrose",
+          "Starch"
+        ]
+      },
+      "proteins": {
+        "basic_units": "Amino acids",
+        "levels_of_structure": [
+          "Primary structure",
+          "Secondary structure",
+          "Tertiary structure",
+          "Quaternary structure"
+        ]
+      },
+      "enzymes": {
+        "definition": "Biological catalysts that speed up biochemical reactions."
+      },
+      "nucleic_acids": [
+        "DNA",
+        "RNA"
+      ],
+      "learning_outcomes": [
+        "Identify major biomolecules",
+        "Understand structure–function relationships",
+        "Explain biological importance of enzymes and nucleic acids"
+      ]
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Polymers",
+      "chapter_objective": "To study macromolecules formed by repeated units and understand their classification and uses.",
+      "detailed_explanation": "Polymers are high molecular mass substances formed by the repetition of simple units called monomers. This chapter explains types of polymers, methods of polymerization, and their applications in daily life and industry.",
+      "basic_concepts": {
+        "polymer": "A large molecule formed by repeated structural units called monomers."
+      },
+      "classification": [
+        "Addition polymers",
+        "Condensation polymers",
+        "Natural polymers",
+        "Synthetic polymers"
+      ],
+      "polymerization_methods": [
+        "Addition polymerization",
+        "Condensation polymerization"
+      ],
+      "important_polymers": [
+        "Polythene",
+        "PVC",
+        "Nylon",
+        "Bakelite",
+        "Teflon"
+      ],
+      "uses": [
+        "Manufacture of plastics and fibres",
+        "Medical and industrial applications"
+      ],
+      "learning_outcomes": [
+        "Classify polymers correctly",
+        "Relate polymer structure to properties",
+        "Understand importance of polymers in daily life"
+      ]
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Amines",
+      "chapter_objective": "To study the classification, preparation, properties, and chemical reactions of amines.",
+      "detailed_explanation": "Amines are organic compounds derived from ammonia by replacement of one or more hydrogen atoms by alkyl or aryl groups. They play an important role in organic chemistry due to their basic nature and wide applications in pharmaceuticals, dyes, and polymers.",
+      "basic_concepts": {
+        "amines": "Organic compounds containing one or more amino groups (-NH2, -NHR, -NR2)."
+      },
+      "classification": [
+        "Primary amines",
+        "Secondary amines",
+        "Tertiary amines",
+        "Aliphatic amines",
+        "Aromatic amines"
+      ],
+      "methods_of_preparation": [
+        "Reduction of nitro compounds",
+        "Gabriel phthalimide synthesis",
+        "Hoffmann bromamide degradation"
+      ],
+      "chemical_properties": [
+        "Basic nature of amines",
+        "Alkylation and acylation reactions",
+        "Diazotization of aromatic amines"
+      ],
+      "important_test": {
+        "carbylamine_test": "Used to distinguish primary amines from secondary and tertiary amines."
+      },
+      "uses": [
+        "Manufacture of drugs and dyes",
+        "Preparation of polymers and rubber chemicals"
+      ],
+      "learning_outcomes": [
+        "Classify different types of amines",
+        "Predict reactions of amines",
+        "Apply chemical tests for identification"
+      ]
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Biomolecules",
+      "chapter_objective": "To understand the structure and function of biologically important organic compounds.",
+      "detailed_explanation": "Biomolecules are naturally occurring organic compounds essential for life. This chapter explains carbohydrates, proteins, lipids, nucleic acids, and enzymes, emphasizing their structure–function relationships.",
+      "major_biomolecules": [
+        "Carbohydrates",
+        "Proteins",
+        "Lipids",
+        "Nucleic acids"
+      ],
+      "carbohydrates": {
+        "types": [
+          "Monosaccharides",
+          "Disaccharides",
+          "Polysaccharides"
+        ],
+        "examples": [
+          "Glucose",
+          "Sucrose",
+          "Starch"
+        ]
+      },
+      "proteins": {
+        "basic_units": "Amino acids",
+        "levels_of_structure": [
+          "Primary structure",
+          "Secondary structure",
+          "Tertiary structure",
+          "Quaternary structure"
+        ]
+      },
+      "enzymes": {
+        "definition": "Biological catalysts that speed up biochemical reactions."
+      },
+      "nucleic_acids": [
+        "DNA",
+        "RNA"
+      ],
+      "learning_outcomes": [
+        "Identify major biomolecules",
+        "Understand structure–function relationships",
+        "Explain biological importance of enzymes and nucleic acids"
+      ]
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Polymers",
+      "chapter_objective": "To study macromolecules formed by repeated units and understand their classification and uses.",
+      "detailed_explanation": "Polymers are high molecular mass substances formed by the repetition of simple units called monomers. This chapter explains types of polymers, methods of polymerization, and their applications in daily life and industry.",
+      "basic_concepts": {
+        "polymer": "A large molecule formed by repeated structural units called monomers."
+      },
+      "classification": [
+        "Addition polymers",
+        "Condensation polymers",
+        "Natural polymers",
+        "Synthetic polymers"
+      ],
+      "polymerization_methods": [
+        "Addition polymerization",
+        "Condensation polymerization"
+      ],
+      "important_polymers": [
+        "Polythene",
+        "PVC",
+        "Nylon",
+        "Bakelite",
+        "Teflon"
+      ],
+      "uses": [
+        "Manufacture of plastics and fibres",
+        "Medical and industrial applications"
+      ],
+      "learning_outcomes": [
+        "Classify polymers correctly",
+        "Relate polymer structure to properties",
+        "Understand importance of polymers in daily life"
+      ]
+    }
+  ]
+}

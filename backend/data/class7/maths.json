@@ -1,0 +1,171 @@
+{
+  "class": 7,
+  "subject": "Mathematics",
+  "chapters": [
+    {
+      "chapter": "Large Numbers Around Us",
+      "topics": [
+        {
+          "topic": "Large Numbers",
+          "intent": ["define"],
+          "content": "Large numbers are numbers with many digits that are used to count large quantities."
+        },
+        {
+          "topic": "Place Value System",
+          "intent": ["explain"],
+          "content": "The place value system helps determine the value of each digit based on its position in a number."
+        },
+        {
+          "topic": "Comparison of Large Numbers",
+          "intent": ["explain"],
+          "content": "Large numbers can be compared by first comparing the number of digits and then their place values."
+        },
+        {
+          "topic": "Rounding Off Numbers",
+          "intent": ["explain"],
+          "content": "Rounding off is used to approximate a large number to make it simpler."
+        }
+      ]
+    },
+    {
+      "chapter": "Arithmetic Expressions",
+      "topics": [
+        {
+          "topic": "Arithmetic Expression",
+          "intent": ["define"],
+          "content": "An arithmetic expression is a combination of numbers and operations without an equal sign."
+        },
+        {
+          "topic": "Order of Operations",
+          "intent": ["explain"],
+          "content": "Operations are performed in a fixed order using rules such as brackets first, then multiplication and division, followed by addition and subtraction."
+        },
+        {
+          "topic": "Use of Brackets",
+          "intent": ["explain"],
+          "content": "Brackets are used to group numbers and change the order of operations."
+        }
+      ]
+    },
+    {
+      "chapter": "A Peek Beyond the Point",
+      "topics": [
+        {
+          "topic": "Decimal Expansion",
+          "intent": ["define"],
+          "content": "Decimal expansion shows numbers written using a decimal point to represent parts of a whole."
+        },
+        {
+          "topic": "Place Value in Decimals",
+          "intent": ["explain"],
+          "content": "Digits after the decimal point represent tenths, hundredths, thousandths, and so on."
+        },
+        {
+          "topic": "Operations on Decimals",
+          "intent": ["explain"],
+          "content": "Addition, subtraction, multiplication, and division can be performed on decimal numbers."
+        }
+      ]
+    },
+    {
+      "chapter": "Expressions using Letter-Numbers",
+      "topics": [
+        {
+          "topic": "Variables",
+          "intent": ["define"],
+          "content": "A variable is a letter used to represent an unknown number."
+        },
+        {
+          "topic": "Algebraic Expressions",
+          "intent": ["define"],
+          "content": "An algebraic expression is formed using variables, numbers, and operations."
+        },
+        {
+          "topic": "Evaluating Expressions",
+          "intent": ["explain"],
+          "content": "Evaluating an expression means finding its value for given values of variables."
+        }
+      ]
+    },
+    {
+      "chapter": "Parallel and Intersecting Lines",
+      "topics": [
+        {
+          "topic": "Parallel Lines",
+          "intent": ["define"],
+          "content": "Parallel lines are lines that never meet and remain the same distance apart."
+        },
+        {
+          "topic": "Intersecting Lines",
+          "intent": ["define"],
+          "content": "Intersecting lines meet at a point."
+        },
+        {
+          "topic": "Angles Formed by Intersecting Lines",
+          "intent": ["explain"],
+          "content": "When lines intersect, different types of angles are formed."
+        }
+      ]
+    },
+    {
+      "chapter": "Number Play",
+      "topics": [
+        {
+          "topic": "Patterns in Numbers",
+          "intent": ["explain"],
+          "content": "Number patterns help identify relationships between numbers."
+        },
+        {
+          "topic": "Divisibility Rules",
+          "intent": ["explain"],
+          "content": "Divisibility rules help determine whether a number is divisible by another number."
+        },
+        {
+          "topic": "Fun with Numbers",
+          "intent": ["explain"],
+          "content": "Numbers can be used creatively to solve puzzles and logical problems."
+        }
+      ]
+    },
+    {
+      "chapter": "A Tale of Three Intersecting Lines",
+      "topics": [
+        {
+          "topic": "Transversal",
+          "intent": ["define"],
+          "content": "A transversal is a line that intersects two or more lines at different points."
+        },
+        {
+          "topic": "Corresponding Angles",
+          "intent": ["define"],
+          "content": "Corresponding angles are angles formed in matching positions when a transversal cuts parallel lines."
+        },
+        {
+          "topic": "Alternate Interior Angles",
+          "intent": ["define"],
+          "content": "Alternate interior angles are angles formed on opposite sides of a transversal inside parallel lines."
+        }
+      ]
+    },
+    {
+      "chapter": "Working with Fractions",
+      "topics": [
+        {
+          "topic": "Fractions",
+          "intent": ["define"],
+          "content": "A fraction represents a part of a whole."
+        },
+        {
+          "topic": "Operations on Fractions",
+          "intent": ["explain"],
+          "content": "Fractions can be added, subtracted, multiplied, and divided using standard methods."
+        },
+        {
+          "topic": "Word Problems on Fractions",
+          "intent": ["explain"],
+          "content": "Fractions are used to solve real-life problems involving parts and sharing."
+        }
+      ]
+    }
+  ]
+}

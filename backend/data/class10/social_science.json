@@ -1,0 +1,1162 @@
+[
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "History",
+    "chapter_number": 1,
+    "chapter_name": "The Rise of Nationalism in Europe",
+    "status": "next",
+    "key_concepts": {
+      "nation_state": "A state in which citizens share a common identity, history, culture, and sense of belonging",
+      "nationalism": "A feeling of collective identity among people of a nation"
+    },
+    "french_revolution_and_nationalism": {
+      "impact": [
+        "End of absolute monarchy",
+        "Transfer of sovereignty from monarch to people",
+        "Equality before law"
+      ],
+      "symbols": [
+        "Tricolour flag",
+        "National anthem",
+        "La patrie (the fatherland)",
+        "Le citoyen (the citizen)"
+      ]
+    },
+    "napoleonic_code": {
+      "introduced_in": 1804,
+      "features": [
+        "Uniform laws",
+        "Abolition of feudal privileges",
+        "Equality before law",
+        "Right to property"
+      ],
+      "impact": [
+        "Strengthened nationalism in Europe",
+        "Simplified administrative divisions"
+      ]
+    },
+    "conservatism_after_1815": {
+      "definition": "Political philosophy that emphasised tradition and established institutions",
+      "congress_of_vienna": {
+        "year": 1815,
+        "aim": "Restore monarchies and suppress nationalism"
+      }
+    },
+    "liberalism_and_nationalism": {
+      "liberalism": [
+        "Individual freedom",
+        "Equality before law",
+        "Representative government"
+      ],
+      "economic_liberalism": [
+        "Freedom of markets",
+        "Abolition of state restrictions"
+      ]
+    },
+    "revolutions_of_1830_and_1848": {
+      "1830": [
+        "France overthrew Bourbon monarchy",
+        "Constitutional monarchy established"
+      ],
+      "1848": [
+        "Uprisings across Europe",
+        "Demand for nation-states and democratic rights"
+      ]
+    },
+    "unification_of_germany": {
+      "leader": "Otto von Bismarck",
+      "method": "Wars and diplomacy",
+      "year": 1871
+    },
+    "unification_of_italy": {
+      "leaders": [
+        "Giuseppe Mazzini",
+        "Count Cavour",
+        "Giuseppe Garibaldi"
+      ],
+      "year": 1861
+    },
+    "one_liner": "Nationalism unified Europe—but not without conflict, blood, and ambition."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "History",
+    "chapter_number": 2,
+    "chapter_name": "Nationalism in India",
+    "status": "next",
+    "background": {
+      "colonial_rule": "British policies caused economic exploitation and political oppression",
+      "first_world_war": "Created new political and economic problems in India"
+    },
+    "gandhian_era": {
+      "arrival_of_gandhi": 1915,
+      "satyagraha": "Method of non-violent resistance",
+      "early_movements": [
+        "Champaran Satyagraha",
+        "Kheda Satyagraha",
+        "Ahmedabad Mill Strike"
+      ]
+    },
+    "mass_movements": {
+      "non_cooperation_movement": {
+        "year": 1920,
+        "aim": "Oppose British rule through non-violent means",
+        "withdrawal_reason": "Chauri Chaura incident"
+      },
+      "civil_disobedience_movement": {
+        "year": 1930,
+        "event": "Dandi March",
+        "aim": "Break colonial laws"
+      }
+    },
+    "role_of_people": [
+      "Peasants",
+      "Workers",
+      "Women",
+      "Students"
+    ],
+    "limits_of_nationalism": [
+      "Dalit issues",
+      "Muslim political concerns",
+      "Internal divisions"
+    ],
+    "one_liner": "Indian nationalism was mass-based—but never uniform."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "History",
+    "chapter_number": 3,
+    "chapter_name": "The Making of a Global World",
+    "status": "next",
+    "key_concepts": {
+      "globalisation": "Integration of economies, cultures, and markets across the world",
+      "trade": "Exchange of goods and services between regions"
+    },
+    "pre_modern_world": {
+      "features": [
+        "Silk routes",
+        "Trade in spices, textiles, and precious metals"
+      ]
+    },
+    "modern_world": {
+      "industrial_revolution": "Led to mass production and global trade expansion",
+      "colonialism": "Colonies supplied raw materials and markets"
+    },
+    "world_wars_and_globalisation": {
+      "first_world_war": "Disrupted global economy",
+      "great_depression": "Worldwide economic crisis in the 1930s"
+    },
+    "post_war_world": {
+      "bretton_woods_system": "Regulated international economic system",
+      "growth_of_multinationals": "Expansion of global trade"
+    },
+    "impact_on_india": [
+      "Export of raw materials",
+      "Import of manufactured goods",
+      "Drain of wealth"
+    ],
+    "one_liner": "Globalisation connected the world—but not equally."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "History",
+    "chapter_number": 4,
+    "chapter_name": "The Age of Industrialisation",
+    "status": "next",
+    "key_concepts": {
+      "industrialisation": "Process of development of industries on a large scale",
+      "proto_industrialisation": "Early phase of industrialisation before factories"
+    },
+    "industrialisation_in_europe": {
+      "britain": [
+        "First industrial nation",
+        "Cotton textile industry",
+        "Steam power"
+      ],
+      "technological_innovations": [
+        "Spinning Jenny",
+        "Power loom",
+        "Steam engine"
+      ]
+    },
+    "factory_system": {
+      "features": [
+        "Centralised production",
+        "Use of machines",
+        "Wage labour"
+      ]
+    },
+    "industrialisation_in_india": {
+      "pre_colonial": [
+        "Handloom and handicrafts",
+        "Skilled artisans"
+      ],
+      "colonial_impact": [
+        "Decline of handicrafts",
+        "Import of British machine-made goods"
+      ]
+    },
+    "growth_of_indian_industries": {
+      "sectors": [
+        "Cotton textiles",
+        "Jute industry"
+      ],
+      "industrialists": [
+        "Dwarkanath Tagore",
+        "Jamsetji Tata"
+      ]
+    },
+    "workers_life": {
+      "conditions": [
+        "Long working hours",
+        "Low wages",
+        "Poor living conditions"
+      ]
+    },
+    "one_liner": "Industrialisation created wealth—but also widened inequality."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "History",
+    "chapter_number": 4,
+    "chapter_name": "The Age of Industrialisation",
+    "status": "next",
+    "key_concepts": {
+      "industrialisation": "Process of development of industries on a large scale",
+      "proto_industrialisation": "Early phase of industrialisation before factories"
+    },
+    "industrialisation_in_europe": {
+      "britain": [
+        "First industrial nation",
+        "Cotton textile industry",
+        "Steam power"
+      ],
+      "technological_innovations": [
+        "Spinning Jenny",
+        "Power loom",
+        "Steam engine"
+      ]
+    },
+    "factory_system": {
+      "features": [
+        "Centralised production",
+        "Use of machines",
+        "Wage labour"
+      ]
+    },
+    "industrialisation_in_india": {
+      "pre_colonial": [
+        "Handloom and handicrafts",
+        "Skilled artisans"
+      ],
+      "colonial_impact": [
+        "Decline of handicrafts",
+        "Import of British machine-made goods"
+      ]
+    },
+    "growth_of_indian_industries": {
+      "sectors": [
+        "Cotton textiles",
+        "Jute industry"
+      ],
+      "industrialists": [
+        "Dwarkanath Tagore",
+        "Jamsetji Tata"
+      ]
+    },
+    "workers_life": {
+      "conditions": [
+        "Long working hours",
+        "Low wages",
+        "Poor living conditions"
+      ]
+    },
+    "one_liner": "Industrialisation created wealth—but also widened inequality."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Geography",
+    "chapter_number": 1,
+    "chapter_name": "Resources and Development",
+    "status": "next",
+    "key_concepts": {
+      "resource": "Anything that can be used to satisfy human needs and has value",
+      "development": "Process of improvement in quality of life"
+    },
+    "types_of_resources": {
+      "natural_resources": {
+        "renewable": ["Solar energy", "Wind energy", "Water"],
+        "non_renewable": ["Coal", "Petroleum", "Minerals"]
+      },
+      "human_made_resources": [
+        "Buildings",
+        "Roads",
+        "Machines"
+      ],
+      "human_resources": [
+        "People",
+        "Skills",
+        "Education"
+      ]
+    },
+    "classification_of_resources": {
+      "on_basis_of_origin": [
+        "Biotic",
+        "Abiotic"
+      ],
+      "on_basis_of_ownership": [
+        "Individual",
+        "Community",
+        "National",
+        "International"
+      ],
+      "on_basis_of_status_of_development": [
+        "Potential",
+        "Developed",
+        "Stock",
+        "Reserves"
+      ]
+    },
+    "land_resources": {
+      "land_use_pattern": [
+        "Forests",
+        "Net sown area",
+        "Fallow land"
+      ],
+      "land_degradation": {
+        "causes": [
+          "Deforestation",
+          "Overgrazing",
+          "Mining"
+        ],
+        "prevention": [
+          "Afforestation",
+          "Controlled grazing",
+          "Land reclamation"
+        ]
+      }
+    },
+    "soil_resources": {
+      "types_of_soils": [
+        "Alluvial",
+        "Black",
+        "Red",
+        "Laterite",
+        "Arid",
+        "Forest"
+      ],
+      "soil_erosion": {
+        "causes": [
+          "Running water",
+          "Wind",
+          "Deforestation"
+        ],
+        "conservation": [
+          "Contour ploughing",
+          "Terracing",
+          "Strip cropping"
+        ]
+      }
+    },
+    "one_liner": "Resources mean nothing without responsible development."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Geography",
+    "chapter_number": 2,
+    "chapter_name": "Forest and Wildlife Resources",
+    "status": "next",
+    "key_concepts": {
+      "biodiversity": "Variety of plant and animal life in a region",
+      "conservation": "Protection and sustainable use of natural resources"
+    },
+    "flora_and_fauna_status": {
+      "normal_species": "Species whose population levels are considered normal",
+      "endangered_species": "Species at risk of extinction",
+      "vulnerable_species": "Species likely to become endangered",
+      "rare_species": "Species with small population"
+    },
+    "causes_of_depletion": [
+      "Agricultural expansion",
+      "Mining",
+      "Urbanisation",
+      "Hunting"
+    ],
+    "conservation_measures": {
+      "government_initiatives": [
+        "National parks",
+        "Wildlife sanctuaries",
+        "Biosphere reserves"
+      ],
+      "community_initiatives": [
+        "Chipko Movement",
+        "Joint Forest Management"
+      ]
+    },
+    "forest_policy": {
+      "aim": "Increase forest cover and protect wildlife",
+      "focus": [
+        "Sustainable use",
+        "People’s participation"
+      ]
+    },
+    "one_liner": "Protect forests today—or pay for disasters tomorrow."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Geography",
+    "chapter_number": 2,
+    "chapter_name": "Forest and Wildlife Resources",
+    "status": "next",
+    "key_concepts": {
+      "biodiversity": "Variety of plant and animal life in a region",
+      "conservation": "Protection and sustainable use of natural resources"
+    },
+    "flora_and_fauna_status": {
+      "normal_species": "Species whose population levels are considered normal",
+      "endangered_species": "Species at risk of extinction",
+      "vulnerable_species": "Species likely to become endangered",
+      "rare_species": "Species with small population"
+    },
+    "causes_of_depletion": [
+      "Agricultural expansion",
+      "Mining",
+      "Urbanisation",
+      "Hunting"
+    ],
+    "conservation_measures": {
+      "government_initiatives": [
+        "National parks",
+        "Wildlife sanctuaries",
+        "Biosphere reserves"
+      ],
+      "community_initiatives": [
+        "Chipko Movement",
+        "Joint Forest Management"
+      ]
+    },
+    "forest_policy": {
+      "aim": "Increase forest cover and protect wildlife",
+      "focus": [
+        "Sustainable use",
+        "People’s participation"
+      ]
+    },
+    "one_liner": "Protect forests today—or pay for disasters tomorrow."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Geography",
+    "chapter_number": 3,
+    "chapter_name": "Water Resources",
+    "status": "next",
+    "key_concepts": {
+      "water_scarcity": "Shortage of water due to overuse, pollution, and uneven distribution",
+      "water_management": "Planned development, distribution, and conservation of water"
+    },
+    "sources_of_water": [
+      "Rivers",
+      "Lakes",
+      "Groundwater",
+      "Rainwater"
+    ],
+    "multipurpose_river_projects": {
+      "objectives": [
+        "Irrigation",
+        "Hydroelectric power",
+        "Flood control",
+        "Drinking water supply"
+      ],
+      "examples": [
+        "Bhakra Nangal Project",
+        "Hirakud Project",
+        "Tehri Project"
+      ]
+    },
+    "issues_with_dams": [
+      "Displacement of people",
+      "Environmental degradation",
+      "Sedimentation"
+    ],
+    "rainwater_harvesting": {
+      "definition": "Collection and storage of rainwater for future use",
+      "traditional_methods": [
+        "Tankas",
+        "Johads",
+        "Khadins"
+      ]
+    },
+    "one_liner": "Water scarcity is human-made—and so is its solution."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Geography",
+    "chapter_number": 4,
+    "chapter_name": "Agriculture",
+    "status": "next",
+    "key_concepts": {
+      "agriculture": "Primary activity involving cultivation of crops and rearing of animals",
+      "cropping_pattern": "Distribution of crops across seasons and regions"
+    },
+    "types_of_farming": [
+      "Primitive subsistence farming",
+      "Intensive subsistence farming",
+      "Commercial farming"
+    ],
+    "cropping_seasons": {
+      "kharif": {
+        "sowing": "June–July",
+        "harvesting": "September–October",
+        "crops": ["Rice", "Maize", "Cotton"]
+      },
+      "rabi": {
+        "sowing": "October–December",
+        "harvesting": "March–April",
+        "crops": ["Wheat", "Gram", "Mustard"]
+      },
+      "zaid": {
+        "season": "Between rabi and kharif",
+        "crops": ["Watermelon", "Cucumber"]
+      }
+    },
+    "major_crops": {
+      "food_crops": ["Rice", "Wheat", "Millets"],
+      "cash_crops": ["Cotton", "Jute", "Sugarcane"],
+      "plantation_crops": ["Tea", "Coffee"]
+    },
+    "agricultural_reforms": {
+      "green_revolution": "Use of HYV seeds and modern technology",
+      "white_revolution": "Increase in milk production"
+    },
+    "one_liner": "Agriculture feeds the nation—but needs innovation to survive."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Geography",
+    "chapter_number": 5,
+    "chapter_name": "Minerals and Energy Resources",
+    "status": "next",
+    "key_concepts": {
+      "mineral": "A natural substance with definite chemical and physical properties",
+      "ore": "A mineral from which metal can be profitably extracted"
+    },
+    "types_of_minerals": {
+      "metallic": {
+        "ferrous": ["Iron ore", "Manganese"],
+        "non_ferrous": ["Copper", "Bauxite"]
+      },
+      "non_metallic": ["Mica", "Limestone"]
+    },
+    "distribution_of_minerals": {
+      "iron_ore": ["Odisha", "Chhattisgarh", "Jharkhand", "Karnataka"],
+      "coal": ["Jharkhand", "West Bengal", "Odisha"],
+      "petroleum": ["Assam", "Gujarat", "Mumbai High"]
+    },
+    "energy_resources": {
+      "conventional": [
+        "Coal",
+        "Petroleum",
+        "Natural gas",
+        "Hydroelectric power"
+      ],
+      "non_conventional": [
+        "Solar energy",
+        "Wind energy",
+        "Biogas",
+        "Tidal energy",
+        "Geothermal energy",
+        "Nuclear energy"
+      ]
+    },
+    "conservation_of_minerals": {
+      "need": "Minerals are finite and non-renewable",
+      "methods": [
+        "Recycling",
+        "Efficient use",
+        "Use of substitutes"
+      ]
+    },
+    "one_liner": "Minerals power development—but only conservation sustains it."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Geography",
+    "chapter_number": 6,
+    "chapter_name": "Manufacturing Industries",
+    "status": "next",
+    "key_concepts": {
+      "manufacturing": "Production of goods in large quantities using machines",
+      "industry": "Economic activity related to production of goods"
+    },
+    "importance_of_manufacturing": [
+      "Reduces dependence on agriculture",
+      "Creates employment",
+      "Boosts economic growth"
+    ],
+    "classification_of_industries": {
+      "on_basis_of_raw_material": [
+        "Agro-based",
+        "Mineral-based"
+      ],
+      "on_basis_of_ownership": [
+        "Public sector",
+        "Private sector",
+        "Joint sector"
+      ]
+    },
+    "major_industries": {
+      "iron_and_steel": {
+        "importance": "Basic industry",
+        "centres": ["Jamshedpur", "Bhilai", "Durgapur"]
+      },
+      "textile_industry": {
+        "types": ["Cotton", "Jute"],
+        "centres": ["Mumbai", "Ahmedabad", "Kolkata"]
+      },
+      "cement_industry": {
+        "raw_materials": ["Limestone", "Clay"],
+        "importance": "Infrastructure development"
+      }
+    },
+    "industrial_pollution": {
+      "types": [
+        "Air pollution",
+        "Water pollution",
+        "Noise pollution"
+      ],
+      "control_measures": [
+        "Use of filters",
+        "Recycling of waste",
+        "Treatment of effluents"
+      ]
+    },
+    "one_liner": "Manufacturing builds nations—but pollution can break them."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Geography",
+    "chapter_number": 7,
+    "chapter_name": "Lifelines of National Economy",
+    "status": "next",
+    "key_concepts": {
+      "transport": "Movement of people and goods from one place to another",
+      "communication": "Exchange of information between individuals or places",
+      "trade": "Exchange of goods and services"
+    },
+    "modes_of_transport": {
+      "roadways": {
+        "importance": [
+          "Door-to-door service",
+          "Flexible routes"
+        ],
+        "types": [
+          "National Highways",
+          "State Highways",
+          "District Roads",
+          "Rural Roads"
+        ]
+      },
+      "railways": {
+        "importance": [
+          "Long-distance transport",
+          "Bulk goods movement"
+        ],
+        "challenges": [
+          "Uneven terrain",
+          "High maintenance cost"
+        ]
+      },
+      "pipelines": {
+        "used_for": [
+          "Petroleum",
+          "Natural gas",
+          "Water"
+        ]
+      },
+      "waterways": {
+        "types": [
+          "Inland waterways",
+          "Sea routes"
+        ],
+        "major_ports": [
+          "Mumbai",
+          "Chennai",
+          "Kolkata",
+          "Kochi"
+        ]
+      },
+      "airways": {
+        "importance": [
+          "Fastest mode of transport",
+          "Strategic and international connectivity"
+        ]
+      }
+    },
+    "communication": {
+      "personal": [
+        "Postal services",
+        "Telecommunication"
+      ],
+      "mass": [
+        "Radio",
+        "Television",
+        "Newspapers",
+        "Internet"
+      ]
+    },
+    "international_trade": {
+      "exports": [
+        "Agricultural products",
+        "Manufactured goods",
+        "Gems and jewellery"
+      ],
+      "imports": [
+        "Petroleum",
+        "Machinery",
+        "Chemicals"
+      ],
+      "balance_of_trade": "Difference between exports and imports"
+    },
+    "tourism": {
+      "importance": [
+        "Employment generation",
+        "Foreign exchange earnings"
+      ]
+    },
+    "one_liner": "Transport and communication don’t just move goods—they move economies."
+  },{
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Political Science",
+    "chapter_number": 1,
+    "chapter_name": "Power Sharing",
+    "status": "next",
+    "key_concepts": {
+      "power_sharing": "Distribution of power among different organs, levels, and social groups in a democracy",
+      "majoritarianism": "Belief that the majority community should rule the country"
+    },
+    "case_study": {
+      "country": "Belgium",
+      "problem": "Conflict between Dutch-speaking and French-speaking communities",
+      "solution": [
+        "Equal representation in central government",
+        "State governments given powers",
+        "Community government for cultural matters"
+      ],
+      "outcome": "Successful power-sharing model"
+    },
+    "case_study_contrast": {
+      "country": "Sri Lanka",
+      "problem": "Majoritarian policies favouring Sinhala community",
+      "result": [
+        "Civil war",
+        "Ethnic conflict"
+      ]
+    },
+    "forms_of_power_sharing": [
+      "Horizontal distribution of power",
+      "Vertical distribution of power",
+      "Power sharing among social groups",
+      "Power sharing among political parties and pressure groups"
+    ],
+    "reasons_for_power_sharing": [
+      "Reduces conflict",
+      "Ensures political stability",
+      "Strengthens democracy"
+    ],
+    "one_liner": "Power shared is power preserved—power concentrated is power contested."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Political Science",
+    "chapter_number": 2,
+    "chapter_name": "Federalism",
+    "status": "next",
+    "key_concepts": {
+      "federalism": "System of government in which power is divided between a central authority and constituent units",
+      "unitary_government": "System where all power rests with the central government"
+    },
+    "features_of_federalism": [
+      "Two or more levels of government",
+      "Division of powers by the Constitution",
+      "Written constitution",
+      "Independent judiciary"
+    ],
+    "types_of_federations": {
+      "coming_together": [
+        "USA",
+        "Australia",
+        "Switzerland"
+      ],
+      "holding_together": [
+        "India",
+        "Spain",
+        "Belgium"
+      ]
+    },
+    "federalism_in_india": {
+      "three_tiers": [
+        "Union government",
+        "State government",
+        "Local government"
+      ],
+      "lists": [
+        "Union List",
+        "State List",
+        "Concurrent List"
+      ]
+    },
+    "linguistic_states": {
+      "basis": "Language",
+      "impact": "Strengthened unity and administration"
+    },
+    "decentralisation": {
+      "definition": "Transfer of power to local governments",
+      "institutions": [
+        "Panchayati Raj",
+        "Municipalities"
+      ]
+    },
+    "one_liner": "Federalism balances unity with diversity—India runs on that balance."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Political Science",
+    "chapter_number": 3,
+    "chapter_name": "Gender, Religion and Caste",
+    "status": "next",
+    "key_concepts": {
+      "gender_division": "Unequal roles, responsibilities, and opportunities assigned to men and women",
+      "communalism": "Use of religion in politics to create division",
+      "casteism": "Belief that caste determines social and political life"
+    },
+    "gender_and_politics": {
+      "issues": [
+        "Low representation of women in legislatures",
+        "Unequal wages",
+        "Domestic responsibilities"
+      ],
+      "solutions": [
+        "Education",
+        "Political representation",
+        "Legal protection"
+      ]
+    },
+    "religion_and_politics": {
+      "positive_role": [
+        "Moral guidance",
+        "Community welfare"
+      ],
+      "negative_role": [
+        "Communal violence",
+        "Political manipulation"
+      ]
+    },
+    "caste_and_politics": {
+      "features": [
+        "Caste-based voting",
+        "Political mobilisation of caste groups"
+      ],
+      "positive_aspects": [
+        "Voice to marginalised groups"
+      ],
+      "negative_aspects": [
+        "Social divisions",
+        "Vote-bank politics"
+      ]
+    },
+    "one_liner": "Social divisions shape politics—but democracy decides how."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Political Science",
+    "chapter_number": 4,
+    "chapter_name": "Political Parties",
+    "status": "next",
+    "key_concepts": {
+      "political_party": "A group of people who come together to contest elections and hold power",
+      "party_system": "System that describes the number of political parties in a country"
+    },
+    "functions_of_political_parties": [
+      "Contest elections",
+      "Form and run governments",
+      "Shape public opinion",
+      "Link people with government"
+    ],
+    "party_systems": [
+      "One-party system",
+      "Two-party system",
+      "Multi-party system"
+    ],
+    "national_parties_in_india": [
+      "Indian National Congress",
+      "Bharatiya Janata Party"
+    ],
+    "challenges_to_political_parties": [
+      "Lack of internal democracy",
+      "Dynastic succession",
+      "Money and muscle power"
+    ],
+    "reforms": [
+      "Anti-defection law",
+      "Mandatory disclosures",
+      "Greater transparency"
+    ],
+    "one_liner": "Democracy runs on parties—but only strong parties keep it healthy."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Political Science",
+    "chapter_number": 5,
+    "chapter_name": "Outcomes of Democracy",
+    "status": "next",
+    "key_concepts": {
+      "democracy": "A form of government in which rulers are elected by the people",
+      "accountability": "Responsibility of government to explain its actions to citizens"
+    },
+    "outcomes_of_democracy": {
+      "accountable_government": {
+        "features": [
+          "Regular elections",
+          "Transparency",
+          "Rule of law"
+        ]
+      },
+      "responsive_government": {
+        "features": [
+          "Public participation",
+          "Grievance redressal"
+        ]
+      },
+      "legitimate_government": {
+        "meaning": "Government accepted by the people"
+      }
+    },
+    "economic_outcomes": {
+      "expectations": [
+        "Economic growth",
+        "Reduction of inequality"
+      ],
+      "reality": [
+        "Slow decision-making",
+        "Unequal development"
+      ]
+    },
+    "social_outcomes": {
+      "dignity_and_freedom": [
+        "Respect for minorities",
+        "Equal treatment"
+      ]
+    },
+    "democracy_and_conflict": {
+      "role": "Peaceful resolution of conflicts"
+    },
+    "one_liner": "Democracy delivers slowly—but it delivers with dignity."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Economics",
+    "chapter_number": 1,
+    "chapter_name": "Development",
+    "status": "next",
+    "key_concepts": {
+      "development": "Improvement in quality of life and well-being of people",
+      "per_capita_income": "Average income of a country’s population"
+    },
+    "development_goals": {
+      "individual_goals": [
+        "Higher income",
+        "Better education",
+        "Health and security"
+      ],
+      "collective_goals": [
+        "Equality",
+        "Sustainability",
+        "Freedom"
+      ]
+    },
+    "measuring_development": {
+      "income_criteria": [
+        "Per capita income",
+        "National income"
+      ],
+      "non_income_criteria": [
+        "Literacy rate",
+        "Life expectancy",
+        "Public facilities"
+      ]
+    },
+    "human_development_index": {
+      "components": [
+        "Income",
+        "Health",
+        "Education"
+      ]
+    },
+    "sustainable_development": {
+      "definition": "Development without compromising future generations",
+      "importance": [
+        "Resource conservation",
+        "Environmental protection"
+      ]
+    },
+    "one_liner": "True development is measured by people’s lives—not just numbers."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Economics",
+    "chapter_number": 1,
+    "chapter_name": "Development",
+    "status": "next",
+    "key_concepts": {
+      "development": "Improvement in quality of life and well-being of people",
+      "per_capita_income": "Average income of a country’s population"
+    },
+    "development_goals": {
+      "individual_goals": [
+        "Higher income",
+        "Better education",
+        "Health and security"
+      ],
+      "collective_goals": [
+        "Equality",
+        "Sustainability",
+        "Freedom"
+      ]
+    },
+    "measuring_development": {
+      "income_criteria": [
+        "Per capita income",
+        "National income"
+      ],
+      "non_income_criteria": [
+        "Literacy rate",
+        "Life expectancy",
+        "Public facilities"
+      ]
+    },
+    "human_development_index": {
+      "components": [
+        "Income",
+        "Health",
+        "Education"
+      ]
+    },
+    "sustainable_development": {
+      "definition": "Development without compromising future generations",
+      "importance": [
+        "Resource conservation",
+        "Environmental protection"
+      ]
+    },
+    "one_liner": "True development is measured by people’s lives—not just numbers."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Economics",
+    "chapter_number": 2,
+    "chapter_name": "Sectors of the Indian Economy",
+    "status": "next",
+    "key_concepts": {
+      "economic_sector": "A segment of the economy based on the nature of economic activity",
+      "value_added": "Increase in value of a product during production"
+    },
+    "classification_of_sectors": {
+      "by_nature_of_activity": {
+        "primary": "Extraction of natural resources",
+        "secondary": "Manufacturing and processing",
+        "tertiary": "Services"
+      },
+      "by_employment_conditions": {
+        "organised": "Registered sector with job security",
+        "unorganised": "Low wages and lack of job security"
+      },
+      "by_ownership": {
+        "public": "Owned and operated by government",
+        "private": "Owned and operated by individuals or companies"
+      }
+    },
+    "importance_of_tertiary_sector": [
+      "Support to primary and secondary sectors",
+      "Employment generation",
+      "Growth of services"
+    ],
+    "underemployment": {
+      "definition": "More people employed than required",
+      "example": "Agriculture sector"
+    },
+    "role_of_government": {
+      "functions": [
+        "Providing public facilities",
+        "Creating employment",
+        "Protecting unorganised sector"
+      ]
+    },
+    "one_liner": "An economy grows when all sectors move together."
+  },
+  {
+    "class": 10,
+    "subject": "Social Science",
+    "book": "Economics",
+    "chapter_number": 3,
+    "chapter_name": "Money and Credit",
+    "status": "next",
+    "key_concepts": {
+      "money": "Medium of exchange used to buy and sell goods and services",
+      "credit": "Loan provided by a lender to a borrower"
+    },
+    "forms_of_money": [
+      "Currency",
+      "Demand deposits"
+    ],
+    "functions_of_money": [
+      "Medium of exchange",
+      "Store of value"
+    ],
+    "credit_arrangements": {
+      "formal_sources": [
+        "Banks",
+        "Cooperative societies"
+      ],
+      "informal_sources": [
+        "Moneylenders",
+        "Relatives",
+        "Friends"
+      ]
+    },
+    "terms_of_credit": [
+      "Interest rate",
+      "Collateral",
+      "Documentation",
+      "Repayment period"
+    ],
+    "self_help_groups": {
+      "definition": "Small groups that pool savings and provide loans",
+      "importance": [
+        "Financial inclusion",
+        "Women empowerment"
+      ]
+    },
+    "one_liner": "Money moves the economy—credit decides who gets to move."
+  }                                  
+]

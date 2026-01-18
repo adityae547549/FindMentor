@@ -1,0 +1,406 @@
+{
+  "class": 12,
+  "subject": "Arts / Humanities",
+  "board": "CBSE / NCERT aligned",
+  "description": "",
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_name": "Themes in Indian History – Colonialism and the Countryside",
+      "chapter_objective": "To understand how colonial rule transformed agrarian relations and rural society in India.",
+      "detailed_explanation": "This chapter examines the impact of British colonial policies on Indian agriculture and rural life. It explores land revenue systems, commercialization of agriculture, and resistance movements by peasants. The chapter highlights how colonial economic interests reshaped traditional agrarian structures.",
+      "subject_area": "History",
+      "key_topics": [
+        "Permanent Settlement",
+        "Ryotwari and Mahalwari systems",
+        "Commercialization of agriculture",
+        "Indigo cultivation and peasant resistance"
+      ],
+      "colonial_policies": {
+        "land_revenue_systems": "Methods used by the British to extract revenue from agriculture.",
+        "impact": "Led to peasant indebtedness and rural poverty."
+      },
+      "resistance_movements": [
+        "Indigo revolt",
+        "Peasant uprisings",
+        "Legal and social resistance"
+      ],
+      "learning_outcomes": [
+        "Analyze effects of colonialism on rural India",
+        "Understand agrarian changes under British rule",
+        "Evaluate peasant responses to colonial exploitation"
+      ]
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Human Geography – Population",
+      "chapter_objective": "To understand population distribution, density, growth, and demographic transition.",
+      "detailed_explanation": "This chapter focuses on the study of population as a key component of human geography. It explains how population is distributed across the world, factors affecting population growth, migration patterns, and demographic transition models.",
+      "subject_area": "Geography",
+      "basic_concepts": {
+        "population_distribution": "Spatial arrangement of population across the Earth.",
+        "population_density": "Number of people living per unit area."
+      },
+      "factors_affecting_population": [
+        "Birth rate",
+        "Death rate",
+        "Migration",
+        "Economic conditions",
+        "Healthcare and education"
+      ],
+      "demographic_transition_model": {
+        "stages": [
+          "High stationary",
+          "Early expanding",
+          "Late expanding",
+          "Low stationary"
+        ]
+      },
+      "migration": {
+        "types": [
+          "Internal migration",
+          "International migration"
+        ],
+        "causes": [
+          "Economic opportunities",
+          "Political instability",
+          "Environmental factors"
+        ]
+      },
+      "learning_outcomes": [
+        "Interpret population data",
+        "Explain population growth patterns",
+        "Analyze demographic transition stages"
+      ]
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Contemporary World Politics",
+      "chapter_objective": "To understand global political developments after the Cold War.",
+      "detailed_explanation": "This chapter examines the changing nature of world politics after the end of the Cold War. It focuses on the emergence of new power centres, globalization, international organizations, and contemporary security challenges.",
+      "subject_area": "Political Science",
+      "cold_war_end": {
+        "significance": "Marked the collapse of bipolar world order.",
+        "impact": "Led to unipolar and later multipolar world structures."
+      },
+      "emerging_power_centres": [
+        "European Union",
+        "China",
+        "Russia",
+        "India"
+      ],
+      "global_issues": [
+        "Terrorism",
+        "Climate change",
+        "Economic globalization",
+        "Human rights"
+      ],
+      "international_organizations": [
+        "United Nations",
+        "World Trade Organization",
+        "International Monetary Fund"
+      ],
+      "learning_outcomes": [
+        "Understand post–Cold War global politics",
+        "Analyze role of international organizations",
+        "Evaluate challenges in contemporary world order"
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Themes in Indian History – The Nationalist Movement",
+      "chapter_objective": "To understand the rise and development of the Indian nationalist movement against colonial rule.",
+      "detailed_explanation": "This chapter traces the growth of nationalism in India, focusing on the formation of political organizations, mass movements, and the role of leaders in mobilizing people against British colonial rule. It highlights how nationalism evolved from elite politics to mass participation.",
+      "subject_area": "History",
+      "key_topics": [
+        "Formation of Indian National Congress",
+        "Moderate and extremist phases",
+        "Non-Cooperation Movement",
+        "Civil Disobedience Movement",
+        "Quit India Movement"
+      ],
+      "role_of_leaders": [
+        "Mahatma Gandhi",
+        "Jawaharlal Nehru",
+        "Subhas Chandra Bose",
+        "Bal Gangadhar Tilak"
+      ],
+      "mass_participation": {
+        "importance": "Transformed nationalism into a mass movement involving peasants, workers, and women."
+      },
+      "learning_outcomes": [
+        "Explain phases of Indian national movement",
+        "Analyze strategies of nationalist leaders",
+        "Understand mass mobilization against colonial rule"
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Human Geography – Human Settlements",
+      "chapter_objective": "To study patterns, types, and problems of human settlements.",
+      "detailed_explanation": "Human settlements are places where people establish permanent homes. This chapter explains rural and urban settlements, their patterns, functions, and challenges faced due to rapid urbanization and population growth.",
+      "subject_area": "Geography",
+      "types_of_settlements": {
+        "rural": [
+          "Compact settlements",
+          "Dispersed settlements"
+        ],
+        "urban": [
+          "Towns",
+          "Cities",
+          "Metropolitan cities"
+        ]
+      },
+      "settlement_patterns": [
+        "Linear pattern",
+        "Rectangular pattern",
+        "Circular pattern",
+        "Radial pattern"
+      ],
+      "urbanization": {
+        "definition": "Process of growth of urban population.",
+        "problems": [
+          "Housing shortage",
+          "Traffic congestion",
+          "Pollution",
+          "Unemployment"
+        ]
+      },
+      "learning_outcomes": [
+        "Differentiate rural and urban settlements",
+        "Explain settlement patterns",
+        "Analyze problems caused by urbanization"
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Politics in India Since Independence",
+      "chapter_objective": "To understand political developments in India after independence.",
+      "detailed_explanation": "This chapter examines how India built a democratic political system after independence. It focuses on challenges such as nation-building, reorganization of states, economic planning, and the evolution of party politics.",
+      "subject_area": "Political Science",
+      "nation_building": [
+        "Integration of princely states",
+        "Formation of Indian Constitution"
+      ],
+      "reorganization_of_states": {
+        "basis": "Linguistic and administrative considerations."
+      },
+      "economic_policy": [
+        "Planning Commission",
+        "Five-Year Plans",
+        "Mixed economy model"
+      ],
+      "party_politics": {
+        "one_party_dominance": "Dominance of Indian National Congress in early decades.",
+        "emergence_of_opposition": "Rise of regional and national opposition parties."
+      },
+      "learning_outcomes": [
+        "Understand challenges faced by India after independence",
+        "Explain evolution of Indian political system",
+        "Analyze changes in party politics"
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Themes in Indian History – Partition and Independence",
+      "chapter_objective": "To understand the circumstances leading to the partition of India and its social, political, and human consequences.",
+      "detailed_explanation": "This chapter examines the final phase of British rule in India and the events that led to independence and partition in 1947. It discusses communal politics, negotiations between political leaders, and the role of the British government. The chapter also highlights the human tragedy of partition, including mass migrations and communal violence.",
+      "subject_area": "History",
+      "causes_of_partition": [
+        "Growth of communal politics",
+        "Demand for separate nation",
+        "Failure of power-sharing arrangements",
+        "British policies of divide and rule"
+      ],
+      "independence_process": {
+        "cabinet_mission_plan": "Attempt to preserve Indian unity through federal structure.",
+        "mountbatten_plan": "Final plan that led to partition and independence."
+      },
+      "human_consequences": [
+        "Large-scale migration",
+        "Communal violence",
+        "Loss of life and property",
+        "Long-term psychological trauma"
+      ],
+      "learning_outcomes": [
+        "Analyze reasons behind partition",
+        "Understand challenges of independence",
+        "Evaluate human impact of political decisions"
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Human Geography – Resources and Development",
+      "chapter_objective": "To understand the distribution, utilization, and conservation of natural resources.",
+      "detailed_explanation": "Resources form the basis of economic development. This chapter explains types of resources, their spatial distribution, methods of utilization, and the need for sustainable development to preserve resources for future generations.",
+      "subject_area": "Geography",
+      "classification_of_resources": {
+        "natural_resources": [
+          "Renewable resources",
+          "Non-renewable resources"
+        ],
+        "human_made_resources": [
+          "Buildings",
+          "Roads",
+          "Technology"
+        ]
+      },
+      "resource_distribution": {
+        "pattern": "Uneven distribution across regions.",
+        "impact": "Influences economic and social development."
+      },
+      "resource_conservation": {
+        "need": "Prevent depletion and environmental degradation.",
+        "methods": [
+          "Sustainable use",
+          "Recycling",
+          "Resource planning"
+        ]
+      },
+      "development_and_environment": {
+        "conflict": "Economic growth vs environmental protection.",
+        "solution": "Balanced and sustainable development."
+      },
+      "learning_outcomes": [
+        "Classify different types of resources",
+        "Explain importance of resource conservation",
+        "Analyze relationship between development and environment"
+      ]
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Democratic Politics in India",
+      "chapter_objective": "To understand the functioning of democracy and democratic institutions in India.",
+      "detailed_explanation": "This chapter focuses on the working of democratic politics in India. It examines elections, political parties, pressure groups, and the role of citizens in a democracy. The chapter highlights how democratic values are practiced through institutions and participation.",
+      "subject_area": "Political Science",
+      "democracy": {
+        "definition": "A system of government in which people elect their representatives.",
+        "features": [
+          "Universal adult franchise",
+          "Rule of law",
+          "Independent judiciary",
+          "Free and fair elections"
+        ]
+      },
+      "electoral_system": {
+        "elections": "Means of choosing representatives.",
+        "importance": "Ensures accountability and legitimacy."
+      },
+      "political_parties": {
+        "role": [
+          "Contest elections",
+          "Form government",
+          "Represent public interests"
+        ]
+      },
+      "citizen_participation": [
+        "Voting",
+        "Public debates",
+        "Civil society movements"
+      ],
+      "learning_outcomes": [
+        "Explain features of Indian democracy",
+        "Understand role of political parties",
+        "Analyze importance of citizen participation"
+      ]
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Themes in Indian History – India After Independence",
+      "chapter_objective": "To understand the political, social, and economic challenges faced by India after independence.",
+      "detailed_explanation": "This chapter examines the process of nation-building in independent India. It discusses the framing of the Constitution, integration of princely states, reorganization of states, and challenges related to democracy, unity, and development.",
+      "subject_area": "History",
+      "post_independence_challenges": [
+        "Refugee rehabilitation",
+        "Integration of princely states",
+        "Linguistic reorganization of states",
+        "Economic development"
+      ],
+      "constitution_building": {
+        "importance": "Provided a democratic framework for governance.",
+        "features": [
+          "Federal structure",
+          "Fundamental rights",
+          "Independent judiciary"
+        ]
+      },
+      "planning_and_development": {
+        "planning_commission": "Introduced Five-Year Plans for economic growth.",
+        "mixed_economy": "Combination of public and private sectors."
+      },
+      "learning_outcomes": [
+        "Understand challenges of nation-building",
+        "Analyze role of Constitution in governance",
+        "Evaluate development strategies after independence"
+      ]
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Human Geography – Transport, Communication and Trade",
+      "chapter_objective": "To study the role of transport, communication, and trade in economic development.",
+      "detailed_explanation": "Transport and communication systems connect people, markets, and regions. This chapter explains different modes of transport, communication networks, and trade patterns, highlighting their importance in national and global development.",
+      "subject_area": "Geography",
+      "modes_of_transport": [
+        "Roadways",
+        "Railways",
+        "Waterways",
+        "Airways"
+      ],
+      "communication_systems": [
+        "Telecommunication",
+        "Internet",
+        "Satellite communication"
+      ],
+      "trade": {
+        "types": [
+          "National trade",
+          "International trade"
+        ],
+        "importance": "Promotes economic growth and global integration."
+      },
+      "globalization": {
+        "impact": [
+          "Expansion of markets",
+          "Cultural exchange",
+          "Economic interdependence"
+        ]
+      },
+      "learning_outcomes": [
+        "Explain importance of transport and communication",
+        "Analyze role of trade in development",
+        "Understand globalization effects"
+      ]
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Challenges to Democracy",
+      "chapter_objective": "To understand the major challenges faced by democratic systems in the contemporary world.",
+      "detailed_explanation": "This chapter discusses various challenges that democracies face, such as inequality, corruption, lack of participation, and threats to democratic values. It emphasizes the need for reforms and active citizen engagement to strengthen democracy.",
+      "subject_area": "Political Science",
+      "major_challenges": [
+        "Economic inequality",
+        "Corruption",
+        "Low political participation",
+        "Threats to freedom and rights"
+      ],
+      "role_of_citizens": {
+        "participation": [
+          "Voting",
+          "Public debates",
+          "Civil society activism"
+        ],
+        "importance": "Active citizens strengthen democratic institutions."
+      },
+      "democratic_reforms": [
+        "Transparency in governance",
+        "Electoral reforms",
+        "Strengthening institutions"
+      ],
+      "learning_outcomes": [
+        "Identify challenges faced by democracies",
+        "Understand role of citizens in democracy",
+        "Evaluate measures to strengthen democratic systems"
+      ]
+    }
+  ]
+}

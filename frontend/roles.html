@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Role | FindMentor</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fbcfe8, #f9a8d4);
+    }
+
+    .card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 500px;
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      font-size: 1.9rem;
+    }
+
+    p {
+      color: #6b7280;
+      margin-bottom: 28px;
+    }
+
+    .roles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .role {
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .role:hover {
+      border-color: #db2777;
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(219,39,119,0.25);
+    }
+
+    .role h3 {
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    .role p {
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .footer {
+      margin-top: 24px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Choose Your Role</h1>
+    <p>Tell us how you want to use FindMentor</p>
+
+    <div class="roles">
+      <div class="role" onclick="selectRole('student')">
+        <h3>🎓 Student</h3>
+        <p>I want to ask doubts and learn from mentors</p>
+      </div>
+
+      <div class="role" onclick="selectRole('mentor')">
+        <h3>👨‍🏫 Mentor</h3>
+        <p>I want to help students by answering questions</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      You can’t change this later.
+    </div>
+  </div>
+
+  <!-- 🔥 FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+      authDomain: "studio-6680101022-359df.firebaseapp.com",
+      projectId: "studio-6680101022-359df",
+      storageBucket: "studio-6680101022-359df.firebasestorage.app",
+      messagingSenderId: "938584797960",
+      appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+
+    onAuthStateChanged(auth, async user => {
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        currentUser = user;
+        try {
+          await setDoc(doc(db, "users", currentUser.uid), { lastlogin: serverTimestamp() }, { merge: true });
+        } catch (err) {
+          console.error('Failed to update lastlogin:', err);
+        }
+      }
+    });
+
+    window.selectRole = async function(role) {
+      if (!currentUser) return;
+
+      try {
+        await setDoc(doc(db, "users", currentUser.uid), {
+          uid: currentUser.uid,
+          email: currentUser.email,
+          role: role,
+          createdAt: serverTimestamp()
+        });
+
+        if (role === "student") {
+          window.location.href = "dashboard.html";
+        } else {
+          window.location.href = "mentor-dashboard.html";
+        }
+      } catch (err) {
+        console.error('Failed to save role:', err);
+        alert('Could not save role selection. Check console for details.');
+      }
+    };
+  </script>
+
+</body>
+</html>

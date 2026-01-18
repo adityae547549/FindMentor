@@ -1,0 +1,321 @@
+{
+  "class": 8,
+  "subject": "Mathematics",
+  "chapters": [
+    {
+      "chapter": "Rational Numbers",
+      "topics": [
+        {
+          "topic": "Rational Numbers",
+          "intent": ["define"],
+          "content": "A rational number is a number that can be expressed in the form p/q where q is not zero."
+        },
+        {
+          "topic": "Properties of Rational Numbers",
+          "intent": ["explain"],
+          "content": "Rational numbers follow properties such as closure, commutativity, associativity, and distributivity."
+        }
+      ]
+    },
+    {
+      "chapter": "Exponents",
+      "topics": [
+        {
+          "topic": "Exponents",
+          "intent": ["define"],
+          "content": "Exponents represent repeated multiplication of the same number."
+        },
+        {
+          "topic": "Laws of Exponents",
+          "intent": ["explain"],
+          "content": "The laws of exponents help simplify expressions involving powers."
+        }
+      ]
+    },
+    {
+      "chapter": "Squares and Square Roots",
+      "topics": [
+        {
+          "topic": "Square of a Number",
+          "intent": ["define"],
+          "content": "The square of a number is obtained by multiplying the number by itself."
+        },
+        {
+          "topic": "Square Root",
+          "intent": ["define"],
+          "content": "The square root of a number is a value that gives the original number when multiplied by itself."
+        }
+      ]
+    },
+    {
+      "chapter": "Cubes and Cube Roots",
+      "topics": [
+        {
+          "topic": "Cube of a Number",
+          "intent": ["define"],
+          "content": "The cube of a number is obtained by multiplying the number three times."
+        },
+        {
+          "topic": "Cube Root",
+          "intent": ["define"],
+          "content": "The cube root of a number is a value that gives the original number when multiplied three times."
+        }
+      ]
+    },
+    {
+      "chapter": "Playing with Numbers",
+      "topics": [
+        {
+          "topic": "Divisibility Rules",
+          "intent": ["explain"],
+          "content": "Divisibility rules help determine whether a number is divisible by another number."
+        },
+        {
+          "topic": "Number Patterns",
+          "intent": ["explain"],
+          "content": "Number patterns help identify relationships among numbers."
+        }
+      ]
+    },
+    {
+      "chapter": "Operations on Algebraic Expressions",
+      "topics": [
+        {
+          "topic": "Algebraic Expressions",
+          "intent": ["define"],
+          "content": "An algebraic expression consists of variables, constants, and operations."
+        },
+        {
+          "topic": "Addition and Subtraction of Expressions",
+          "intent": ["explain"],
+          "content": "Like terms can be added or subtracted by combining their coefficients."
+        }
+      ]
+    },
+    {
+      "chapter": "Factorisation",
+      "topics": [
+        {
+          "topic": "Factorisation",
+          "intent": ["define"],
+          "content": "Factorisation is the process of expressing an expression as a product of its factors."
+        },
+        {
+          "topic": "Common Factors",
+          "intent": ["explain"],
+          "content": "Common factors are numbers or variables that divide all terms of an expression."
+        }
+      ]
+    },
+    {
+      "chapter": "Linear Equations",
+      "topics": [
+        {
+          "topic": "Linear Equation",
+          "intent": ["define"],
+          "content": "A linear equation is an equation with variables having power one."
+        },
+        {
+          "topic": "Solving Linear Equations",
+          "intent": ["explain"],
+          "content": "Solving a linear equation means finding the value of the variable that satisfies the equation."
+        }
+      ]
+    },
+    {
+      "chapter": "Percentage",
+      "topics": [
+        {
+          "topic": "Percentage",
+          "intent": ["define"],
+          "content": "Percentage represents a number as a fraction of 100."
+        },
+        {
+          "topic": "Applications of Percentage",
+          "intent": ["explain"],
+          "content": "Percentages are used in profit, loss, discount, and interest calculations."
+        }
+      ]
+    },
+    {
+      "chapter": "Profit and Loss",
+      "topics": [
+        {
+          "topic": "Profit",
+          "intent": ["define"],
+          "content": "Profit occurs when the selling price is greater than the cost price."
+        },
+        {
+          "topic": "Loss",
+          "intent": ["define"],
+          "content": "Loss occurs when the selling price is less than the cost price."
+        }
+      ]
+    },
+    {
+      "chapter": "Compound Interest",
+      "topics": [
+        {
+          "topic": "Compound Interest",
+          "intent": ["define"],
+          "content": "Compound interest is interest calculated on both the principal and previously earned interest."
+        }
+      ]
+    },
+    {
+      "chapter": "Direct and Inverse Proportions",
+      "topics": [
+        {
+          "topic": "Direct Proportion",
+          "intent": ["define"],
+          "content": "Two quantities are in direct proportion if an increase in one results in an increase in the other."
+        },
+        {
+          "topic": "Inverse Proportion",
+          "intent": ["define"],
+          "content": "Two quantities are in inverse proportion if an increase in one results in a decrease in the other."
+        }
+      ]
+    },
+    {
+      "chapter": "Time and Work",
+      "topics": [
+        {
+          "topic": "Time and Work",
+          "intent": ["define"],
+          "content": "Time and work problems involve calculating the time taken to complete tasks."
+        }
+      ]
+    },
+    {
+      "chapter": "Polygons",
+      "topics": [
+        {
+          "topic": "Polygon",
+          "intent": ["define"],
+          "content": "A polygon is a closed figure formed by line segments."
+        }
+      ]
+    },
+    {
+      "chapter": "Quadrilaterals",
+      "topics": [
+        {
+          "topic": "Quadrilateral",
+          "intent": ["define"],
+          "content": "A quadrilateral is a polygon with four sides."
+        }
+      ]
+    },
+    {
+      "chapter": "Parallelograms",
+      "topics": [
+        {
+          "topic": "Parallelogram",
+          "intent": ["define"],
+          "content": "A parallelogram is a quadrilateral with opposite sides parallel and equal."
+        }
+      ]
+    },
+    {
+      "chapter": "Construction of Quadrilaterals",
+      "topics": [
+        {
+          "topic": "Geometrical Construction",
+          "intent": ["define"],
+          "content": "Geometrical construction involves drawing figures accurately using instruments."
+        }
+      ]
+    },
+    {
+      "chapter": "Area of a Trapezium and a Polygon",
+      "topics": [
+        {
+          "topic": "Area of Trapezium",
+          "intent": ["define"],
+          "content": "The area of a trapezium depends on the sum of parallel sides and height."
+        }
+      ]
+    },
+    {
+      "chapter": "Three-Dimensional Figures",
+      "topics": [
+        {
+          "topic": "3D Shapes",
+          "intent": ["define"],
+          "content": "Three-dimensional figures have length, breadth, and height."
+        }
+      ]
+    },
+    {
+      "chapter": "Volume and Surface Area of Solids",
+      "topics": [
+        {
+          "topic": "Volume",
+          "intent": ["define"],
+          "content": "Volume is the amount of space occupied by a solid."
+        },
+        {
+          "topic": "Surface Area",
+          "intent": ["define"],
+          "content": "Surface area is the total area of all the surfaces of a solid."
+        }
+      ]
+    },
+    {
+      "chapter": "Data Handling",
+      "topics": [
+        {
+          "topic": "Data",
+          "intent": ["define"],
+          "content": "Data is information collected for analysis."
+        },
+        {
+          "topic": "Mean, Median, Mode",
+          "intent": ["define"],
+          "content": "Mean, median, and mode are measures of central tendency."
+        }
+      ]
+    },
+    {
+      "chapter": "Introduction to Coordinate Geometry",
+      "topics": [
+        {
+          "topic": "Coordinate Geometry",
+          "intent": ["define"],
+          "content": "Coordinate geometry uses coordinates to represent points on a plane."
+        }
+      ]
+    },
+    {
+      "chapter": "Line Graphs and Linear Graphs",
+      "topics": [
+        {
+          "topic": "Line Graph",
+          "intent": ["define"],
+          "content": "A line graph represents data using points connected by straight lines."
+        }
+      ]
+    },
+    {
+      "chapter": "Pie Charts",
+      "topics": [
+        {
+          "topic": "Pie Chart",
+          "intent": ["define"],
+          "content": "A pie chart represents data in the form of a circle divided into sectors."
+        }
+      ]
+    },
+    {
+      "chapter": "Probability",
+      "topics": [
+        {
+          "topic": "Probability",
+          "intent": ["define"],
+          "content": "Probability measures the chance of an event occurring."
+        }
+      ]
+    }
+  ]
+}

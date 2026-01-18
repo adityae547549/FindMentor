@@ -1,0 +1,797 @@
+[
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 1,
+    "chapter_name": "Chemical Reactions and Equations",
+    "status": "next",
+    "key_concepts": {
+      "chemical_reaction": "A process in which one or more substances react to form new substances with different properties",
+      "chemical_equation": "A symbolic representation of a chemical reaction using chemical formulas"
+    },
+    "characteristics_of_chemical_reactions": [
+      "Change in state",
+      "Change in colour",
+      "Evolution of gas",
+      "Change in temperature",
+      "Formation of precipitate"
+    ],
+    "types_of_chemical_reactions": [
+      {
+        "type": "Combination Reaction",
+        "definition": "Two or more substances combine to form a single product",
+        "example": "CaO + H2O → Ca(OH)2"
+      },
+      {
+        "type": "Decomposition Reaction",
+        "definition": "A single compound breaks down into two or more simpler substances",
+        "example": "CaCO3 → CaO + CO2"
+      },
+      {
+        "type": "Displacement Reaction",
+        "definition": "A more reactive element displaces a less reactive element from its compound",
+        "example": "Zn + CuSO4 → ZnSO4 + Cu"
+      },
+      {
+        "type": "Double Displacement Reaction",
+        "definition": "Exchange of ions between two compounds",
+        "example": "Na2SO4 + BaCl2 → BaSO4 + 2NaCl"
+      }
+    ],
+    "oxidation_and_reduction": {
+      "oxidation": "Gain of oxygen or loss of hydrogen",
+      "reduction": "Loss of oxygen or gain of hydrogen",
+      "redox_reaction": "A reaction in which oxidation and reduction occur simultaneously"
+    },
+    "effects_of_oxidation_in_daily_life": [
+      "Corrosion",
+      "Rancidity"
+    ],
+    "corrosion": {
+      "definition": "Slow destruction of metals by chemical reactions with the environment",
+      "example": "Rusting of iron"
+    },
+    "rancidity": {
+      "definition": "Oxidation of fats and oils that leads to unpleasant smell and taste",
+      "prevention": [
+        "Use of antioxidants",
+        "Refrigeration",
+        "Vacuum packing"
+      ]
+    },
+    "one_liner": "No reaction is one-sided—oxidation and reduction always move together."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 2,
+    "chapter_name": "Acids, Bases and Salts",
+    "status": "next",
+    "key_concepts": {
+      "acid": "A substance that produces hydrogen ions (H+) in aqueous solution",
+      "base": "A substance that produces hydroxide ions (OH−) in aqueous solution",
+      "salt": "A compound formed by the neutralisation of an acid and a base"
+    },
+    "types_of_acids_and_bases": {
+      "acids": [
+        "Mineral acids (HCl, H2SO4, HNO3)",
+        "Organic acids (Acetic acid, Citric acid)"
+      ],
+      "bases": [
+        "Strong bases (NaOH, KOH)",
+        "Weak bases (NH4OH)"
+      ]
+    },
+    "chemical_properties": {
+      "reaction_with_metals": "Acids react with metals to produce hydrogen gas",
+      "reaction_with_metal_carbonates": "Acids react with metal carbonates to form salt, water, and carbon dioxide",
+      "neutralisation": "Reaction between an acid and a base to form salt and water"
+    },
+    "strength_of_acids_and_bases": {
+      "ph_scale": {
+        "range": "0 to 14",
+        "acidic": "pH less than 7",
+        "basic": "pH more than 7",
+        "neutral": "pH equal to 7"
+      }
+    },
+    "salts_in_everyday_life": [
+      {
+        "name": "Common salt",
+        "chemical_name": "Sodium chloride (NaCl)",
+        "uses": ["Food preservation", "Cooking"]
+      },
+      {
+        "name": "Baking soda",
+        "chemical_name": "Sodium hydrogen carbonate (NaHCO3)",
+        "uses": ["Baking", "Fire extinguishers", "Antacid"]
+      },
+      {
+        "name": "Washing soda",
+        "chemical_name": "Sodium carbonate (Na2CO3·10H2O)",
+        "uses": ["Cleaning agent", "Softening hard water"]
+      },
+      {
+        "name": "Plaster of Paris",
+        "chemical_name": "Calcium sulphate hemihydrate (CaSO4·1/2H2O)",
+        "uses": ["Making casts", "Decorative items"]
+      }
+    ],
+    "one_liner": "pH decides personality—of solutions and exam questions alike."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 3,
+    "chapter_name": "Metals and Non-metals",
+    "status": "next",
+    "key_concepts": {
+      "metal": "Elements that are generally hard, shiny, malleable, ductile and good conductors of heat and electricity",
+      "non_metal": "Elements that lack metallic properties and are generally poor conductors"
+    },
+    "physical_properties": {
+      "metals": [
+        "Malleable",
+        "Ductile",
+        "Sonorous",
+        "Good conductors"
+      ],
+      "non_metals": [
+        "Brittle",
+        "Non-sonorous",
+        "Poor conductors"
+      ]
+    },
+    "chemical_properties": {
+      "reaction_with_oxygen": "Metals form basic oxides, non-metals form acidic oxides",
+      "reaction_with_water": "Reactive metals react vigorously with water",
+      "reaction_with_acids": "Metals react with acids to produce hydrogen gas"
+    },
+    "reactivity_series": {
+      "description": "Arrangement of metals in decreasing order of reactivity",
+      "most_reactive": "Potassium",
+      "least_reactive": "Gold"
+    },
+    "extraction_of_metals": {
+      "steps": [
+        "Concentration of ore",
+        "Roasting or calcination",
+        "Reduction"
+      ]
+    },
+    "corrosion": {
+      "definition": "Gradual destruction of metals by chemical reactions",
+      "prevention": [
+        "Painting",
+        "Galvanisation",
+        "Alloying"
+      ]
+    },
+    "uses": {
+      "metals": ["Iron", "Aluminium", "Copper"],
+      "non_metals": ["Oxygen", "Nitrogen", "Sulphur"]
+    },
+    "one_liner": "Reactivity decides everything—from extraction to corrosion."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 4,
+    "chapter_name": "Carbon and its Compounds",
+    "status": "next",
+    "key_concepts": {
+      "carbon": "An element known for forming a large number of compounds due to catenation",
+      "covalent_bond": "A bond formed by sharing of electrons"
+    },
+    "unique_properties_of_carbon": [
+      "Catenation",
+      "Tetravalency"
+    ],
+    "homologous_series": {
+      "definition": "A series of organic compounds with similar chemical properties",
+      "characteristics": [
+        "Same functional group",
+        "Gradual change in physical properties"
+      ]
+    },
+    "hydrocarbons": {
+      "saturated": {
+        "name": "Alkanes",
+        "general_formula": "CnH2n+2"
+      },
+      "unsaturated": {
+        "alkenes": "CnH2n",
+        "alkynes": "CnH2n-2"
+      }
+    },
+    "functional_groups": [
+      "-OH (Alcohol)",
+      "-COOH (Carboxylic acid)",
+      "-CHO (Aldehyde)",
+      "-CO- (Ketone)"
+    ],
+    "ethanol": {
+      "formula": "C2H5OH",
+      "properties": ["Solvent", "Fuel"],
+      "uses": ["Medicine", "Alcoholic beverages"]
+    },
+    "ethanoic_acid": {
+      "formula": "CH3COOH",
+      "common_name": "Acetic acid",
+      "uses": ["Vinegar", "Food preservation"]
+    },
+    "one_liner": "Carbon’s bonding ability is the backbone of life and chemistry."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 5,
+    "chapter_name": "Life Processes",
+    "status": "next",
+    "key_concepts": {
+      "life_processes": "Basic functions performed by living organisms to maintain life",
+      "nutrition": "Process of obtaining and utilising food"
+    },
+    "nutrition": {
+      "autotrophic": {
+        "definition": "Organisms make their own food",
+        "example": "Green plants",
+        "process": "Photosynthesis"
+      },
+      "heterotrophic": {
+        "definition": "Organisms depend on others for food",
+        "types": [
+          "Holozoic",
+          "Saprophytic",
+          "Parasitic"
+        ]
+      }
+    },
+    "photosynthesis": {
+      "raw_materials": [
+        "Carbon dioxide",
+        "Water",
+        "Sunlight",
+        "Chlorophyll"
+      ],
+      "equation": "6CO2 + 6H2O → C6H12O6 + 6O2"
+    },
+    "respiration": {
+      "aerobic": {
+        "oxygen": "Required",
+        "energy_yield": "High"
+      },
+      "anaerobic": {
+        "oxygen": "Not required",
+        "energy_yield": "Low"
+      }
+    },
+    "transportation": {
+      "plants": {
+        "xylem": "Transport of water and minerals",
+        "phloem": "Transport of food"
+      },
+      "humans": {
+        "heart": "Pumps blood",
+        "blood_vessels": [
+          "Arteries",
+          "Veins",
+          "Capillaries"
+        ]
+      }
+    },
+    "excretion": {
+      "plants": "Through stomata and diffusion",
+      "humans": {
+        "organs": [
+          "Kidneys",
+          "Ureters",
+          "Urinary bladder",
+          "Urethra"
+        ]
+      }
+    },
+    "one_liner": "Life runs on systems—miss one, everything slows down."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 6,
+    "chapter_name": "Control and Coordination",
+    "status": "next",
+    "key_concepts": {
+      "control_and_coordination": "Regulation of body activities in response to stimuli",
+      "stimulus": "Any change in environment that causes a response"
+    },
+    "nervous_system": {
+      "components": [
+        "Brain",
+        "Spinal cord",
+        "Nerves"
+      ],
+      "reflex_action": {
+        "definition": "Automatic response to a stimulus",
+        "pathway": "Reflex arc"
+      }
+    },
+    "brain_parts": {
+      "forebrain": "Thinking and memory",
+      "midbrain": "Visual and auditory reflexes",
+      "hindbrain": [
+        "Cerebellum",
+        "Pons",
+        "Medulla"
+      ]
+    },
+    "endocrine_system": {
+      "definition": "System of glands that secrete hormones",
+      "major_glands": [
+        "Pituitary",
+        "Thyroid",
+        "Pancreas",
+        "Adrenal",
+        "Gonads"
+      ]
+    },
+    "plant_hormones": {
+      "auxin": "Cell elongation",
+      "gibberellin": "Stem growth",
+      "cytokinin": "Cell division",
+      "abscisic_acid": "Growth inhibitor"
+    },
+    "feedback_mechanism": {
+      "definition": "Regulation of hormone secretion to maintain balance"
+    },
+    "one_liner": "Control systems keep life stable—without them, chaos wins."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 7,
+    "chapter_name": "How do Organisms Reproduce",
+    "status": "next",
+    "key_concepts": {
+      "reproduction": "Biological process by which new individuals of the same species are produced",
+      "asexual_reproduction": "Reproduction involving a single parent",
+      "sexual_reproduction": "Reproduction involving two parents"
+    },
+    "asexual_reproduction": {
+      "types": [
+        "Binary fission",
+        "Multiple fission",
+        "Budding",
+        "Fragmentation",
+        "Vegetative propagation"
+      ],
+      "advantages": [
+        "Rapid reproduction",
+        "No need for a partner"
+      ]
+    },
+    "sexual_reproduction_in_humans": {
+      "male_reproductive_system": [
+        "Testes",
+        "Vas deferens",
+        "Urethra"
+      ],
+      "female_reproductive_system": [
+        "Ovaries",
+        "Fallopian tubes",
+        "Uterus"
+      ],
+      "fertilisation": "Fusion of male and female gametes"
+    },
+    "reproductive_health": {
+      "importance": [
+        "Personal hygiene",
+        "Awareness about STDs",
+        "Family planning"
+      ]
+    },
+    "one_liner": "Reproduction ensures continuity—variation ensures survival."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 8,
+    "chapter_name": "Heredity and Evolution",
+    "status": "next",
+    "key_concepts": {
+      "heredity": "Transmission of traits from parents to offspring",
+      "variation": "Differences among individuals of the same species"
+    },
+    "mendel_experiments": {
+      "monohybrid_cross": "Cross involving one pair of contrasting traits",
+      "dihybrid_cross": "Cross involving two pairs of contrasting traits",
+      "laws": [
+        "Law of dominance",
+        "Law of segregation",
+        "Law of independent assortment"
+      ]
+    },
+    "genetics_terms": {
+      "gene": "Unit of heredity",
+      "allele": "Alternative form of a gene",
+      "genotype": "Genetic makeup",
+      "phenotype": "Observable characteristics"
+    },
+    "sex_determination_in_humans": {
+      "female": "XX",
+      "male": "XY"
+    },
+    "evolution": {
+      "definition": "Gradual change in organisms over generations",
+      "evidence": [
+        "Homologous organs",
+        "Analogous organs",
+        "Fossils"
+      ]
+    },
+    "speciation": {
+      "definition": "Formation of new species",
+      "factors": [
+        "Geographical isolation",
+        "Genetic drift",
+        "Natural selection"
+      ]
+    },
+    "one_liner": "Evolution explains diversity—heredity explains continuity."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 9,
+    "chapter_name": "Sources of Energy",
+    "status": "next",
+    "key_concepts": {
+      "source_of_energy": "Anything that can be used to produce heat, light, or power",
+      "renewable_energy": "Energy sources that are inexhaustible",
+      "non_renewable_energy": "Energy sources that are exhaustible"
+    },
+    "conventional_sources": [
+      "Coal",
+      "Petroleum",
+      "Natural gas",
+      "Thermal power"
+    ],
+    "non_conventional_sources": [
+      "Solar energy",
+      "Wind energy",
+      "Hydroelectric power",
+      "Biogas",
+      "Tidal energy",
+      "Nuclear energy"
+    ],
+    "thermal_power_plant": {
+      "fuel": "Coal",
+      "process": "Heat energy → Mechanical energy → Electrical energy"
+    },
+    "biogas_plant": {
+      "raw_material": "Animal dung and organic waste",
+      "gas_composition": [
+        "Methane",
+        "Carbon dioxide"
+      ]
+    },
+    "advantages_of_renewable_sources": [
+      "Eco-friendly",
+      "Sustainable",
+      "Less pollution"
+    ],
+    "limitations": [
+      "High initial cost",
+      "Dependence on natural conditions"
+    ],
+    "one_liner": "Energy choice today decides environment tomorrow."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 10,
+    "chapter_name": "Light – Reflection and Refraction",
+    "status": "next",
+    "key_concepts": {
+      "light": "A form of energy that enables us to see objects",
+      "reflection": "Bouncing back of light from a surface",
+      "refraction": "Bending of light when it passes from one medium to another"
+    },
+    "laws_of_reflection": [
+      "Angle of incidence equals angle of reflection",
+      "Incident ray, reflected ray and normal lie in the same plane"
+    ],
+    "spherical_mirrors": {
+      "types": [
+        "Concave mirror",
+        "Convex mirror"
+      ],
+      "uses": {
+        "concave": ["Shaving mirror", "Headlights"],
+        "convex": ["Rear-view mirror"]
+      }
+    },
+    "mirror_formula": "1/f = 1/v + 1/u",
+    "magnification": {
+      "mirror": "m = h_i / h_o = -v/u",
+      "lens": "m = v/u"
+    },
+    "refraction_through_lens": {
+      "types": [
+        "Convex lens",
+        "Concave lens"
+      ]
+    },
+    "lens_formula": "1/f = 1/v + 1/u",
+    "power_of_lens": {
+      "formula": "P = 1/f",
+      "unit": "Dioptre"
+    },
+    "one_liner": "Light follows rules—break them and the diagram breaks you."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 11,
+    "chapter_name": "The Human Eye and the Colourful World",
+    "status": "next",
+    "key_concepts": {
+      "human_eye": "A natural optical instrument that enables vision",
+      "retina": "Light-sensitive screen inside the eye where image is formed"
+    },
+    "structure_of_human_eye": {
+      "cornea": "Transparent front part that refracts light",
+      "iris": "Controls the size of the pupil",
+      "pupil": "Regulates the amount of light entering the eye",
+      "eye_lens": "Forms image on the retina",
+      "optic_nerve": "Carries visual signals to the brain"
+    },
+    "defects_of_vision": {
+      "myopia": {
+        "common_name": "Short-sightedness",
+        "correction": "Concave lens"
+      },
+      "hypermetropia": {
+        "common_name": "Long-sightedness",
+        "correction": "Convex lens"
+      },
+      "presbyopia": {
+        "cause": "Ageing",
+        "correction": "Bifocal lenses"
+      }
+    },
+    "dispersion_of_light": {
+      "definition": "Splitting of white light into its constituent colours",
+      "spectrum": [
+        "Violet",
+        "Indigo",
+        "Blue",
+        "Green",
+        "Yellow",
+        "Orange",
+        "Red"
+      ]
+    },
+    "atmospheric_phenomena": [
+      "Rainbow",
+      "Scattering of light",
+      "Blue colour of sky",
+      "Red colour of sunrise and sunset"
+    ],
+    "one_liner": "Vision is physics meeting biology—with zero margin for error."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 12,
+    "chapter_name": "Electricity",
+    "status": "next",
+    "key_concepts": {
+      "electric_current": "Rate of flow of electric charge",
+      "potential_difference": "Work done per unit charge"
+    },
+    "formulas": {
+      "current": "I = Q / t",
+      "potential_difference": "V = W / Q",
+      "ohms_law": "V = IR",
+      "electric_power": [
+        "P = VI",
+        "P = I^2R",
+        "P = V^2 / R"
+      ]
+    },
+    "resistance": {
+      "definition": "Opposition to the flow of current",
+      "factors_affecting": [
+        "Length of conductor",
+        "Area of cross-section",
+        "Material",
+        "Temperature"
+      ]
+    },
+    "combination_of_resistors": {
+      "series": {
+        "total_resistance": "R = R1 + R2 + R3",
+        "current": "Same through all resistors"
+      },
+      "parallel": {
+        "total_resistance": "1/R = 1/R1 + 1/R2 + 1/R3",
+        "voltage": "Same across all resistors"
+      }
+    },
+    "electric_energy": {
+      "unit": "kilowatt-hour (kWh)",
+      "commercial_unit": "1 kWh = 3.6 × 10^6 J"
+    },
+    "one_liner": "Electricity is formulas plus discipline—mess up units and marks vanish."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 12,
+    "chapter_name": "Electricity",
+    "status": "next",
+    "key_concepts": {
+      "electric_current": "Rate of flow of electric charge",
+      "potential_difference": "Work done per unit charge"
+    },
+    "formulas": {
+      "current": "I = Q / t",
+      "potential_difference": "V = W / Q",
+      "ohms_law": "V = IR",
+      "electric_power": [
+        "P = VI",
+        "P = I^2R",
+        "P = V^2 / R"
+      ]
+    },
+    "resistance": {
+      "definition": "Opposition to the flow of current",
+      "factors_affecting": [
+        "Length of conductor",
+        "Area of cross-section",
+        "Material",
+        "Temperature"
+      ]
+    },
+    "combination_of_resistors": {
+      "series": {
+        "total_resistance": "R = R1 + R2 + R3",
+        "current": "Same through all resistors"
+      },
+      "parallel": {
+        "total_resistance": "1/R = 1/R1 + 1/R2 + 1/R3",
+        "voltage": "Same across all resistors"
+      }
+    },
+    "electric_energy": {
+      "unit": "kilowatt-hour (kWh)",
+      "commercial_unit": "1 kWh = 3.6 × 10^6 J"
+    },
+    "one_liner": "Electricity is formulas plus discipline—mess up units and marks vanish."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 15,
+    "chapter_name": "Our Environment",
+    "status": "next",
+    "key_concepts": {
+      "ecosystem": "A system formed by interaction of living organisms with their physical environment",
+      "food_chain": "A sequence of organisms through which energy is transferred"
+    },
+    "components_of_ecosystem": {
+      "biotic": [
+        "Producers",
+        "Consumers",
+        "Decomposers"
+      ],
+      "abiotic": [
+        "Air",
+        "Water",
+        "Soil",
+        "Sunlight"
+      ]
+    },
+    "trophic_levels": [
+      "Producers",
+      "Primary consumers",
+      "Secondary consumers",
+      "Tertiary consumers"
+    ],
+    "energy_flow": {
+      "ten_percent_law": "Only 10% of energy is transferred from one trophic level to the next"
+    },
+    "food_web": {
+      "definition": "A network of interconnected food chains"
+    },
+    "biogeochemical_cycles": [
+      "Water cycle",
+      "Carbon cycle",
+      "Nitrogen cycle"
+    ],
+    "environmental_issues": {
+      "biomagnification": "Increase in concentration of toxic substances at higher trophic levels",
+      "ozone_depletion": "Reduction of ozone layer due to CFCs"
+    },
+    "one_liner": "Nature runs on balance—break it, and everything pays."
+  },
+  {
+    "class": 10,
+    "subject": "Science",
+    "chapter_number": 16,
+    "chapter_name": "Management of Natural Resources",
+    "status": "next",
+    "key_concepts": {
+      "natural_resources": "Resources obtained from nature that are essential for human survival",
+      "sustainable_development": "Development that meets present needs without compromising future generations"
+    },
+    "types_of_resources": {
+      "renewable": [
+        "Forests",
+        "Wildlife",
+        "Water",
+        "Soil"
+      ],
+      "non_renewable": [
+        "Coal",
+        "Petroleum",
+        "Minerals"
+      ]
+    },
+    "forest_and_wildlife_management": {
+      "importance": [
+        "Maintaining ecological balance",
+        "Preserving biodiversity"
+      ],
+      "stakeholders": [
+        "Local communities",
+        "Forest department",
+        "Government",
+        "Industrialists"
+      ]
+    },
+    "water_management": {
+      "need": [
+        "Uneven distribution of water",
+        "Increasing demand"
+      ],
+      "methods": [
+        "Dams",
+        "Rainwater harvesting",
+        "Watershed management"
+      ]
+    },
+    "coal_and_petroleum": {
+      "nature": "Non-renewable",
+      "issues": [
+        "Limited availability",
+        "Environmental pollution"
+      ],
+      "conservation": [
+        "Alternative energy sources",
+        "Judicious use"
+      ]
+    },
+    "case_studies": [
+      {
+        "name": "Hirakud Dam",
+        "purpose": [
+          "Irrigation",
+          "Electricity generation",
+          "Flood control"
+        ]
+      },
+      {
+        "name": "Chipko Movement",
+        "aim": "Protection of trees and forests"
+      }
+    ],
+    "five_r_principle": [
+      "Refuse",
+      "Reduce",
+      "Reuse",
+      "Repurpose",
+      "Recycle"
+    ],
+    "one_liner": "Resources are borrowed, not owned—management decides survival."
+  }                            
+]

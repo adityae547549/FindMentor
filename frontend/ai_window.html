@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Study Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --primary: #2563eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .header {
+      margin-bottom: 24px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .header p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 90px;
+      resize: vertical;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      font-size: 15px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .answer-card {
+      margin-top: 24px;
+      padding: 18px;
+      border-left: 4px solid var(--primary);
+      background: #f9fafb;
+      border-radius: 10px;
+      font-size: 15px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .status {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 10px;
+      }
+      .header h1 {
+        font-size: 22px;
+      }
+      .header p {
+        font-size: 13px;
+      }
+      .card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>AI Study Assistant</h1>
+      <p>Ask syllabus-based questions (Class 6–12). Answers are strictly from textbooks.</p>
+    </div>
+
+    <div class="card">
+      <textarea id="question"
+        placeholder="Example: What is Carbohydrate Class 6 Science"></textarea>
+
+      <div class="file-uploads" style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <label for="imageUpload" style="cursor: pointer; padding: 8px 12px; background: #f3f4f6; border-radius: 8px; font-size: 13px; border: 1px solid var(--border);">
+          📷 Upload Photo
+        </label>
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+        
+        <label for="pdfUpload" style="cursor: pointer; padding: 8px 12px; background: #f3f4f6; border-radius: 8px; font-size: 13px; border: 1px solid var(--border);">
+          📄 Upload PDF
+        </label>
+        <input type="file" id="pdfUpload" accept="application/pdf" style="display: none;" onchange="handlePDFUpload(event)">
+
+        <label for="audioUpload" style="cursor: pointer; padding: 8px 12px; background: #f3f4f6; border-radius: 8px; font-size: 13px; border: 1px solid var(--border);">
+          🎤 Upload Audio
+        </label>
+        <input type="file" id="audioUpload" accept="audio/*" style="display: none;" onchange="handleAudioUpload(event)">
+
+        <label for="videoUpload" style="cursor: pointer; padding: 8px 12px; background: #f3f4f6; border-radius: 8px; font-size: 13px; border: 1px solid var(--border);">
+          📹 Upload Video
+        </label>
+        <input type="file" id="videoUpload" accept="video/*" style="display: none;" onchange="handleVideoUpload(event)">
+      </div>
+
+      <div class="actions">
+        <div class="hint">Press Enter or click Ask • Supports multiple languages</div>
+        <button id="askBtn" onclick="askAI()">Ask</button>
+      </div>
+
+      <div id="status" class="status"></div>
+    </div>
+
+    <div id="answerBox" class="answer-card" style="display:none;"></div>
+
+    <div class="footer">
+      Dataset-based • No hallucinations • NCERT aligned
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const askBtn = document.getElementById("askBtn");
+    const answerBox = document.getElementById("answerBox");
+    const statusBox = document.getElementById("status");
+    const questionInput = document.getElementById("question");
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+      authDomain: "studio-6680101022-359df.firebaseapp.com",
+      projectId: "studio-6680101022-359df",
+      storageBucket: "studio-6680101022-359df.firebasestorage.app",
+      messagingSenderId: "938584797960",
+      appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser=null;
+    let currentSubject="";
+
+    onAuthStateChanged(auth,user=>{
+      if(user) currentUser=user;
+    });
+
+    window.addEventListener("DOMContentLoaded",()=>{
+      const prefillQuestion=localStorage.getItem("prefillQuestion");
+      const prefillSubject=localStorage.getItem("prefillSubject");
+      if(prefillQuestion){
+        questionInput.value=prefillQuestion;
+        questionInput.focus();
+        questionInput.scrollIntoView({behavior:"smooth",block:"center"});
+      }
+      if(prefillSubject){
+        currentSubject=prefillSubject;
+      }
+      localStorage.removeItem("prefillQuestion");
+      localStorage.removeItem("prefillSubject");
+    });
+
+    async function logAIUsage(mode,meta){
+      if(!currentUser) return;
+      try{
+        await addDoc(collection(db,"aiLogs"),{
+          studentId:currentUser.uid,
+          question:meta.question||"",
+          subject:currentSubject||"",
+          source:meta.source||"",
+          mode,
+          createdAt:serverTimestamp()
+        });
+      }catch(e){
+        console.error("Failed to log AI usage",e);
+      }
+    }
+
+    window.askAI = async function(){
+      const question=questionInput.value.trim();
+      if(!question){
+        statusBox.textContent="Please enter a question.";
+        return;
+      }
+
+      askBtn.disabled=true;
+      statusBox.textContent="Thinking…";
+      answerBox.style.display="none";
+
+      try{
+        const res=await fetch("/ask",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({question})
+        });
+
+        const data=await res.json();
+
+        if(data.success){
+          const sourceLabel=data.source==="dataset"?"📚 From Dataset":
+                            data.source==="solver"?"🔢 From Math Solver":
+                            "🤖 From AI";
+          answerBox.innerHTML=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">${sourceLabel}</div>${data.answer}`;
+          answerBox.style.display="block";
+          statusBox.textContent="";
+          await logAIUsage("text",{question,source:data.source||""});
+        }else{
+          statusBox.textContent=data.message||data.error||"Unable to process your question.";
+          answerBox.style.display="none";
+        }
+      }catch(err){
+        statusBox.textContent="Server error. Please make sure the backend server is running.";
+        answerBox.style.display="none";
+        console.error("Error:",err);
+      }finally{
+        askBtn.disabled=false;
+      }
+    };
+
+    questionInput.addEventListener("keydown",e=>{
+      if(e.key==="Enter"&&!e.shiftKey&&!askBtn.disabled){
+        e.preventDefault();
+        window.askAI();
+      }
+    });
+
+    window.handleImageUpload=async function(event){
+      const file=event.target.files[0];
+      if(!file) return;
+
+      if(file.size>10*1024*1024){
+        statusBox.textContent="Image too large. Maximum size is 10MB.";
+        return;
+      }
+
+      askBtn.disabled=true;
+      statusBox.textContent="Processing image...";
+      answerBox.style.display="none";
+
+      try{
+        const formData=new FormData();
+        formData.append("image",file);
+
+        const res=await fetch("/ask/image",{
+          method:"POST",
+          body:formData
+        });
+
+        const data=await res.json();
+
+        if(data.success){
+          const sourceLabel=data.source==="image"?"📷 From Image":
+                            data.source==="dataset"?"📚 From Dataset":
+                            data.source==="solver"?"🔢 From Math Solver":
+                            "🤖 From AI";
+          let answerHtml=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">${sourceLabel}</div>`;
+          
+          if(data.extractedText){
+            answerHtml+=`<div style="font-size: 13px; color: var(--muted); margin-bottom: 12px; padding: 8px; background: #f9fafb; border-radius: 6px;"><strong>Extracted:</strong> ${data.extractedText.substring(0, 200)}...</div>`;
+          }
+          
+          answerHtml+=data.answer;
+          answerBox.innerHTML=answerHtml;
+          answerBox.style.display="block";
+          statusBox.textContent="";
+          await logAIUsage("image",{question:data.extractedText||"",source:data.source||"image"});
+        }else{
+          statusBox.textContent=data.message||data.error||"Failed to process image.";
+          answerBox.style.display="none";
+        }
+      }catch(err){
+        statusBox.textContent="Error processing image. Please try again.";
+        answerBox.style.display="none";
+        console.error("Error:",err);
+      }finally{
+        askBtn.disabled=false;
+        event.target.value="";
+      }
+    };
+
+    window.handlePDFUpload=async function(event){
+      const file=event.target.files[0];
+      if(!file) return;
+
+      if(file.size>10*1024*1024){
+        statusBox.textContent="PDF too large. Maximum size is 10MB.";
+        return;
+      }
+
+      askBtn.disabled=true;
+      statusBox.textContent="Processing PDF...";
+      answerBox.style.display="none";
+
+      try{
+        const formData=new FormData();
+        formData.append("pdf",file);
+        
+        const question=questionInput.value.trim();
+        if(question){
+          formData.append("question",question);
+        }
+
+        const res=await fetch("/ask/pdf",{
+          method:"POST",
+          body:formData
+        });
+
+        const data=await res.json();
+
+        if(data.success){
+          let answerHtml=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">📄 From PDF (${data.pdfInfo?.pages||0} pages)</div>`;
+          
+          if(data.questions&&data.questions.length>0){
+            answerHtml+=`<div style="margin-bottom: 12px;"><strong>Found ${data.questions.length} questions:</strong><ul style="margin: 8px 0; padding-left: 20px;">`;
+            data.questions.slice(0,5).forEach((q,i)=>{
+              answerHtml+=`<li style="margin: 4px 0; font-size: 14px;">${q.text.substring(0, 100)}...</li>`;
+            });
+            answerHtml+=`</ul></div>`;
+          }
+          
+          if(data.answer){
+            answerHtml+=data.answer;
+          }else if(data.fullText){
+            answerHtml+=`<div style="font-size: 14px; line-height: 1.6;">${data.fullText}</div>`;
+          }
+          
+          answerBox.innerHTML=answerHtml;
+          answerBox.style.display="block";
+          statusBox.textContent="";
+          await logAIUsage("pdf",{question:question||"",source:"pdf"});
+        }else{
+          statusBox.textContent=data.message||data.error||"Failed to process PDF.";
+          answerBox.style.display="none";
+        }
+      }catch(err){
+        statusBox.textContent="Error processing PDF. Please try again.";
+        answerBox.style.display="none";
+        console.error("Error:",err);
+      }finally{
+        askBtn.disabled=false;
+        event.target.value="";
+      }
+    };
+
+    window.handleAudioUpload=async function(event){
+      const file=event.target.files[0];
+      if(!file) return;
+
+      if(file.size>10*1024*1024){
+        statusBox.textContent="Audio too large. Maximum size is 10MB.";
+        return;
+      }
+
+      askBtn.disabled=true;
+      statusBox.textContent="Processing audio...";
+      answerBox.style.display="none";
+
+      try{
+        const formData=new FormData();
+        formData.append("audio",file);
+
+        const res=await fetch("/ask/audio",{
+          method:"POST",
+          body:formData
+        });
+
+        const data=await res.json();
+
+        if(data.success){
+          const sourceLabel="🎤 From Audio";
+          let answerHtml=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">${sourceLabel}</div>`;
+
+          if(data.transcript){
+            answerHtml+=`<div style="font-size: 13px; color: var(--muted); margin-bottom: 12px; padding: 8px; background: #f9fafb; border-radius: 6px;"><strong>Transcript:</strong> ${data.transcript.substring(0, 200)}...</div>`;
+          }
+
+          if(data.answer){
+            answerHtml+=data.answer;
+          }else if(data.message){
+            answerHtml+=data.message;
+          }
+
+          answerBox.innerHTML=answerHtml;
+          answerBox.style.display="block";
+          statusBox.textContent="";
+          await logAIUsage("audio",{question:data.transcript||"",source:"audio"});
+        }else{
+          statusBox.textContent=data.message||data.error||"Failed to process audio.";
+          answerBox.style.display="none";
+        }
+      }catch(err){
+        statusBox.textContent="Error processing audio. Please try again.";
+        answerBox.style.display="none";
+        console.error("Error:",err);
+      }finally{
+        askBtn.disabled=false;
+        event.target.value="";
+      }
+    };
+
+    window.handleVideoUpload=async function(event){
+      const file=event.target.files[0];
+      if(!file) return;
+
+      if(file.size>10*1024*1024){
+        statusBox.textContent="Video too large. Maximum size is 10MB.";
+        return;
+      }
+
+      askBtn.disabled=true;
+      statusBox.textContent="Processing video...";
+      answerBox.style.display="none";
+
+      try{
+        const formData=new FormData();
+        formData.append("video",file);
+
+        const res=await fetch("/ask/video",{
+          method:"POST",
+          body:formData
+        });
+
+        const data=await res.json();
+
+        if(data.success){
+          const sourceLabel="📹 From Video";
+          let answerHtml=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">${sourceLabel}</div>`;
+
+          if(data.transcript){
+            answerHtml+=`<div style="font-size: 13px; color: var(--muted); margin-bottom: 12px; padding: 8px; background: #f9fafb; border-radius: 6px;"><strong>Transcript:</strong> ${data.transcript.substring(0, 200)}...</div>`;
+          }
+
+          if(data.answer){
+            answerHtml+=data.answer;
+          }else if(data.message){
+            answerHtml+=data.message;
+          }
+
+          answerBox.innerHTML=answerHtml;
+          answerBox.style.display="block";
+          statusBox.textContent="";
+          await logAIUsage("video",{question:data.transcript||"",source:"video"});
+        }else{
+          statusBox.textContent=data.message||data.error||"Failed to process video.";
+          answerBox.style.display="none";
+        }
+      }catch(err){
+        statusBox.textContent="Error processing video. Please try again.";
+        answerBox.style.display="none";
+        console.error("Error:",err);
+      }finally{
+        askBtn.disabled=false;
+        event.target.value="";
+      }
+    };
+  </script>
+
+</body>
+</html>

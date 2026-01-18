@@ -1,0 +1,251 @@
+{
+  "class": 7,
+  "subject": "Science",
+  "chapters": [
+    {
+      "chapter": "The Ever-Evolving World of Science",
+      "topics": [
+        {
+          "topic": "Science",
+          "intent": ["define"],
+          "content": "Science is the study of the natural world through observation and experiments."
+        },
+        {
+          "topic": "Importance of Science",
+          "intent": ["explain"],
+          "content": "Science helps us understand nature, develop technology, and improve daily life."
+        }
+      ]
+    },
+    {
+      "chapter": "Exploring Substances: Acidic, Basic, and Neutral",
+      "topics": [
+        {
+          "topic": "Acids",
+          "intent": ["define"],
+          "content": "Acids are substances that taste sour and turn blue litmus red."
+        },
+        {
+          "topic": "Bases",
+          "intent": ["define"],
+          "content": "Bases are substances that feel soapy and turn red litmus blue."
+        },
+        {
+          "topic": "Neutral Substances",
+          "intent": ["define"],
+          "content": "Neutral substances do not change the color of litmus paper."
+        },
+        {
+          "topic": "Indicators",
+          "intent": ["define"],
+          "content": "Indicators are substances used to test whether a material is acidic or basic."
+        }
+      ]
+    },
+    {
+      "chapter": "Electricity: Circuits and their Components",
+      "topics": [
+        {
+          "topic": "Electric Circuit",
+          "intent": ["define"],
+          "content": "An electric circuit is a complete path through which electric current flows."
+        },
+        {
+          "topic": "Components of a Circuit",
+          "intent": ["explain"],
+          "content": "A circuit includes a cell, wires, switch, and an electric device."
+        },
+        {
+          "topic": "Conductors and Insulators",
+          "intent": ["difference"],
+          "content": "Conductors allow electricity to pass through them, while insulators do not."
+        }
+      ]
+    },
+    {
+      "chapter": "The World of Metals and Non-metals",
+      "topics": [
+        {
+          "topic": "Metals",
+          "intent": ["define"],
+          "content": "Metals are substances that are shiny, hard, and good conductors of heat and electricity."
+        },
+        {
+          "topic": "Non-metals",
+          "intent": ["define"],
+          "content": "Non-metals are substances that are dull and poor conductors of heat and electricity."
+        },
+        {
+          "topic": "Uses of Metals and Non-metals",
+          "intent": ["explain"],
+          "content": "Metals and non-metals are used in daily life for making tools, wires, and household items."
+        }
+      ]
+    },
+    {
+      "chapter": "Changes Around Us: Physical and Chemical",
+      "topics": [
+        {
+          "topic": "Physical Change",
+          "intent": ["define"],
+          "content": "A physical change changes the shape or state of a substance without forming a new substance."
+        },
+        {
+          "topic": "Chemical Change",
+          "intent": ["define"],
+          "content": "A chemical change results in the formation of a new substance."
+        },
+        {
+          "topic": "Reversible and Irreversible Changes",
+          "intent": ["difference"],
+          "content": "Reversible changes can be undone, while irreversible changes cannot."
+        }
+      ]
+    },
+    {
+      "chapter": "Adolescence: A Stage of Growth and Change",
+      "topics": [
+        {
+          "topic": "Adolescence",
+          "intent": ["define"],
+          "content": "Adolescence is the stage of life when a child grows into an adult."
+        },
+        {
+          "topic": "Physical Changes",
+          "intent": ["explain"],
+          "content": "Adolescence brings physical changes such as increase in height and body development."
+        },
+        {
+          "topic": "Healthy Habits During Adolescence",
+          "intent": ["explain"],
+          "content": "Eating healthy food and exercising help maintain good health during adolescence."
+        }
+      ]
+    },
+    {
+      "chapter": "Heat Transfer in Nature",
+      "topics": [
+        {
+          "topic": "Heat",
+          "intent": ["define"],
+          "content": "Heat is a form of energy that flows from a hotter object to a colder object."
+        },
+        {
+          "topic": "Conduction",
+          "intent": ["define"],
+          "content": "Conduction is the transfer of heat through direct contact."
+        },
+        {
+          "topic": "Convection",
+          "intent": ["define"],
+          "content": "Convection is the transfer of heat through liquids and gases."
+        },
+        {
+          "topic": "Radiation",
+          "intent": ["define"],
+          "content": "Radiation is the transfer of heat without any medium."
+        }
+      ]
+    },
+    {
+      "chapter": "Measurement of Time and Motion",
+      "topics": [
+        {
+          "topic": "Measurement of Time",
+          "intent": ["define"],
+          "content": "Time is measured using clocks and standard units like seconds and minutes."
+        },
+        {
+          "topic": "Motion",
+          "intent": ["define"],
+          "content": "Motion is the change in position of an object with time."
+        },
+        {
+          "topic": "Types of Motion",
+          "intent": ["explain"],
+          "content": "Motion can be linear, circular, or periodic."
+        }
+      ]
+    },
+    {
+      "chapter": "Life Processes in Animals",
+      "topics": [
+        {
+          "topic": "Nutrition in Animals",
+          "intent": ["define"],
+          "content": "Animals obtain nutrition by consuming plants or other animals."
+        },
+        {
+          "topic": "Respiration",
+          "intent": ["define"],
+          "content": "Respiration is the process of releasing energy from food."
+        },
+        {
+          "topic": "Excretion",
+          "intent": ["define"],
+          "content": "Excretion is the removal of waste materials from the body."
+        }
+      ]
+    },
+    {
+      "chapter": "Life Processes in Plants",
+      "topics": [
+        {
+          "topic": "Photosynthesis",
+          "intent": ["define"],
+          "content": "Photosynthesis is the process by which plants make food using sunlight."
+        },
+        {
+          "topic": "Respiration in Plants",
+          "intent": ["define"],
+          "content": "Plants respire to release energy from food."
+        },
+        {
+          "topic": "Transpiration",
+          "intent": ["define"],
+          "content": "Transpiration is the loss of water from plant leaves."
+        }
+      ]
+    },
+    {
+      "chapter": "Light: Shadows and Reflections",
+      "topics": [
+        {
+          "topic": "Light",
+          "intent": ["define"],
+          "content": "Light is a form of energy that enables us to see objects."
+        },
+        {
+          "topic": "Shadow",
+          "intent": ["define"],
+          "content": "A shadow is formed when light is blocked by an opaque object."
+        },
+        {
+          "topic": "Reflection",
+          "intent": ["define"],
+          "content": "Reflection is the bouncing back of light from a surface."
+        }
+      ]
+    },
+    {
+      "chapter": "Earth, Moon, and the Sun",
+      "topics": [
+        {
+          "topic": "Earth",
+          "intent": ["define"],
+          "content": "Earth is the planet that supports life and revolves around the Sun."
+        },
+        {
+          "topic": "Moon",
+          "intent": ["define"],
+          "content": "The Moon is Earth's natural satellite."
+        },
+        {
+          "topic": "Sun",
+          "intent": ["define"],
+          "content": "The Sun is a star that provides heat and light to the Earth."
+        }
+      ]
+    }
+  ]
+}

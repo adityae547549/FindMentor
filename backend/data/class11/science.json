@@ -1,0 +1,2830 @@
+{
+    "class": 11,
+    "subject": "Science",
+  "board": "CBSE",
+  "description": "",
+  "chapters": [
+    {
+        "chapter_number": 1,
+        "chapter_name": "Physical World and Measurement",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "Physics is the branch of science that deals with the study of matter, energy, motion, force, and their interactions. This chapter introduces physics as a fundamental discipline and emphasises the importance of measurement.",
+        "scope_of_physics": {
+        "description": "Physics explains natural phenomena using laws and principles",
+        "major_domains": [
+            "Classical mechanics",
+            "Thermodynamics",
+            "Electromagnetism",
+            "Optics",
+          "Modern physics (quantum mechanics and relativity)"
+          ]
+        },
+        "fundamental_forces_of_nature": {
+          "gravitational_force": {
+          "nature": "Always attractive",
+            "range": "Infinite",
+            "example": "Attraction between Earth and objects"
+          },
+          "electromagnetic_force": {
+            "nature": "Attractive or repulsive",
+            "range": "Infinite",
+          "example": "Electric and magnetic forces"
+          },
+          "strong_nuclear_force": {
+          "nature": "Strongest force",
+            "range": "Very short",
+          "example": "Binding of protons and neutrons in nucleus"
+          },
+          "weak_nuclear_force": {
+            "nature": "Responsible for radioactive decay",
+            "range": "Very short"
+          }
+        },
+        "physical_quantities": {
+          "definition": "Quantities that can be measured",
+          "types": {
+            "fundamental_quantities": [
+              "Length",
+              "Mass",
+              "Time",
+              "Electric current",
+              "Temperature",
+              "Amount of substance",
+              "Luminous intensity"
+            ],
+            "derived_quantities": [
+              "Velocity",
+              "Acceleration",
+              "Force",
+              "Energy",
+              "Pressure"
+            ]
+          }
+        },
+        "systems_of_units": {
+          "si_units": {
+            "length": "metre (m)",
+            "mass": "kilogram (kg)",
+            "time": "second (s)"
+          },
+          "advantages": [
+          "Universally accepted",
+          "Easy conversion",
+          "Logical structure"
+          ]
+        },
+        "measurement_of_length": {
+        "instruments": [
+          "Metre scale",
+            "Vernier calipers",
+          "Screw gauge"
+          ],
+        "least_count": "Smallest measurement an instrument can take"
+        },
+        "errors_in_measurement": {
+          "types": [
+            "Systematic errors",
+            "Random errors",
+            "Gross errors"
+          ],
+        "error_calculations": {
+          "absolute_error": "Difference between measured value and true value",
+          "relative_error": "Absolute error divided by mean value",
+          "percentage_error": "Relative error × 100"
+        }
+        },
+        "significant_figures": {
+        "definition": "Digits that convey meaningful precision",
+          "rules": [
+            "All non-zero digits are significant",
+            "Zeros between non-zero digits are significant",
+            "Trailing zeros without decimal are not significant"
+          ]
+        },
+      "dimensional_analysis": {
+          "dimensional_formula": "[M^a L^b T^c]",
+          "applications": [
+            "Checking correctness of equations",
+          "Deriving relations between quantities"
+          ]
+        },
+      "one_liner": "Accurate measurement is the foundation of all physical laws."
+      },
+    {
+        "chapter_number": 2,
+        "chapter_name": "Kinematics",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "Kinematics deals with the description of motion without considering the forces that cause it.",
+        "motion": {
+        "definition": "Change in position of an object with time",
+          "types": [
+            "Rectilinear motion",
+            "Circular motion",
+            "Random motion"
+          ]
+        },
+        "scalars_and_vectors": {
+        "scalar_quantities": [
+          "Distance",
+          "Speed",
+          "Mass"
+        ],
+        "vector_quantities": [
+          "Displacement",
+          "Velocity",
+          "Acceleration"
+        ]
+        },
+        "distance_and_displacement": {
+          "distance": "Total path length travelled",
+        "displacement": "Shortest straight-line distance between initial and final position"
+        },
+        "speed_and_velocity": {
+          "speed": {
+            "definition": "Rate of change of distance",
+            "formula": "Speed = Distance / Time"
+          },
+          "velocity": {
+            "definition": "Rate of change of displacement",
+            "formula": "Velocity = Displacement / Time"
+          }
+        },
+        "acceleration": {
+          "definition": "Rate of change of velocity",
+          "formula": "a = (v − u) / t"
+        },
+        "equations_of_motion": {
+        "first_equation": "v = u + at",
+        "second_equation": "s = ut + 1/2 at^2",
+        "third_equation": "v^2 = u^2 + 2as"
+        },
+        "motion_in_a_plane": {
+        "vector_resolution": [
+              "Horizontal component",
+              "Vertical component"
+            ]
+        },
+        "projectile_motion": {
+        "definition": "Motion of an object projected under gravity",
+          "important_results": {
+            "time_of_flight": "T = 2u sinθ / g",
+            "maximum_height": "H = u^2 sin^2θ / (2g)",
+            "range": "R = u^2 sin2θ / g"
+          }
+        },
+        "uniform_circular_motion": {
+        "definition": "Motion with constant speed along a circular path",
+          "centripetal_acceleration": {
+            "formula": "a = v^2 / r",
+          "direction": "Towards the centre"
+          }
+        },
+        "graphs_of_motion": {
+        "distance_time_graph": "Slope represents speed",
+          "velocity_time_graph": {
+            "slope": "Acceleration",
+            "area": "Displacement"
+          }
+        },
+      "one_liner": "Kinematics describes motion before forces explain it."
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Laws of Motion",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "This chapter explains how forces affect the motion of objects and lays the foundation of classical mechanics.",
+      "force": {
+        "definition": "An interaction that can change the state of rest, motion, or shape of an object",
+        "types": [
+          "Contact forces",
+          "Non-contact forces"
+        ]
+      },
+      "newtons_laws_of_motion": {
+        "first_law": {
+          "statement": "An object remains at rest or in uniform motion unless acted upon by an external force",
+          "concept": "Inertia",
+          "types_of_inertia": [
+            "Inertia of rest",
+            "Inertia of motion",
+            "Inertia of direction"
+          ]
+        },
+        "second_law": {
+          "statement": "Rate of change of momentum is directly proportional to the applied force",
+          "mathematical_form": "F = ma",
+          "momentum": {
+            "definition": "Product of mass and velocity",
+            "formula": "p = mv"
+          }
+        },
+        "third_law": {
+          "statement": "For every action, there is an equal and opposite reaction",
+          "examples": [
+            "Recoil of a gun",
+            "Walking",
+            "Rocket propulsion"
+          ]
+        }
+      },
+      "conservation_of_momentum": {
+        "statement": "Total momentum of a system remains constant if no external force acts",
+        "applications": [
+          "Collisions",
+          "Explosions"
+        ]
+      },
+      "friction": {
+        "definition": "Force that opposes relative motion between two surfaces in contact",
+        "types": [
+          "Static friction",
+          "Kinetic friction",
+          "Rolling friction"
+        ],
+        "advantages": [
+          "Walking",
+          "Writing",
+          "Grip in vehicles"
+        ],
+        "disadvantages": [
+          "Wear and tear",
+          "Energy loss as heat"
+        ]
+      },
+      "one_liner": "Laws of motion connect force with observable movement."
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Work, Energy and Power",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "This chapter explains how forces transfer energy and how work and power quantify this transfer.",
+      "work": {
+        "definition": "Work is done when a force produces displacement",
+        "formula": "W = F · s",
+        "special_cases": [
+          "Zero work",
+          "Positive work",
+          "Negative work"
+        ]
+      },
+      "energy": {
+        "definition": "Capacity to do work",
+        "types": {
+          "kinetic_energy": {
+            "definition": "Energy due to motion",
+            "formula": "KE = 1/2 mv^2"
+          },
+          "potential_energy": {
+            "definition": "Energy due to position",
+            "formula": "PE = mgh"
+          }
+        }
+      },
+      "work_energy_theorem": {
+        "statement": "Work done by a force equals the change in kinetic energy",
+        "importance": [
+          "Simplifies motion problems",
+          "Links force and energy"
+        ]
+      },
+      "law_of_conservation_of_energy": {
+        "statement": "Energy can neither be created nor destroyed, only transformed",
+        "examples": [
+          "Simple pendulum",
+          "Hydroelectric power plant"
+        ]
+      },
+      "power": {
+        "definition": "Rate of doing work",
+        "formula": "P = W / t",
+        "commercial_unit": "kilowatt (kW)"
+      },
+      "one_liner": "Energy explains motion without tracking every force."
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Motion of System of Particles and Rigid Body",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "This chapter extends the laws of motion to systems of particles and rotating rigid bodies, introducing rotational mechanics.",
+      "system_of_particles": {
+        "definition": "A collection of particles considered together for analysis",
+        "centre_of_mass": {
+          "definition": "A point that represents the average position of mass of a system",
+          "formula": {
+            "two_particles": "x_cm = (m1x1 + m2x2) / (m1 + m2)",
+            "continuous_distribution": "x_cm = Σmixi / Σmi"
+          },
+          "importance": [
+            "Simplifies motion analysis",
+            "Useful in collision problems"
+          ]
+        }
+      },
+      "motion_of_centre_of_mass": {
+        "statement": "Centre of mass moves as if all external forces act on it",
+        "application": [
+          "Projectile motion of systems",
+          "Explosion problems"
+        ]
+      },
+      "rigid_body": {
+        "definition": "A body in which distance between any two points remains constant",
+        "types_of_motion": [
+          "Translational motion",
+          "Rotational motion",
+          "Rolling motion"
+        ]
+      },
+      "moment_of_inertia": {
+        "definition": "Rotational analogue of mass",
+        "formula": "I = Σmr^2",
+        "radius_of_gyration": {
+          "definition": "Distance from axis where entire mass can be assumed concentrated",
+          "relation": "I = Mk^2"
+        }
+      },
+      "torque": {
+        "definition": "Turning effect of a force",
+        "formula": "τ = r × F"
+      },
+      "angular_quantities": {
+        "angular_displacement": "θ",
+        "angular_velocity": "ω = dθ/dt",
+        "angular_acceleration": "α = dω/dt"
+      },
+      "rotational_kinematics": {
+        "equations": [
+          "ω = ω0 + αt",
+          "θ = ω0t + 1/2 αt^2",
+          "ω^2 = ω0^2 + 2αθ"
+        ]
+      },
+      "angular_momentum": {
+        "definition": "Product of moment of inertia and angular velocity",
+        "formula": "L = Iω",
+        "conservation": "Angular momentum remains constant if no external torque acts"
+      },
+      "one_liner": "Rotation adds a new dimension to motion."
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Gravitation",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "This chapter explains gravitational interaction between masses and its applications in planetary motion and satellites.",
+      "universal_law_of_gravitation": {
+        "statement": "Every mass attracts every other mass with a force proportional to the product of their masses and inversely proportional to the square of distance between them",
+        "formula": "F = G(m1m2) / r^2"
+      },
+      "gravitational_constant": {
+        "symbol": "G",
+        "value": "6.67 × 10^-11 Nm^2 kg^-2"
+      },
+      "acceleration_due_to_gravity": {
+        "definition": "Acceleration of a freely falling body due to Earth's gravity",
+        "formula": "g = GM / R^2",
+        "variation": [
+          "With height",
+          "With depth",
+          "With latitude"
+        ]
+      },
+      "motion_under_gravity": {
+        "cases": [
+          "Free fall",
+          "Upward motion",
+          "Downward motion"
+        ]
+      },
+      "escape_velocity": {
+        "definition": "Minimum velocity needed to escape Earth's gravitational field",
+        "formula": "v_e = √(2GM / R)"
+      },
+      "satellites": {
+        "types": [
+          "Geostationary satellites",
+          "Polar satellites"
+        ],
+        "orbital_velocity": {
+          "formula": "v = √(GM / R)"
+        },
+        "applications": [
+          "Communication",
+          "Weather forecasting",
+          "Navigation"
+        ]
+      },
+      "keplers_laws": {
+        "first_law": "Planets move in elliptical orbits",
+        "second_law": "Equal areas in equal time",
+        "third_law": "T^2 ∝ R^3"
+      },
+      "one_liner": "Gravitation governs motion from apples to planets."
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Properties of Bulk Matter",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "This chapter studies the mechanical properties of solids, liquids, and gases and explains how matter responds to applied forces.",
+      "elasticity": {
+        "definition": "Property of a material by which it regains its original shape after removal of deforming force",
+        "stress": {
+          "definition": "Restoring force per unit area",
+          "types": [
+            "Normal stress",
+            "Shear stress",
+            "Volumetric stress"
+          ]
+        },
+        "strain": {
+          "definition": "Ratio of change in dimension to original dimension",
+          "types": [
+            "Longitudinal strain",
+            "Shear strain",
+            "Volumetric strain"
+          ]
+        },
+        "hookes_law": {
+          "statement": "Stress is proportional to strain within elastic limit",
+          "mathematical_form": "Stress ∝ Strain"
+        },
+        "elastic_moduli": {
+          "youngs_modulus": "Ratio of longitudinal stress to longitudinal strain",
+          "bulk_modulus": "Ratio of volumetric stress to volumetric strain",
+          "shear_modulus": "Ratio of shear stress to shear strain"
+        }
+      },
+      "viscosity": {
+        "definition": "Property of fluids that resists relative motion between layers",
+        "coefficient_of_viscosity": {
+          "definition": "Measure of fluid resistance to flow",
+          "factors_affecting": [
+            "Temperature",
+            "Nature of fluid"
+          ]
+        },
+        "terminal_velocity": {
+          "definition": "Maximum constant velocity attained by a body falling through a fluid",
+          "factors": [
+            "Radius of body",
+            "Density of fluid",
+            "Viscosity"
+          ]
+        }
+      },
+      "surface_tension": {
+        "definition": "Force per unit length acting along the surface of a liquid",
+        "effects": [
+          "Formation of drops",
+          "Floating of small objects"
+        ],
+        "capillarity": {
+          "definition": "Rise or fall of liquid in a narrow tube",
+          "applications": [
+            "Water transport in plants",
+            "Ink flow in pen"
+          ]
+        }
+      },
+      "one_liner": "Bulk matter reveals how materials resist and respond to forces."
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Thermodynamics",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "Thermodynamics deals with heat, work, and energy transfer and establishes laws governing thermal processes.",
+      "thermal_system": {
+        "system": "Part of universe under study",
+        "surroundings": "Everything outside the system",
+        "types_of_systems": [
+          "Open system",
+          "Closed system",
+          "Isolated system"
+        ]
+      },
+      "thermodynamic_processes": {
+        "isothermal_process": "Temperature remains constant",
+        "adiabatic_process": "No heat exchange with surroundings",
+        "isobaric_process": "Pressure remains constant",
+        "isochoric_process": "Volume remains constant"
+      },
+      "zeroth_law": {
+        "statement": "If two systems are in thermal equilibrium with a third system, they are in thermal equilibrium with each other",
+        "significance": "Basis of temperature measurement"
+      },
+      "first_law": {
+        "statement": "Heat supplied equals change in internal energy plus work done",
+        "mathematical_form": "ΔQ = ΔU + W",
+        "significance": "Law of conservation of energy"
+      },
+      "second_law": {
+        "statements": [
+          "Heat cannot spontaneously flow from colder to hotter body",
+          "No engine can be 100% efficient"
+        ],
+        "entropy": {
+          "definition": "Measure of disorder of a system",
+          "property": "Entropy of universe always increases"
+        }
+      },
+      "heat_engines": {
+        "definition": "Device that converts heat into work",
+        "efficiency": {
+          "definition": "Ratio of work output to heat input",
+          "formula": "η = W / Q1"
+        }
+      },
+      "refrigerator": {
+        "definition": "Device that removes heat from a cold body",
+        "coefficient_of_performance": "Measure of efficiency"
+      },
+      "one_liner": "Thermodynamics governs how energy flows and limits what is possible."
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Behaviour of Perfect Gas and Kinetic Theory",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "This chapter explains the macroscopic behavior of gases using microscopic molecular motion through kinetic theory.",
+      "perfect_gas": {
+        "definition": "A hypothetical gas whose molecules occupy negligible volume and exert no intermolecular forces",
+        "gas_laws": {
+          "boyles_law": {
+            "statement": "At constant temperature, pressure is inversely proportional to volume",
+            "formula": "PV = constant"
+          },
+          "charles_law": {
+            "statement": "At constant pressure, volume is directly proportional to temperature",
+            "formula": "V ∝ T"
+          },
+          "gay_lussacs_law": {
+            "statement": "At constant volume, pressure is directly proportional to temperature",
+            "formula": "P ∝ T"
+          },
+          "combined_gas_law": {
+            "formula": "PV / T = constant"
+          }
+        }
+      },
+      "ideal_gas_equation": {
+        "equation": "PV = nRT",
+        "terms": {
+          "P": "Pressure",
+          "V": "Volume",
+          "n": "Number of moles",
+          "R": "Universal gas constant",
+          "T": "Absolute temperature"
+        }
+      },
+      "kinetic_theory_of_gases": {
+        "postulates": [
+          "Gas molecules are in continuous random motion",
+          "Collisions are perfectly elastic",
+          "Average kinetic energy depends only on temperature"
+        ]
+      },
+      "kinetic_energy_of_gas": {
+        "average_kinetic_energy": {
+          "formula": "KE = 3/2 kT",
+          "dependence": "Only on absolute temperature"
+        }
+      },
+      "speed_of_gas_molecules": {
+        "most_probable_speed": "vp = √(2kT / m)",
+        "average_speed": "v̄ = √(8kT / πm)",
+        "root_mean_square_speed": "vrms = √(3kT / m)"
+      },
+      "degrees_of_freedom": {
+        "definition": "Number of independent ways in which a molecule can move",
+        "types": [
+          "Translational",
+          "Rotational",
+          "Vibrational"
+        ]
+      },
+      "law_of_equipartition_of_energy": {
+        "statement": "Energy is equally distributed among all degrees of freedom",
+        "formula": "Energy per degree = 1/2 kT"
+      },
+      "one_liner": "Gas laws become meaningful when molecules start moving."
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Oscillations and Waves",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "introduction": "This chapter studies periodic motion and wave propagation, fundamental to sound, light, and quantum physics.",
+      "oscillatory_motion": {
+        "definition": "Motion that repeats itself at regular intervals",
+        "examples": [
+          "Pendulum motion",
+          "Spring-mass system"
+        ]
+      },
+      "simple_harmonic_motion": {
+        "definition": "Oscillatory motion where restoring force is proportional to displacement",
+        "equation": "F = -kx",
+        "angular_frequency": {
+          "definition": "Rate of change of phase",
+          "formula": "ω = √(k / m)"
+        }
+      },
+      "time_period": {
+        "definition": "Time taken to complete one oscillation",
+        "formulas": {
+          "spring_mass": "T = 2π √(m / k)",
+          "simple_pendulum": "T = 2π √(l / g)"
+        }
+      },
+      "energy_in_shm": {
+        "kinetic_energy": "Maximum at mean position",
+        "potential_energy": "Maximum at extreme position",
+        "total_energy": "Constant throughout motion"
+      },
+      "wave_motion": {
+        "definition": "Transfer of energy without transfer of matter",
+        "types": [
+          "Transverse waves",
+          "Longitudinal waves"
+        ]
+      },
+      "wave_parameters": {
+        "wavelength": "Distance between two successive crests",
+        "frequency": "Number of oscillations per second",
+        "wave_velocity": {
+          "formula": "v = fλ"
+        }
+      },
+      "sound_waves": {
+        "nature": "Longitudinal mechanical waves",
+        "speed_of_sound": {
+          "dependence": [
+            "Temperature",
+            "Density of medium"
+          ]
+        }
+      },
+      "doppler_effect": {
+        "definition": "Change in frequency due to relative motion between source and observer",
+        "applications": [
+          "Radar",
+          "Astronomy",
+          "Medical imaging"
+        ]
+      },
+      "one_liner": "Oscillations repeat, waves travel."
+    },
+    {
+      "chapter_number": 1,
+      "chapter_name": "Some Basic Concepts of Chemistry",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter lays the quantitative foundation of chemistry by introducing the mole concept, laws of chemical combination, and stoichiometric calculations.",
+      "nature_of_matter": {
+        "definition": "Matter is anything that has mass and occupies space",
+        "classification": [
+          "Pure substances",
+          "Mixtures"
+        ]
+      },
+      "laws_of_chemical_combination": {
+        "law_of_conservation_of_mass": {
+          "statement": "Mass is neither created nor destroyed in a chemical reaction",
+          "significance": "Basis of chemical equations"
+        },
+        "law_of_constant_proportions": {
+          "statement": "A compound always contains the same elements in the same proportion by mass",
+          "example": "Water always has hydrogen and oxygen in 1:8 ratio"
+        }
+      },
+      "atomic_and_molecular_masses": {
+        "atomic_mass": "Average mass of an atom relative to 1/12th mass of carbon-12",
+        "molecular_mass": "Sum of atomic masses of atoms in a molecule",
+        "formula_mass": "Sum of atomic masses in an ionic compound"
+      },
+      "mole_concept": {
+        "definition": "Amount of substance containing 6.022 × 10^23 particles",
+        "avogadro_number": "6.022 × 10^23 mol^-1",
+        "relations": {
+          "moles": "n = mass / molar mass",
+          "number_of_particles": "N = n × NA"
+        }
+      },
+      "stoichiometry": {
+        "definition": "Calculation of quantities of reactants and products in a chemical reaction",
+        "balanced_equation": "Equation with equal number of atoms on both sides",
+        "limiting_reagent": {
+          "definition": "Reactant that gets consumed first",
+          "importance": "Determines amount of product formed"
+        }
+      },
+      "concentration_of_solutions": {
+        "methods": [
+          "Mass percentage",
+          "Volume percentage",
+          "Molarity",
+          "Molality"
+        ]
+      },
+      "one_liner": "Chemistry becomes predictable when quantities are measured."
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Structure of Atom",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter explains the internal structure of atoms and the development of atomic models to explain atomic behavior.",
+      "subatomic_particles": {
+        "electron": {
+          "charge": "-1",
+          "mass": "Negligible"
+        },
+        "proton": {
+          "charge": "+1",
+          "mass": "1 amu"
+        },
+        "neutron": {
+          "charge": "0",
+          "mass": "1 amu"
+        }
+      },
+      "atomic_models": {
+        "daltons_model": "Atom is indivisible",
+        "thomsons_model": "Plum pudding model",
+        "rutherfords_model": {
+          "description": "Atom has a dense positively charged nucleus",
+          "limitations": [
+            "Could not explain stability",
+            "Could not explain line spectra"
+          ]
+        },
+        "bohrs_model": {
+          "postulates": [
+            "Electrons revolve in fixed orbits",
+            "Energy is quantized"
+          ],
+          "success": "Explained hydrogen spectrum",
+          "limitations": [
+            "Failed for multi-electron atoms"
+          ]
+        }
+      },
+      "quantum_mechanical_model": {
+        "wave_particle_duality": "Electrons show dual nature",
+        "heisenberg_uncertainty_principle": "Position and momentum cannot be known simultaneously",
+        "schrodinger_wave_equation": "Describes behavior of electrons as waves"
+      },
+      "quantum_numbers": {
+        "principal_quantum_number": "Defines energy level",
+        "azimuthal_quantum_number": "Defines subshell shape",
+        "magnetic_quantum_number": "Defines orbital orientation",
+        "spin_quantum_number": "Defines electron spin"
+      },
+      "electronic_configuration": {
+        "aufbau_principle": "Electrons fill lower energy orbitals first",
+        "pauli_exclusion_principle": "No two electrons have same four quantum numbers",
+        "hunds_rule": "Maximum multiplicity"
+      },
+      "one_liner": "Atomic structure explains why elements behave differently."
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Classification of Elements and Periodicity in Properties",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter explains how elements are systematically arranged in the periodic table and how their physical and chemical properties show periodic trends.",
+      "need_for_classification": {
+        "reason": "Large number of elements require systematic study",
+        "benefits": [
+          "Predicts properties of elements",
+          "Shows relationships among elements"
+        ]
+      },
+      "development_of_periodic_table": {
+        "dobereiners_triads": {
+          "idea": "Groups of three elements with similar properties",
+          "limitation": "Applicable to only a few elements"
+        },
+        "newlands_law_of_octaves": {
+          "statement": "Every eighth element has similar properties",
+          "limitation": "Failed beyond calcium"
+        },
+        "mendeleevs_periodic_table": {
+          "basis": "Atomic mass",
+          "achievements": [
+            "Prediction of undiscovered elements",
+            "Correction of atomic masses"
+          ],
+          "limitations": [
+            "Position of isotopes",
+            "Hydrogen position"
+          ]
+        }
+      },
+      "modern_periodic_table": {
+        "basis": "Atomic number",
+        "modern_periodic_law": "Properties of elements are periodic functions of their atomic numbers",
+        "structure": {
+          "periods": 7,
+          "groups": 18
+        }
+      },
+      "electronic_configuration_and_periodicity": {
+        "relationship": "Properties depend on valence shell electronic configuration"
+      },
+      "periodic_trends": {
+        "atomic_radius": {
+          "trend": [
+            "Decreases across a period",
+            "Increases down a group"
+          ]
+        },
+        "ionization_enthalpy": {
+          "definition": "Energy required to remove an electron",
+          "trend": [
+            "Increases across a period",
+            "Decreases down a group"
+          ]
+        },
+        "electron_gain_enthalpy": {
+          "definition": "Energy released when an electron is added",
+          "trend": "More negative across a period"
+        },
+        "electronegativity": {
+          "definition": "Ability of an atom to attract electrons",
+          "trend": "Increases across a period"
+        }
+      },
+      "one_liner": "The periodic table is the map of chemistry."
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Chemical Bonding and Molecular Structure",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter explains how and why atoms combine to form molecules and the shapes these molecules adopt.",
+      "chemical_bond": {
+        "definition": "Force that holds atoms together in a molecule",
+        "types": [
+          "Ionic bond",
+          "Covalent bond",
+          "Metallic bond",
+          "Hydrogen bond"
+        ]
+      },
+      "ionic_bonding": {
+        "definition": "Bond formed by transfer of electrons",
+        "conditions": [
+          "Low ionization enthalpy",
+          "High electron affinity"
+        ],
+        "lattice_energy": {
+          "definition": "Energy released when gaseous ions form solid crystal",
+          "importance": "Determines stability of ionic compounds"
+        }
+      },
+      "covalent_bonding": {
+        "definition": "Bond formed by sharing of electrons",
+        "bond_parameters": [
+          "Bond length",
+          "Bond angle",
+          "Bond enthalpy"
+        ]
+      },
+      "lewis_structure": {
+        "definition": "Representation of valence electrons using dots",
+        "octet_rule": "Atoms tend to complete eight electrons in valence shell",
+        "exceptions": [
+          "Incomplete octet",
+          "Expanded octet",
+          "Odd-electron molecules"
+        ]
+      },
+      "vsepr_theory": {
+        "principle": "Electron pairs repel each other and arrange to minimize repulsion",
+        "applications": [
+          "Linear geometry",
+          "Trigonal planar",
+          "Tetrahedral"
+        ]
+      },
+      "hybridisation": {
+        "definition": "Mixing of atomic orbitals to form new hybrid orbitals",
+        "types": [
+          "sp",
+          "sp2",
+          "sp3",
+          "dsp2",
+          "sp3d"
+        ]
+      },
+      "molecular_orbital_theory": {
+        "concept": "Atomic orbitals combine to form molecular orbitals",
+        "bond_order": {
+          "definition": "Half the difference between bonding and antibonding electrons",
+          "significance": "Predicts stability of molecule"
+        }
+      },
+      "hydrogen_bonding": {
+        "definition": "Attractive force between hydrogen and highly electronegative atom",
+        "effects": [
+          "High boiling point of water",
+          "Structure of proteins"
+        ]
+      },
+      "one_liner": "Chemical bonding explains why matter exists as it does."
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "States of Matter",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter explains the physical states of matter and the behaviour of gases and liquids using molecular interactions and kinetic theory.",
+      "states_of_matter": {
+        "solid": {
+          "properties": [
+            "Definite shape and volume",
+            "Strong intermolecular forces",
+            "Negligible compressibility"
+          ]
+        },
+        "liquid": {
+          "properties": [
+            "Definite volume but no fixed shape",
+            "Moderate intermolecular forces",
+            "Low compressibility"
+          ]
+        },
+        "gas": {
+          "properties": [
+            "No definite shape or volume",
+            "Very weak intermolecular forces",
+            "Highly compressible"
+          ]
+        }
+      },
+      "intermolecular_forces": {
+        "types": [
+          "Dipole–dipole interactions",
+          "London dispersion forces",
+          "Hydrogen bonding"
+        ],
+        "effect": "Determine physical state and properties"
+      },
+      "gas_laws": {
+        "boyles_law": {
+          "statement": "Pressure is inversely proportional to volume at constant temperature",
+          "equation": "PV = constant"
+        },
+        "charles_law": {
+          "statement": "Volume is directly proportional to temperature at constant pressure",
+          "equation": "V ∝ T"
+        },
+        "avogadros_law": {
+          "statement": "Equal volumes of gases at same temperature and pressure contain equal number of molecules"
+        }
+      },
+      "ideal_gas_equation": {
+        "equation": "PV = nRT",
+        "significance": "Combines all gas laws into a single equation"
+      },
+      "kinetic_energy_of_gases": {
+        "relation": "Average kinetic energy ∝ absolute temperature"
+      },
+      "liquid_state": {
+        "vapour_pressure": {
+          "definition": "Pressure exerted by vapour in equilibrium with liquid",
+          "factor": "Increases with temperature"
+        },
+        "boiling_point": {
+          "definition": "Temperature at which vapour pressure equals atmospheric pressure"
+        }
+      },
+      "one_liner": "States of matter depend on how particles move and interact."
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Thermodynamics",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter deals with energy changes accompanying physical and chemical processes and establishes quantitative relationships.",
+      "thermodynamic_terms": {
+        "system": "Part of universe under study",
+        "surroundings": "Rest of the universe",
+        "types_of_systems": [
+          "Open system",
+          "Closed system",
+          "Isolated system"
+        ]
+      },
+      "state_functions": {
+        "definition": "Properties that depend only on state, not path",
+        "examples": [
+          "Internal energy",
+          "Enthalpy",
+          "Entropy"
+        ]
+      },
+      "first_law_of_thermodynamics": {
+        "statement": "Energy is conserved",
+        "equation": "ΔU = q + w",
+        "applications": [
+          "Isothermal process",
+          "Adiabatic process"
+        ]
+      },
+      "enthalpy_change": {
+        "definition": "Heat change at constant pressure",
+        "types": [
+          "Enthalpy of formation",
+          "Enthalpy of combustion",
+          "Enthalpy of reaction"
+        ]
+      },
+      "hess_law": {
+        "statement": "Total enthalpy change is independent of path",
+        "importance": "Used to calculate enthalpy indirectly"
+      },
+      "entropy": {
+        "definition": "Measure of randomness or disorder",
+        "trend": "Increases for spontaneous processes"
+      },
+      "gibbs_free_energy": {
+        "equation": "ΔG = ΔH − TΔS",
+        "criteria": {
+          "ΔG < 0": "Spontaneous",
+          "ΔG = 0": "Equilibrium",
+          "ΔG > 0": "Non-spontaneous"
+        }
+      },
+      "one_liner": "Thermodynamics decides whether a reaction can happen."
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Equilibrium",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter explains the state in which opposing processes occur at equal rates, covering both chemical and ionic equilibrium.",
+      "chemical_equilibrium": {
+        "definition": "State where forward and reverse reactions occur at equal rates",
+        "reversible_reaction": {
+          "definition": "Reaction that can proceed in both forward and backward directions",
+          "example": "N2 + 3H2 ⇌ 2NH3"
+        }
+      },
+      "law_of_mass_action": {
+        "statement": "Rate of reaction is proportional to product of active masses of reactants",
+        "equilibrium_constant": {
+          "definition": "Ratio of product concentrations to reactant concentrations at equilibrium",
+          "expression": "Kc = [C]^c[D]^d / [A]^a[B]^b"
+        }
+      },
+      "factors_affecting_equilibrium": {
+        "le_chateliers_principle": {
+          "statement": "A system at equilibrium adjusts to counteract applied changes",
+          "factors": [
+            "Change in concentration",
+            "Change in pressure",
+            "Change in temperature"
+          ]
+        }
+      },
+      "ionic_equilibrium": {
+        "definition": "Equilibrium involving ions in solution",
+        "strong_electrolytes": "Completely ionised in solution",
+        "weak_electrolytes": "Partially ionised in solution"
+      },
+      "acids_and_bases": {
+        "arrhenius_concept": "Acid produces H+, base produces OH−",
+        "bronsted_lowry_concept": "Acid donates proton, base accepts proton"
+      },
+      "ph_scale": {
+        "definition": "Measure of acidity or basicity",
+        "range": "0 to 14",
+        "relation": "pH = −log[H+]"
+      },
+      "buffer_solutions": {
+        "definition": "Solution that resists change in pH",
+        "types": [
+          "Acidic buffer",
+          "Basic buffer"
+        ]
+      },
+      "solubility_product": {
+        "definition": "Product of ion concentrations in saturated solution",
+        "application": "Predicts precipitation"
+      },
+      "one_liner": "Equilibrium is balance, not inactivity."
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Redox Reactions",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter deals with reactions involving transfer of electrons and changes in oxidation states.",
+      "oxidation_and_reduction": {
+        "oxidation": {
+          "definition": "Loss of electrons or increase in oxidation number"
+        },
+        "reduction": {
+          "definition": "Gain of electrons or decrease in oxidation number"
+        }
+      },
+      "oxidation_number": {
+        "definition": "Charge assigned to an atom assuming complete electron transfer",
+        "rules": [
+          "Free element has oxidation number zero",
+          "Oxygen usually −2",
+          "Hydrogen usually +1"
+        ]
+      },
+      "redox_reaction": {
+        "definition": "Reaction involving both oxidation and reduction",
+        "example": "Zn + Cu2+ → Zn2+ + Cu"
+      },
+      "balancing_redox_reactions": {
+        "oxidation_number_method": {
+          "steps": [
+            "Assign oxidation numbers",
+            "Equalise increase and decrease",
+            "Balance atoms and charge"
+          ]
+        },
+        "ion_electron_method": {
+          "steps": [
+            "Separate half reactions",
+            "Balance electrons",
+            "Add half reactions"
+          ]
+        }
+      },
+      "oxidising_and_reducing_agents": {
+        "oxidising_agent": "Substance that gets reduced",
+        "reducing_agent": "Substance that gets oxidised"
+      },
+      "applications": [
+        "Electrochemical cells",
+        "Corrosion",
+        "Metallurgy",
+        "Biological processes"
+      ],
+      "one_liner": "Redox reactions drive energy and life itself."
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Hydrogen",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter discusses the unique position of hydrogen in the periodic table and its preparation, properties, and compounds.",
+      "position_of_hydrogen": {
+        "reason_for_uniqueness": [
+          "Resembles alkali metals",
+          "Resembles halogens"
+        ],
+        "isotopes": {
+          "protium": "No neutron",
+          "deuterium": "One neutron",
+          "tritium": "Two neutrons (radioactive)"
+        }
+      },
+      "preparation_of_hydrogen": {
+        "laboratory_method": "Reaction of zinc with dilute acids",
+        "industrial_methods": [
+          "Steam reforming",
+          "Water gas shift reaction"
+        ]
+      },
+      "physical_properties": {
+        "nature": "Colorless, odorless gas",
+        "lightest_element": true
+      },
+      "chemical_properties": {
+        "combustion": "Forms water",
+        "reducing_agent": "Reduces metal oxides"
+      },
+      "hydrides": {
+        "definition": "Compounds of hydrogen with other elements",
+        "types": [
+          "Ionic hydrides",
+          "Covalent hydrides",
+          "Metallic hydrides"
+        ]
+      },
+      "water": {
+        "properties": [
+          "High specific heat",
+          "Universal solvent"
+        ],
+        "hardness": {
+          "temporary": "Due to bicarbonates",
+          "permanent": "Due to chlorides and sulphates"
+        }
+      },
+      "hydrogen_peroxide": {
+        "formula": "H2O2",
+        "properties": [
+          "Strong oxidising agent",
+          "Used as disinfectant"
+        ]
+      },
+      "one_liner": "Hydrogen connects chemistry with life and energy."
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "The s-Block Elements",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter studies alkali and alkaline earth metals, their properties, trends, and important compounds.",
+      "alkali_metals": {
+        "group": 1,
+        "elements": [
+          "Lithium",
+          "Sodium",
+          "Potassium"
+        ],
+        "general_properties": [
+          "Highly reactive",
+          "Low ionisation energy",
+          "Form +1 ions"
+        ]
+      },
+      "alkaline_earth_metals": {
+        "group": 2,
+        "elements": [
+          "Magnesium",
+          "Calcium"
+        ],
+        "general_properties": [
+          "Less reactive than alkali metals",
+          "Form +2 ions"
+        ]
+      },
+      "important_compounds": {
+        "sodium_compounds": [
+          "Sodium carbonate",
+          "Sodium bicarbonate",
+          "Sodium hydroxide"
+        ],
+        "calcium_compounds": [
+          "Quick lime",
+          "Slaked lime",
+          "Plaster of Paris"
+        ]
+      },
+      "biological_importance": {
+        "sodium_and_potassium": "Nerve impulse transmission",
+        "calcium": "Bone and teeth formation"
+      },
+      "one_liner": "s-Block elements define reactivity trends in chemistry."
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Some p-Block Elements",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter studies the elements of Groups 13 and 14 of the periodic table, focusing on their occurrence, properties, and important compounds.",
+      "general_characteristics": {
+        "position_in_periodic_table": "p-block elements occupy Groups 13 to 18",
+        "valence_shell_configuration": "ns2 np1 to ns2 np6",
+        "trend_overview": [
+          "Increase in non-metallic character across period",
+          "Increase in metallic character down the group"
+        ]
+      },
+      "group_13_elements": {
+        "elements": [
+          "Boron",
+          "Aluminium"
+        ],
+        "boron": {
+          "nature": "Non-metal",
+          "anomalous_behaviour": "Small size and high ionisation enthalpy",
+          "important_compounds": [
+            "Boric acid",
+            "Borax"
+          ]
+        },
+        "aluminium": {
+          "nature": "Metal",
+          "properties": [
+            "Good conductor",
+            "Corrosion resistant"
+          ],
+          "important_compound": "Aluminium oxide (Al2O3)"
+        }
+      },
+      "group_14_elements": {
+        "elements": [
+          "Carbon",
+          "Silicon"
+        ],
+        "carbon": {
+          "allotropy": [
+            "Diamond",
+            "Graphite",
+            "Fullerenes"
+          ],
+          "catenation": "Ability to form long chains"
+        },
+        "silicon": {
+          "nature": "Metalloid",
+          "importance": [
+            "Semiconductors",
+            "Glass and ceramics"
+          ]
+        }
+      },
+      "important_compounds": {
+        "carbon_compounds": [
+          "Carbon dioxide",
+          "Carbon monoxide"
+        ],
+        "silicon_compounds": [
+          "Silicones",
+          "Silicates"
+        ]
+      },
+      "one_liner": "p-Block elements bridge metals and non-metals in chemistry."
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Organic Chemistry – Basic Principles and Techniques",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter introduces organic chemistry, focusing on the structure, classification, and methods used to study organic compounds.",
+      "organic_compounds": {
+        "definition": "Compounds of carbon containing covalent bonds",
+        "special_features": [
+          "Catenation",
+          "Isomerism"
+        ]
+      },
+      "classification_of_organic_compounds": {
+        "based_on_structure": [
+          "Open chain compounds",
+          "Closed chain compounds"
+        ],
+        "based_on_functional_group": [
+          "Alcohols",
+          "Aldehydes",
+          "Ketones",
+          "Carboxylic acids"
+        ]
+      },
+      "functional_groups": {
+        "definition": "Atom or group of atoms responsible for characteristic reactions",
+        "examples": [
+          "-OH (alcohol)",
+          "-COOH (carboxylic acid)",
+          "-CHO (aldehyde)"
+        ]
+      },
+      "homologous_series": {
+        "definition": "Series of compounds with similar chemical properties",
+        "characteristics": [
+          "Same functional group",
+          "Gradual change in physical properties"
+        ]
+      },
+      "nomenclature": {
+        "iupac_system": {
+          "purpose": "Universal naming of organic compounds",
+          "basic_steps": [
+            "Select longest carbon chain",
+            "Identify functional group",
+            "Assign locants"
+          ]
+        }
+      },
+      "isomerism": {
+        "definition": "Same molecular formula but different structures",
+        "types": [
+          "Structural isomerism",
+          "Stereoisomerism"
+        ]
+      },
+      "purification_techniques": {
+        "methods": [
+          "Crystallisation",
+          "Distillation",
+          "Chromatography"
+        ]
+      },
+      "quantitative_analysis": {
+        "estimation_of_elements": [
+          "Carbon and hydrogen",
+          "Nitrogen",
+          "Halogens"
+        ]
+      },
+      "one_liner": "Organic chemistry starts with understanding structure before reactions."
+    },
+    {
+      "chapter_number": 13,
+      "chapter_name": "Hydrocarbons",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter introduces hydrocarbons—organic compounds containing only carbon and hydrogen—and explains their classification, preparation, properties, and reactions.",
+      "classification": {
+        "alkanes": {
+          "definition": "Saturated hydrocarbons with single bonds",
+          "general_formula": "CnH2n+2",
+          "hybridisation": "sp3",
+          "preparation_methods": [
+            "Wurtz reaction",
+            "Decarboxylation",
+            "Kolbe’s electrolytic method"
+          ],
+          "reactions": [
+            "Combustion",
+            "Substitution",
+            "Cracking"
+          ]
+        },
+        "alkenes": {
+          "definition": "Unsaturated hydrocarbons with one double bond",
+          "general_formula": "CnH2n",
+          "hybridisation": "sp2",
+          "preparation_methods": [
+            "Dehydration of alcohols",
+            "Dehydrohalogenation"
+          ],
+          "reactions": [
+            "Addition reactions",
+            "Oxidation",
+            "Polymerisation"
+          ],
+          "isomerism": [
+            "Geometrical (cis-trans)"
+          ]
+        },
+        "alkynes": {
+          "definition": "Unsaturated hydrocarbons with one triple bond",
+          "general_formula": "CnH2n−2",
+          "hybridisation": "sp",
+          "preparation_methods": [
+            "Double dehydrohalogenation"
+          ],
+          "reactions": [
+            "Addition",
+            "Oxidation"
+          ]
+        },
+        "aromatic_hydrocarbons": {
+          "definition": "Planar cyclic hydrocarbons with delocalised π-electrons",
+          "example": "Benzene",
+          "special_stability": "Resonance",
+          "reactions": [
+            "Electrophilic substitution"
+          ]
+        }
+      },
+      "benzene": {
+        "structure": {
+          "kekule_model": "Alternating single and double bonds",
+          "resonance": "Actual structure is resonance hybrid"
+        },
+        "properties": [
+          "Planar molecule",
+          "Extra stability"
+        ],
+        "electrophilic_substitution": [
+          "Nitration",
+          "Halogenation",
+          "Sulphonation"
+        ]
+      },
+      "environmental_and_industrial_importance": {
+        "fuels": [
+          "Natural gas",
+          "Petrol",
+          "Diesel"
+        ],
+        "polymers": [
+          "Polyethylene",
+          "PVC"
+        ]
+      },
+      "one_liner": "Hydrocarbons are the backbone of organic chemistry and fuels."
+    },
+    {
+      "chapter_number": 14,
+      "chapter_name": "Environmental Chemistry",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Chemistry",
+      "introduction": "This chapter studies chemical processes occurring in the environment and the impact of human activities on air, water, and soil.",
+      "atmospheric_pollution": {
+        "definition": "Contamination of air by harmful substances",
+        "major_pollutants": [
+          "Carbon monoxide",
+          "Sulphur dioxide",
+          "Nitrogen oxides",
+          "Particulate matter"
+        ],
+        "effects": [
+          "Respiratory diseases",
+          "Acid rain",
+          "Global warming"
+        ]
+      },
+      "acid_rain": {
+        "formation": "Reaction of SO2 and NO2 with water",
+        "effects": [
+          "Damage to monuments",
+          "Soil infertility",
+          "Aquatic life damage"
+        ]
+      },
+      "greenhouse_effect": {
+        "definition": "Trapping of heat by greenhouse gases",
+        "major_gases": [
+          "Carbon dioxide",
+          "Methane",
+          "Nitrous oxide"
+        ],
+        "consequence": "Global warming"
+      },
+      "ozone_depletion": {
+        "cause": "Chlorofluorocarbons (CFCs)",
+        "effect": "Increased UV radiation"
+      },
+      "water_pollution": {
+        "sources": [
+          "Industrial waste",
+          "Domestic sewage",
+          "Agricultural runoff"
+        ],
+        "effects": [
+          "Eutrophication",
+          "Health hazards"
+        ]
+      },
+      "soil_pollution": {
+        "causes": [
+          "Pesticides",
+          "Industrial waste"
+        ],
+        "impact": "Reduced soil fertility"
+      },
+      "green_chemistry": {
+        "definition": "Design of chemical processes to reduce hazardous substances",
+        "principles": [
+          "Prevention of waste",
+          "Use of safer solvents",
+          "Energy efficiency"
+        ]
+      },
+      "one_liner": "Environmental chemistry connects chemical knowledge with responsibility."
+    },
+    {
+      "chapter_number": 1,
+      "chapter_name": "The Living World",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter introduces biology as the science of life and explains the characteristics of living organisms, biodiversity, and the need for classification.",
+      "living_organisms": {
+        "characteristics": [
+          "Growth",
+          "Reproduction",
+          "Metabolism",
+          "Cellular organisation",
+          "Response to stimuli",
+          "Ability to evolve"
+        ],
+        "metabolism": {
+          "definition": "Sum total of all chemical reactions occurring in an organism",
+          "importance": "Defining feature of living organisms"
+        }
+      },
+      "biodiversity": {
+        "definition": "Variety of life forms on Earth",
+        "levels": [
+          "Genetic diversity",
+          "Species diversity",
+          "Ecosystem diversity"
+        ],
+        "importance": [
+          "Ecological balance",
+          "Source of food and medicine",
+          "Evolutionary studies"
+        ]
+      },
+      "taxonomy": {
+        "definition": "Science of identification, nomenclature, and classification",
+        "taxonomic_hierarchy": [
+          "Kingdom",
+          "Phylum/Division",
+          "Class",
+          "Order",
+          "Family",
+          "Genus",
+          "Species"
+        ]
+      },
+      "nomenclature": {
+        "binomial_nomenclature": {
+          "introduced_by": "Carolus Linnaeus",
+          "rules": [
+            "Two-word scientific name",
+            "Genus capitalised, species lowercase",
+            "Latin or Latinised",
+            "Italicised or underlined"
+          ]
+        }
+      },
+      "taxonomic_aids": {
+        "herbarium": "Preserved plant specimens",
+        "botanical_gardens": "Living plant collections",
+        "museum": "Preserved organisms",
+        "zoological_parks": "Live animal collections",
+        "keys": "Used for identification"
+      },
+      "one_liner": "Biology begins by identifying, naming, and understanding life."
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Biological Classification",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how organisms are classified into groups based on similarities, differences, and evolutionary relationships.",
+      "need_for_classification": {
+        "reasons": [
+          "Huge diversity of organisms",
+          "Systematic study",
+          "Understanding evolution"
+        ]
+      },
+      "five_kingdom_classification": {
+        "proposed_by": "R.H. Whittaker",
+        "criteria": [
+          "Cell structure",
+          "Body organisation",
+          "Mode of nutrition",
+          "Phylogenetic relationship"
+        ]
+      },
+      "kingdom_monera": {
+        "characteristics": [
+          "Prokaryotic",
+          "Unicellular",
+          "No membrane-bound organelles"
+        ],
+        "examples": [
+          "Bacteria",
+          "Cyanobacteria"
+        ],
+        "importance": [
+          "Nitrogen fixation",
+          "Decomposition"
+        ]
+      },
+      "kingdom_protista": {
+        "characteristics": [
+          "Eukaryotic",
+          "Mostly unicellular",
+          "Aquatic"
+        ],
+        "examples": [
+          "Amoeba",
+          "Euglena",
+          "Plasmodium"
+        ]
+      },
+      "kingdom_fungi": {
+        "characteristics": [
+          "Eukaryotic",
+          "Heterotrophic",
+          "Chitin cell wall"
+        ],
+        "examples": [
+          "Yeast",
+          "Mushroom"
+        ]
+      },
+      "kingdom_plantae": {
+        "characteristics": [
+          "Autotrophic",
+          "Chlorophyll present",
+          "Cellulose cell wall"
+        ]
+      },
+      "kingdom_animalia": {
+        "characteristics": [
+          "Multicellular",
+          "Heterotrophic",
+          "No cell wall"
+        ]
+      },
+      "one_liner": "Classification brings order to biological diversity."
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Plant Kingdom",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter deals with the classification of plants based on their structure, reproductive organs, and life cycles.",
+      "basis_of_classification": {
+        "criteria": [
+          "Presence of vascular tissues",
+          "Seed formation",
+          "Nature of reproduction"
+        ]
+      },
+      "algae": {
+        "characteristics": [
+          "Aquatic",
+          "Photosynthetic",
+          "Simple body structure"
+        ],
+        "classes": [
+          "Chlorophyceae",
+          "Phaeophyceae",
+          "Rhodophyceae"
+        ],
+        "importance": [
+          "Oxygen production",
+          "Food source"
+        ]
+      },
+      "bryophytes": {
+        "characteristics": [
+          "Amphibians of plant kingdom",
+          "No vascular tissue"
+        ],
+        "examples": [
+          "Moss",
+          "Marchantia"
+        ]
+      },
+      "pteridophytes": {
+        "characteristics": [
+          "First vascular plants",
+          "Reproduce by spores"
+        ],
+        "examples": [
+          "Ferns"
+        ]
+      },
+      "gymnosperms": {
+        "characteristics": [
+          "Naked seeds",
+          "No fruits"
+        ],
+        "examples": [
+          "Cycas",
+          "Pinus"
+        ]
+      },
+      "angiosperms": {
+        "characteristics": [
+          "Flowering plants",
+          "Seeds enclosed in fruits"
+        ],
+        "classification": [
+          "Monocotyledons",
+          "Dicotyledons"
+        ]
+      },
+      "one_liner": "Plant evolution shows a clear march towards complexity."
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Animal Kingdom",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter deals with the classification of animals based on levels of organisation, symmetry, germ layers, body cavity, and evolutionary relationships.",
+      "basis_of_classification": {
+        "levels_of_organisation": [
+          "Cellular level",
+          "Tissue level",
+          "Organ level",
+          "Organ system level"
+        ],
+        "symmetry": [
+          "Asymmetrical",
+          "Radial symmetry",
+          "Bilateral symmetry"
+        ],
+        "germ_layers": [
+          "Diploblastic",
+          "Triploblastic"
+        ],
+        "body_cavity": [
+          "Acoelomate",
+          "Pseudocoelomate",
+          "Coelomate"
+        ]
+      },
+      "non_chordates": {
+        "phyla": [
+          "Porifera",
+          "Cnidaria",
+          "Platyhelminthes",
+          "Nematoda",
+          "Annelida",
+          "Arthropoda",
+          "Mollusca",
+          "Echinodermata"
+        ],
+        "arthropoda": {
+          "features": [
+            "Jointed appendages",
+            "Exoskeleton",
+            "Largest phylum"
+          ],
+          "examples": [
+            "Insects",
+            "Crustaceans"
+          ]
+        }
+      },
+      "chordates": {
+        "characteristics": [
+          "Notochord",
+          "Dorsal hollow nerve cord",
+          "Pharyngeal gill slits",
+          "Post-anal tail"
+        ],
+        "classes": [
+          "Pisces",
+          "Amphibia",
+          "Reptilia",
+          "Aves",
+          "Mammalia"
+        ]
+      },
+      "one_liner": "Animal classification reflects evolutionary complexity."
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Morphology of Flowering Plants",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter studies the external structure of flowering plants and the modifications of different plant organs.",
+      "root": {
+        "functions": [
+          "Anchorage",
+          "Absorption of water and minerals"
+        ],
+        "types": [
+          "Tap root system",
+          "Fibrous root system"
+        ],
+        "modifications": [
+          "Storage roots",
+          "Prop roots",
+          "Respiratory roots"
+        ]
+      },
+      "stem": {
+        "functions": [
+          "Support",
+          "Transport of water and food"
+        ],
+        "modifications": [
+          "Rhizome",
+          "Tuber",
+          "Tendril",
+          "Thorn"
+        ]
+      },
+      "leaf": {
+        "functions": [
+          "Photosynthesis",
+          "Transpiration"
+        ],
+        "venation": [
+          "Reticulate",
+          "Parallel"
+        ],
+        "phyllotaxy": [
+          "Alternate",
+          "Opposite",
+          "Whorled"
+        ]
+      },
+      "flower": {
+        "definition": "Reproductive organ of angiosperms",
+        "parts": [
+          "Calyx",
+          "Corolla",
+          "Androecium",
+          "Gynoecium"
+        ]
+      },
+      "fruit_and_seed": {
+        "fruit": "Developed from ovary",
+        "seed": "Developed from ovule"
+      },
+      "one_liner": "Morphology explains how plant form supports function."
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Anatomy of Flowering Plants",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter deals with the internal structure of plants and the organisation of tissues.",
+      "plant_tissues": {
+        "meristematic_tissue": {
+          "types": [
+            "Apical meristem",
+            "Intercalary meristem",
+            "Lateral meristem"
+          ],
+          "function": "Cell division"
+        },
+        "permanent_tissue": {
+          "simple_tissues": [
+            "Parenchyma",
+            "Collenchyma",
+            "Sclerenchyma"
+          ],
+          "complex_tissues": [
+            "Xylem",
+            "Phloem"
+          ]
+        }
+      },
+      "internal_structure": {
+        "dicot_stem": {
+          "features": [
+            "Vascular bundles in a ring",
+            "Presence of cambium"
+          ]
+        },
+        "monocot_stem": {
+          "features": [
+            "Scattered vascular bundles",
+            "No cambium"
+          ]
+        },
+        "dicot_root": {
+          "features": [
+            "Radial vascular bundles",
+            "Exarch xylem"
+          ]
+        },
+        "monocot_root": {
+          "features": [
+            "Polyarch xylem",
+            "Large pith"
+          ]
+        }
+      },
+      "secondary_growth": {
+        "definition": "Increase in girth of plant",
+        "tissues_involved": [
+          "Vascular cambium",
+          "Cork cambium"
+        ]
+      },
+      "one_liner": "Anatomy reveals how plant tissues work together internally."
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Structural Organisation in Animals",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how animal tissues are organised to form organs and organ systems, using examples of representative animals.",
+      "animal_tissues": {
+        "epithelial_tissue": {
+          "functions": [
+            "Protection",
+            "Absorption",
+            "Secretion"
+          ],
+          "types": [
+            "Simple epithelium",
+            "Stratified epithelium"
+          ]
+        },
+        "connective_tissue": {
+          "functions": [
+            "Binding and support",
+            "Transport"
+          ],
+          "types": [
+            "Blood",
+            "Bone",
+            "Cartilage",
+            "Areolar tissue"
+          ]
+        },
+        "muscular_tissue": {
+          "types": [
+            "Skeletal muscle",
+            "Smooth muscle",
+            "Cardiac muscle"
+          ],
+          "function": "Movement"
+        },
+        "nervous_tissue": {
+          "components": [
+            "Neuron",
+            "Neuroglia"
+          ],
+          "function": "Transmission of impulses"
+        }
+      },
+      "organ_and_organ_system": {
+        "earthworm": {
+          "systems": [
+            "Digestive",
+            "Circulatory",
+            "Respiratory"
+          ]
+        },
+        "cockroach": {
+          "systems": [
+            "Digestive",
+            "Respiratory (tracheal)",
+            "Nervous"
+          ]
+        }
+      },
+      "one_liner": "Organisation of tissues defines efficiency of animal life."
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Cell: Structure and Function",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter introduces the cell as the basic structural and functional unit of life.",
+      "cell_theory": {
+        "statements": [
+          "All living organisms are composed of cells",
+          "Cell is the basic unit of life",
+          "New cells arise from pre-existing cells"
+        ]
+      },
+      "cell_types": {
+        "prokaryotic_cells": {
+          "features": [
+            "No true nucleus",
+            "No membrane-bound organelles"
+          ]
+        },
+        "eukaryotic_cells": {
+          "features": [
+            "True nucleus",
+            "Membrane-bound organelles"
+          ]
+        }
+      },
+      "cell_organelles": {
+        "nucleus": "Controls cell activities",
+        "mitochondria": "Powerhouse of the cell",
+        "ribosomes": "Protein synthesis",
+        "endoplasmic_reticulum": "Protein and lipid synthesis",
+        "golgi_apparatus": "Packaging and transport",
+        "lysosomes": "Intracellular digestion",
+        "chloroplast": "Photosynthesis"
+      },
+      "cell_envelope": {
+        "plasma_membrane": "Selective permeability",
+        "cell_wall": "Protection and rigidity (plants)"
+      },
+      "one_liner": "Cells are microscopic units carrying macroscopic life."
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Biomolecules",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains the chemical substances that form the basis of life and cellular functions.",
+      "biomolecule_types": {
+        "carbohydrates": {
+          "examples": [
+            "Glucose",
+            "Starch",
+            "Cellulose"
+          ],
+          "function": "Energy source"
+        },
+        "proteins": {
+          "structure": "Amino acids linked by peptide bonds",
+          "functions": [
+            "Enzymes",
+            "Structural proteins",
+            "Hormones"
+          ]
+        },
+        "lipids": {
+          "examples": [
+            "Fats",
+            "Oils",
+            "Phospholipids"
+          ],
+          "function": "Energy storage"
+        },
+        "nucleic_acids": {
+          "types": [
+            "DNA",
+            "RNA"
+          ],
+          "function": "Genetic information storage"
+        }
+      },
+      "enzymes": {
+        "definition": "Biological catalysts",
+        "properties": [
+          "Highly specific",
+          "Reusable",
+          "Affected by temperature and pH"
+        ]
+      },
+      "metabolism": {
+        "anabolism": "Biosynthetic reactions",
+        "catabolism": "Breakdown reactions"
+      },
+      "one_liner": "Biomolecules are the chemistry behind life."
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Cell Cycle and Cell Division",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how cells grow, replicate their genetic material, and divide to form new cells, ensuring growth, repair, and reproduction.",
+      "cell_cycle": {
+        "definition": "Sequence of events through which a cell passes from one division to the next",
+        "phases": {
+          "interphase": {
+            "subphases": [
+              "G1 phase (cell growth)",
+              "S phase (DNA replication)",
+              "G2 phase (preparation for division)"
+            ],
+            "significance": "Most active phase of the cell"
+          },
+          "mitotic_phase": "Actual division of the cell"
+        }
+      },
+      "mitosis": {
+        "definition": "Equational division resulting in two identical daughter cells",
+        "stages": [
+          "Prophase",
+          "Metaphase",
+          "Anaphase",
+          "Telophase"
+        ],
+        "significance": [
+          "Growth",
+          "Tissue repair",
+          "Asexual reproduction"
+        ]
+      },
+      "meiosis": {
+        "definition": "Reduction division producing four haploid cells",
+        "types": [
+          "Meiosis I (reductional)",
+          "Meiosis II (equational)"
+        ],
+        "significance": [
+          "Formation of gametes",
+          "Genetic variation"
+        ]
+      },
+      "one_liner": "Cell division sustains life across generations."
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Transport in Plants",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how water, minerals, and food are transported within plants.",
+      "transport_of_water": {
+        "pathways": [
+          "Apoplast pathway",
+          "Symplast pathway"
+        ],
+        "root_pressure": "Pushes water upward from roots",
+        "transpiration_pull": "Major driving force for ascent of sap"
+      },
+      "transpiration": {
+        "definition": "Loss of water vapour from aerial parts of plant",
+        "factors_affecting": [
+          "Light",
+          "Temperature",
+          "Humidity",
+          "Wind"
+        ],
+        "significance": [
+          "Cooling effect",
+          "Helps in mineral transport"
+        ]
+      },
+      "transport_of_food": {
+        "phloem_translocation": {
+          "theory": "Mass flow hypothesis",
+          "direction": "Bidirectional"
+        }
+      },
+      "one_liner": "Efficient transport keeps plants alive and growing."
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Mineral Nutrition",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter discusses the essential mineral elements required by plants and their roles.",
+      "essential_elements": {
+        "criteria": [
+          "Required for normal growth",
+          "Cannot be replaced by another element",
+          "Directly involved in metabolism"
+        ]
+      },
+      "macronutrients": {
+        "elements": [
+          "Nitrogen",
+          "Phosphorus",
+          "Potassium",
+          "Calcium",
+          "Magnesium",
+          "Sulphur"
+        ]
+      },
+      "micronutrients": {
+        "elements": [
+          "Iron",
+          "Manganese",
+          "Zinc",
+          "Copper",
+          "Boron",
+          "Molybdenum"
+        ]
+      },
+      "deficiency_symptoms": {
+        "chlorosis": "Yellowing of leaves",
+        "necrosis": "Death of tissues",
+        "inhibition_of_growth": "Stunted growth"
+      },
+      "nitrogen_cycle": {
+        "steps": [
+          "Nitrogen fixation",
+          "Nitrification",
+          "Assimilation",
+          "Ammonification",
+          "Denitrification"
+        ]
+      },
+      "one_liner": "Mineral nutrition fuels plant metabolism and productivity."
+    },
+    {
+      "chapter_number": 13,
+      "chapter_name": "Photosynthesis in Higher Plants",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains the process by which green plants convert light energy into chemical energy, forming the basis of life on Earth.",
+      "photosynthesis": {
+        "definition": "Process by which green plants synthesise food using CO2, water, and sunlight in presence of chlorophyll",
+        "overall_equation": "6CO2 + 12H2O → C6H12O6 + 6O2 + 6H2O"
+      },
+      "site_of_photosynthesis": {
+        "chloroplast": {
+          "structure": [
+            "Grana",
+            "Stroma",
+            "Thylakoids"
+          ],
+          "pigments": [
+            "Chlorophyll a",
+            "Chlorophyll b",
+            "Carotenoids"
+          ]
+        }
+      },
+      "light_reaction": {
+        "location": "Thylakoid membrane",
+        "processes": [
+          "Photolysis of water",
+          "ATP synthesis",
+          "NADPH formation"
+        ],
+        "photosystems": [
+          "Photosystem I",
+          "Photosystem II"
+        ]
+      },
+      "dark_reaction": {
+        "location": "Stroma",
+        "calvin_cycle": {
+          "stages": [
+            "Carboxylation",
+            "Reduction",
+            "Regeneration"
+          ]
+        }
+      },
+      "factors_affecting_photosynthesis": [
+        "Light intensity",
+        "Carbon dioxide concentration",
+        "Temperature"
+      ],
+      "one_liner": "Photosynthesis converts sunlight into life-sustaining energy."
+    },
+    {
+      "chapter_number": 14,
+      "chapter_name": "Respiration in Plants",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how plants release energy from food through oxidation processes essential for growth and maintenance.",
+      "respiration": {
+        "definition": "Breakdown of organic compounds to release energy",
+        "types": [
+          "Aerobic respiration",
+          "Anaerobic respiration"
+        ]
+      },
+      "glycolysis": {
+        "location": "Cytoplasm",
+        "description": "Glucose breakdown into pyruvate",
+        "energy_yield": "2 ATP"
+      },
+      "krebs_cycle": {
+        "location": "Mitochondrial matrix",
+        "function": "Complete oxidation of acetyl-CoA"
+      },
+      "electron_transport_chain": {
+        "location": "Inner mitochondrial membrane",
+        "role": "ATP synthesis via oxidative phosphorylation"
+      },
+      "respiratory_quotient": {
+        "definition": "Ratio of CO2 evolved to O2 consumed",
+        "significance": "Indicates respiratory substrate"
+      },
+      "fermentation": {
+        "definition": "Anaerobic breakdown of glucose",
+        "types": [
+          "Alcoholic fermentation",
+          "Lactic acid fermentation"
+        ]
+      },
+      "one_liner": "Respiration releases the energy locked in food."
+    },
+    {
+      "chapter_number": 15,
+      "chapter_name": "Plant Growth and Development",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter studies growth patterns, phases, and the role of plant hormones in development.",
+      "plant_growth": {
+        "definition": "Irreversible increase in size and mass",
+        "phases": [
+          "Meristematic phase",
+          "Elongation phase",
+          "Maturation phase"
+        ]
+      },
+      "growth_measurement": {
+        "methods": [
+          "Increase in length",
+          "Increase in dry weight",
+          "Increase in cell number"
+        ]
+      },
+      "plant_growth_regulators": {
+        "auxins": "Cell elongation",
+        "gibberellins": "Stem elongation",
+        "cytokinins": "Cell division",
+        "abscisic_acid": "Growth inhibitor",
+        "ethylene": "Fruit ripening"
+      },
+      "photoperiodism": {
+        "definition": "Response of plants to day length",
+        "types": [
+          "Short-day plants",
+          "Long-day plants",
+          "Day-neutral plants"
+        ]
+      },
+      "vernalisation": {
+        "definition": "Requirement of low temperature for flowering"
+      },
+      "one_liner": "Plant development is controlled by growth regulators and environment."
+    },
+    {
+      "chapter_number": 16,
+      "chapter_name": "Digestion and Absorption",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains the human digestive system, the process of digestion, and absorption of nutrients.",
+      "digestive_system": {
+        "organs": [
+          "Mouth",
+          "Oesophagus",
+          "Stomach",
+          "Small intestine",
+          "Large intestine"
+        ],
+        "accessory_glands": [
+          "Salivary glands",
+          "Liver",
+          "Pancreas"
+        ]
+      },
+      "digestion": {
+        "carbohydrates": "Broken down into glucose",
+        "proteins": "Broken down into amino acids",
+        "fats": "Broken down into fatty acids and glycerol"
+      },
+      "digestive_enzymes": {
+        "salivary_amylase": "Acts on starch",
+        "pepsin": "Digests proteins in stomach",
+        "trypsin": "Protein digestion in intestine",
+        "lipase": "Fat digestion"
+      },
+      "absorption": {
+        "site": "Small intestine",
+        "mechanism": [
+          "Diffusion",
+          "Active transport",
+          "Facilitated diffusion"
+        ],
+        "villi": "Increase surface area for absorption"
+      },
+      "one_liner": "Digestion converts food into absorbable nutrients."
+    },
+    {
+      "chapter_number": 17,
+      "chapter_name": "Breathing and Exchange of Gases",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains the mechanism of breathing and exchange of oxygen and carbon dioxide in humans.",
+      "respiratory_system": {
+        "organs": [
+          "Nasal cavity",
+          "Trachea",
+          "Bronchi",
+          "Lungs"
+        ]
+      },
+      "breathing": {
+        "inspiration": "Air enters lungs",
+        "expiration": "Air leaves lungs"
+      },
+      "gaseous_exchange": {
+        "alveoli": "Site of gas exchange",
+        "transport_of_oxygen": "Via haemoglobin",
+        "transport_of_carbon_dioxide": [
+          "As bicarbonate ions",
+          "As carbaminohaemoglobin"
+        ]
+      },
+      "regulation_of_respiration": {
+        "control_centres": "Medulla oblongata and pons"
+      },
+      "respiratory_disorders": [
+        "Asthma",
+        "Emphysema",
+        "Bronchitis"
+      ],
+      "one_liner": "Breathing supplies oxygen for cellular respiration."
+    },
+    {
+      "chapter_number": 18,
+      "chapter_name": "Body Fluids and Circulation",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains blood, lymph, and the circulatory system responsible for transport in humans.",
+      "body_fluids": {
+        "blood": {
+          "components": [
+            "Plasma",
+            "Red blood cells",
+            "White blood cells",
+            "Platelets"
+          ],
+          "functions": [
+            "Transport",
+            "Immunity",
+            "Regulation"
+          ]
+        },
+        "lymph": {
+          "function": [
+            "Transport of fats",
+            "Immunity"
+          ]
+        }
+      },
+      "heart": {
+        "structure": [
+          "Four chambers",
+          "Valves ensure one-way flow"
+        ],
+        "cardiac_cycle": "Sequence of heart contractions"
+      },
+      "circulation": {
+        "types": [
+          "Double circulation",
+          "Systemic circulation",
+          "Pulmonary circulation"
+        ]
+      },
+      "blood_groups": {
+        "abo_system": [
+          "A",
+          "B",
+          "AB",
+          "O"
+        ],
+        "rh_factor": [
+          "Rh positive",
+          "Rh negative"
+        ]
+      },
+      "one_liner": "Circulation keeps every cell supplied and alive."
+    },
+    {
+      "chapter_number": 19,
+      "chapter_name": "Excretory Products and their Elimination",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how metabolic waste products are removed from the human body to maintain internal balance.",
+      "excretory_products": {
+        "nitrogenous_wastes": [
+          "Ammonia",
+          "Urea",
+          "Uric acid"
+        ],
+        "source": "Protein metabolism"
+      },
+      "human_excretory_system": {
+        "organs": [
+          "Kidneys",
+          "Ureters",
+          "Urinary bladder",
+          "Urethra"
+        ]
+      },
+      "kidney_structure": {
+        "nephron": {
+          "definition": "Structural and functional unit of kidney",
+          "parts": [
+            "Glomerulus",
+            "Bowman’s capsule",
+            "Proximal convoluted tubule",
+            "Loop of Henle",
+            "Distal convoluted tubule",
+            "Collecting duct"
+          ]
+        }
+      },
+      "urine_formation": {
+        "steps": [
+          "Glomerular filtration",
+          "Tubular reabsorption",
+          "Tubular secretion"
+        ]
+      },
+      "osmoregulation": {
+        "definition": "Maintenance of water and salt balance",
+        "hormone_involved": "ADH (vasopressin)"
+      },
+      "disorders": [
+        "Uremia",
+        "Kidney stones",
+        "Renal failure"
+      ],
+      "one_liner": "Excretion maintains chemical balance inside the body."
+    },
+    {
+      "chapter_number": 20,
+      "chapter_name": "Locomotion and Movement",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how humans and animals move using muscles, bones, and joints.",
+      "types_of_movement": [
+        "Amoeboid movement",
+        "Ciliary movement",
+        "Muscular movement"
+      ],
+      "skeletal_system": {
+        "functions": [
+          "Support",
+          "Protection",
+          "Movement"
+        ],
+        "components": [
+          "Bones",
+          "Cartilage",
+          "Ligaments"
+        ]
+      },
+      "joints": {
+        "types": [
+          "Fibrous joints",
+          "Cartilaginous joints",
+          "Synovial joints"
+        ],
+        "synovial_joint_types": [
+          "Hinge joint",
+          "Ball and socket joint",
+          "Pivot joint"
+        ]
+      },
+      "muscular_system": {
+        "muscle_types": [
+          "Skeletal muscle",
+          "Smooth muscle",
+          "Cardiac muscle"
+        ],
+        "mechanism_of_contraction": {
+          "theory": "Sliding filament theory",
+          "proteins": [
+            "Actin",
+            "Myosin"
+          ]
+        }
+      },
+      "disorders": [
+        "Myasthenia gravis",
+        "Muscular dystrophy",
+        "Arthritis"
+      ],
+      "one_liner": "Movement is the visible expression of muscular activity."
+    },
+    {
+      "chapter_number": 21,
+      "chapter_name": "Neural Control and Coordination",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how the nervous system controls and coordinates body activities through electrical and chemical signals.",
+      "nervous_system": {
+        "central_nervous_system": [
+          "Brain",
+          "Spinal cord"
+        ],
+        "peripheral_nervous_system": [
+          "Cranial nerves",
+          "Spinal nerves"
+        ],
+        "autonomic_nervous_system": [
+          "Sympathetic",
+          "Parasympathetic"
+        ]
+      },
+      "neuron": {
+        "definition": "Structural and functional unit of nervous system",
+        "parts": [
+          "Dendrite",
+          "Cell body",
+          "Axon"
+        ]
+      },
+      "nerve_impulse": {
+        "nature": "Electrochemical",
+        "resting_potential": "−70 mV",
+        "action_potential": "Rapid change in membrane potential"
+      },
+      "synapse": {
+        "definition": "Junction between two neurons",
+        "types": [
+          "Electrical synapse",
+          "Chemical synapse"
+        ]
+      },
+      "brain": {
+        "forebrain": "Thinking and memory",
+        "midbrain": "Visual and auditory reflexes",
+        "hindbrain": "Balance and coordination"
+      },
+      "one_liner": "Neural control ensures rapid and precise coordination."
+    },
+    {
+      "chapter_number": 22,
+      "chapter_name": "Chemical Coordination and Integration",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "stream": "Biology",
+      "introduction": "This chapter explains how hormones regulate and coordinate physiological processes in the body through the endocrine system.",
+      "endocrine_system": {
+        "definition": "System of ductless glands that secrete hormones directly into the bloodstream",
+        "characteristics_of_hormones": [
+          "Secreted in small quantities",
+          "Transported by blood",
+          "Specific target organs",
+          "Slow but long-lasting effects"
+        ]
+      },
+      "major_endocrine_glands": {
+        "hypothalamus": {
+          "role": "Link between nervous and endocrine systems",
+          "hormones": [
+            "Releasing hormones",
+            "Inhibitory hormones"
+          ]
+        },
+        "pituitary_gland": {
+          "role": "Master gland",
+          "hormones": [
+            "Growth hormone",
+            "TSH",
+            "ACTH",
+            "FSH",
+            "LH",
+            "Prolactin"
+          ]
+        },
+        "thyroid_gland": {
+          "hormone": "Thyroxine",
+          "function": "Regulation of metabolism",
+          "disorder": [
+            "Goitre",
+            "Hypothyroidism",
+            "Hyperthyroidism"
+          ]
+        },
+        "parathyroid_gland": {
+          "hormone": "Parathormone",
+          "function": "Calcium balance"
+        },
+        "adrenal_gland": {
+          "hormones": [
+            "Adrenaline",
+            "Noradrenaline",
+            "Cortisol"
+          ],
+          "function": "Stress response"
+        },
+        "pancreas": {
+          "hormones": [
+            "Insulin",
+            "Glucagon"
+          ],
+          "function": "Blood glucose regulation"
+        },
+        "gonads": {
+          "testes": {
+            "hormone": "Testosterone",
+            "function": "Male secondary sexual characters"
+          },
+          "ovaries": {
+            "hormones": [
+              "Estrogen",
+              "Progesterone"
+            ],
+            "function": "Female reproductive cycle"
+          }
+        }
+      },
+      "feedback_mechanism": {
+        "definition": "Regulatory mechanism to maintain hormone levels",
+        "types": [
+          "Positive feedback",
+          "Negative feedback"
+        ]
+      },
+      "hormonal_disorders": [
+        "Diabetes mellitus",
+        "Dwarfism",
+        "Gigantism",
+        "Acromegaly"
+      ],
+      "one_liner": "Chemical coordination ensures long-term regulation and balance."
+    }
+  ]
+}

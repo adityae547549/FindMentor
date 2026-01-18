@@ -1,0 +1,498 @@
+{
+  "class": 12,
+  "subject": "Physics",
+  "board": "CBSE / NCERT aligned",
+  "description": "",
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_name": "Electric Charges and Fields",
+      "chapter_objective": "To introduce the concept of electric charge, study forces between charges, and understand electric fields.",
+      "detailed_explanation": "This chapter introduces electrostatics, which deals with electric charges at rest. It explains the nature of electric charge, Coulomb’s law, electric field, electric field lines, electric flux, and Gauss’s law, forming the foundation of electricity.",
+      "basic_concepts": {
+        "electric_charge": "A fundamental property of matter responsible for electrical phenomena.",
+        "types_of_charge": [
+          "Positive charge",
+          "Negative charge"
+        ]
+      },
+      "properties_of_charge": [
+        "Additivity of charges",
+        "Conservation of charge",
+        "Quantization of charge"
+      ],
+      "coulombs_law": {
+        "statement": "The force between two point charges is directly proportional to the product of their charges and inversely proportional to the square of the distance between them."
+      },
+      "electric_field": {
+        "definition": "Region around a charge where its electric influence is experienced.",
+        "electric_field_intensity": "Force experienced per unit positive test charge."
+      },
+      "electric_field_lines": {
+        "properties": [
+          "Originate from positive charges and terminate on negative charges",
+          "Never intersect",
+          "Density represents strength of electric field"
+        ]
+      },
+      "electric_flux": {
+        "definition": "Measure of the number of electric field lines passing through a surface."
+      },
+      "gauss_law": {
+        "statement": "Total electric flux through a closed surface is equal to charge enclosed divided by ε₀."
+      },
+      "learning_outcomes": [
+        "Apply Coulomb’s law to numerical problems",
+        "Understand electric field and flux",
+        "Use Gauss’s law for symmetric charge distributions"
+      ]
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Electrostatic Potential and Capacitance",
+      "chapter_objective": "To understand electric potential, potential energy, and the concept of capacitance.",
+      "detailed_explanation": "Electric potential is a scalar quantity used to describe electrical effects more conveniently than electric field. This chapter explains electric potential, potential difference, equipotential surfaces, capacitors, dielectrics, and energy stored in capacitors.",
+      "electric_potential": {
+        "definition": "Work done per unit positive charge in bringing it from infinity to a point in an electric field."
+      },
+      "relation_with_field": "Electric field is the negative gradient of electric potential.",
+      "equipotential_surfaces": {
+        "properties": [
+          "Electric field is perpendicular to equipotential surfaces",
+          "No work is done moving a charge along an equipotential surface"
+        ]
+      },
+      "capacitors": {
+        "definition": "Devices used to store electric charge.",
+        "parallel_plate_capacitor": "Capacitance depends on area of plates and separation between them."
+      },
+      "dielectrics": {
+        "role": "Increase capacitance by reducing effective electric field.",
+        "dielectric_constant": "Ratio of capacitance with dielectric to without dielectric."
+      },
+      "energy_stored_in_capacitor": {
+        "expression": "Energy = 1/2 CV²"
+      },
+      "learning_outcomes": [
+        "Calculate electric potential and energy",
+        "Solve problems on capacitors",
+        "Understand effect of dielectrics"
+      ]
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Current Electricity",
+      "chapter_objective": "To study flow of electric charges and analyze electrical circuits.",
+      "detailed_explanation": "Current electricity deals with the motion of electric charges through conductors. This chapter introduces electric current, drift velocity, Ohm’s law, electrical resistance, energy, power, and circuit analysis using Kirchhoff’s laws.",
+      "electric_current": {
+        "definition": "Rate of flow of electric charge through a conductor.",
+        "conventional_direction": "Direction of flow of positive charge."
+      },
+      "ohms_law": {
+        "statement": "Current through a conductor is directly proportional to the potential difference across it at constant temperature."
+      },
+      "resistance": {
+        "factors": [
+          "Length of conductor",
+          "Area of cross-section",
+          "Material",
+          "Temperature"
+        ]
+      },
+      "electrical_energy_and_power": {
+        "joules_law": "Heat produced is proportional to square of current.",
+        "electric_power": "Rate of consumption of electrical energy."
+      },
+      "combination_of_resistors": [
+        "Series combination",
+        "Parallel combination"
+      ],
+      "kirchhoffs_laws": [
+        "Junction law",
+        "Loop law"
+      ],
+      "learning_outcomes": [
+        "Apply Ohm’s law",
+        "Analyze series and parallel circuits",
+        "Solve numerical problems using Kirchhoff’s laws"
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Moving Charges and Magnetism",
+      "chapter_objective": "To study magnetic effects produced by moving electric charges and their interaction with magnetic fields.",
+      "detailed_explanation": "When electric charges move, they produce magnetic fields. This chapter explains the magnetic force on moving charges, motion of charged particles in magnetic fields, and magnetic field due to current-carrying conductors. These concepts are fundamental to understanding motors, cyclotrons, and magnetic devices.",
+      "magnetic_field": {
+        "definition": "Region around a magnet or current-carrying conductor where magnetic effects are observed."
+      },
+      "lorentz_force": {
+        "concept": "Force experienced by a moving charge in electric and magnetic fields."
+      },
+      "motion_of_charged_particles": [
+        "Motion in uniform magnetic field",
+        "Circular and helical motion of charged particles"
+      ],
+      "biot_savart_law": {
+        "statement": "Magnetic field due to a current element is directly proportional to current and inversely proportional to square of distance."
+      },
+      "ampere_circuital_law": {
+        "statement": "Line integral of magnetic field around a closed loop equals μ₀ times current enclosed."
+      },
+      "force_on_current_carrying_conductor": {
+        "principle": "Magnetic force depends on current, magnetic field, and length of conductor."
+      },
+      "learning_outcomes": [
+        "Calculate magnetic force on moving charges",
+        "Determine magnetic field due to currents",
+        "Solve problems involving circular motion of charged particles"
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Magnetism and Matter",
+      "chapter_objective": "To understand magnetic properties of materials and behaviour of matter in magnetic fields.",
+      "detailed_explanation": "This chapter explains how materials respond to magnetic fields. It introduces magnetic dipoles, Earth’s magnetism, and classification of magnetic materials. Understanding these concepts is important for applications such as data storage and magnetic devices.",
+      "magnetic_dipole": {
+        "definition": "A system consisting of a north and south pole separated by a small distance.",
+        "magnetic_moment": "Measure of strength of a magnetic dipole."
+      },
+      "earth_magnetism": {
+        "elements": [
+          "Magnetic declination",
+          "Magnetic inclination",
+          "Horizontal component of Earth’s magnetic field"
+        ]
+      },
+      "magnetic_materials": [
+        "Diamagnetic",
+        "Paramagnetic",
+        "Ferromagnetic"
+      ],
+      "hysteresis": {
+        "concept": "Lag of magnetization behind the magnetizing field.",
+        "hysteresis_loop": "Graph showing variation of magnetization with magnetic field."
+      },
+      "learning_outcomes": [
+        "Classify magnetic materials",
+        "Understand Earth’s magnetism",
+        "Explain hysteresis and its applications"
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Electromagnetic Induction",
+      "chapter_objective": "To study the phenomenon of induced electromotive force due to changing magnetic fields.",
+      "detailed_explanation": "Electromagnetic induction is the process by which a changing magnetic field produces an electric current. This chapter explains Faraday’s laws, Lenz’s law, inductance, and energy stored in inductors. These principles are used in generators, transformers, and electrical machines.",
+      "electromagnetic_induction": {
+        "definition": "Production of induced emf due to change in magnetic flux."
+      },
+      "faradays_laws": [
+        "Magnitude of induced emf is proportional to rate of change of magnetic flux",
+        "Direction of induced emf is given by Lenz’s law"
+      ],
+      "magnetic_flux": {
+        "definition": "Measure of magnetic field passing through a surface."
+      },
+      "self_and_mutual_induction": {
+        "self_inductance": "Property of a coil to oppose change in current.",
+        "mutual_inductance": "Induction of emf in one coil due to change of current in another."
+      },
+      "energy_in_inductor": {
+        "expression": "Energy stored = 1/2 LI²"
+      },
+      "learning_outcomes": [
+        "Apply Faraday’s and Lenz’s laws",
+        "Solve problems involving inductance",
+        "Understand working of generators and transformers"
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Alternating Current",
+      "chapter_objective": "To study the behaviour of electric circuits driven by alternating voltage and understand AC quantities and resonance.",
+      "detailed_explanation": "Alternating current is an electric current whose magnitude and direction vary periodically with time. This chapter explains AC voltage and current, their mathematical representation, AC circuits containing resistors, inductors, and capacitors, impedance, resonance, and power consumption in AC circuits.",
+      "alternating_current": {
+        "definition": "Electric current that changes its magnitude and direction periodically with time.",
+        "waveform": "Usually sinusoidal in nature."
+      },
+      "ac_quantities": [
+        "Peak value",
+        "Root mean square (rms) value",
+        "Average value"
+      ],
+      "ac_circuits": {
+        "resistive_circuit": "Current and voltage are in phase.",
+        "inductive_circuit": "Current lags voltage by 90 degrees.",
+        "capacitive_circuit": "Current leads voltage by 90 degrees."
+      },
+      "impedance": {
+        "definition": "Total opposition offered to alternating current.",
+        "expression": "Z = √(R² + (XL − XC)²)"
+      },
+      "resonance": {
+        "condition": "Inductive reactance equals capacitive reactance.",
+        "importance": "Circuit allows maximum current at resonance."
+      },
+      "power_in_ac": {
+        "power_factor": "Cosine of phase angle between voltage and current."
+      },
+      "learning_outcomes": [
+        "Analyze AC circuits",
+        "Understand resonance phenomenon",
+        "Calculate power consumption in AC circuits"
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Electromagnetic Waves",
+      "chapter_objective": "To understand the nature, production, and properties of electromagnetic waves.",
+      "detailed_explanation": "Electromagnetic waves are produced by accelerated charges and consist of oscillating electric and magnetic fields. This chapter discusses Maxwell’s contribution, electromagnetic spectrum, and applications of electromagnetic waves in communication and technology.",
+      "basic_concepts": {
+        "electromagnetic_wave": "A transverse wave consisting of mutually perpendicular electric and magnetic fields.",
+        "nature": "Does not require a material medium for propagation."
+      },
+      "maxwells_contribution": {
+        "idea": "Changing electric field produces magnetic field and vice versa."
+      },
+      "electromagnetic_spectrum": [
+        "Radio waves",
+        "Microwaves",
+        "Infrared rays",
+        "Visible light",
+        "Ultraviolet rays",
+        "X-rays",
+        "Gamma rays"
+      ],
+      "properties": [
+        "Travel with speed of light in vacuum",
+        "Carry energy and momentum"
+      ],
+      "applications": [
+        "Wireless communication",
+        "Medical imaging",
+        "Remote sensing"
+      ],
+      "learning_outcomes": [
+        "Understand electromagnetic spectrum",
+        "Explain properties of EM waves",
+        "Relate EM waves to technological applications"
+      ]
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Ray Optics and Optical Instruments",
+      "chapter_objective": "To study reflection and refraction of light and understand working of optical instruments.",
+      "detailed_explanation": "Ray optics treats light as rays traveling in straight lines. This chapter explains reflection and refraction, image formation by mirrors and lenses, optical defects of human eye, and working principles of optical instruments such as microscopes and telescopes.",
+      "reflection": {
+        "laws": [
+          "Angle of incidence equals angle of reflection",
+          "Incident ray, reflected ray, and normal lie in the same plane"
+        ]
+      },
+      "refraction": {
+        "snells_law": "Ratio of sine of angle of incidence to sine of angle of refraction is constant for given pair of media.",
+        "refractive_index": "Measure of bending of light in a medium."
+      },
+      "total_internal_reflection": {
+        "conditions": [
+          "Light travels from denser to rarer medium",
+          "Angle of incidence exceeds critical angle"
+        ]
+      },
+      "optical_instruments": [
+        "Human eye",
+        "Compound microscope",
+        "Astronomical telescope"
+      ],
+      "defects_of_vision": [
+        "Myopia",
+        "Hypermetropia",
+        "Presbyopia"
+      ],
+      "learning_outcomes": [
+        "Draw ray diagrams accurately",
+        "Solve numerical problems on mirrors and lenses",
+        "Understand optical instruments and vision defects"
+      ]
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Wave Optics",
+      "chapter_objective": "To understand the wave nature of light and study phenomena such as interference, diffraction, and polarization.",
+      "detailed_explanation": "Wave optics explains light as a wave phenomenon. This chapter discusses Huygens’ principle, superposition of waves, Young’s double slit experiment, diffraction at a single slit, and polarization, establishing the transverse nature of light.",
+      "wave_nature_of_light": {
+        "huygens_principle": "Each point on a wavefront acts as a source of secondary wavelets which spread out in all directions."
+      },
+      "interference": {
+        "youngs_double_slit_experiment": {
+          "idea": "Interference pattern is formed due to superposition of coherent light waves.",
+          "conditions": [
+            "Sources must be coherent",
+            "Same frequency and constant phase difference"
+          ]
+        }
+      },
+      "diffraction": {
+        "single_slit_diffraction": "Bending of light around the edges of a narrow slit.",
+        "central_maximum": "Brightest and widest fringe."
+      },
+      "polarization": {
+        "definition": "Restriction of vibrations of light waves to a particular plane.",
+        "significance": "Confirms transverse nature of light."
+      },
+      "learning_outcomes": [
+        "Explain interference and diffraction",
+        "Apply formulas related to fringe width",
+        "Understand polarization of light"
+      ]
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Dual Nature of Radiation and Matter",
+      "chapter_objective": "To understand the dual wave–particle nature of light and matter.",
+      "detailed_explanation": "This chapter introduces quantum physics concepts through the photoelectric effect and de Broglie hypothesis. It explains how radiation and matter exhibit both wave-like and particle-like properties.",
+      "photoelectric_effect": {
+        "definition": "Emission of electrons from a metal surface when light of sufficient frequency is incident on it.",
+        "observations": [
+          "Existence of threshold frequency",
+          "Kinetic energy depends on frequency, not intensity",
+          "Photoelectric current depends on intensity"
+        ],
+        "einsteins_equation": "hf = W0 + (1/2)mv²"
+      },
+      "matter_waves": {
+        "de_broglie_hypothesis": "Every moving particle is associated with a wave.",
+        "wavelength_expression": "λ = h / p"
+      },
+      "learning_outcomes": [
+        "Explain photoelectric effect using quantum theory",
+        "Calculate de Broglie wavelength",
+        "Understand wave–particle duality"
+      ]
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Atoms",
+      "chapter_objective": "To study atomic structure using classical and quantum models.",
+      "detailed_explanation": "This chapter traces the development of atomic models from Thomson and Rutherford to Bohr’s model, explaining atomic stability and spectral lines of hydrogen.",
+      "atomic_models": [
+        "Thomson’s model",
+        "Rutherford’s nuclear model",
+        "Bohr’s model"
+      ],
+      "bohr_model": {
+        "postulates": [
+          "Electrons revolve in fixed orbits",
+          "Angular momentum is quantized",
+          "Radiation is emitted during transitions between orbits"
+        ]
+      },
+      "hydrogen_spectrum": {
+        "series": [
+          "Lyman series",
+          "Balmer series",
+          "Paschen series"
+        ]
+      },
+      "learning_outcomes": [
+        "Explain limitations of classical atomic models",
+        "Apply Bohr’s model to hydrogen atom",
+        "Understand atomic spectra"
+      ]
+    },
+    {
+      "chapter_number": 13,
+      "chapter_name": "Nuclei",
+      "chapter_objective": "To study the structure and properties of atomic nuclei and understand nuclear reactions and radioactivity.",
+      "detailed_explanation": "The nucleus is the central core of an atom containing protons and neutrons. This chapter explains nuclear composition, nuclear forces, mass–energy equivalence, binding energy, radioactive decay, and basic ideas of nuclear fission and fusion. These concepts are crucial for understanding nuclear energy and radiation.",
+      "nuclear_composition": {
+        "nucleons": [
+          "Protons",
+          "Neutrons"
+        ],
+        "atomic_number": "Number of protons in the nucleus.",
+        "mass_number": "Total number of protons and neutrons."
+      },
+      "nuclear_forces": {
+        "nature": "Strong, short-range attractive forces acting between nucleons."
+      },
+      "mass_energy_equivalence": {
+        "einstein_relation": "E = mc²",
+        "significance": "Explains conversion of mass into energy in nuclear reactions."
+      },
+      "binding_energy": {
+        "definition": "Energy required to separate a nucleus into its individual nucleons.",
+        "importance": "Higher binding energy per nucleon indicates greater nuclear stability."
+      },
+      "radioactivity": {
+        "types": [
+          "Alpha decay",
+          "Beta decay",
+          "Gamma decay"
+        ],
+        "radioactive_decay_law": "Rate of decay is proportional to the number of undecayed nuclei.",
+        "half_life": "Time required for half of the radioactive nuclei to decay."
+      },
+      "nuclear_reactions": [
+        "Nuclear fission",
+        "Nuclear fusion"
+      ],
+      "learning_outcomes": [
+        "Explain nuclear stability and binding energy",
+        "Apply radioactive decay law",
+        "Understand energy generation in nuclear reactions"
+      ]
+    },
+    {
+      "chapter_number": 14,
+      "chapter_name": "Semiconductor Electronics",
+      "chapter_objective": "To understand the electronic properties of semiconductors and their applications in electronic devices.",
+      "detailed_explanation": "Semiconductor electronics forms the basis of modern technology. This chapter explains energy bands in solids, intrinsic and extrinsic semiconductors, p–n junctions, diodes, transistors, and basic logic gates used in digital electronics.",
+      "classification_of_materials": [
+        "Conductors",
+        "Semiconductors",
+        "Insulators"
+      ],
+      "semiconductors": {
+        "intrinsic": "Pure semiconductor with equal number of electrons and holes.",
+        "extrinsic": {
+          "n_type": "Doped with pentavalent impurities.",
+          "p_type": "Doped with trivalent impurities."
+        }
+      },
+      "energy_bands": {
+        "valence_band": "Highest occupied energy band at absolute zero.",
+        "conduction_band": "Energy band in which electrons can move freely.",
+        "band_gap": "Energy difference between valence and conduction bands."
+      },
+      "pn_junction": {
+        "formation": "Formed by joining p-type and n-type semiconductors.",
+        "depletion_region": "Region depleted of free charge carriers."
+      },
+      "diodes": {
+        "rectifier": "Converts alternating current into direct current.",
+        "zener_diode": "Used for voltage regulation."
+      },
+      "transistors": {
+        "types": [
+          "npn transistor",
+          "pnp transistor"
+        ],
+        "applications": [
+          "Amplification",
+          "Switching"
+        ]
+      },
+      "logic_gates": [
+        "AND gate",
+        "OR gate",
+        "NOT gate"
+      ],
+      "learning_outcomes": [
+        "Explain working of p–n junction devices",
+        "Understand transistor action",
+        "Apply logic gates in basic digital circuits"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "class": 9,
+  "subject": "Social Science",
+  "board": "CBSE / NCERT aligned",
+  "description": "",
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_name": "The French Revolution",
+      "chapter_objective": "",
+      "detailed_explanation": "The First Estate consisted of clergy, the Second Estate of nobility, and the Third Estate of common people who paid most taxes but had no political power. The French Revolution was caused by social inequality, economic crisis, and political mismanagement. The middle class led the revolution by spreading ideas of liberty and equality. The storming of the Bastille on 14 July 1789 marked the beginning of the French Revolution. A charter of fundamental rights adopted by the French National Assembly in 1789. Symbols used by revolutionaries to communicate revolutionary ideas. A radical political group led by Robespierre. A period of extreme violence from 1793–1794. Women participated actively but were denied political rights. Slavery was abolished in 1794 but later reintroduced. Napoleon rose to power and ended revolutionary democracy.",
+      "concepts": [
+        {
+          "name": "French Society in the Late Eighteenth Century",
+          "definition": "French society before the revolution was divided into three estates based on social and economic status.",
+          "intuition": "Society was unequal by birth, not by effort.",
+          "explanation": "The First Estate consisted of clergy, the Second Estate of nobility, and the Third Estate of common people who paid most taxes but had no political power.",
+          "why_it_matters": "This inequality was the root cause of the French Revolution."
+        },
+        {
+          "name": "Causes of the French Revolution",
+          "definition": "The French Revolution was caused by social inequality, economic crisis, and political mismanagement."
+        },
+        {
+          "name": "Role of the Middle Class",
+          "definition": "The middle class led the revolution by spreading ideas of liberty and equality."
+        },
+        {
+          "name": "Storming of the Bastille",
+          "definition": "The storming of the Bastille on 14 July 1789 marked the beginning of the French Revolution."
+        },
+        {
+          "name": "The Declaration of the Rights of Man and Citizen",
+          "definition": "A charter of fundamental rights adopted by the French National Assembly in 1789."
+        },
+        {
+          "name": "Political Symbols",
+          "definition": "Symbols used by revolutionaries to communicate revolutionary ideas."
+        },
+        {
+          "name": "The Jacobins",
+          "definition": "A radical political group led by Robespierre."
+        },
+        {
+          "name": "The Reign of Terror",
+          "definition": "A period of extreme violence from 1793–1794."
+        },
+        {
+          "name": "Role of Women",
+          "definition": "Women participated actively but were denied political rights."
+        },
+        {
+          "name": "Abolition of Slavery",
+          "definition": "Slavery was abolished in 1794 but later reintroduced."
+        },
+        {
+          "name": "Rise of Napoleon Bonaparte",
+          "definition": "Napoleon rose to power and ended revolutionary democracy."
+        }
+      ]
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Socialism in Europe and the Russian Revolution",
+      "chapter_objective": "",
+      "detailed_explanation": "An ideology advocating collective ownership of resources. A 1917 revolution that overthrew the Tsarist regime. A socialist group led by Lenin. It reshaped global politics and inspired socialism worldwide.",
+      "concepts": [
+        {
+          "name": "Socialism",
+          "definition": "An ideology advocating collective ownership of resources."
+        },
+        {
+          "name": "The Russian Revolution",
+          "definition": "A 1917 revolution that overthrew the Tsarist regime."
+        },
+        {
+          "name": "Role of the Bolsheviks",
+          "definition": "A socialist group led by Lenin."
+        },
+        {
+          "name": "Impact of the Russian Revolution",
+          "definition": "It reshaped global politics and inspired socialism worldwide."
+        }
+      ]
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Socialism in Europe and the Russian Revolution",
+      "chapter_objective": "",
+      "detailed_explanation": "Socialists believed capitalism caused inequality and exploitation of workers. Economic hardship, autocracy, and World War I led to mass unrest. Strikes and protests forced the Tsar to abdicate. Led by Lenin, the Bolsheviks took control of the government. It inspired socialist movements across the world.",
+      "concepts": [
+        {
+          "name": "Socialism",
+          "definition": "Socialism is a political and economic system that advocates collective ownership of resources.",
+          "intuition": "Resources should be shared, not controlled by a few.",
+          "explanation": "Socialists believed capitalism caused inequality and exploitation of workers.",
+          "why_it_matters": "It introduced ideas that reshaped modern politics."
+        },
+        {
+          "name": "The Russian Revolution",
+          "definition": "The Russian Revolution was a series of events in 1917 that ended Tsarist rule.",
+          "intuition": "Oppression and war pushed people to revolt.",
+          "explanation": "Economic hardship, autocracy, and World War I led to mass unrest.",
+          "why_it_matters": "It led to the formation of the Soviet Union."
+        },
+        {
+          "name": "February Revolution",
+          "definition": "A revolution that overthrew the Tsar in February 1917.",
+          "intuition": "Food shortages triggered protests.",
+          "explanation": "Strikes and protests forced the Tsar to abdicate.",
+          "why_it_matters": "It ended centuries of monarchy in Russia."
+        },
+        {
+          "name": "October Revolution",
+          "definition": "A revolution led by the Bolsheviks in October 1917.",
+          "intuition": "A disciplined group seized power.",
+          "explanation": "Led by Lenin, the Bolsheviks took control of the government.",
+          "why_it_matters": "It established a socialist state."
+        },
+        {
+          "name": "Impact of the Russian Revolution",
+          "definition": "The revolution influenced politics worldwide.",
+          "intuition": "One revolution inspired many.",
+          "explanation": "It inspired socialist movements across the world.",
+          "why_it_matters": "It reshaped global politics in the 20th century."
+        }
+      ]
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Nazism and the Rise of Hitler",
+      "chapter_objective": "",
+      "detailed_explanation": "Economic crisis and political instability weakened it. Germany lost territory and had to pay heavy reparations. Industries shut down and unemployment increased. He promised jobs, national pride, and strong leadership. They believed in Aryan supremacy and hated Jews.",
+      "concepts": [
+        {
+          "name": "Weimar Republic",
+          "definition": "A democratic government established in Germany after World War I.",
+          "intuition": "Germany tried democracy after defeat.",
+          "explanation": "Economic crisis and political instability weakened it.",
+          "why_it_matters": "Its failure led to dictatorship."
+        },
+        {
+          "name": "Treaty of Versailles",
+          "definition": "A treaty that punished Germany after World War I.",
+          "intuition": "Germany was humiliated.",
+          "explanation": "Germany lost territory and had to pay heavy reparations.",
+          "why_it_matters": "It created anger and resentment."
+        },
+        {
+          "name": "Economic Crisis of 1929",
+          "definition": "A global depression that severely affected Germany.",
+          "intuition": "Jobs disappeared overnight.",
+          "explanation": "Industries shut down and unemployment increased.",
+          "why_it_matters": "People lost faith in democracy."
+        },
+        {
+          "name": "Rise of Hitler",
+          "definition": "Adolf Hitler rose to power by exploiting public fear.",
+          "intuition": "People trusted strong promises in weak times.",
+          "explanation": "He promised jobs, national pride, and strong leadership.",
+          "why_it_matters": "It led to dictatorship and World War II."
+        },
+        {
+          "name": "Nazi Ideology",
+          "definition": "An ideology based on extreme nationalism and racism.",
+          "intuition": "Nazis believed some races were superior.",
+          "explanation": "They believed in Aryan supremacy and hated Jews.",
+          "why_it_matters": "It caused genocide and mass violence."
+        }
+      ]
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Forest Society and Colonialism",
+      "chapter_objective": "",
+      "detailed_explanation": "The British restricted access to forests to extract timber for railways and ships. Forests were classified into reserved, protected, and village forests. People were banned from grazing, collecting wood, and shifting cultivation. The Bastar Rebellion was a major uprising against forest laws. Natural forests were replaced with single-species plantations.",
+      "concepts": [
+        {
+          "name": "Colonial Control over Forests",
+          "definition": "Colonial governments took control of forests to exploit them for commercial purposes.",
+          "intuition": "Forests became sources of profit, not livelihood.",
+          "explanation": "The British restricted access to forests to extract timber for railways and ships.",
+          "why_it_matters": "It changed forest use and harmed local communities."
+        },
+        {
+          "name": "Forest Laws",
+          "definition": "Laws were made to regulate and restrict forest use.",
+          "intuition": "Law favored the rulers, not the people.",
+          "explanation": "Forests were classified into reserved, protected, and village forests.",
+          "why_it_matters": "Traditional rights of forest dwellers were taken away."
+        },
+        {
+          "name": "Impact on Forest Communities",
+          "definition": "Forest communities lost access to land and resources.",
+          "intuition": "Life changed overnight.",
+          "explanation": "People were banned from grazing, collecting wood, and shifting cultivation.",
+          "why_it_matters": "Led to poverty, hunger, and resistance."
+        },
+        {
+          "name": "Forest Revolts",
+          "definition": "Forest communities resisted colonial forest policies.",
+          "intuition": "People fight back when survival is threatened.",
+          "explanation": "The Bastar Rebellion was a major uprising against forest laws.",
+          "why_it_matters": "Shows grassroots resistance to colonialism."
+        },
+        {
+          "name": "Scientific Forestry",
+          "definition": "A system to manage forests for timber production.",
+          "intuition": "Nature was reduced to numbers.",
+          "explanation": "Natural forests were replaced with single-species plantations.",
+          "why_it_matters": "It damaged biodiversity and ecosystems."
+        }
+      ]
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Pastoralists in the Modern World",
+      "chapter_objective": "",
+      "detailed_explanation": "Pastoralists moved with their animals in search of pasture and water. Grazing lands were taken over for farming, railways, and forests. Pastoralists were monitored and restricted. Some reduced herd sizes, others took up farming. Climate change and land loss continue to affect pastoralists.",
+      "concepts": [
+        {
+          "name": "Pastoral Nomadism",
+          "definition": "A lifestyle based on herding animals and seasonal movement.",
+          "intuition": "Movement is survival.",
+          "explanation": "Pastoralists moved with their animals in search of pasture and water.",
+          "why_it_matters": "Explains sustainable use of dry lands."
+        },
+        {
+          "name": "Impact of Colonial Rule",
+          "definition": "Colonial policies restricted movement of pastoralists.",
+          "intuition": "Borders destroyed old lifestyles.",
+          "explanation": "Grazing lands were taken over for farming, railways, and forests.",
+          "why_it_matters": "Pastoral livelihoods were severely affected."
+        },
+        {
+          "name": "Criminal Tribes Act",
+          "definition": "A law that labeled many pastoral communities as criminal by birth.",
+          "intuition": "Movement was seen as crime.",
+          "explanation": "Pastoralists were monitored and restricted.",
+          "why_it_matters": "It stigmatized entire communities."
+        },
+        {
+          "name": "Changes in Grazing Patterns",
+          "definition": "Pastoralists adapted to restrictions by changing routes and practices.",
+          "intuition": "Adapt or perish.",
+          "explanation": "Some reduced herd sizes, others took up farming.",
+          "why_it_matters": "Shows human adaptability."
+        },
+        {
+          "name": "Pastoralism Today",
+          "definition": "Pastoralism still exists but faces modern challenges.",
+          "intuition": "Tradition survives under pressure.",
+          "explanation": "Climate change and land loss continue to affect pastoralists.",
+          "why_it_matters": "Important for understanding sustainable livelihoods."
+        }
+      ]
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Drainage",
+      "chapter_objective": "",
+      "detailed_explanation": "Drainage patterns depend on slope, rock structure, and climate. Common patterns include dendritic, trellis, radial, and rectangular. Includes Indus, Ganga, and Brahmaputra systems. Includes Godavari, Krishna, Kaveri, and Narmada. Lakes regulate river flow and support biodiversity.",
+      "concepts": [
+        {
+          "name": "Drainage System",
+          "definition": "A drainage system refers to the network of rivers and streams in an area.",
+          "intuition": "Rivers act like veins of the land.",
+          "explanation": "Drainage patterns depend on slope, rock structure, and climate.",
+          "why_it_matters": "Drainage affects agriculture, settlement, and ecosystems."
+        },
+        {
+          "name": "Major Drainage Patterns",
+          "definition": "Drainage patterns describe the arrangement of rivers.",
+          "intuition": "River paths follow land structure.",
+          "explanation": "Common patterns include dendritic, trellis, radial, and rectangular.",
+          "why_it_matters": "Helps understand landforms and geology."
+        },
+        {
+          "name": "The Himalayan Rivers",
+          "definition": "Rivers that originate from the Himalayas and are perennial.",
+          "intuition": "Snow keeps them flowing year-round.",
+          "explanation": "Includes Indus, Ganga, and Brahmaputra systems.",
+          "why_it_matters": "They support dense population and agriculture."
+        },
+        {
+          "name": "The Peninsular Rivers",
+          "definition": "Rivers originating in the Peninsular Plateau.",
+          "intuition": "Rain-fed and seasonal.",
+          "explanation": "Includes Godavari, Krishna, Kaveri, and Narmada.",
+          "why_it_matters": "Important for irrigation and power generation."
+        },
+        {
+          "name": "Lakes",
+          "definition": "Lakes are standing bodies of water on land.",
+          "intuition": "They store water naturally.",
+          "explanation": "Lakes regulate river flow and support biodiversity.",
+          "why_it_matters": "They help in flood control and tourism."
+        }
+      ]
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Climate",
+      "chapter_objective": "",
+      "detailed_explanation": "Climate includes temperature, rainfall, wind, and humidity. Latitude, altitude, distance from sea, winds, and relief affect climate. Southwest monsoon brings most of India’s rainfall. Cold weather, hot weather, southwest monsoon, and retreating monsoon. Human activities increase greenhouse gases.",
+      "concepts": [
+        {
+          "name": "Climate",
+          "definition": "Climate refers to the average weather conditions over a long period.",
+          "intuition": "Weather changes daily, climate doesn’t.",
+          "explanation": "Climate includes temperature, rainfall, wind, and humidity.",
+          "why_it_matters": "Climate affects crops, lifestyle, and economy."
+        },
+        {
+          "name": "Factors Affecting Climate",
+          "definition": "Several factors influence the climate of a place.",
+          "intuition": "Location decides climate.",
+          "explanation": "Latitude, altitude, distance from sea, winds, and relief affect climate.",
+          "why_it_matters": "Explains regional climate differences."
+        },
+        {
+          "name": "Indian Monsoon",
+          "definition": "A seasonal wind system that brings rainfall to India.",
+          "intuition": "Winds change direction with seasons.",
+          "explanation": "Southwest monsoon brings most of India’s rainfall.",
+          "why_it_matters": "Indian agriculture depends on monsoon."
+        },
+        {
+          "name": "Seasons of India",
+          "definition": "India has four main climatic seasons.",
+          "intuition": "Each season has a role.",
+          "explanation": "Cold weather, hot weather, southwest monsoon, and retreating monsoon.",
+          "why_it_matters": "Helps understand rainfall and temperature patterns."
+        },
+        {
+          "name": "Climate Change",
+          "definition": "Long-term changes in temperature and weather patterns.",
+          "intuition": "Climate is no longer stable.",
+          "explanation": "Human activities increase greenhouse gases.",
+          "why_it_matters": "Impacts environment, health, and economy."
+        }
+      ]
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Chapter 9",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "concepts": []
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Chapter 10",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "concepts": []
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Chapter 11",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "concepts": []
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Chapter 12",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "concepts": []
+    },
+    {
+      "chapter_number": 13,
+      "chapter_name": "Chapter 13",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "concepts": []
+    },
+    {
+      "chapter_number": 14,
+      "chapter_name": "Chapter 14",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "concepts": []
+    },
+    {
+      "chapter_number": 15,
+      "chapter_name": "Chapter 15",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "concepts": []
+    }
+  ]
+}

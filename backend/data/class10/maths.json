@@ -1,0 +1,629 @@
+{
+  "class": 10,
+  "subject": "Mathematics",
+  "board": "CBSE / NCERT aligned",
+  "description": "",
+  "chapters": [
+    {
+      "chapter_number": 1,
+      "chapter_name": "Real Numbers",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "real_numbers": "All rational and irrational numbers",
+        "euclids_division_lemma": "For given positive integers a and b, there exist unique integers q and r such that a = bq + r, 0 ≤ r < b"
+      },
+      "fundamental_theorem_of_arithmetic": {
+        "statement": "Every composite number can be expressed as a product of primes, and this factorisation is unique",
+        "applications": [
+          "Finding HCF",
+          "Finding LCM",
+          "Proving irrationality"
+        ]
+      },
+      "hcf_and_lcm": {
+        "method": [
+          "Prime factorisation",
+          "Euclid’s division algorithm"
+        ]
+      },
+      "irrational_numbers": {
+        "definition": "Numbers that cannot be expressed as p/q where p and q are integers and q ≠ 0",
+        "examples": [
+          "√2",
+          "√3",
+          "√5"
+        ]
+      },
+      "decimal_expansion": {
+        "terminating": "Denominator has only prime factors 2 and/or 5",
+        "non_terminating_repeating": "Denominator has primes other than 2 and 5"
+      },
+      "one_liner": "Real numbers look simple—until you’re asked to prove something."
+    },
+    {
+      "chapter_number": 2,
+      "chapter_name": "Polynomials",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "polynomial": "An expression of the form a_n x^n + a_(n-1) x^(n-1) + ... + a_1 x + a_0, where n is a non-negative integer",
+        "degree_of_polynomial": "Highest power of the variable in the polynomial",
+        "zero_of_polynomial": "A value of x for which the polynomial becomes zero"
+      },
+      "types_of_polynomials": {
+        "based_on_degree": [
+          {
+            "type": "Linear Polynomial",
+            "degree": 1,
+            "example": "ax + b"
+          },
+          {
+            "type": "Quadratic Polynomial",
+            "degree": 2,
+            "example": "ax^2 + bx + c"
+          },
+          {
+            "type": "Cubic Polynomial",
+            "degree": 3,
+            "example": "ax^3 + bx^2 + cx + d"
+          }
+        ]
+      },
+      "graphical_representation": {
+        "linear": "Straight line",
+        "quadratic": "Parabola",
+        "cubic": "Curve with at most three zeroes"
+      },
+      "relationship_between_zeroes_and_coefficients": {
+        "quadratic_polynomial": {
+          "polynomial": "ax^2 + bx + c",
+          "sum_of_zeroes": "-b/a",
+          "product_of_zeroes": "c/a"
+        }
+      },
+      "division_algorithm_for_polynomials": {
+        "statement": "For any polynomial f(x) and g(x), where g(x) ≠ 0, there exist polynomials q(x) and r(x) such that f(x) = g(x)·q(x) + r(x)",
+        "condition": "Degree of r(x) < degree of g(x)"
+      },
+      "one_liner": "Polynomials are algebra behaving politely—until graphs enter the room."
+    },
+    {
+      "chapter_number": 3,
+      "chapter_name": "Pair of Linear Equations in Two Variables",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "linear_equation_in_two_variables": "An equation of the form ax + by + c = 0, where a, b, and c are real numbers and a and b are not both zero",
+        "solution_of_pair": "A pair of values of x and y that satisfy both equations simultaneously"
+      },
+      "graphical_method": {
+        "description": "Solutions are represented by the point of intersection of two straight lines",
+        "types_of_solutions": [
+          {
+            "type": "Unique solution",
+            "condition": "Lines intersect at one point"
+          },
+          {
+            "type": "No solution",
+            "condition": "Lines are parallel"
+          },
+          {
+            "type": "Infinitely many solutions",
+            "condition": "Lines coincide"
+          }
+        ]
+      },
+      "algebraic_methods": {
+        "substitution_method": {
+          "idea": "Substitute the value of one variable from one equation into the other equation"
+        },
+        "elimination_method": {
+          "idea": "Eliminate one variable by adding or subtracting the equations"
+        },
+        "cross_multiplication_method": {
+          "applicable_when": "Equations are in the form a1x + b1y + c1 = 0 and a2x + b2y + c2 = 0",
+          "formula": "x/(b1c2 − b2c1) = y/(a2c1 − a1c2) = 1/(a1b2 − a2b1)"
+        }
+      },
+      "consistency_of_pair": {
+        "consistent": "At least one solution exists",
+        "inconsistent": "No solution exists"
+      },
+      "conditions_for_solutions": {
+        "unique_solution": "a1/a2 ≠ b1/b2",
+        "no_solution": "a1/a2 = b1/b2 ≠ c1/c2",
+        "infinitely_many_solutions": "a1/a2 = b1/b2 = c1/c2"
+      },
+      "one_liner": "Two equations, two variables—either they meet, run parallel, or walk the same path."
+    },
+    {
+      "chapter_number": 4,
+      "chapter_name": "Quadratic Equations",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "quadratic_equation": "An equation of the form ax^2 + bx + c = 0, where a ≠ 0",
+        "standard_form": "ax^2 + bx + c = 0"
+      },
+      "methods_of_solving": {
+        "factorisation_method": {
+          "idea": "Express the quadratic equation as a product of two linear factors"
+        },
+        "completing_the_square_method": {
+          "idea": "Convert the equation into a perfect square"
+        },
+        "quadratic_formula": {
+          "formula": "x = (-b ± √(b^2 − 4ac)) / (2a)"
+        }
+      },
+      "nature_of_roots": {
+        "discriminant": "D = b^2 − 4ac",
+        "conditions": [
+          {
+            "case": "D > 0",
+            "result": "Two distinct real roots"
+          },
+          {
+            "case": "D = 0",
+            "result": "Two equal real roots"
+          },
+          {
+            "case": "D < 0",
+            "result": "No real roots"
+          }
+        ]
+      },
+      "relationship_between_roots_and_coefficients": {
+        "sum_of_roots": "-b/a",
+        "product_of_roots": "c/a"
+      },
+      "applications": [
+        "Problems based on number systems",
+        "Problems based on ages",
+        "Problems based on geometry"
+      ],
+      "one_liner": "Quadratics are where algebra stops talking and starts proving."
+    },
+    {
+      "chapter_number": 5,
+      "chapter_name": "Arithmetic Progressions",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "arithmetic_progression": "A sequence of numbers in which the difference between consecutive terms is constant",
+        "first_term": "The first term of an arithmetic progression, denoted by a",
+        "common_difference": "The constant difference between successive terms, denoted by d"
+      },
+      "general_term": {
+        "nth_term_formula": "a_n = a + (n − 1)d"
+      },
+      "sum_of_n_terms": {
+        "formula": "S_n = n/2 [2a + (n − 1)d]"
+      },
+      "finding_terms": {
+        "methods": [
+          "Using nth term formula",
+          "Using sum of n terms formula"
+        ]
+      },
+      "applications": [
+        "Finding number of terms",
+        "Word problems involving sequences",
+        "Problems based on daily life situations"
+      ],
+      "one_liner": "Arithmetic Progressions reward consistency—miss one step and the whole sequence collapses."
+    },
+    {
+      "chapter_number": 6,
+      "chapter_name": "Triangles",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "similar_triangles": "Triangles having the same shape but not necessarily the same size",
+        "congruent_triangles": "Triangles having the same shape and the same size"
+      },
+      "criteria_for_similarity": [
+        {
+          "name": "AA Similarity",
+          "description": "Two angles of one triangle are equal to two angles of another triangle"
+        },
+        {
+          "name": "SSS Similarity",
+          "description": "Corresponding sides of two triangles are in the same ratio"
+        },
+        {
+          "name": "SAS Similarity",
+          "description": "Two sides are in the same ratio and the included angle is equal"
+        }
+      ],
+      "theorems": [
+        {
+          "name": "Basic Proportionality Theorem",
+          "statement": "A line drawn parallel to one side of a triangle divides the other two sides in the same ratio"
+        },
+        {
+          "name": "Pythagoras Theorem",
+          "statement": "In a right-angled triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides"
+        },
+        {
+          "name": "Converse of Pythagoras Theorem",
+          "statement": "If the square of one side of a triangle is equal to the sum of the squares of the other two sides, then the triangle is right-angled"
+        }
+      ],
+      "applications": [
+        "Finding lengths of sides",
+        "Proving triangles similar",
+        "Height and distance related problems"
+      ],
+      "one_liner": "Triangles don’t forgive shortcuts—either the proof stands or it falls."
+    },
+    {
+      "chapter_number": 7,
+      "chapter_name": "Coordinate Geometry",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "coordinate_plane": "A plane formed by the intersection of the x-axis and y-axis",
+        "coordinates_of_a_point": "An ordered pair (x, y) representing the position of a point on the plane"
+      },
+      "distance_formula": {
+        "statement": "Distance between two points (x1, y1) and (x2, y2)",
+        "formula": "√[(x2 − x1)^2 + (y2 − y1)^2]"
+      },
+      "section_formula": {
+        "internal_division": {
+          "description": "Coordinates of a point dividing a line segment internally in the ratio m:n",
+          "formula": "((mx2 + nx1)/(m + n), (my2 + ny1)/(m + n))"
+        }
+      },
+      "area_of_triangle": {
+        "formula": "1/2 |x1(y2 − y3) + x2(y3 − y1) + x3(y1 − y2)|",
+        "condition_for_collinearity": "Area equals zero"
+      },
+      "applications": [
+        "Finding distance between points",
+        "Finding coordinates of points dividing a line segment",
+        "Finding area of a triangle",
+        "Checking collinearity of points"
+      ],
+      "one_liner": "Coordinate Geometry turns pictures into numbers—and numbers don’t lie."
+    },
+    {
+      "chapter_number": 8,
+      "chapter_name": "Introduction to Trigonometry",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "trigonometry": "The branch of mathematics that deals with the relationships between angles and sides of a right-angled triangle",
+        "right_angled_triangle": "A triangle in which one angle is 90 degrees"
+      },
+      "trigonometric_ratios": {
+        "sine": {
+          "notation": "sin θ",
+          "definition": "Perpendicular / Hypotenuse"
+        },
+        "cosine": {
+          "notation": "cos θ",
+          "definition": "Base / Hypotenuse"
+        },
+        "tangent": {
+          "notation": "tan θ",
+          "definition": "Perpendicular / Base"
+        },
+        "cosecant": {
+          "notation": "cosec θ",
+          "definition": "1 / sin θ"
+        },
+        "secant": {
+          "notation": "sec θ",
+          "definition": "1 / cos θ"
+        },
+        "cotangent": {
+          "notation": "cot θ",
+          "definition": "1 / tan θ"
+        }
+      },
+      "trigonometric_ratios_of_standard_angles": {
+        "angles": [
+          "0°",
+          "30°",
+          "45°",
+          "60°",
+          "90°"
+        ],
+        "note": "Values are defined using geometry and limits"
+      },
+      "trigonometric_identities": {
+        "pythagorean_identities": [
+          "sin^2θ + cos^2θ = 1",
+          "1 + tan^2θ = sec^2θ",
+          "1 + cot^2θ = cosec^2θ"
+        ]
+      },
+      "one_liner": "Trigonometry is memory plus logic—forget the table and you’re done."
+    },
+    {
+      "chapter_number": 9,
+      "chapter_name": "Some Applications of Trigonometry",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "angle_of_elevation": "The angle between the horizontal line and the line of sight when an object is above the observer",
+        "angle_of_depression": "The angle between the horizontal line and the line of sight when an object is below the observer"
+      },
+      "applications": [
+        "Finding heights of objects",
+        "Finding distances between objects",
+        "Real-life problems involving line of sight"
+      ],
+      "assumptions": [
+        "Object and observer are on the same horizontal plane",
+        "Line of sight is a straight line",
+        "Earth’s curvature is ignored"
+      ],
+      "steps_to_solve": [
+        "Draw a labelled diagram",
+        "Identify the trigonometric ratio",
+        "Substitute values",
+        "Solve for the unknown"
+      ],
+      "one_liner": "Heights and distances look hard—until you draw the triangle."
+    },
+    {
+      "chapter_number": 10,
+      "chapter_name": "Circles",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "circle": "The set of all points in a plane that are at a fixed distance from a fixed point called the centre",
+        "radius": "The fixed distance from the centre to any point on the circle",
+        "tangent": "A line that touches the circle at exactly one point"
+      },
+      "tangent_properties": [
+        "The tangent to a circle at any point is perpendicular to the radius through the point of contact",
+        "From an external point, the lengths of the tangents drawn to a circle are equal"
+      ],
+      "number_of_tangents": {
+        "inside_circle": 0,
+        "on_circle": 1,
+        "outside_circle": 2
+      },
+      "theorems": [
+        {
+          "name": "Tangent-Radius Theorem",
+          "statement": "The tangent at any point of a circle is perpendicular to the radius at the point of contact"
+        },
+        {
+          "name": "Equal Tangents Theorem",
+          "statement": "The lengths of tangents drawn from an external point to a circle are equal"
+        }
+      ],
+      "applications": [
+        "Finding lengths of tangents",
+        "Solving geometrical proofs",
+        "Real-life problems involving circular paths"
+      ],
+      "one_liner": "Circles look smooth—but their theorems are razor sharp."
+    },
+    {
+      "chapter_number": 11,
+      "chapter_name": "Constructions",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "geometrical_construction": "Accurate drawing of geometric figures using only ruler and compass",
+        "scale_factor": "Ratio by which a figure is enlarged or reduced"
+      },
+      "types_of_constructions": [
+        {
+          "type": "Division of a line segment",
+          "description": "Dividing a line segment in a given ratio internally"
+        },
+        {
+          "type": "Similar triangles",
+          "description": "Construction of a triangle similar to a given triangle with a given scale factor"
+        }
+      ],
+      "steps_for_triangle_construction": [
+        "Draw the given triangle",
+        "Construct a ray making an acute angle",
+        "Mark equal segments on the ray",
+        "Join the last point to the vertex",
+        "Draw a parallel line to get the required triangle"
+      ],
+      "important_notes": [
+        "Construction steps must be neat and labelled",
+        "Reasoning should be written clearly",
+        "Accuracy matters more than speed"
+      ],
+      "one_liner": "In constructions, perfection isn’t optional—it’s the answer."
+    },
+    {
+      "chapter_number": 12,
+      "chapter_name": "Areas Related to Circles",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "circle": "The set of all points in a plane that are at a fixed distance from a fixed point",
+        "radius": "Distance from the centre to any point on the circle",
+        "sector": "A part of a circle enclosed by two radii and the corresponding arc",
+        "segment": "A part of a circle enclosed by a chord and the corresponding arc"
+      },
+      "area_formulas": {
+        "area_of_circle": "πr^2",
+        "circumference_of_circle": "2πr",
+        "area_of_sector": "(θ/360) × πr^2",
+        "length_of_arc": "(θ/360) × 2πr"
+      },
+      "area_of_segment": {
+        "minor_segment": "Area of sector − Area of triangle",
+        "major_segment": "Area of circle − Area of minor segment"
+      },
+      "applications": [
+        "Finding areas of sectors and segments",
+        "Solving word problems involving circular paths",
+        "Combination of plane figures"
+      ],
+      "important_notes": [
+        "Use π = 22/7 unless stated otherwise",
+        "Angles must be in degrees",
+        "Diagrams must be neat and labelled"
+      ],
+      "one_liner": "Memorise the formulas—or the circle will trap you."
+    },
+    {
+      "chapter_number": 13,
+      "chapter_name": "Surface Areas and Volumes",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "solid": "A three-dimensional object occupying space",
+        "surface_area": "The total area of the outer surface of a solid",
+        "volume": "The amount of space occupied by a solid"
+      },
+      "solids_covered": [
+        "Cube",
+        "Cuboid",
+        "Cylinder",
+        "Cone",
+        "Sphere",
+        "Hemisphere",
+        "Frustum of a cone"
+      ],
+      "formulas": {
+        "cube": {
+          "tsa": "6a^2",
+          "volume": "a^3"
+        },
+        "cuboid": {
+          "tsa": "2(lb + bh + hl)",
+          "volume": "lbh"
+        },
+        "cylinder": {
+          "csa": "2πrh",
+          "tsa": "2πr(h + r)",
+          "volume": "πr^2h"
+        },
+        "cone": {
+          "slant_height": "√(r^2 + h^2)",
+          "csa": "πrl",
+          "tsa": "πr(l + r)",
+          "volume": "1/3 πr^2h"
+        },
+        "sphere": {
+          "surface_area": "4πr^2",
+          "volume": "4/3 πr^3"
+        },
+        "hemisphere": {
+          "csa": "2πr^2",
+          "tsa": "3πr^2",
+          "volume": "2/3 πr^3"
+        },
+        "frustum_of_cone": {
+          "slant_height": "√[(R − r)^2 + h^2]",
+          "csa": "π(R + r)l",
+          "tsa": "π(R + r)l + π(R^2 + r^2)",
+          "volume": "1/3 πh(R^2 + r^2 + Rr)"
+        }
+      },
+      "applications": [
+        "Real-life problems",
+        "Combination of solids",
+        "Conversion of solids"
+      ],
+      "one_liner": "In 3D geometry, the diagram is half the solution."
+    },
+    {
+      "chapter_number": 14,
+      "chapter_name": "Statistics",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "statistics": "The study of collection, presentation, analysis, and interpretation of numerical data",
+        "frequency_distribution": "A table showing the frequency of values within given class intervals"
+      },
+      "measures_of_central_tendency": {
+        "mean": {
+          "methods": [
+            {
+              "name": "Direct Method",
+              "formula": "Mean = Σfi xi / Σfi"
+            },
+            {
+              "name": "Assumed Mean Method",
+              "formula": "Mean = a + (Σfi di / Σfi)"
+            },
+            {
+              "name": "Step Deviation Method",
+              "formula": "Mean = a + (Σfi ui / Σfi) × h"
+            }
+          ]
+        },
+        "mode": {
+          "definition": "The value that occurs most frequently in a data set",
+          "formula": "Mode = l + [(f1 − f0) / (2f1 − f0 − f2)] × h"
+        },
+        "median": {
+          "definition": "The value that divides the data into two equal parts",
+          "formula": "Median = l + [(n/2 − cf) / f] × h"
+        }
+      },
+      "graphical_representation": [
+        "Histogram",
+        "Frequency polygon"
+      ],
+      "important_notes": [
+        "Class intervals should be continuous",
+        "Correct identification of median and modal class is crucial",
+        "Units must be consistent"
+      ],
+      "one_liner": "Statistics doesn’t test intelligence—it tests attention to detail."
+    },
+    {
+      "chapter_number": 15,
+      "chapter_name": "Probability",
+      "chapter_objective": "",
+      "detailed_explanation": "",
+      "status": "next",
+      "key_concepts": {
+        "experiment": "An action or process that results in one or more outcomes",
+        "outcome": "A possible result of an experiment",
+        "sample_space": "The set of all possible outcomes of an experiment"
+      },
+      "probability": {
+        "classical_definition": "Probability = Number of favourable outcomes / Total number of possible outcomes",
+        "range": "0 ≤ Probability ≤ 1"
+      },
+      "types_of_events": {
+        "impossible_event": "An event that cannot occur",
+        "sure_event": "An event that is certain to occur",
+        "equally_likely_events": "Events having the same chance of occurring"
+      },
+      "examples": [
+        "Tossing a coin",
+        "Rolling a die",
+        "Picking a card from a deck"
+      ],
+      "applications": [
+        "Finding probability of simple events",
+        "Solving real-life probability problems"
+      ],
+      "one_liner": "Probability is logic under uncertainty—no guessing allowed."
+    }
+  ]
+}
