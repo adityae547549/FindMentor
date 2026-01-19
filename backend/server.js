@@ -63,13 +63,16 @@ const upload = multer({
 
 // Define paths
 const rootPath = path.join(__dirname, "..");
-const frontendPath = path.join(__dirname, "..", "frontend");
+// const frontendPath = path.join(__dirname, "..", "frontend"); // Frontend not available in standalone backend
 
 loadData();
 
 // IMPORTANT: Route handlers MUST come before static middleware
 // Serve index.html as the landing page (root route)
 app.get("/", (req, res) => {
+  res.send("FindMentor Backend API is Running 🚀");
+  /* 
+  // Static serving disabled for standalone backend deployment
   const indexPath = path.join(rootPath, "index.html");
   console.log("📍 Root route hit! Serving index.html from:", indexPath);
   console.log("📍 File exists:", fs.existsSync(indexPath));
@@ -87,8 +90,10 @@ app.get("/", (req, res) => {
       console.log("✅ index.html served successfully");
     }
   });
+  */
 });
 
+/*
 // Serve ai_window.html
 app.get("/ai_window.html", (req, res) => {
   res.sendFile(path.join(frontendPath, "ai_window.html"));
@@ -101,6 +106,7 @@ app.get("/styles.css", (req, res) => {
 
 // Serve static files from frontend directory
 app.use("/frontend", express.static(frontendPath));
+*/
 
 // =========================
 // SOCKET.IO SIGNALING
