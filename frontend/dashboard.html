@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Student Dashboard | FindMentor</title>
-<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+<link rel="icon" type="image/png" href="assets/logo.png">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -744,7 +744,7 @@ window.sendMentorMessage = async () => {
     // We send a specific prompt to the AI to act as the mentor
     const aiQuestion = `${mentor.systemPrompt || ''} The student asks: ${message}`;
     
-    const res = await fetch('/ask', {
+    const res = await fetch('https://findmentor-backend.onrender.com/ask', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question: aiQuestion })
@@ -824,7 +824,7 @@ window.submitDoubt=()=>{
   localStorage.setItem('prefillQuestion', questionText);
   localStorage.setItem('prefillSubject', subjectText);
   
-  window.open('/ai_window.html', '_blank');
+  window.open('ai_window.html', '_blank');
   
   // Clear the form
   questionInput.value = '';
@@ -871,7 +871,7 @@ window.requestMentor=async()=>{
 
 /* ===== UI ===== */
 window.openAI=()=>{
-  window.open("/ai_window.html","_blank");
+  window.open("ai_window.html","_blank");
 };
 window.closeAI=()=>{
   aiModalEl.style.display="none";

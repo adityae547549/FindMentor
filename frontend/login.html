@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Login | FindMentor</title>
-<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+<link rel="icon" type="image/png" href="assets/logo.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,system-ui,sans-serif;}
@@ -156,7 +156,7 @@ window.login = async () => {
       { merge: true }
     );
 
-    window.location.href = "/frontend/roles.html";
+    window.location.href = "roles.html";
   } catch (err) {
     alert(err.message);
   }
@@ -179,7 +179,7 @@ window.googleAuth = async () => {
       { merge: true }
     );
 
-    window.location.href = "/frontend/roles.html";
+    window.location.href = "roles.html";
   } catch (err) {
     alert(err.message);
   }

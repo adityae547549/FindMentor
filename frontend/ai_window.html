@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>AI Study Assistant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/logo.png">
 
   <style>
     :root {
@@ -265,7 +265,7 @@
       answerBox.style.display="none";
 
       try{
-        const res=await fetch("/ask",{
+        const res=await fetch("https://findmentor-backend.onrender.com/ask",{
           method:"POST",
           headers:{"Content-Type":"application/json"},
           body:JSON.stringify({question})
@@ -318,7 +318,7 @@
         const formData=new FormData();
         formData.append("image",file);
 
-        const res=await fetch("/ask/image",{
+        const res=await fetch("https://findmentor-backend.onrender.com/ask/image",{
           method:"POST",
           body:formData
         });
@@ -377,7 +377,7 @@
           formData.append("question",question);
         }
 
-        const res=await fetch("/ask/pdf",{
+        const res=await fetch("https://findmentor-backend.onrender.com/ask/pdf",{
           method:"POST",
           body:formData
         });
@@ -436,7 +436,7 @@
         const formData=new FormData();
         formData.append("audio",file);
 
-        const res=await fetch("/ask/audio",{
+        const res=await fetch("https://findmentor-backend.onrender.com/ask/audio",{
           method:"POST",
           body:formData
         });
@@ -492,7 +492,7 @@
         const formData=new FormData();
         formData.append("video",file);
 
-        const res=await fetch("/ask/video",{
+        const res=await fetch("https://findmentor-backend.onrender.com/ask/video",{
           method:"POST",
           body:formData
         });

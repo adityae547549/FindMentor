@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Call | FindMentor</title>
-    <link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
@@ -127,7 +127,7 @@
     </div>
 
     <script>
-        const socket = io('/', { transports: ['websocket', 'polling'] }); // Connect to root path
+        const socket = io('https://findmentor-backend.onrender.com', { transports: ['websocket', 'polling'] }); // Connect to root path
         const localVideo = document.getElementById('local-video');
         const remoteVideo = document.getElementById('remote-video');
         const meetingIdSpan = document.getElementById('meeting-id');
@@ -152,7 +152,7 @@
         roomId = urlParams.get('room');
         if (!roomId) {
             alert('No meeting ID provided!');
-            window.location.href = '/frontend/dashboard.html';
+            window.location.href = 'dashboard.html';
         }
         meetingIdSpan.textContent = roomId;
 
@@ -303,7 +303,7 @@
             if (peerConnection) {
                 peerConnection.close();
             }
-            window.location.href = '/frontend/dashboard.html';
+            window.location.href = 'dashboard.html';
         }
 
         // Start
