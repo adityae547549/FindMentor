@@ -92,6 +92,36 @@ app.get("/styles.css", (req, res) => {
 // Serve static files from frontend directory
 app.use("/frontend", express.static(frontendPath));
 
+// =========================
+// SOCKET.IO SIGNALING
+// =========================
+io.on("connection", (socket) => {
+  console.log("🔌 New client connected:", socket.id);
+
+  socket.on("join-room", (roomId, userId) => {
+    console.log(`👤 User ${userId} joining room ${roomId}`);
+    socket.join(roomId);
+    socket.to(roomId).emit("user-connected", userId);
+
+    socket.on("disconnect", () => {
+      console.log(`❌ User ${userId} disconnected from room ${roomId}`);
+      socket.to(roomId).emit("user-disconnected", userId);
+    });
+  });
+
+  socket.on("offer", (payload) => {
+    io.to(payload.target).emit("offer", payload);
+  });
+
+  socket.on("answer", (payload) => {
+    io.to(payload.target).emit("answer", payload);
+  });
+
+  socket.on("ice-candidate", (payload) => {
+    io.to(payload.target).emit("ice-candidate", payload);
+  });
+});
+
 // Text-based question endpoint
 app.post("/ask", async (req, res) => {
   try {
@@ -374,9 +404,10 @@ process.on('uncaughtException', (error) => {
   process.exit(1);
 });
 
-app.listen(CONFIG.PORT, () => {
+httpServer.listen(CONFIG.PORT, () => {
   console.log("📚 Dataset loaded:", global.DATASET?.length);
   console.log("🚀 Server running on http://localhost:" + CONFIG.PORT);
   console.log("📷 Image upload: POST /ask/image");
   console.log("📄 PDF upload: POST /ask/pdf");
+  console.log("📞 Socket.io ready for video calls");
 });

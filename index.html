@@ -6,13 +6,86 @@
     <title>Find Mentor - Connect with Expert Mentors</title>
     <link rel="icon" type="image/png" href="/frontend/assets/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .stat-card {
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        .mentor-card {
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .mentor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .mentor-img-wrapper {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .mentor-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .process-step {
+            position: relative;
+            z-index: 1;
+        }
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+        }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="/frontend/assets/logo.png" alt="Find Mentor Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
                 Find Mentor
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +100,10 @@
                         <a class="nav-link" href="#how-it-works">How it Works</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                        <a class="nav-link" href="#mentors">Mentors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -35,7 +111,7 @@
                     <a class="nav-link" href="frontend/login.html">Login</a>
                     </li>
                     <li class="nav-item">
-                    <a href="frontend/signup.html" class="nav-link btn btn-primary cta-button text-white">Get Started</a>
+                    <a href="frontend/signup.html" class="nav-link btn btn-primary cta-button text-white ms-2">Get Started</a>
                     </li>
                 </ul>
             </div>
@@ -50,41 +126,276 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">Find Your Perfect Mentor</h1>
-                    <p class="lead mb-4">Connect with experienced mentors who can guide you through your learning journey. Get personalized attention and real-time video mentoring.</p>
-                    
-                    <a href="frontend/signup.html" class="btn btn-light cta-button">Start Your Journey</a>
+                    <span class="badge bg-white text-primary mb-3 px-3 py-2 rounded-pill fw-bold">🚀 Launch Your Career</span>
+                    <h1 class="display-4 fw-bold mb-4">Find Your Perfect Mentor Today</h1>
+                    <p class="lead mb-4 opacity-90">Connect with experienced professionals who can guide you through your learning journey. Get personalized attention, code reviews, and real-time video mentoring.</p>
+                    <div class="d-flex gap-3">
+                        <a href="frontend/signup.html" class="btn btn-light btn-lg px-4 fw-bold">Find a Mentor</a>
+                        <a href="#how-it-works" class="btn btn-outline-light btn-lg px-4">How it Works</a>
+                    </div>
+                    <div class="mt-4 pt-3 border-top border-white border-opacity-25">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="d-flex">
+                                <img src="frontend/assets/ankit.jpg" alt="Student Avatar" class="rounded-circle border border-2 border-white" width="40" height="40" style="margin-right: -15px;">
+                                <img src="frontend/assets/ankush.jpg" alt="Student Avatar" class="rounded-circle border border-2 border-white" width="40" height="40" style="margin-right: -15px;">
+                                <img src="frontend/assets/yash.jpg" alt="Student Avatar" class="rounded-circle border border-2 border-white" width="40" height="40">
+                            </div>
+                            <p class="mb-0 small">Join <strong>2,000+</strong> students learning today</p>
+                        </div>
+                    </div>
                 </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                    <img src="frontend/assets/hero.png" alt="Mentoring Session" class="img-fluid rounded-3 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="col-lg-6 text-center">
-                    <img src="frontend/assets/hero.png" alt="Mentoring Session" class="img-fluid rounded-3">
+    <!-- Stats Section -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-card p-3">
+                        <h2 class="fw-bold text-primary mb-1">500+</h2>
+                        <p class="text-muted mb-0">Expert Mentors</p>
+                    </div>
                 </div>
-                
+                <div class="col-md-3 col-6">
+                    <div class="stat-card p-3">
+                        <h2 class="fw-bold text-primary mb-1">10k+</h2>
+                        <p class="text-muted mb-0">Sessions Completed</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card p-3">
+                        <h2 class="fw-bold text-primary mb-1">50+</h2>
+                        <p class="text-muted mb-0">Technologies</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card p-3">
+                        <h2 class="fw-bold text-primary mb-1">4.9/5</h2>
+                        <p class="text-muted mb-0">Average Rating</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="py-5">
+    <section id="features" class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5">Why Choose Find Mentor?</h2>
-            <div class="row">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Why Choose Find Mentor?</h2>
+                <p class="text-muted lead">Everything you need to accelerate your learning journey</p>
+            </div>
+            <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <h3>Real-time Video Sessions</h3>
-                        <p>Connect with mentors through high-quality video calls for personalized guidance.</p>
+                    <div class="feature-card h-100 bg-white p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-video fa-2x"></i>
+                        </div>
+                        <h3>1-on-1 Video Sessions</h3>
+                        <p class="text-muted">Connect with mentors through high-quality video calls for personalized guidance, code reviews, and mock interviews.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <h3>Expert Mentors</h3>
-                        <p>Learn from experienced professionals who are passionate about sharing their knowledge.</p>
+                    <div class="feature-card h-100 bg-white p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-user-graduate fa-2x"></i>
+                        </div>
+                        <h3>Vetted Experts</h3>
+                        <p class="text-muted">Learn from experienced professionals from top companies who are passionate about sharing their knowledge.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <h3>Flexible Schedule</h3>
-                        <p>Book sessions at your convenience and learn at your own pace.</p>
+                    <div class="feature-card h-100 bg-white p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-calendar-check fa-2x"></i>
+                        </div>
+                        <h3>Flexible Scheduling</h3>
+                        <p class="text-muted">Book sessions at your convenience. Our smart calendar system handles time zones automatically.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100 bg-white p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-comments fa-2x"></i>
+                        </div>
+                        <h3>Instant Chat</h3>
+                        <p class="text-muted">Stay connected with your mentor between sessions for quick questions and continuous support.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100 bg-white p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-robot fa-2x"></i>
+                        </div>
+                        <h3>AI Assistant</h3>
+                        <p class="text-muted">Get instant answers to common programming questions and resource recommendations from our AI helper.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card h-100 bg-white p-4">
+                        <div class="text-primary mb-3">
+                            <i class="fas fa-project-diagram fa-2x"></i>
+                        </div>
+                        <h3>Structured Learning</h3>
+                        <p class="text-muted">Follow personalized learning paths and track your progress with goal-oriented milestones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">How It Works</h2>
+                <p class="text-muted lead">Simple steps to start your mentorship journey</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 text-center">
+                    <div class="process-step">
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>1. Find a Mentor</h4>
+                        <p class="text-muted">Browse through our diverse community of expert mentors. Filter by expertise, industry, and availability.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="process-step">
+                        <div class="step-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>2. Book a Session</h4>
+                        <p class="text-muted">Choose a time that works for you. Connect via video call to discuss your goals and challenges.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="process-step">
+                        <div class="step-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>3. Level Up</h4>
+                        <p class="text-muted">Receive personalized guidance, feedback, and resources to accelerate your career growth.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Mentors -->
+    <section id="mentors" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Meet Our Top Mentors</h2>
+                <p class="text-muted lead">Learn from the best in the industry</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card mentor-card h-100 text-center p-4">
+                        <div class="mentor-img-wrapper mb-3">
+                            <img src="frontend/assets/ankush.jpg" alt="Ankush" class="mentor-img">
+                        </div>
+                        <h4 class="mb-1">Ankush Kumar</h4>
+                        <p class="text-primary small mb-2">Mathematics Expert</p>
+                        <p class="text-muted small mb-3">M.Sc Mathematics • 6+ Years Exp</p>
+                        <p class="card-text text-muted mb-4">"Specializing in Calculus, Algebra, and Geometry. I make complex math problems simple."</p>
+                        <a href="frontend/signup.html" class="btn btn-outline-primary rounded-pill btn-sm mt-auto">View Profile</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mentor-card h-100 text-center p-4">
+                        <div class="mentor-img-wrapper mb-3">
+                            <img src="frontend/assets/ankit.jpg" alt="Ankit" class="mentor-img">
+                        </div>
+                        <h4 class="mb-1">Ankit Kumar</h4>
+                        <p class="text-primary small mb-2">English & Social Studies</p>
+                        <p class="text-muted small mb-3">M.A. English • 8+ Years Exp</p>
+                        <p class="card-text text-muted mb-4">"Helping students master language arts and understand social sciences with ease."</p>
+                        <a href="frontend/signup.html" class="btn btn-outline-primary rounded-pill btn-sm mt-auto">View Profile</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mentor-card h-100 text-center p-4">
+                        <div class="mentor-img-wrapper mb-3">
+                            <img src="frontend/assets/shubham.jpeg" alt="Shubham" class="mentor-img">
+                        </div>
+                        <h4 class="mb-1">Shubham Singh</h4>
+                        <p class="text-primary small mb-2">Biology Expert</p>
+                        <p class="text-muted small mb-3">Ph.D Biology • 7+ Years Exp</p>
+                        <p class="card-text text-muted mb-4">"Expert in Botany and Zoology. Let's explore the science of life together."</p>
+                        <a href="frontend/signup.html" class="btn btn-outline-primary rounded-pill btn-sm mt-auto">View Profile</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card mentor-card h-100 text-center p-4">
+                        <div class="mentor-img-wrapper mb-3">
+                            <img src="frontend/assets/yash.jpg" alt="Yash" class="mentor-img">
+                        </div>
+                        <h4 class="mb-1">Yash Kumar</h4>
+                        <p class="text-primary small mb-2">Chemistry Expert</p>
+                        <p class="text-muted small mb-3">M.Sc Chemistry • 10+ Years Exp</p>
+                        <p class="card-text text-muted mb-4">"Making organic and inorganic chemistry easy to understand and fun to learn."</p>
+                        <a href="frontend/signup.html" class="btn btn-outline-primary rounded-pill btn-sm mt-auto">View Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="frontend/signup.html" class="btn btn-primary btn-lg rounded-pill px-5">View All Mentors</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Frequently Asked Questions</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    <strong>How do I choose the right mentor?</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    You can browse mentors by their expertise, industry, and reviews. We recommend reading their profiles and watching their introduction videos to find a good fit for your learning style.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    <strong>What happens if I'm not satisfied with a session?</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Your satisfaction is our priority. If a session doesn't meet your expectations, please contact our support team within 24 hours, and we'll help resolve the issue or process a refund.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    <strong>Can I become a mentor?</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-muted">
+                                    Absolutely! If you have expertise to share and a passion for teaching, you can apply to become a mentor. Click on "Become a Mentor" to start your application.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,20 +404,61 @@
 
     <!-- Call to Action -->
     <section class="py-5 bg-light">
-        <div class="container text-center">
-            <h2 class="mb-4">Ready to Start Learning?</h2>
-            <p class="lead mb-4">Join our community of mentors and students today!</p>
-                <div class="d-flex justify-content-center gap-3">
-                    <a href="frontend/signup.html" class="btn btn-primary cta-button">Become a Mentor</a>
-                    <a href="frontend/signup.html" class="btn btn-outline-primary cta-button">Find a Mentor</a>
-                </div>
+        <div class="container text-center py-4">
+            <h2 class="mb-4 display-6 fw-bold">Ready to Accelerate Your Career?</h2>
+            <p class="lead mb-4 text-muted">Join thousands of students and mentors transforming their careers today.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="frontend/signup.html" class="btn btn-primary btn-lg px-5 rounded-pill shadow">Get Started Now</a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-4 bg-dark text-white">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 Find Mentor. All rights reserved.</p>
+    <footer class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="mb-3 d-flex align-items-center">
+                        <img src="/frontend/assets/logo.png" alt="Logo" width="24" height="24" class="me-2">
+                        Find Mentor
+                    </h5>
+                    <p class="text-white-50">Connecting ambitious learners with expert mentors worldwide. Transform your career with personalized guidance.</p>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase mb-3 fw-bold text-primary">Platform</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#mentors" class="text-white-50 text-decoration-none hover-white">Browse Mentors</a></li>
+                        <li class="mb-2"><a href="#how-it-works" class="text-white-50 text-decoration-none hover-white">How It Works</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase mb-3 fw-bold text-primary">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-uppercase mb-3 fw-bold text-primary">Newsletter</h6>
+                    <p class="text-white-50 small">Subscribe to get the latest news and mentor tips.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control bg-dark border-secondary text-white" placeholder="Enter your email">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="text-center text-white-50 small">
+                <p class="mb-0">&copy; 2025 Find Mentor. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

@@ -144,7 +144,7 @@
           email: currentUser.email,
           role: role,
           createdAt: serverTimestamp()
-        });
+        }, { merge: true });
 
         if (role === "student") {
           window.location.href = "dashboard.html";

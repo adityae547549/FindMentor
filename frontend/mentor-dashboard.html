@@ -32,6 +32,15 @@ header{
 }
 .logo{font-weight:700}
 .logo span{color:var(--accent)}
+.badge-online {
+  background: #22c55e;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 99px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
 .header-actions button{
   margin-left:10px;
   border:1px solid var(--border);
@@ -106,7 +115,7 @@ button.accept{
 
 <header>
   <div class="header-inner">
-    <div class="logo">Find<span>Mentor</span></div>
+    <div class="logo">Find<span>Mentor</span> <span class="badge-online">Online</span></div>
       <div id="lastLogin" style="font-size:.9rem;color:var(--muted);margin-left:12px;display:none"></div>
       <div class="header-actions">
       <button onclick="goToSettings()">Settings</button>
@@ -179,10 +188,25 @@ onAuthStateChanged(auth, async user => {
   currentUser = user;
 
   try {
-    await setDoc(doc(db, "users", currentUser.uid), { lastlogin: serverTimestamp() }, { merge: true });
+    await setDoc(doc(db, "users", currentUser.uid), {
+      lastlogin: serverTimestamp(),
+      isOnline: true
+    }, { merge: true });
   } catch (err) {
     console.error('Failed to update lastlogin:', err);
   }
+
+  // PRESENCE SYSTEM
+  const userRef = doc(db, "users", currentUser.uid);
+
+  window.addEventListener('beforeunload', () => {
+    // Best-effort offline status
+  });
+
+  window.logout = async () => {
+    await updateDoc(userRef, { isOnline: false });
+    signOut(auth);
+  };
 
   const ref = doc(db,"users",user.uid);
   const snap = await getDoc(ref);
@@ -284,7 +308,8 @@ window.goToSettings = () => {
 };
 
 /* LOGOUT */
-window.logout = () => signOut(auth);
+// defined in onAuthStateChanged to access currentUser
+// window.logout = () => signOut(auth);
 </script>
 
 </body>

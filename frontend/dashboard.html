@@ -111,29 +111,35 @@ select{
   margin-top:12px
 }
 .mentor-card{
-  background:#f9fafb;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:12px;
   display:flex;
   align-items:center;
   gap:12px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
   cursor:pointer;
-  transition:all 0.2s
+  transition:all .2s;
+  position: relative;
 }
-.mentor-card:hover{
-  background:#f3f4f6;
-  border-color:var(--accent)
+.mentor-card:hover{border-color:var(--accent);background:#f0fdfa}
+.mentor-card.online::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px #22c55e20;
 }
 .mentor-avatar{
-  font-size:2rem;
-  width:48px;
-  height:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#eef2ff;
-  border-radius:50%
+  width:40px;height:40px;
+  background:#f3f4f6;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem
 }
 .mentor-info strong{display:block;font-size:.95rem}
 .mentor-info p{font-size:.8rem;color:var(--muted);margin:4px 0 0 0}
@@ -178,6 +184,28 @@ select{
 }
 .ai-user{background:#e5e7eb}
 .ai-actions{padding:12px;border-top:1px solid var(--border)}
+
+/* ========== VIDEO CALL MODAL ========== */
+.video-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1001;
+}
+.video-modal {
+  background: #fff;
+  width: 90%; max-width: 500px;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.video-modal h3 { font-size: 1.5rem; margin-bottom: 12px; color: #111827; }
+.video-modal p { color: #4b5563; margin-bottom: 24px; line-height: 1.5; }
+.video-modal-actions { display: flex; gap: 12px; justify-content: center; }
+.btn-outline { background: transparent; border: 1px solid #d1d5db; color: #374151; }
+.btn-danger-soft { background: #fee2e2; color: #dc2626; }
+.btn-danger-soft:hover { background: #fecaca; }
 
 /* ========== MENTOR CHAT MODAL ========== */
 .mentor-chat-overlay{
@@ -312,28 +340,28 @@ select{
   <div class="card">
     <h3>Mentors</h3>
     <div class="mentors-grid">
-      <div class="mentor-card" onclick="openMentorChat('ankit-kumar')">
+      <div class="mentor-card" id="mentor-card-ankit-kumar" onclick="openMentorChat('ankit-kumar')">
         <div class="mentor-avatar">👨‍🏫</div>
         <div class="mentor-info">
           <strong>Ankit Kumar</strong>
           <p>English & Social Studies</p>
         </div>
       </div>
-      <div class="mentor-card" onclick="openMentorChat('shubham-singh')">
+      <div class="mentor-card" id="mentor-card-shubham-singh" onclick="openMentorChat('shubham-singh')">
         <div class="mentor-avatar">👩‍🔬</div>
         <div class="mentor-info">
           <strong>Shubham Singh</strong>
           <p>Biology</p>
         </div>
       </div>
-      <div class="mentor-card" onclick="openMentorChat('yash-kumar')">
+      <div class="mentor-card" id="mentor-card-yash-kumar" onclick="openMentorChat('yash-kumar')">
         <div class="mentor-avatar">👨‍⚕️</div>
         <div class="mentor-info">
           <strong>Yash Kumar</strong>
           <p>Chemistry</p>
         </div>
       </div>
-      <div class="mentor-card" onclick="openMentorChat('ankush-kumar')">
+      <div class="mentor-card" id="mentor-card-ankush-kumar" onclick="openMentorChat('ankush-kumar')">
         <div class="mentor-avatar">👩‍💻</div>
         <div class="mentor-info">
           <strong>Ankush Kumar</strong>
@@ -397,7 +425,7 @@ select{
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, collection, query, where, getDocs, addDoc, setDoc, serverTimestamp, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, collection, query, where, getDocs, addDoc, setDoc, serverTimestamp, getDoc, doc, updateDoc, onSnapshot, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
@@ -431,13 +459,32 @@ onAuthStateChanged(auth, async user=>{
   if(!user) return location.href="login.html";
   currentUser=user;
   try {
-    await setDoc(doc(db, "users", currentUser.uid), { lastlogin: serverTimestamp() }, { merge: true });
+    await setDoc(doc(db, "users", currentUser.uid), {
+      lastlogin: serverTimestamp(),
+      isOnline: true
+    }, { merge: true });
   } catch (err) {
     console.error('Failed to update lastlogin:', err);
   }
+  
+  // Best-effort offline on unload
+  window.addEventListener('beforeunload', () => {
+     // cannot reliably await here
+  });
+
   loadGreeting(user.uid);
   loadDashboard(user.uid);
+  checkMentorsAvailability();
 });
+
+window.logout = async () => {
+  if (currentUser) {
+    try {
+      await updateDoc(doc(db, "users", currentUser.uid), { isOnline: false });
+    } catch(e) { console.error(e); }
+  }
+  signOut(auth);
+};
 
 /* ===== DASHBOARD DATA ===== */
 async function loadDashboard(uid){
@@ -507,33 +554,65 @@ function renderCharts(weekly,ai,mentor){
 
 /* ===== MENTOR DATA ===== */
 const mentors = {
+  'ankush-kumar': {
+    name: 'Ankush Kumar',
+    specialty: 'Mathematics',
+    avatar: '📐',
+    expertise: 'mathematics',
+    systemPrompt: 'You are Ankush Kumar, a Mathematics expert. Help the student with math problems.'
+  },
   'ankit-kumar': {
     name: 'Ankit Kumar',
     specialty: 'English & Social Studies',
-    avatar: '👨‍🏫',
-    expertise: 'english social studies'
+    avatar: '�',
+    expertise: 'english social studies',
+    systemPrompt: 'You are Ankit Kumar, an expert in English and Social Studies. Help the student with language and humanities.'
   },
   'shubham-singh': {
     name: 'Shubham Singh',
     specialty: 'Biology',
     avatar: '🧬',
-    expertise: 'biology'
+    expertise: 'biology',
+    systemPrompt: 'You are Shubham Singh, a Biology expert. Help the student with biological sciences.'
   },
   'yash-kumar': {
     name: 'Yash Kumar',
     specialty: 'Chemistry',
     avatar: '⚗️',
-    expertise: 'chemistry'
-  },
-  'ankush-kumar': {
-    name: 'Ankush Kumar',
-    specialty: 'Mathematics',
-    avatar: '📐',
-    expertise: 'mathematics'
+    expertise: 'chemistry',
+    systemPrompt: 'You are Yash Kumar, a Chemistry expert. Help the student with chemical reactions and periodic table.'
   }
 };
 
 let currentMentorId = null;
+
+/* ===== MENTOR AVAILABILITY & CHAT ===== */
+function checkMentorsAvailability() {
+  const q = query(collection(db, "users"), where("role", "==", "mentor"));
+  onSnapshot(q, (snap) => {
+    snap.forEach(d => {
+      const data = d.data();
+      if (!data.name) return;
+      const key = data.name.toLowerCase().replace(/ /g, '-');
+      if (mentors[key]) {
+        mentors[key].realUid = d.id;
+        mentors[key].isOnline = data.isOnline;
+        const card = document.getElementById(`mentor-card-${key}`);
+        if (card) {
+          if (data.isOnline) {
+             card.classList.add('online');
+             card.title = "Online Now";
+          } else {
+             card.classList.remove('online');
+             card.title = "Offline";
+          }
+        }
+      }
+    });
+  });
+}
+
+let currentChatUnsubscribe = null;
 
 window.openMentorChat = (mentorId) => {
   currentMentorId = mentorId;
@@ -542,8 +621,34 @@ window.openMentorChat = (mentorId) => {
   document.getElementById('mentorChatAvatar').textContent = mentor.avatar;
   document.getElementById('mentorChatName').textContent = mentor.name;
   document.getElementById('mentorChatSpecialty').textContent = mentor.specialty;
-  document.getElementById('mentorChatMessages').innerHTML = `<div class="mentor-msg">Hello! I'm here to help you with ${mentor.specialty.toLowerCase()}. Ask me anything! 😊</div>`;
-  document.getElementById('mentorChatInput').value = '';
+  
+  const messagesDiv = document.getElementById('mentorChatMessages');
+  messagesDiv.innerHTML = ''; 
+
+  if (currentChatUnsubscribe) {
+    currentChatUnsubscribe();
+    currentChatUnsubscribe = null;
+  }
+
+  if (mentor.realUid) {
+      const chatId = [currentUser.uid, mentor.realUid].sort().join('_');
+      const q = query(collection(db, "chats", chatId, "messages"), orderBy("createdAt"));
+      
+      currentChatUnsubscribe = onSnapshot(q, (snap) => {
+          messagesDiv.innerHTML = '';
+          if (snap.empty) {
+             messagesDiv.innerHTML = `<div class="mentor-msg">Hello! I'm ${mentor.name} (Real Human). Send me a message!</div>`;
+          }
+          snap.forEach(d => {
+             const m = d.data();
+             const isMe = m.senderId === currentUser.uid;
+             messagesDiv.innerHTML += `<div class="mentor-msg ${isMe ? 'user' : ''}">${m.text}</div>`;
+          });
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      });
+  } else {
+      messagesDiv.innerHTML = `<div class="mentor-msg">Hello! I'm here to help you with ${mentor.specialty.toLowerCase()}. Ask me anything! 😊</div>`;
+  }
   
   document.getElementById('mentorChatModal').style.display = 'block';
   document.getElementById('mentorChatInput').focus();
@@ -552,6 +657,10 @@ window.openMentorChat = (mentorId) => {
 window.closeMentorChat = () => {
   document.getElementById('mentorChatModal').style.display = 'none';
   currentMentorId = null;
+  if (currentChatUnsubscribe) {
+    currentChatUnsubscribe();
+    currentChatUnsubscribe = null;
+  }
 };
 
 function typeMentorResponse(container, text) {
@@ -595,6 +704,30 @@ window.sendMentorMessage = async () => {
   const message = input.value.trim();
   if (!message || !currentMentorId) return;
 
+  const mentor = mentors[currentMentorId];
+
+  // REAL MENTOR SEND - ONLY IF ONLINE
+  if (mentor.realUid && mentor.isOnline) {
+     const chatId = [currentUser.uid, mentor.realUid].sort().join('_');
+     const chatRef = doc(db, "chats", chatId);
+     
+     await setDoc(chatRef, {
+       participants: [currentUser.uid, mentor.realUid],
+       lastMessage: message,
+       updatedAt: serverTimestamp()
+     }, { merge: true });
+
+     await addDoc(collection(chatRef, "messages"), {
+       text: message,
+       senderId: currentUser.uid,
+       createdAt: serverTimestamp()
+     });
+     
+     input.value = '';
+     return;
+  }
+
+  // FALLBACK: AI ACTING AS MENTOR (Offline or Not Exists)
   const messagesDiv = document.getElementById('mentorChatMessages');
   
   // Add user message
@@ -608,10 +741,13 @@ window.sendMentorMessage = async () => {
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
   try {
+    // We send a specific prompt to the AI to act as the mentor
+    const aiQuestion = `${mentor.systemPrompt || ''} The student asks: ${message}`;
+    
     const res = await fetch('/ask', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: message })
+      body: JSON.stringify({ question: aiQuestion })
     });
 
     const data = await res.json();
@@ -633,6 +769,49 @@ window.sendMentorMessage = async () => {
   }
 
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
+};
+
+/* ===== VIDEO CALL LOGIC ===== */
+let targetMentorName = "";
+
+window.initiateVideoCall = (mentorName) => {
+  targetMentorName = mentorName;
+  document.getElementById('videoNoticeModal').style.display = 'block';
+};
+
+window.closeVideoNotice = () => {
+  document.getElementById('videoNoticeModal').style.display = 'none';
+  targetMentorName = "";
+};
+
+window.confirmVideoCall = () => {
+  // Generate Meeting ID: StudentName + 4 Random Numbers
+  let studentName = "Student";
+  if (currentUser && currentUser.displayName) {
+    studentName = currentUser.displayName.split(' ')[0];
+  } else {
+    // Fallback if displayName is not set, try to get from local storage or DB greeting
+    const greetingEl = document.getElementById("greeting");
+    if (greetingEl) {
+       // "Good morning, Name 👋" -> extract Name
+       const text = greetingEl.innerText;
+       const parts = text.split(',');
+       if (parts.length > 1) {
+         studentName = parts[1].trim().split(' ')[0];
+       }
+    }
+  }
+  
+  // Clean name (remove special chars)
+  studentName = studentName.replace(/[^a-zA-Z0-9]/g, '');
+  
+  const randomNum = Math.floor(1000 + Math.random() * 9000);
+  const meetingId = `${studentName}${randomNum}`;
+  
+  // Redirect to video call page
+  window.open(`video_call.html?room=${meetingId}`, '_blank');
+  
+  closeVideoNotice();
 };
 
 /* ===== AI FIRST FLOW ===== */

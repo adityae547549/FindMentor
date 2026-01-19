@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Call | FindMentor</title>
+    <link rel="icon" type="image/png" href="/frontend/assets/logo.png">
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #1a1a1a; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        
+        #videos-container {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #remote-video {
+            width: 100%;
+            height: 100%;
+        }
+
+        #local-video {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 150px;
+            background: #333;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            object-fit: cover;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        #controls {
+            height: 80px;
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: #444;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover { background: #555; }
+        
+        .btn-danger { background: #ef4444; }
+        .btn-danger:hover { background: #dc2626; }
+        
+        .btn-active { background: #fff; color: #000; }
+
+        #room-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            z-index: 20;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            #local-video {
+                width: 120px;
+                height: 90px;
+                bottom: 100px;
+                right: 10px;
+            }
+        }
+    </style>
+    <!-- Add FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="room-info">
+        <i class="fas fa-hashtag"></i> Meeting ID: <span id="meeting-id">Loading...</span>
+    </div>
+
+    <div id="videos-container">
+        <video id="remote-video" autoplay playsinline></video>
+        <video id="local-video" autoplay playsinline muted></video>
+    </div>
+
+    <div id="controls">
+        <button class="control-btn" id="mic-btn" onclick="toggleMic()" title="Toggle Microphone" aria-label="Toggle Microphone">
+            <i class="fas fa-microphone"></i>
+        </button>
+        <button class="control-btn" id="camera-btn" onclick="toggleCamera()" title="Toggle Camera" aria-label="Toggle Camera">
+            <i class="fas fa-video"></i>
+        </button>
+        <button class="control-btn" id="switch-cam-btn" onclick="switchCamera()" title="Switch Camera" aria-label="Switch Camera">
+            <i class="fas fa-sync"></i>
+        </button>
+        <button class="control-btn btn-danger" onclick="endCall()" title="End Call" aria-label="End Call">
+            <i class="fas fa-phone-slash"></i>
+        </button>
+    </div>
+
+    <script>
+        const socket = io('/', { transports: ['websocket', 'polling'] }); // Connect to root path
+        const localVideo = document.getElementById('local-video');
+        const remoteVideo = document.getElementById('remote-video');
+        const meetingIdSpan = document.getElementById('meeting-id');
+
+        let localStream;
+        let peerConnection;
+        let roomId;
+        let isAudioEnabled = true;
+        let isVideoEnabled = true;
+        let currentFacingMode = 'user'; // 'user' (front) or 'environment' (back)
+
+        // WebRTC Config
+        const rtcConfig = {
+            iceServers: [
+                { urls: 'stun:stun.l.google.com:19302' },
+                { urls: 'stun:stun1.l.google.com:19302' }
+            ]
+        };
+
+        // Get Room ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        roomId = urlParams.get('room');
+        if (!roomId) {
+            alert('No meeting ID provided!');
+            window.location.href = '/frontend/dashboard.html';
+        }
+        meetingIdSpan.textContent = roomId;
+
+        // Initialize Call
+        async function init() {
+            try {
+                localStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: currentFacingMode }, 
+                    audio: true 
+                });
+                localVideo.srcObject = localStream;
+
+                socket.emit('join-room', roomId, socket.id);
+
+                socket.on('user-connected', userId => {
+                    console.log('User connected:', userId);
+                    createOffer(userId);
+                });
+
+                socket.on('offer', handleOffer);
+                socket.on('answer', handleAnswer);
+                socket.on('ice-candidate', handleCandidate);
+                socket.on('user-disconnected', () => {
+                    if (remoteVideo.srcObject) {
+                        remoteVideo.srcObject.getTracks().forEach(track => track.stop());
+                        remoteVideo.srcObject = null;
+                    }
+                    alert('User disconnected');
+                });
+
+            } catch (err) {
+                console.error('Error accessing media devices:', err);
+                alert('Could not access camera/microphone. Please check permissions.');
+            }
+        }
+
+        async function createPeerConnection(targetId) {
+            peerConnection = new RTCPeerConnection(rtcConfig);
+
+            localStream.getTracks().forEach(track => {
+                peerConnection.addTrack(track, localStream);
+            });
+
+            peerConnection.ontrack = event => {
+                remoteVideo.srcObject = event.streams[0];
+            };
+
+            peerConnection.onicecandidate = event => {
+                if (event.candidate) {
+                    socket.emit('ice-candidate', {
+                        target: targetId,
+                        candidate: event.candidate
+                    });
+                }
+            };
+        }
+
+        async function createOffer(targetId) {
+            await createPeerConnection(targetId);
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+            
+            socket.emit('offer', {
+                target: targetId,
+                offer: offer,
+                sender: socket.id
+            });
+        }
+
+        async function handleOffer(payload) {
+            await createPeerConnection(payload.sender);
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(payload.offer));
+            const answer = await peerConnection.createAnswer();
+            await peerConnection.setLocalDescription(answer);
+
+            socket.emit('answer', {
+                target: payload.sender,
+                answer: answer
+            });
+        }
+
+        async function handleAnswer(payload) {
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(payload.answer));
+        }
+
+        async function handleCandidate(payload) {
+            try {
+                await peerConnection.addIceCandidate(new RTCIceCandidate(payload.candidate));
+            } catch (e) {
+                console.error('Error adding received ice candidate', e);
+            }
+        }
+
+        // Controls
+        function toggleMic() {
+            isAudioEnabled = !isAudioEnabled;
+            localStream.getAudioTracks()[0].enabled = isAudioEnabled;
+            document.getElementById('mic-btn').innerHTML = isAudioEnabled ? 
+                '<i class="fas fa-microphone"></i>' : '<i class="fas fa-microphone-slash"></i>';
+            document.getElementById('mic-btn').classList.toggle('btn-danger', !isAudioEnabled);
+        }
+
+        function toggleCamera() {
+            isVideoEnabled = !isVideoEnabled;
+            localStream.getVideoTracks()[0].enabled = isVideoEnabled;
+            document.getElementById('camera-btn').innerHTML = isVideoEnabled ? 
+                '<i class="fas fa-video"></i>' : '<i class="fas fa-video-slash"></i>';
+            document.getElementById('camera-btn').classList.toggle('btn-danger', !isVideoEnabled);
+        }
+
+        async function switchCamera() {
+            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+            
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+            }
+
+            try {
+                localStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { facingMode: currentFacingMode }, 
+                    audio: true // Ensure audio is kept
+                });
+                
+                // Restore mute states
+                localStream.getAudioTracks()[0].enabled = isAudioEnabled;
+                localStream.getVideoTracks()[0].enabled = isVideoEnabled;
+
+                localVideo.srcObject = localStream;
+
+                // Replace track in peer connection if active
+                if (peerConnection) {
+                    const videoTrack = localStream.getVideoTracks()[0];
+                    const sender = peerConnection.getSenders().find(s => s.track.kind === 'video');
+                    if (sender) {
+                        sender.replaceTrack(videoTrack);
+                    }
+                }
+            } catch (err) {
+                console.error('Error switching camera:', err);
+                alert('Unable to switch camera');
+            }
+        }
+
+        function endCall() {
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+            }
+            if (peerConnection) {
+                peerConnection.close();
+            }
+            window.location.href = '/frontend/dashboard.html';
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>
