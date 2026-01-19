@@ -18,6 +18,8 @@ import cors from "cors";
 import multer from "multer";
 import fs from "fs";
 import Groq from "groq-sdk";
+import { createServer } from "http";
+import { Server } from "socket.io";
 
 import { CONFIG } from "./config.js";
 import { loadData } from "./dataloader.js";
@@ -29,6 +31,14 @@ import { extractTextFromPDFBuffer, extractQuestionsFromPDF } from "./pdfProcesso
 console.log("📷 Image processing: Ready (Tesseract.js OCR)");
 
 const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
 const groq = new Groq({
   apiKey: CONFIG.GROQ_API_KEY
 });
