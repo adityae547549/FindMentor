@@ -566,6 +566,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
     import { getFirestore, collection, addDoc, serverTimestamp, query, where, getDocs, Timestamp, doc, setDoc, getDoc, updateDoc, arrayUnion, orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import CONFIG from "./config.js";
 
     // Firebase Config
     const firebaseConfig = {
@@ -955,14 +956,7 @@
         body: isFormData ? body : JSON.stringify(body)
       };
 
-      let baseUrl = '';
-      if (window.location.protocol === 'file:') {
-           baseUrl = 'http://localhost:3000';
-      } else if ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '3000') {
-           baseUrl = 'http://localhost:3000';
-      } else if (window.location.port === '5500' || window.location.port === '8080') {
-           baseUrl = 'http://localhost:3000';
-      }
+      const baseUrl = CONFIG.API_BASE_URL;
 
       const res = await fetch(`${baseUrl}${endpoint}`, options);
       const contentType = res.headers.get('content-type') || '';

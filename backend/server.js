@@ -70,12 +70,22 @@ const upload = multer({
 });
 
 // Define paths
-const rootPath = path.join(__dirname, "..");
-const frontendPath = path.join(__dirname, "..", "frontend");
+const rootPath = __dirname;
+// const frontendPath = path.join(__dirname, "..", "frontend"); // Frontend is hosted separately
 
 loadData();
 
 // IMPORTANT: Route handlers MUST come before static middleware
+// API Health Check
+app.get("/", (req, res) => {
+  res.json({
+    status: "active",
+    message: "FindMentor Backend API is Running 🚀",
+    timestamp: new Date().toISOString()
+  });
+});
+
+/*
 // Serve index.html as the landing page (root route)
 app.get("/", (req, res) => {
   // res.send("FindMentor Backend API is Running 🚀");
@@ -95,6 +105,7 @@ app.get("/styles.css", (req, res) => {
 
 // Serve static files from frontend directory
 app.use("/frontend", express.static(frontendPath));
+*/
 
 // =========================
 // SOCKET.IO SIGNALING

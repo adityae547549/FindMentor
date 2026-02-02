@@ -618,6 +618,7 @@ function showToast(msg, type='info') {
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, collection, query, where, getDocs, addDoc, setDoc, serverTimestamp, getDoc, doc, updateDoc, onSnapshot, orderBy, limit, enableIndexedDbPersistence, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import CONFIG from "./config.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
@@ -1280,20 +1281,7 @@ function checkMentorsAvailability() {
 /* ===== AI API HELPER ===== */
 async function fetchAIResponse(question, systemPrompt, history = []) {
     try {
-        // Use relative path for production readiness (works if backend serves frontend)
-        // Fallback to localhost if needed for separate dev servers
-        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-            ? '/ask' // If served by same backend
-            : '/ask'; // In production, same origin usually
-
-        // Check if we are running on a different port (e.g. frontend 5500, backend 3000)
-        // Ideally, use a config, but for now, we assume relative path if served by backend, 
-        // or hardcode localhost:3000 if running via Live Server
-        
-        let fetchUrl = '/ask';
-        if (window.location.port === '5500' || window.location.port === '8080') {
-             fetchUrl = 'http://localhost:3000/ask';
-        }
+        const fetchUrl = `${CONFIG.API_BASE_URL}/ask`;
 
         const res = await fetch(fetchUrl, {
             method: 'POST',
