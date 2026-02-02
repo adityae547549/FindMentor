@@ -1,11 +1,18 @@
 {
+  "firestore": {
+    "indexes": "firestore.indexes.json"
+  },
   "hosting": {
+    "site": "findmentor-app",
     "public": ".",
     "ignore": [
       "firebase.json",
+      "firestore.rules",
+      "firestore.indexes.json",
       "**/.*",
       "**/node_modules/**",
-      "backend/**"
+      "backend/**",
+      "**/*.env"
     ],
     "rewrites": [
       {

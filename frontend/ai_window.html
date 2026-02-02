@@ -2,206 +2,572 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AI Study Assistant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FindMentor AI | Study Companion</title>
   <link rel="icon" type="image/png" href="assets/logo.png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.3/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
     :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --primary: #2563eb;
-      --text: #111827;
-      --muted: #6b7280;
-      --border: #e5e7eb;
+      --bg-main: #212121;
+      --bg-sidebar: #171717;
+      --bg-input: #2f2f2f;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #10a37f;
+      --accent-soft: rgba(16, 163, 127, 0.1);
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.03);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; transition: all 0.2s ease-out; }
 
     body {
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      height: 100vh;
       display: flex;
-      justify-content: center;
-      padding: 40px 16px;
+      overflow: hidden;
     }
 
-    .container {
-      width: 100%;
-      max-width: 800px;
-    }
+    /* CUSTOM SCROLLBAR */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #3f3f3f; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-    .header {
-      margin-bottom: 24px;
-    }
-
-    .header h1 {
-      font-size: 28px;
-      margin: 0;
-      font-weight: 600;
-    }
-
-    .header p {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+    /* SIDEBAR REFINEMENT */
+    .sidebar {
+      width: 280px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
       padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+      z-index: 100;
+    }
+
+    .new-chat-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(16, 163, 127, 0.2);
+    }
+
+    .new-chat-btn:hover {
+      background: #14b88e;
+      transform: translateY(-1px);
+    }
+
+    .history-item {
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .history-item:hover, .history-item.active {
+      background: var(--glass);
+      color: white;
+    }
+
+    /* MAIN CHAT AREA */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-main);
+      position: relative;
+    }
+
+    .chat-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 0 140px 0;
+    }
+
+    /* WELCOME SCREEN CARDS */
+    .welcome-container {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .welcome-logo {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #10a37f, #0ea5e9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .card-item {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 16px;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .card-item:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-5px);
+    }
+
+    .card-item i {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    /* MESSAGE STYLING REFACTORED */
+    .message {
+      padding: 10px 20px;
+      width: 100%;
+      display: flex;
+      box-sizing: border-box;
+      border-bottom: none;
+    }
+
+    .message.user { justify-content: flex-end; }
+    .message.ai { justify-content: flex-start; }
+
+    .message-content {
+      display: flex;
+      gap: 12px;
+      max-width: 85%;
+      align-items: flex-start;
+      margin: 0;
+    }
+
+    .message.user .message-content {
+      flex-direction: row-reverse;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+      font-size: 0.8rem;
+      margin-top: 2px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .message.ai .avatar { background: var(--accent); color: white; }
+    .message.user .avatar { background: #6366f1; color: white; }
+
+    /* Bubble Styling */
+    .text {
+      padding: 12px 16px;
+      border-radius: 12px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      min-width: 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .message.ai .text {
+      background: #2f2f2f;
+      color: var(--text-main);
+      border-top-left-radius: 2px;
+    }
+
+    .message.user .text {
+      background: var(--accent);
+      color: white;
+      border-top-right-radius: 2px;
+    }
+
+    /* Content adjustments */
+    .text p { margin: 0 0 10px 0; }
+    .text p:last-child { margin: 0; }
+    
+    .text img, .text svg, .text video {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    
+    .text table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+        margin: 10px 0;
+    }
+    
+    .text th, .text td {
+        border: 1px solid var(--border);
+        padding: 8px;
+        text-align: left;
+    }
+
+    .text th {
+        background: rgba(255,255,255,0.1);
+    }
+    
+    .text pre { 
+        background: rgba(0,0,0,0.3) !important; 
+        padding: 10px; 
+        border-radius: 6px; 
+        overflow-x: auto;
+        margin: 10px 0;
+    }
+
+    .text code {
+        font-family: 'Consolas', monospace;
+        background: rgba(0,0,0,0.2);
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+
+    /* Message Actions */
+    .message-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        justify-content: flex-end;
+    }
+
+    .msg-action-btn {
+        background: transparent;
+        border: none;
+        color: rgba(255,255,255,0.5);
+        cursor: pointer;
+        padding: 4px;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+    }
+    
+    .msg-action-btn:hover { color: white; transform: scale(1.1); }
+
+    /* Typing Indicator */
+    .typing-indicator {
+      display: flex;
+      gap: 5px;
+      padding: 5px;
+    }
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #aaa;
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out;
+    }
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+    
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0); }
+      40% { transform: scale(1); }
+    }
+
+    /* INPUT FLOATING BAR */
+    .input-container {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 30px 20px;
+      background: linear-gradient(to top, var(--bg-main) 60%, transparent);
+    }
+
+    .input-box-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #2f2f2f;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 10px 18px;
+      box-shadow: var(--shadow-lg);
     }
 
     textarea {
       width: 100%;
-      min-height: 90px;
-      resize: vertical;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: 12px 14px;
-      font-size: 15px;
+      background: transparent;
+      border: none;
+      color: white;
+      resize: none;
+      padding: 10px 0;
+      font-size: 1rem;
       outline: none;
       font-family: inherit;
     }
 
-    textarea:focus {
-      border-color: var(--primary);
-    }
-
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 14px;
-    }
-
-    .hint {
-      font-size: 13px;
-      color: var(--muted);
-    }
-
-    button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 20px;
-      font-size: 14px;
-      font-weight: 500;
+    .action-btn {
+      color: var(--text-muted);
       cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
     }
 
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+    .action-btn:hover {
+      color: white;
+      background: var(--glass);
     }
 
-    .answer-card {
-      margin-top: 24px;
-      padding: 18px;
-      border-left: 4px solid var(--primary);
-      background: #f9fafb;
-      border-radius: 10px;
-      font-size: 15px;
-      line-height: 1.6;
-      white-space: pre-wrap;
+    .send-btn {
+      background: transparent;
+      margin-left: 10px;
     }
 
-    .status {
-      margin-top: 16px;
-      font-size: 14px;
-      color: var(--muted);
+    .send-btn.active {
+      color: var(--accent);
     }
 
-    .footer {
-      margin-top: 32px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--muted);
+    /* MOBILE OPTIMIZATION */
+    @media (max-width: 768px) {
+      .sidebar { position: fixed; left: -280px; }
+      .sidebar.open { left: 0; }
+      .message { padding: 25px 5%; }
     }
-    @media (max-width: 600px) {
-      body {
-        padding: 20px 10px;
-      }
-      .header h1 {
-        font-size: 22px;
-      }
-      .header p {
-        font-size: 13px;
-      }
-      .card {
-        padding: 16px;
-      }
+
+    /* MODAL STYLES */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay[style*="display: flex"] {
+        opacity: 1;
+    }
+
+    .modal-box {
+        background: #2f2f2f;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 25px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+    }
+
+    .modal-overlay[style*="display: flex"] .modal-box {
+        transform: translateY(0);
+    }
+
+    .modal-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .modal-msg {
+        color: var(--text-muted);
+        margin-bottom: 25px;
+        line-height: 1.5;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    .btn-modal {
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .btn-cancel {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+    }
+
+    .btn-cancel:hover {
+        background: rgba(255,255,255,0.05);
+        color: white;
+    }
+
+    .btn-confirm {
+        background: #ef4444;
+        color: white;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+    }
+
+    .btn-confirm:hover {
+        background: #dc2626;
+        transform: translateY(-1px);
+    }
+    
+    /* TOAST STYLES */
+    .toast-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .toast {
+        background: #2f2f2f;
+        border: 1px solid var(--border);
+        padding: 12px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        animation: slideIn 0.3s ease forwards;
+        color: white;
+    }
+
+    .toast.success i { color: #10a37f; }
+    .toast.error i { color: #ef4444; }
+    .toast.info i { color: #3b82f6; }
+
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
   </style>
 </head>
-
 <body>
+  
+  <div class="sidebar" id="sidebar">
+    <button class="new-chat-btn" onclick="startNewChat()">
+      <i class="fas fa-plus-circle"></i> New Session
+    </button>
 
-  <div class="container">
-    <div class="header">
-      <h1>AI Study Assistant</h1>
-      <p>Ask syllabus-based questions (Class 6–12). Answers are strictly from textbooks.</p>
-    </div>
+    <div style="font-size:0.7rem; color:var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600;">Recent Sessions</div>
+    <div class="chat-history-list" id="chat-history-list"></div>
 
-    <div class="card">
-      <textarea id="question"
-        placeholder="Example: What is Carbohydrate Class 6 Science"></textarea>
-
-      <div class="file-uploads" style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
-        <label for="imageUpload" style="cursor: pointer; padding: 8px 12px; background: #f3f4f6; border-radius: 8px; font-size: 13px; border: 1px solid var(--border);">
-          📷 Upload Photo
-        </label>
-        <input type="file" id="imageUpload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-        
-        <label for="pdfUpload" style="cursor: pointer; padding: 8px 12px; background: #f3f4f6; border-radius: 8px; font-size: 13px; border: 1px solid var(--border);">
-          📄 Upload PDF
-        </label>
-        <input type="file" id="pdfUpload" accept="application/pdf" style="display: none;" onchange="handlePDFUpload(event)">
-
-        <label for="audioUpload" style="cursor: pointer; padding: 8px 12px; background: #f3f4f6; border-radius: 8px; font-size: 13px; border: 1px solid var(--border);">
-          🎤 Upload Audio
-        </label>
-        <input type="file" id="audioUpload" accept="audio/*" style="display: none;" onchange="handleAudioUpload(event)">
-
-        <label for="videoUpload" style="cursor: pointer; padding: 8px 12px; background: #f3f4f6; border-radius: 8px; font-size: 13px; border: 1px solid var(--border);">
-          📹 Upload Video
-        </label>
-        <input type="file" id="videoUpload" accept="video/*" style="display: none;" onchange="handleVideoUpload(event)">
-      </div>
-
-      <div class="actions">
-        <div class="hint">Press Enter or click Ask • Supports multiple languages</div>
-        <button id="askBtn" onclick="askAI()">Ask</button>
-      </div>
-
-      <div id="status" class="status"></div>
-    </div>
-
-    <div id="answerBox" class="answer-card" style="display:none;"></div>
-
-    <div class="footer">
-      Dataset-based • No hallucinations • NCERT aligned
+    <div style="margin-top:auto; padding-top:20px; border-top:1px solid var(--border); display:flex; align-items:center; gap:12px;">
+        <div class="avatar" style="background:#444;"><i class="fas fa-user"></i></div>
+        <span id="user-name-display" style="font-size:0.9rem; font-weight:500;">Academic User</span>
     </div>
   </div>
+
+  <div class="main-content">
+      <div class="chat-container" id="chat-container">
+        <div class="welcome-container" id="welcome-screen">
+            <div class="welcome-logo"><i class="fas fa-microchip"></i></div>
+            <h1 style="font-weight: 600; font-size: 2.2rem; margin: 0;">FindMentor AI</h1>
+            <p style="color:var(--text-muted); margin-top: 10px; font-size: 1.1rem;">Accelerate your learning journey.</p>
+            
+            <div class="cards-grid">
+                <div class="card-item" onclick="triggerUpload('image/*')">
+                    <i class="fas fa-shapes" style="color:#10a37f;"></i>
+                    <div style="font-weight:600; margin-bottom:5px;">Solve Math</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Upload a photo for step-by-step solutions.</p>
+                </div>
+                <div class="card-item" onclick="triggerUpload('application/pdf')">
+                    <i class="fas fa-file-invoice" style="color:#ef4444;"></i>
+                    <div style="font-weight:600; margin-bottom:5px;">Research PDF</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Summarize complex academic papers.</p>
+                </div>
+                <div class="card-item" onclick="prepareInput('YouTube')">
+                    <i class="fab fa-youtube" style="color:#ff0000;"></i>
+                    <div style="font-weight:600; margin-bottom:5px;">Video Insights</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Convert video lectures into notes.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-box-wrapper">
+          <div class="preview-area" id="preview-area" style="display:none; margin-bottom:10px;">
+            <div style="background:var(--accent-soft); color:var(--accent); padding:5px 12px; border-radius:20px; font-size:0.8rem; display:inline-flex; align-items:center; gap:8px;">
+                <span id="file-name"></span> <i class="fas fa-times" onclick="clearFile()" style="cursor:pointer"></i>
+            </div>
+          </div>
+          <div style="display:flex; align-items: flex-end; gap:10px;">
+              <i class="fas fa-paperclip action-btn" onclick="document.getElementById('file-input').click()"></i>
+              <textarea id="user-input" rows="1" placeholder="Type your question here..."></textarea>
+              <i class="fas fa-paper-plane action-btn send-btn" id="send-btn" onclick="handleSend()"></i>
+          </div>
+        </div>
+        <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:15px;">Built for students. Powered by AI.</p>
+      </div>
+  </div>
+
+  <input type="file" id="file-input" hidden>
+
+  <!-- CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="confirm-modal">
+      <div class="modal-box">
+          <div class="modal-title" id="modal-title">Confirm Action</div>
+          <div class="modal-msg" id="modal-msg">Are you sure?</div>
+          <div class="modal-actions">
+              <button class="btn-modal btn-cancel" onclick="closeModal()">Cancel</button>
+              <button class="btn-modal btn-confirm" id="modal-confirm-btn">Delete</button>
+          </div>
+      </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+    import { getFirestore, collection, addDoc, serverTimestamp, query, where, getDocs, Timestamp, doc, setDoc, getDoc, updateDoc, arrayUnion, orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-    const askBtn = document.getElementById("askBtn");
-    const answerBox = document.getElementById("answerBox");
-    const statusBox = document.getElementById("status");
-    const questionInput = document.getElementById("question");
-
+    // Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
       authDomain: "studio-6680101022-359df.firebaseapp.com",
@@ -215,322 +581,976 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    let currentUser=null;
-    let currentSubject="";
+    let currentUser = null;
+    let currentFile = null;
+    let currentChatId = null;
+    let currentChatHistory = []; // Local history state
 
-    onAuthStateChanged(auth,user=>{
-      if(user) currentUser=user;
+    // UI Elements
+    const chatContainer = document.getElementById('chat-container');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const fileInput = document.getElementById('file-input');
+    const previewArea = document.getElementById('preview-area');
+    const fileNameSpan = document.getElementById('file-name');
+    const limitText = document.getElementById('limit-text');
+
+    // Store Welcome Screen HTML for restoration
+    const welcomeScreenHTML = `
+        <div class="welcome-container" id="welcome-screen">
+            <div class="welcome-logo"><i class="fas fa-microchip"></i></div>
+            <h1 style="font-weight: 600; font-size: 2.2rem; margin: 0;">FindMentor AI</h1>
+            <p style="color:var(--text-muted); margin-top: 10px; font-size: 1.1rem;">Accelerate your learning journey.</p>
+            
+            <div class="cards-grid">
+                <div class="card-item" onclick="triggerUpload('image/*')">
+                    <i class="fas fa-shapes" style="color:#10a37f;"></i>
+                    <div style="font-weight:600; margin-bottom:5px;">Solve Math</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Upload a photo for step-by-step solutions.</p>
+                </div>
+                <div class="card-item" onclick="triggerUpload('application/pdf')">
+                    <i class="fas fa-file-invoice" style="color:#ef4444;"></i>
+                    <div style="font-weight:600; margin-bottom:5px;">Research PDF</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Summarize complex academic papers.</p>
+                </div>
+                <div class="card-item" onclick="prepareInput('YouTube')">
+                    <i class="fab fa-youtube" style="color:#ff0000;"></i>
+                    <div style="font-weight:600; margin-bottom:5px;">Video Insights</div>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Convert video lectures into notes.</p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    onAuthStateChanged(auth, async user => {
+      if (user) {
+        currentUser = user;
+        updateLimitDisplay();
+        
+        // Update User Profile
+        const userNameDisplay = document.getElementById('user-name-display');
+        if (userNameDisplay) {
+            userNameDisplay.textContent = user.displayName || user.email || "Student";
+        }
+
+        await loadChatList();
+        
+        // Check for Mentor Context (Offline Redirection)
+        const ctx = localStorage.getItem('aiContextMentor');
+        if (ctx) {
+            try {
+                const { name, specialty } = JSON.parse(ctx);
+                localStorage.removeItem('aiContextMentor');
+                
+                // Force new chat
+                 startNewChat(); 
+                 
+                 // Clear welcome screen for this specific flow
+                 chatContainer.innerHTML = '';
+                 
+                 showToast(`Connecting to AI for ${name}...`, 'info');
+                
+                // Simulate AI Message
+                setTimeout(() => {
+                    const greeting = `**AI Assistant:** Hello! ${name} is currently offline. I am here to help you with **${specialty}**. What is your question?`;
+                    appendMessage('ai', greeting, true); 
+                    
+                    // Optional: Set title
+                    if (currentChatId) {
+                         const chatRef = doc(db, "users", currentUser.uid, "ai_chats", currentChatId);
+                         setDoc(chatRef, { title: `Chat with ${name} (AI)` }, { merge: true });
+                         
+                         // Update sidebar item if exists
+                         const item = document.getElementById(`chat-item-${currentChatId}`);
+                         if (item) item.querySelector('span').textContent = `Chat with ${name} (AI)`;
+                    }
+                }, 800);
+            } catch(e) { console.error(e); }
+        }
+
+        // Check for Prefill Question (from Dashboard/Mentor)
+        const prefillQ = localStorage.getItem('prefillQuestion');
+        if (prefillQ) {
+            localStorage.removeItem('prefillQuestion');
+            // Remove welcome screen
+            const welcome = document.getElementById('welcome-screen');
+            if (welcome) welcome.remove();
+            
+            userInput.value = prefillQ;
+            // Short delay to ensure everything loaded
+            setTimeout(() => handleSend(), 500);
+            
+            const prefillSub = localStorage.getItem('prefillSubject');
+            if(prefillSub) localStorage.removeItem('prefillSubject');
+        }
+      }
     });
 
-    window.addEventListener("DOMContentLoaded",()=>{
-      const prefillQuestion=localStorage.getItem("prefillQuestion");
-      const prefillSubject=localStorage.getItem("prefillSubject");
-      if(prefillQuestion){
-        questionInput.value=prefillQuestion;
-        questionInput.focus();
-        questionInput.scrollIntoView({behavior:"smooth",block:"center"});
+    // Sidebar Toggle
+    window.toggleSidebar = () => {
+        document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    // Start New Chat
+    window.startNewChat = () => {
+        currentChatId = null;
+        currentChatHistory = []; // Clear local history
+        chatContainer.innerHTML = welcomeScreenHTML;
+        
+        // Remove active class
+        document.querySelectorAll('.history-item').forEach(el => el.classList.remove('active'));
+        
+        // Close sidebar on mobile
+        if (window.innerWidth <= 768) {
+            document.getElementById('sidebar').classList.remove('open');
+        }
+    }
+
+    // Load Chat List
+    async function loadChatList() {
+        if (!currentUser) return;
+        const listContainer = document.getElementById('chat-history-list');
+        listContainer.innerHTML = '';
+        
+        try {
+            const q = query(collection(db, "users", currentUser.uid, "ai_chats"), orderBy("updatedAt", "desc"));
+            const snap = await getDocs(q);
+            
+            if (snap.empty) {
+                // No chats yet, stay on new chat screen
+                return;
+            }
+
+            snap.forEach(doc => {
+                const data = doc.data();
+                createChatListItem(doc.id, data.title || 'New Chat');
+            });
+            
+            // Automatically load the most recent chat if we haven't selected one
+            if (!currentChatId && snap.docs.length > 0) {
+                loadChat(snap.docs[0].id);
+            }
+        } catch (e) {
+            console.error("Error loading chat list", e);
+        }
+    }
+
+    function createChatListItem(id, title, prepend = false) {
+        const listContainer = document.getElementById('chat-history-list');
+        const item = document.createElement('div');
+        item.className = 'history-item';
+        item.id = `chat-item-${id}`;
+        
+        // Container for icon and title
+        const contentDiv = document.createElement('div');
+        contentDiv.style.display = 'flex';
+        contentDiv.style.alignItems = 'center';
+        contentDiv.style.gap = '10px';
+        contentDiv.style.flex = '1';
+        contentDiv.style.overflow = 'hidden';
+        contentDiv.innerHTML = `<i class="fas fa-message"></i> <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${title}</span>`;
+        
+        // Delete Button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'delete-chat-btn';
+        deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+        deleteBtn.title = 'Delete Chat';
+        deleteBtn.onclick = (e) => {
+            e.stopPropagation();
+            window.deleteChat(id);
+        };
+
+        item.appendChild(contentDiv);
+        item.appendChild(deleteBtn);
+        item.onclick = () => loadChat(id);
+        
+        if (prepend) {
+            listContainer.prepend(item);
+        } else {
+            listContainer.appendChild(item);
+        }
+    }
+
+    // Toast Function
+    window.showToast = (msg, type = 'info') => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        let icon = 'fas fa-info-circle';
+        if (type === 'success') icon = 'fas fa-check-circle';
+        if (type === 'error') icon = 'fas fa-exclamation-circle';
+        
+        toast.innerHTML = `<i class="${icon}"></i> <span>${msg}</span>`;
+        container.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(-10px)';
+            toast.addEventListener('transitionend', () => toast.remove());
+        }, 3000);
+    };
+
+    // Modal Functions
+    let pendingConfirmAction = null;
+    
+    window.showConfirmModal = (title, msg, onConfirm) => {
+        document.getElementById('modal-title').textContent = title;
+        document.getElementById('modal-msg').textContent = msg;
+        document.getElementById('confirm-modal').style.display = 'flex';
+        pendingConfirmAction = onConfirm;
+        
+        // Setup confirm button
+        const confirmBtn = document.getElementById('modal-confirm-btn');
+        // Remove old listeners to avoid stacking
+        const newBtn = confirmBtn.cloneNode(true);
+        confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+        
+        newBtn.onclick = () => {
+            if (pendingConfirmAction) pendingConfirmAction();
+            closeModal();
+        };
+    };
+
+    window.closeModal = () => {
+        document.getElementById('confirm-modal').style.display = 'none';
+        pendingConfirmAction = null;
+    };
+
+    // Delete Chat Function
+    window.deleteChat = async (chatId) => {
+        // Use custom modal for better UX
+        showConfirmModal(
+            'Delete Chat', 
+            'Are you sure you want to delete this chat history? This cannot be undone.', 
+            async () => {
+                try {
+                    await deleteDoc(doc(db, "users", currentUser.uid, "ai_chats", chatId));
+                    
+                    // Remove from UI immediately
+                    const item = document.getElementById(`chat-item-${chatId}`);
+                    if (item) {
+                        item.remove();
+                    } else {
+                        // Fallback: Reload list if element not found (sync issue)
+                        loadChatList();
+                    }
+                    
+                    // If active chat, clear view
+                    if (currentChatId === chatId) {
+                        startNewChat();
+                    }
+                    
+                    showToast('Chat deleted successfully', 'success');
+                } catch (error) {
+                    console.error("Error deleting chat:", error);
+                    showToast("Failed to delete chat. Please try again.", 'error');
+                }
+            }
+        );
+    };
+
+    // Load Specific Chat
+    window.loadChat = async (chatId) => {
+        if (currentChatId === chatId) {
+             // Close sidebar on mobile even if same chat
+            if (window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('open');
+            return;
+        }
+
+        currentChatId = chatId;
+        
+        // Update UI active state
+        document.querySelectorAll('.history-item').forEach(el => el.classList.remove('active'));
+        const activeItem = document.getElementById(`chat-item-${chatId}`);
+        if (activeItem) activeItem.classList.add('active');
+        
+        // Clear messages (and welcome screen)
+        chatContainer.innerHTML = '';
+        
+        // Show loading?
+        
+        try {
+            const docRef = doc(db, "users", currentUser.uid, "ai_chats", chatId);
+            const snap = await getDoc(docRef);
+            
+            if (snap.exists()) {
+                const data = snap.data();
+                if (data.messages) {
+                    currentChatHistory = data.messages || []; // Sync local history
+                    data.messages.forEach(msg => {
+                        appendMessage(msg.role, msg.content, false);
+                    });
+                }
+            }
+        } catch (e) {
+            console.error("Error loading chat", e);
+        }
+        
+        // Close sidebar on mobile
+        if (window.innerWidth <= 768) {
+            document.getElementById('sidebar').classList.remove('open');
+        }
+    }
+
+    // Auto-resize textarea
+    userInput.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = (this.scrollHeight) + 'px';
+      if (this.value.trim().length > 0) {
+        sendBtn.classList.add('active');
+      } else {
+        sendBtn.classList.remove('active');
       }
-      if(prefillSubject){
-        currentSubject=prefillSubject;
-      }
-      localStorage.removeItem("prefillQuestion");
-      localStorage.removeItem("prefillSubject");
     });
 
-    async function logAIUsage(mode,meta){
-      if(!currentUser) return;
-      try{
-        await addDoc(collection(db,"aiLogs"),{
-          studentId:currentUser.uid,
-          question:meta.question||"",
-          subject:currentSubject||"",
-          source:meta.source||"",
-          mode,
-          createdAt:serverTimestamp()
+    // Handle File Selection
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        currentFile = e.target.files[0];
+        showPreview(currentFile);
+      }
+    });
+
+    function showPreview(file) {
+      previewArea.style.display = 'block';
+      let icon = 'fas fa-file';
+      if (file.type.startsWith('image/')) icon = 'fas fa-image';
+      else if (file.type === 'application/pdf') icon = 'fas fa-file-pdf';
+      else if (file.type.startsWith('audio/')) icon = 'fas fa-microphone';
+      else if (file.type.startsWith('video/')) icon = 'fas fa-video';
+      
+      fileNameSpan.innerHTML = `<i class="${icon}"></i> ${file.name}`;
+    }
+
+    window.clearFile = () => {
+      currentFile = null;
+      fileInput.value = '';
+      previewArea.style.display = 'none';
+    };
+
+    // Helpers for Welcome Screen
+    window.triggerUpload = (type) => {
+        fileInput.accept = type;
+        fileInput.click();
+    };
+    
+    window.prepareInput = (type) => {
+        if (type === 'YouTube') {
+            userInput.value = "https://www.youtube.com/watch?v=";
+            userInput.focus();
+        }
+    };
+
+    // API Helper
+    async function fetchAPI(endpoint, body, isFormData = false) {
+      const headers = {};
+      if (!isFormData) {
+        headers['Content-Type'] = 'application/json';
+      }
+      
+      const options = {
+        method: 'POST',
+        headers: headers,
+        body: isFormData ? body : JSON.stringify(body)
+      };
+
+      let baseUrl = '';
+      if (window.location.protocol === 'file:') {
+           baseUrl = 'http://localhost:3000';
+      } else if ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '3000') {
+           baseUrl = 'http://localhost:3000';
+      } else if (window.location.port === '5500' || window.location.port === '8080') {
+           baseUrl = 'http://localhost:3000';
+      }
+
+      const res = await fetch(`${baseUrl}${endpoint}`, options);
+      const contentType = res.headers.get('content-type') || '';
+      if (!res.ok) {
+         if (contentType.includes('application/json')) {
+            const err = await res.json();
+            throw new Error(err.message || err.error || "Server Error");
+         }
+         const text = await res.text();
+         throw new Error(text.includes('<!DOCTYPE') ? "Backend API not reachable. Start the backend server." : "Server Error");
+      }
+      if (!contentType.includes('application/json')) {
+         const text = await res.text();
+         throw new Error(text.includes('<!DOCTYPE') ? "Backend API not reachable. Start the backend server." : "Invalid server response");
+      }
+      return await res.json();
+    }
+
+    // Daily Limit Check
+    function getPlanAndLimit(userData) {
+        const plan = userData?.plan || (userData?.isPremium ? 'plus' : 'free');
+        const limits = { free: 18, plus: 100, pro: 300 };
+        return { plan, limit: limits[plan] || limits.free };
+    }
+
+    async function checkDailyLimit() {
+        if (!currentUser) return { allowed: false, plan: 'free', limit: 18, count: 0 };
+        
+        try {
+            const userRef = doc(db, "users", currentUser.uid);
+            const userSnap = await getDoc(userRef);
+            const { plan, limit } = getPlanAndLimit(userSnap.exists() ? userSnap.data() : {});
+            
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            const todayTs = Timestamp.fromDate(today);
+            
+            const q = query(collection(db, "aiLogs"), 
+                where("studentId", "==", currentUser.uid), 
+                where("createdAt", ">=", todayTs)
+            );
+            
+            const snap = await getDocs(q);
+            const count = snap.size;
+            
+            if (limitText) {
+                limitText.textContent = `${count}/${limit} requests today`;
+            }
+            
+            return { allowed: count < limit, plan, limit, count };
+        } catch (error) {
+            console.error("Daily limit check failed:", error);
+            if (limitText) limitText.textContent = "Limit check unavailable";
+            return { allowed: true, plan: 'free', limit: 18, count: 0 };
+        }
+    }
+    
+    // Log AI Usage
+    async function logAIUsage(type, details) {
+        if (!currentUser) return;
+        
+        try {
+            await addDoc(collection(db, "aiLogs"), {
+                studentId: currentUser.uid,
+                type: type,
+                details: details, // { question: "...", source: "..." }
+                createdAt: serverTimestamp()
+            });
+            
+            // Update limit text immediately
+            updateLimitDisplay();
+        } catch (e) {
+            console.error("Error logging usage", e);
+        }
+    }
+    
+    async function updateLimitDisplay() {
+        if (!currentUser) return;
+        
+        const userRef = doc(db, "users", currentUser.uid);
+        const userSnap = await getDoc(userRef);
+        const { limit } = getPlanAndLimit(userSnap.exists() ? userSnap.data() : {});
+        
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const todayTs = Timestamp.fromDate(today);
+        
+        const q = query(collection(db, "aiLogs"), 
+            where("studentId", "==", currentUser.uid), 
+            where("createdAt", ">=", todayTs)
+        );
+        
+        const snap = await getDocs(q);
+        if (limitText) {
+              limitText.textContent = `${snap.size}/${limit} requests today`;
+        }
+    }
+
+    // Configure Marked & Highlight.js
+    marked.setOptions({
+        highlight: function(code, lang) {
+            const language = highlight.getLanguage(lang) ? lang : 'plaintext';
+            return highlight.highlight(code, { language }).value;
+        },
+        langPrefix: 'hljs language-',
+        breaks: true,
+        gfm: true
+    });
+
+    // Helper to add Copy Buttons to Code Blocks
+    function addCodeCopyButtons(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.querySelectorAll('pre').forEach(pre => {
+            // Check if already processed
+            if (pre.querySelector('.code-header')) return;
+
+            // Get language class
+            const codeClass = pre.querySelector('code')?.className || '';
+            const langMatch = codeClass.match(/language-(\w+)/);
+            const lang = langMatch ? langMatch[1] : 'code';
+
+            // Create Header
+            const header = document.createElement('div');
+            header.className = 'code-header';
+            header.innerHTML = `
+                <span>${lang}</span>
+                <button class="copy-btn" onclick="copyCode(this)">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            `;
+
+            pre.insertBefore(header, pre.firstChild);
         });
-      }catch(e){
-        console.error("Failed to log AI usage",e);
+    }
+
+    window.copyCode = (btn) => {
+        const pre = btn.closest('pre');
+        const code = pre.querySelector('code').innerText;
+        
+        navigator.clipboard.writeText(code).then(() => {
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+            }, 2000);
+        });
+    };
+
+    // Main Send Handler
+    window.handleSend = async () => {
+      // Hide welcome screen if present
+      const welcome = document.getElementById('welcome-screen');
+      if (welcome) welcome.remove();
+
+      const text = userInput.value.trim();
+      const fileToSend = currentFile; // Capture file before clearing
+
+      if ((!text && !fileToSend) || userInput.disabled) return;
+
+      // Check Daily Limit
+      const limitStatus = await checkDailyLimit();
+      if (!limitStatus.allowed) {
+        const message = limitStatus.plan === 'free'
+          ? `Daily limit reached (${limitStatus.limit}/${limitStatus.limit}). Upgrade to Plus for more.`
+          : `Daily fair-usage limit reached (${limitStatus.limit}/${limitStatus.limit}). Try again tomorrow.`;
+        appendMessage('system', message);
+        return; 
+      }
+
+      // Disable input while processing
+      userInput.disabled = true;
+      sendBtn.style.pointerEvents = 'none';
+      sendBtn.style.opacity = '0.5';
+
+      // Prepare User Message Content
+      let userMsgContent = text;
+      
+      if (fileToSend) {
+        if (fileToSend.type.startsWith('image/')) {
+            // Read image for display
+            try {
+                const reader = new FileReader();
+                const base64Url = await new Promise((resolve) => {
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsDataURL(fileToSend);
+                });
+                userMsgContent = (text ? text + '\n\n' : '') + `![Uploaded Image](${base64Url})`;
+            } catch (e) {
+                console.error("Error reading image:", e);
+                userMsgContent = (text ? text + '\n\n' : '') + `[Attached: ${fileToSend.name}]`;
+            }
+        } else {
+            userMsgContent = text ? `${text}\n\n[Attached: ${fileToSend.name}]` : `[Attached: ${fileToSend.name}]`;
+        }
+      }
+
+      // Add User Message
+      appendMessage('user', userMsgContent);
+      
+      userInput.value = '';
+      userInput.style.height = 'auto';
+      sendBtn.classList.remove('active');
+      
+      clearFile(); // Clear UI immediately
+
+      // Show Loading
+      const loadingId = appendMessage('ai', 'Thinking...', false, true);
+
+      try {
+        let response;
+        
+        // 1. YouTube Link Check
+        const ytRegex = /(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/[^\s]+/;
+        const ytMatch = text.match(ytRegex);
+
+        if (!fileToSend && ytMatch) {
+           const url = ytMatch[0];
+           // If user typed only the URL, let backend default to summary. 
+           // If user added text, send it as the question.
+           const isOnlyUrl = text.trim() === url;
+           const q = isOnlyUrl ? null : text;
+
+           response = await fetchAPI('/ask/youtube', { url: url, question: q });
+           await logAIUsage('youtube', { question: text, source: 'youtube' });
+           showToast("Video summarized successfully", "success");
+        }
+        // 2. File Uploads
+        else if (fileToSend) {
+          const formData = new FormData();
+          if (text) formData.append('question', text);
+
+          if (fileToSend.type.startsWith('image/')) {
+            formData.append('image', fileToSend);
+            response = await fetchAPI('/ask/image', formData, true);
+            await logAIUsage('image', { question: text || 'Image analysis', source: 'image' });
+          } 
+          else if (fileToSend.type === 'application/pdf') {
+            formData.append('pdf', fileToSend);
+            response = await fetchAPI('/ask/pdf', formData, true);
+            await logAIUsage('pdf', { question: text || 'PDF analysis', source: 'pdf' });
+          }
+          else if (fileToSend.type.startsWith('audio/')) {
+            formData.append('audio', fileToSend);
+            response = await fetchAPI('/ask/audio', formData, true);
+            await logAIUsage('audio', { question: text || 'Audio analysis', source: 'audio' });
+          }
+          else if (fileToSend.type.startsWith('video/')) {
+            formData.append('video', fileToSend);
+            response = await fetchAPI('/ask/video', formData, true);
+            await logAIUsage('video', { question: text || 'Video analysis', source: 'video' });
+          }
+          else {
+            throw new Error("Unsupported file type");
+          }
+        }
+        // 3. Text Only
+        else {
+          // Prepare history (last 30 messages, excluding current new message)
+          // Map 'ai' -> 'assistant'
+          const historyPayload = currentChatHistory
+              .slice(0, -1) // Exclude the message we just added
+              .slice(-30)   // Limit to last 30
+              .map(msg => ({
+                  role: msg.role === 'ai' ? 'assistant' : 'user',
+                  content: msg.context ? `Context:\n${msg.context}\n\n${msg.content}` : msg.content
+              }));
+
+          response = await fetchAPI('/ask', { 
+              question: text, 
+              history: historyPayload 
+          });
+          await logAIUsage('text', { question: text, source: 'text' });
+        }
+
+        // Process Response
+        const markdownResponse = formatResponseToMarkdown(response);
+        updateMessage(loadingId, markdownResponse);
+        // Save with full transcript context (if available) so follow-up questions work
+        saveMessageToHistory('ai', markdownResponse, response.transcript);
+        updateLimitDisplay(); // Update counter
+
+      } catch (err) {
+        updateMessage(loadingId, `**Error:** ${err.message || "Something went wrong."}`);
+        showToast("Error processing request", "error");
+      } finally {
+        // Re-enable input
+        userInput.disabled = false;
+        sendBtn.style.pointerEvents = 'auto';
+        sendBtn.style.opacity = '1';
+        userInput.focus();
+      }
+    };
+
+    // Save Message to History
+    async function saveMessageToHistory(role, content, context = null) {
+        if (!currentUser) return;
+        
+        let isNewChat = false;
+        if (!currentChatId) {
+            currentChatId = Date.now().toString();
+            isNewChat = true;
+        }
+        
+        const docRef = doc(db, "users", currentUser.uid, "ai_chats", currentChatId);
+        const timestamp = Date.now();
+        const msgObj = {
+            role: role,
+            content: content,
+            timestamp: timestamp
+        };
+        if (context) msgObj.context = context;
+
+        // Update local history immediately (sync for API)
+        currentChatHistory.push(msgObj);
+
+        try {
+            const updatePayload = {
+                updatedAt: serverTimestamp(),
+                messages: arrayUnion(msgObj)
+            };
+            
+            // If new chat and user message, set title
+            if (isNewChat && role === 'user') {
+                let title = content.replace(/[#*_`]/g, '').substring(0, 30); // Clean markdown chars
+                if (title.length === 0) title = "New Chat";
+                if (content.length > 30) title += "...";
+                updatePayload.title = title;
+                updatePayload.createdAt = serverTimestamp();
+            }
+
+            await setDoc(docRef, updatePayload, { merge: true });
+            
+            // If it was a new chat, add to sidebar
+            if (isNewChat) {
+                document.querySelectorAll('.history-item').forEach(el => el.classList.remove('active'));
+                
+                // Use helper to ensure consistent UI (including delete button)
+                createChatListItem(currentChatId, updatePayload.title || 'New Chat', true);
+                
+                // Set active class on the newly created item
+                const newItem = document.getElementById(`chat-item-${currentChatId}`);
+                if (newItem) newItem.classList.add('active');
+            }
+        } catch (e) {
+            console.error("Error saving history", e);
+        }
+    }
+
+    // Helper to Trigger Video Summary
+    window.triggerVideoSummary = (url) => {
+        // Prevent accidental form submits or propagation
+        if (window.event) {
+            window.event.preventDefault();
+            window.event.stopPropagation();
+        }
+
+        const input = document.getElementById('user-input');
+        input.value = url;
+        input.focus();
+        
+        // Use timeout to ensure no race conditions with UI events
+        setTimeout(() => {
+            window.handleSend();
+        }, 10);
+    };
+
+    // Append Message to UI
+    function appendMessage(role, content, save = true, isLoading = false) {
+      // Normalize role for UI (handle 'assistant' from API/History)
+      if (role === 'assistant') role = 'ai';
+
+      if (save) saveMessageToHistory(role, content);
+
+      const id = 'msg-' + Date.now() + Math.random().toString(16).slice(2);
+      const div = document.createElement('div');
+      div.className = `message ${role}`;
+      div.id = id;
+      
+      let innerHTML = '';
+      if (isLoading) {
+          innerHTML = `
+            <div class="typing-indicator">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>`;
+      } else {
+          // Parse Markdown
+          const rawHtml = marked.parse(content);
+          const sanitizedHtml = DOMPurify.sanitize(rawHtml);
+          innerHTML = sanitizedHtml;
+          
+          // Add Action Bar (only for AI and not loading)
+          if (role === 'ai') {
+              const contentSafe = encodeURIComponent(content);
+              innerHTML += `
+              <div class="message-actions">
+                  <button class="msg-action-btn" onclick="navigator.clipboard.writeText(decodeURIComponent('${contentSafe}'))" title="Copy">
+                      <i class="fas fa-copy"></i>
+                  </button>
+                  <button class="msg-action-btn" onclick="downloadPDF('${contentSafe}')" title="Download PDF">
+                      <i class="fas fa-file-pdf"></i>
+                  </button>
+              </div>`;
+          }
+      }
+
+      // Check for YouTube Links (Multiple) to show Thumbnails
+      const ytRegex = /(?:https?:\/\/)?(?:[\w-]+\.)?(?:youtube\.com|youtu\.?be)\/(?:watch\?v=|embed\/|v\/|shorts\/|)([\w-]{11})/g;
+      const matches = [...content.matchAll(ytRegex)];
+      const uniqueVideoIds = [...new Set(matches.map(m => m[1]))];
+
+      let videosHTML = '';
+      if (uniqueVideoIds.length > 0) {
+          // Grid layout for videos
+          videosHTML = `<div class="video-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:15px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05);">`;
+          
+          uniqueVideoIds.forEach(videoId => {
+              const url = `https://www.youtube.com/watch?v=${videoId}`;
+              videosHTML += `
+                  <div class="video-card" style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); transition:transform 0.2s;">
+                      <div style="position:relative; padding-bottom:56.25%; height:0;">
+                          <a href="${url}" target="_blank">
+                              <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" 
+                                   style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;" 
+                                   alt="Video Thumbnail">
+                              <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); 
+                                          background:rgba(0,0,0,0.7); width:40px; height:40px; border-radius:50%; 
+                                          display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.3);">
+                                  <i class="fas fa-play" style="color:white; font-size:1rem; margin-left:3px;"></i>
+                              </div>
+                          </a>
+                      </div>
+                      <div style="padding:10px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:500;">YouTube Video</span>
+                          <button type="button" onclick="event.preventDefault(); triggerVideoSummary('${url}')" 
+                                  style="background:var(--primary); color:white; border:none; border-radius:6px; padding:6px 10px; font-size:0.75rem; cursor:pointer; font-weight:500; display:flex; align-items:center; gap:5px; transition:opacity 0.2s;">
+                              <i class="fas fa-magic"></i> Summarize
+                          </button>
+                      </div>
+                  </div>
+              `;
+          });
+          
+          videosHTML += `</div>`;
+      }
+
+      div.innerHTML = `
+        <div class="message-content">
+          <div class="avatar">
+            ${(role === 'ai' || role === 'assistant') ? '<i class="fas fa-robot"></i>' : '<i class="fas fa-user"></i>'}
+          </div>
+          <div class="text">
+            ${innerHTML}
+            ${videosHTML}
+          </div>
+        </div>
+      `;
+      chatContainer.appendChild(div);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      
+      if (!isLoading) {
+          addCodeCopyButtons(id);
+      }
+      
+      return id;
+    }
+
+    function updateMessage(id, newContent) {
+      const msg = document.getElementById(id);
+      if (msg) {
+        const textContainer = msg.querySelector('.text');
+        
+        // Parse Markdown
+        const rawHtml = marked.parse(newContent);
+        const sanitizedHtml = DOMPurify.sanitize(rawHtml);
+        
+        let finalHtml = sanitizedHtml;
+        
+        // Re-add Action Bar
+        const contentSafe = encodeURIComponent(newContent);
+        finalHtml += `
+          <div class="message-actions">
+              <button class="msg-action-btn" onclick="navigator.clipboard.writeText(decodeURIComponent('${contentSafe}'))" title="Copy">
+                  <i class="fas fa-copy"></i>
+              </button>
+              <button class="msg-action-btn" onclick="downloadPDF('${contentSafe}')" title="Download PDF">
+                  <i class="fas fa-file-pdf"></i>
+              </button>
+          </div>`;
+
+        // Check for YouTube Links (Multiple) to show Thumbnails (Same logic as appendMessage)
+        const ytRegex = /(?:https?:\/\/)?(?:[\w-]+\.)?(?:youtube\.com|youtu\.?be)\/(?:watch\?v=|embed\/|v\/|shorts\/|)([\w-]{11})/g;
+        const matches = [...newContent.matchAll(ytRegex)];
+        const uniqueVideoIds = [...new Set(matches.map(m => m[1]))];
+
+        let videosHTML = '';
+        if (uniqueVideoIds.length > 0) {
+            // Grid layout for videos
+            videosHTML = `<div class="video-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:15px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05);">`;
+            
+            uniqueVideoIds.forEach(videoId => {
+                const url = `https://www.youtube.com/watch?v=${videoId}`;
+                videosHTML += `
+                    <div class="video-card" style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); transition:transform 0.2s;">
+                        <div style="position:relative; padding-bottom:56.25%; height:0;">
+                            <a href="${url}" target="_blank">
+                              <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" 
+                                   style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;" 
+                                   alt="Video Thumbnail">
+                              <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); 
+                                            background:rgba(0,0,0,0.7); width:40px; height:40px; border-radius:50%; 
+                                            display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.3);">
+                                    <i class="fas fa-play" style="color:white; font-size:1rem; margin-left:3px;"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="padding:10px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:500;">YouTube Video</span>
+                            <button type="button" onclick="event.preventDefault(); triggerVideoSummary('${url}')" 
+                                    style="background:var(--primary); color:white; border:none; border-radius:6px; padding:6px 10px; font-size:0.75rem; cursor:pointer; font-weight:500; display:flex; align-items:center; gap:5px; transition:opacity 0.2s;">
+                                <i class="fas fa-magic"></i> Summarize
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            videosHTML += `</div>`;
+        }
+
+        textContainer.innerHTML = finalHtml + videosHTML;
+        addCodeCopyButtons(id);
+        
+        // Scroll to bottom to ensure visibility
+        chatContainer.scrollTop = chatContainer.scrollHeight;
       }
     }
 
-    window.askAI = async function(){
-      const question=questionInput.value.trim();
-      if(!question){
-        statusBox.textContent="Please enter a question.";
-        return;
+    // Convert API Response to Markdown
+    function formatResponseToMarkdown(data) {
+      let markdown = '';
+      
+      // Removed Source display as per user request
+      // if (data.source) {
+      //   markdown += `> **Source:** ${data.source}\n\n`;
+      // }
+
+      if (data.extractedText || data.transcript) {
+        const text = data.extractedText || data.transcript;
+        markdown += `> **Context:** ${text.substring(0, 150)}...\n\n`;
       }
 
-      askBtn.disabled=true;
-      statusBox.textContent="Thinking…";
-      answerBox.style.display="none";
+      markdown += data.answer || data.message || "No answer provided.";
+      return markdown;
+    }
+    
+    // Kept for backward compatibility references if any, but implementation replaced
+    function formatResponse(data) {
+        return formatResponseToMarkdown(data);
+    }
 
-      try{
-        const res=await fetch("https://findmentor-backend.onrender.com/ask",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({question})
-        });
-
-        const data=await res.json();
-
-        if(data.success){
-          const sourceLabel=data.source==="dataset"?"📚 From Dataset":
-                            data.source==="solver"?"🔢 From Math Solver":
-                            "🤖 From AI";
-          answerBox.innerHTML=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">${sourceLabel}</div>${data.answer}`;
-          answerBox.style.display="block";
-          statusBox.textContent="";
-          await logAIUsage("text",{question,source:data.source||""});
-        }else{
-          statusBox.textContent=data.message||data.error||"Unable to process your question.";
-          answerBox.style.display="none";
-        }
-      }catch(err){
-        statusBox.textContent="Server error. Please make sure the backend server is running.";
-        answerBox.style.display="none";
-        console.error("Error:",err);
-      }finally{
-        askBtn.disabled=false;
-      }
+    // PDF Download (Global)
+    window.downloadPDF = function(contentEncoded) {
+      const content = decodeURIComponent(contentEncoded);
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      
+      doc.setFontSize(16);
+      doc.setTextColor(40, 40, 40);
+      doc.text("FindMentor AI Notes", 10, 10);
+      
+      doc.setFontSize(11);
+      const splitText = doc.splitTextToSize(content, 180);
+      doc.text(splitText, 10, 20);
+      
+      doc.save("FindMentor-AI-Notes.pdf");
     };
 
-    questionInput.addEventListener("keydown",e=>{
-      if(e.key==="Enter"&&!e.shiftKey&&!askBtn.disabled){
+    // Allow Enter key to send
+    userInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        window.askAI();
+        handleSend();
       }
     });
-
-    window.handleImageUpload=async function(event){
-      const file=event.target.files[0];
-      if(!file) return;
-
-      if(file.size>10*1024*1024){
-        statusBox.textContent="Image too large. Maximum size is 10MB.";
-        return;
-      }
-
-      askBtn.disabled=true;
-      statusBox.textContent="Processing image...";
-      answerBox.style.display="none";
-
-      try{
-        const formData=new FormData();
-        formData.append("image",file);
-
-        const res=await fetch("https://findmentor-backend.onrender.com/ask/image",{
-          method:"POST",
-          body:formData
-        });
-
-        const data=await res.json();
-
-        if(data.success){
-          const sourceLabel=data.source==="image"?"📷 From Image":
-                            data.source==="dataset"?"📚 From Dataset":
-                            data.source==="solver"?"🔢 From Math Solver":
-                            "🤖 From AI";
-          let answerHtml=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">${sourceLabel}</div>`;
-          
-          if(data.extractedText){
-            answerHtml+=`<div style="font-size: 13px; color: var(--muted); margin-bottom: 12px; padding: 8px; background: #f9fafb; border-radius: 6px;"><strong>Extracted:</strong> ${data.extractedText.substring(0, 200)}...</div>`;
-          }
-          
-          answerHtml+=data.answer;
-          answerBox.innerHTML=answerHtml;
-          answerBox.style.display="block";
-          statusBox.textContent="";
-          await logAIUsage("image",{question:data.extractedText||"",source:data.source||"image"});
-        }else{
-          statusBox.textContent=data.message||data.error||"Failed to process image.";
-          answerBox.style.display="none";
-        }
-      }catch(err){
-        statusBox.textContent="Error processing image. Please try again.";
-        answerBox.style.display="none";
-        console.error("Error:",err);
-      }finally{
-        askBtn.disabled=false;
-        event.target.value="";
-      }
-    };
-
-    window.handlePDFUpload=async function(event){
-      const file=event.target.files[0];
-      if(!file) return;
-
-      if(file.size>10*1024*1024){
-        statusBox.textContent="PDF too large. Maximum size is 10MB.";
-        return;
-      }
-
-      askBtn.disabled=true;
-      statusBox.textContent="Processing PDF...";
-      answerBox.style.display="none";
-
-      try{
-        const formData=new FormData();
-        formData.append("pdf",file);
-        
-        const question=questionInput.value.trim();
-        if(question){
-          formData.append("question",question);
-        }
-
-        const res=await fetch("https://findmentor-backend.onrender.com/ask/pdf",{
-          method:"POST",
-          body:formData
-        });
-
-        const data=await res.json();
-
-        if(data.success){
-          let answerHtml=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">📄 From PDF (${data.pdfInfo?.pages||0} pages)</div>`;
-          
-          if(data.questions&&data.questions.length>0){
-            answerHtml+=`<div style="margin-bottom: 12px;"><strong>Found ${data.questions.length} questions:</strong><ul style="margin: 8px 0; padding-left: 20px;">`;
-            data.questions.slice(0,5).forEach((q,i)=>{
-              answerHtml+=`<li style="margin: 4px 0; font-size: 14px;">${q.text.substring(0, 100)}...</li>`;
-            });
-            answerHtml+=`</ul></div>`;
-          }
-          
-          if(data.answer){
-            answerHtml+=data.answer;
-          }else if(data.fullText){
-            answerHtml+=`<div style="font-size: 14px; line-height: 1.6;">${data.fullText}</div>`;
-          }
-          
-          answerBox.innerHTML=answerHtml;
-          answerBox.style.display="block";
-          statusBox.textContent="";
-          await logAIUsage("pdf",{question:question||"",source:"pdf"});
-        }else{
-          statusBox.textContent=data.message||data.error||"Failed to process PDF.";
-          answerBox.style.display="none";
-        }
-      }catch(err){
-        statusBox.textContent="Error processing PDF. Please try again.";
-        answerBox.style.display="none";
-        console.error("Error:",err);
-      }finally{
-        askBtn.disabled=false;
-        event.target.value="";
-      }
-    };
-
-    window.handleAudioUpload=async function(event){
-      const file=event.target.files[0];
-      if(!file) return;
-
-      if(file.size>10*1024*1024){
-        statusBox.textContent="Audio too large. Maximum size is 10MB.";
-        return;
-      }
-
-      askBtn.disabled=true;
-      statusBox.textContent="Processing audio...";
-      answerBox.style.display="none";
-
-      try{
-        const formData=new FormData();
-        formData.append("audio",file);
-
-        const res=await fetch("https://findmentor-backend.onrender.com/ask/audio",{
-          method:"POST",
-          body:formData
-        });
-
-        const data=await res.json();
-
-        if(data.success){
-          const sourceLabel="🎤 From Audio";
-          let answerHtml=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">${sourceLabel}</div>`;
-
-          if(data.transcript){
-            answerHtml+=`<div style="font-size: 13px; color: var(--muted); margin-bottom: 12px; padding: 8px; background: #f9fafb; border-radius: 6px;"><strong>Transcript:</strong> ${data.transcript.substring(0, 200)}...</div>`;
-          }
-
-          if(data.answer){
-            answerHtml+=data.answer;
-          }else if(data.message){
-            answerHtml+=data.message;
-          }
-
-          answerBox.innerHTML=answerHtml;
-          answerBox.style.display="block";
-          statusBox.textContent="";
-          await logAIUsage("audio",{question:data.transcript||"",source:"audio"});
-        }else{
-          statusBox.textContent=data.message||data.error||"Failed to process audio.";
-          answerBox.style.display="none";
-        }
-      }catch(err){
-        statusBox.textContent="Error processing audio. Please try again.";
-        answerBox.style.display="none";
-        console.error("Error:",err);
-      }finally{
-        askBtn.disabled=false;
-        event.target.value="";
-      }
-    };
-
-    window.handleVideoUpload=async function(event){
-      const file=event.target.files[0];
-      if(!file) return;
-
-      if(file.size>10*1024*1024){
-        statusBox.textContent="Video too large. Maximum size is 10MB.";
-        return;
-      }
-
-      askBtn.disabled=true;
-      statusBox.textContent="Processing video...";
-      answerBox.style.display="none";
-
-      try{
-        const formData=new FormData();
-        formData.append("video",file);
-
-        const res=await fetch("https://findmentor-backend.onrender.com/ask/video",{
-          method:"POST",
-          body:formData
-        });
-
-        const data=await res.json();
-
-        if(data.success){
-          const sourceLabel="📹 From Video";
-          let answerHtml=`<div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">${sourceLabel}</div>`;
-
-          if(data.transcript){
-            answerHtml+=`<div style="font-size: 13px; color: var(--muted); margin-bottom: 12px; padding: 8px; background: #f9fafb; border-radius: 6px;"><strong>Transcript:</strong> ${data.transcript.substring(0, 200)}...</div>`;
-          }
-
-          if(data.answer){
-            answerHtml+=data.answer;
-          }else if(data.message){
-            answerHtml+=data.message;
-          }
-
-          answerBox.innerHTML=answerHtml;
-          answerBox.style.display="block";
-          statusBox.textContent="";
-          await logAIUsage("video",{question:data.transcript||"",source:"video"});
-        }else{
-          statusBox.textContent=data.message||data.error||"Failed to process video.";
-          answerBox.style.display="none";
-        }
-      }catch(err){
-        statusBox.textContent="Error processing video. Please try again.";
-        answerBox.style.display="none";
-        console.error("Error:",err);
-      }finally{
-        askBtn.disabled=false;
-        event.target.value="";
-      }
-    };
   </script>
-
 </body>
 </html>

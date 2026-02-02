@@ -27,8 +27,8 @@ export function classifyMathQuestion(question) {
   // Check for numbers with operations
   const hasMathExpression = /[\d+\-*/=()²³√∫∑]/.test(question);
   
-  // Check for variables (x, y, z, a, b, c, etc.)
-  const hasVariables = /[a-z]\s*[=+\-*/]|[=+\-*/]\s*[a-z]|\b(x|y|z|a|b|c|n|m|t)\b/i.test(question);
+  // Check for variables (x, y, z) - removed a,b,c,n,m,t as they are common words/units
+  const hasVariables = /[a-z]\s*[=+\-*/]|[=+\-*/]\s*[a-z]|\b(x|y|z)\b/i.test(question);
 
   if (hasMathKeyword || hasMathSymbol || (hasMathExpression && hasVariables)) {
     // Determine specific type if possible
@@ -41,7 +41,8 @@ export function classifyMathQuestion(question) {
     if (q.includes("matrix") || q.includes("determinant")) {
       return "linear_algebra";
     }
-    if (q.includes("trig") || q.includes("sin") || q.includes("cos") || q.includes("tan")) {
+    // Use word boundaries for short trig functions to avoid matching inside words (e.g. "important" matching "tan")
+    if (/\b(trig|sin|cos|tan|sec|csc|cot)\b/.test(q)) {
       return "trigonometry";
     }
     if (q.includes("geometry") || q.includes("area") || q.includes("volume") || q.includes("perimeter")) {

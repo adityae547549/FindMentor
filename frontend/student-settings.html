@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Settings | FindMentor</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+:root{
+  --bg:#f9fafb;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+  --accent:#4f46e5;
+  --premium:#f59e0b;
+}
+body{background:var(--bg);color:var(--text)}
+
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border)
+}
+.header-inner{
+  max-width:800px;
+  margin:auto;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center
+}
+.logo{font-weight:700}
+.logo span{color:var(--accent)}
+.back{
+  background:none;
+  border:1px solid var(--border);
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer
+}
+
+main{
+  max-width:800px;
+  margin:32px auto;
+  padding:0 20px
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px;
+  margin-bottom: 20px;
+}
+
+h1{margin-bottom:6px}
+p.subtitle{color:var(--muted);margin-bottom:24px}
+
+label{
+  font-size:.85rem;
+  color:var(--muted);
+  display:block;
+  margin-bottom:6px
+}
+input{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  margin-bottom:18px
+}
+
+button.save{
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer
+}
+
+#status{
+  margin-top:14px;
+  font-size:.9rem;
+  color:green;
+  display:none
+}
+
+.premium-badge {
+    background: var(--premium);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-left: 10px;
+    display: none;
+}
+
+/* ========== MODAL & TOAST ========== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+}
+.modal-box {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: modalFadeIn 0.2s ease-out;
+}
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+.modal-box h3 { margin: 0 0 10px 0; color: #111827; font-size: 1.25rem; }
+.modal-box p { color: #6b7280; margin: 0 0 20px 0; font-size: 0.95rem; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.modal-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+    font-weight: 500;
+}
+.modal-btn.cancel { background: transparent; color: #374151; border: 1px solid #d1d5db; }
+.modal-btn.confirm { background: #ef4444; color: white; }
+.modal-btn:hover { opacity: 0.9; }
+
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 3100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+}
+.toast {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    color: #1f2937;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 250px;
+    animation: toastSlideIn 0.3s ease-out forwards;
+    pointer-events: auto;
+}
+@keyframes toastSlideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.toast.error i { color: #ef4444; }
+.toast.success i { color: #10b981; }
+.toast.info i { color: #3b82f6; }
+</style>
+</head>
+
+<body>
+
+<!-- CONFIRMATION MODAL -->
+<div id="confirm-modal" class="modal-overlay" style="display: none;">
+  <div class="modal-box">
+    <h3 id="modal-title">Confirm Action</h3>
+    <p id="modal-msg">Are you sure?</p>
+    <div class="modal-actions">
+      <button class="modal-btn cancel" onclick="closeGenericModal()">Cancel</button>
+      <button class="modal-btn confirm" id="modal-confirm-btn">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container" class="toast-container"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Find<span>Mentor</span> <span id="planBadge" class="premium-badge">FREE</span></div>
+    <button class="back" onclick="goBack()">← Dashboard</button>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <h1>Profile Settings</h1>
+    <p class="subtitle">Manage your student profile.</p>
+
+    <!-- NAME -->
+    <label>Full Name</label>
+    <input id="name" placeholder="Your name" />
+
+    <!-- AVATAR (Emoji) -->
+    <label>Avatar (Emoji)</label>
+    <input id="avatar" placeholder="e.g. 👨‍🎓, 👩‍💻, 🚀" maxlength="4" />
+
+    <button class="save" onclick="saveSettings()">Save Changes</button>
+    <div id="status">✅ Settings saved successfully</div>
+  </div>
+
+  <!-- AI USAGE STATS -->
+  <div class="card">
+      <h1>AI Usage Stats</h1>
+      <p class="subtitle">Your daily interaction with the AI Assistant.</p>
+      <div style="font-size:1.2rem; font-weight:600; display:flex; align-items:center; gap:10px;">
+          <span id="ai-usage-count">Loading...</span> <span id="ai-usage-limit" style="font-size:1rem; color:var(--muted);">/ 18 Requests</span>
+      </div>
+      <div style="margin-top:10px; height:8px; background:#f3f4f6; border-radius:4px; overflow:hidden;">
+          <div id="ai-usage-bar" style="width:0%; height:100%; background:var(--accent); transition:width 0.5s;"></div>
+      </div>
+      <p style="margin-top:8px; font-size:0.85rem; color:var(--muted);">Resets daily at midnight.</p>
+  </div>
+
+  <div class="card" style="border-color: var(--premium);">
+      <h2 style="color:var(--premium); margin-bottom:10px;">👑 Membership Plan</h2>
+      <p style="margin-bottom:16px; color:var(--muted);">Manage your subscription and plan benefits.</p>
+      
+      <div id="premium-actions">
+          <button class="save" style="background:var(--premium); width:100%;" onclick="togglePremium()">
+              Manage Plan
+          </button>
+      </div>
+  </div>
+
+  <div class="card">
+      <h2 style="margin-bottom:10px;">Payment Status</h2>
+      <p style="margin-bottom:16px; color:var(--muted);">Your latest payment requests.</p>
+      <div id="payment-requests" style="display:grid; gap:10px;">
+          <div style="color:var(--muted);">Loading…</div>
+      </div>
+  </div>
+</main>
+
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, query, where, getDocs, Timestamp, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+  authDomain: "studio-6680101022-359df.firebaseapp.com",
+  projectId: "studio-6680101022-359df",
+  storageBucket: "studio-6680101022-359df.firebasestorage.app",
+  messagingSenderId: "938584797960",
+  appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser;
+const nameInput = document.getElementById("name");
+const avatarInput = document.getElementById("avatar");
+const statusDiv = document.getElementById("status");
+const planBadge = document.getElementById("planBadge");
+const premiumActions = document.getElementById("premium-actions");
+const aiUsageLimit = document.getElementById("ai-usage-limit");
+
+/* ========== UI HELPERS ========== */
+window.showToast = (msg, type = 'info') => {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i> <span>${msg}</span>`;
+    
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease-in forwards';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+};
+
+window.showModal = (title, msg, onConfirm) => {
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-msg').innerText = msg;
+    document.getElementById('confirm-modal').style.display = 'flex';
+    
+    const confirmBtn = document.getElementById('modal-confirm-btn');
+    // Remove old listeners to avoid duplicates
+    const newBtn = confirmBtn.cloneNode(true);
+    confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+    
+    newBtn.onclick = () => {
+        onConfirm();
+        closeGenericModal();
+    };
+};
+
+window.closeGenericModal = () => {
+    document.getElementById('confirm-modal').style.display = 'none';
+};
+
+/* AUTH GUARD + LOAD */
+onAuthStateChanged(auth, async user => {
+  if (!user) return location.href = "login.html";
+  currentUser = user;
+  let plan = 'free';
+  try {
+    const data = await loadSettings();
+    plan = data?.plan || (data?.isPremium ? 'plus' : 'free');
+  } catch (e) {
+    console.error("Settings load failed", e);
+  }
+  loadAIStats(plan);
+  loadPaymentRequests();
+});
+
+/* LOAD SETTINGS */
+async function loadSettings(){
+  const ref = doc(db,"users",currentUser.uid);
+  const snap = await getDoc(ref);
+  if(!snap.exists()) return;
+
+  const d = snap.data();
+  nameInput.value = d.name || "";
+  avatarInput.value = d.avatar || "👨‍🎓";
+
+  // Handle Member Since
+  const msDiv = document.getElementById("memberSince");
+  if (msDiv) {
+      if (d.createdAt) {
+          try {
+              const date = d.createdAt.toDate ? d.createdAt.toDate() : new Date(d.createdAt);
+              msDiv.innerText = date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
+          } catch(e) {
+              msDiv.innerText = "Unknown Date";
+          }
+      } else {
+          msDiv.innerText = "Early Member (Date not recorded)";
+      }
+  }
+  
+  updatePremiumUI(d.plan || (d.isPremium ? 'plus' : 'free'), d.paymentStatus);
+  return d;
+}
+
+function updatePremiumUI(plan, paymentStatus) {
+    const label = plan === "pro" ? "PRO" : plan === "plus" ? "PLUS" : "FREE";
+    planBadge.style.display = "inline-block";
+    planBadge.innerText = label;
+    let statusLine = "";
+    if (paymentStatus === "pending") {
+        statusLine = `<p style="color:var(--muted); font-weight:600; margin-bottom:10px;">Status: Payment verification pending</p>`;
+    } else if (paymentStatus === "paid") {
+        statusLine = `<p style="color:#10b981; font-weight:600; margin-bottom:10px;">Status: Payment received</p>`;
+    } else if (paymentStatus === "failed" || paymentStatus === "rejected") {
+        statusLine = `<p style="color:#ef4444; font-weight:600; margin-bottom:10px;">Status: Payment issue</p>`;
+    }
+    premiumActions.innerHTML = `
+        <p style="color:var(--muted); font-weight:600; margin-bottom:10px;">Current plan: ${label}</p>
+        ${statusLine}
+        <button class="save" style="background:var(--premium); width:100%;" onclick="togglePremium()">Manage Plan</button>
+    `;
+}
+
+function getPlanAndLimit(plan) {
+    const limits = { free: 18, plus: 100, pro: 300 };
+    return limits[plan] || limits.free;
+}
+
+async function loadAIStats(plan = "free") {
+    const countEl = document.getElementById("ai-usage-count");
+    if (countEl) countEl.textContent = "0";
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const todayTs = Timestamp.fromDate(today);
+    
+    try {
+        const q = query(collection(db, "aiLogs"), 
+            where("studentId", "==", currentUser.uid),
+            where("createdAt", ">=", todayTs)
+        );
+        const snap = await getDocs(q);
+        const count = snap.size;
+        
+        if (countEl) countEl.textContent = count;
+        const limit = getPlanAndLimit(plan);
+        if (aiUsageLimit) aiUsageLimit.textContent = `/ ${limit} Requests`;
+        const percent = Math.min((count / limit) * 100, 100);
+        document.getElementById("ai-usage-bar").style.width = `${percent}%`;
+        
+        if (count >= limit) {
+            document.getElementById("ai-usage-bar").style.background = "#ef4444";
+        }
+    } catch (e) {
+        console.error("Error loading stats", e);
+        if (countEl) countEl.textContent = "0";
+        if (aiUsageLimit) aiUsageLimit.textContent = `/ ${getPlanAndLimit(plan)} Requests`;
+        document.getElementById("ai-usage-bar").style.width = "0%";
+        showToast("AI usage stats unavailable. Check Firestore rules.", "error");
+    }
+}
+
+async function loadPaymentRequests() {
+    const container = document.getElementById("payment-requests");
+    if (!container || !currentUser) return;
+    try {
+        const q = query(
+            collection(db, "paymentRequests"),
+            where("userId", "==", currentUser.uid),
+            orderBy("createdAt", "desc"),
+            limit(5)
+        );
+        const snap = await getDocs(q);
+        if (snap.empty) {
+            container.innerHTML = `<div style="color:var(--muted);">No payment requests yet.</div>`;
+            return;
+        }
+        const rows = snap.docs.map(d => {
+            const data = d.data();
+            const status = (data.status || "pending").toUpperCase();
+            const amount = data.amount ? `₹${data.amount}` : "";
+            const plan = data.plan ? data.plan.toUpperCase() : "";
+            let color = "#f59e0b";
+            if (status === "PAID") color = "#10b981";
+            if (status === "REJECTED" || status === "FAILED") color = "#ef4444";
+            return `
+                <div style="border:1px solid var(--border); border-radius:10px; padding:12px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                    <div>
+                        <div style="font-weight:600;">${plan} ${amount}</div>
+                        <div style="color:var(--muted); font-size:0.85rem;">${data.payerUpiId || "UPI ID not provided"}</div>
+                    </div>
+                    <div style="font-weight:700; color:${color};">${status}</div>
+                </div>
+            `;
+        });
+        container.innerHTML = rows.join("");
+    } catch (e) {
+        console.error("Payment requests load failed", e);
+        container.innerHTML = `<div style="color:#ef4444;">Unable to load payment requests.</div>`;
+    }
+}
+
+/* SAVE SETTINGS */
+window.saveSettings = async () => {
+  if (!nameInput.value.trim()) {
+    showToast("Name cannot be empty", "error");
+    return;
+  }
+
+  await setDoc(
+    doc(db,"users",currentUser.uid),
+    {
+      name: nameInput.value.trim(),
+      avatar: avatarInput.value.trim() || "👨‍🎓",
+      // preserve role and other fields via merge
+    },
+    { merge:true }
+  );
+
+  showToast("Settings saved successfully", "success");
+};
+
+window.togglePremium = () => {
+    window.location.href = "plans.html";
+};
+
+/* NAV */
+window.goBack = () => location.href = "dashboard.html";
+</script>
+
+</body>
+</html>

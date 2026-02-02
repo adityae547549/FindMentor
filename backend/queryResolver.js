@@ -5,9 +5,25 @@ import { classifyMathQuestion } from "./solver/classifier.js";
 import { solveAlgebra } from "./solver/algebra.js";
 import { solveIntegral } from "./solver/integrals.js";
 import { detectLanguage } from "./languageDetector.js";
+import { findLearnedAnswer, learnAnswer } from "./learningSystem.js";
 
 export async function resolveQuery(question, options = {}) {
-  const { context = null, language = null } = options;
+  const { context = null, language = null, skipMath = false, history = null, systemPrompt = null } = options;
+  
+  // 0️⃣ Check Learned Memory (Self-Learning)
+  // Only check memory if no specific context is provided (generic questions)
+  if (!context) {
+      const learned = findLearnedAnswer(question);
+      if (learned) {
+          console.log(`🧠 Memory Hit: "${question.substring(0,20)}..."`);
+          return {
+              success: true,
+              source: "memory",
+              answer: learned.answer
+          };
+      }
+  }
+
   // 1️⃣ Try dataset first
   const result = searchData(question);
 
@@ -19,9 +35,14 @@ export async function resolveQuery(question, options = {}) {
     };
   }
 
-  // 2️⃣ Check if it's a math question
-  const mathType = classifyMathQuestion(question);
-  const isMathProblem = mathType !== "unknown";
+  // 2️⃣ Check if it's a math question (unless skipped)
+  let isMathProblem = false;
+  let mathType = "unknown";
+
+  if (!skipMath) {
+      mathType = classifyMathQuestion(question);
+      isMathProblem = mathType !== "unknown";
+  }
   
   // Try specialized solvers first (if available)
   if (mathType === "algebra") {
@@ -55,7 +76,8 @@ export async function resolveQuery(question, options = {}) {
       const aiAnswer = await askAI(question, {
         isMathProblem: true,
         language: detectedLang,
-        context
+        context,
+        history
       });
       
       if (aiAnswer && aiAnswer.includes("Sorry")) {
@@ -92,7 +114,8 @@ export async function resolveQuery(question, options = {}) {
     const aiAnswer = await askAI(question, {
       isMathProblem: false,
       language: detectedLang,
-      context
+      context,
+      history
     });
     
     // Check if AI returned an error message
@@ -103,6 +126,11 @@ export async function resolveQuery(question, options = {}) {
         error: aiAnswer,
         message: "AI service unavailable. Please try a different question or check your API configuration."
       };
+    }
+
+    // Learn this answer (if no context was provided, it's general knowledge)
+    if (!context && !history) {
+        learnAnswer(question, aiAnswer, "ai");
     }
 
     return {

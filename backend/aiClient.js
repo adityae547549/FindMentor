@@ -57,7 +57,9 @@ export async function askAI(question, options = {}) {
   const {
     isMathProblem = false,
     language = null,
-    context = null // Additional context from PDF/image
+    context = null, // Additional context from PDF/image
+    history = null, // Conversation history
+    systemPrompt: customSystemPrompt = null // Optional custom system prompt
   } = options;
 
   try {
@@ -67,7 +69,13 @@ export async function askAI(question, options = {}) {
     // Build system prompt
     let systemPrompt = "";
     
-    if (isMathProblem) {
+    if (customSystemPrompt) {
+      // If custom prompt is provided, use it (and optionally append language instructions)
+      systemPrompt = customSystemPrompt;
+      if (detectedLang.code !== "en") {
+        systemPrompt += `\n\nRespond in ${detectedLang.language} (${detectedLang.code}).`;
+      }
+    } else if (isMathProblem) {
       systemPrompt = `You are an expert mathematics tutor. When solving math problems:
 1. Show step-by-step solutions clearly
 2. Explain each step briefly
@@ -78,6 +86,10 @@ export async function askAI(question, options = {}) {
 7. Use clear formatting with line breaks between steps
 8. Be concise - do not repeat steps or explanations
 9. Once you reach the final answer, stop. Do not repeat calculations.
+10. At the very end, suggest 2-3 relevant YouTube videos.
+    - PREFER specific video URLs if you know them (e.g., popular educational channels like CrashCourse, Khan Academy, etc.).
+    - Format: [Watch: {Title}](https://www.youtube.com/watch?v={VideoID})
+    - If you don't know a specific URL, use a search link: [Search: {Topic}](https://www.youtube.com/results?search_query={Query})
 
 IMPORTANT: Provide a complete solution, but be concise. Do NOT repeat the same step or calculation multiple times.`;
       
@@ -88,7 +100,13 @@ IMPORTANT: Provide a complete solution, but be concise. Do NOT repeat the same s
     } else {
       // Multi-lingual support for general questions
       systemPrompt = getMultiLingualPrompt(detectedLang);
-      systemPrompt += "\n\nYou are an NCERT-aligned educational AI. Answer clearly and simply.";
+      systemPrompt += "\n\nYou are an NCERT-aligned educational AI. Your purpose is STRICTLY educational. \n" +
+      "1. Only answer questions related to school curriculum (Class 6-12), science, math, history, geography, languages, and general knowledge.\n" +
+      "2. If a user asks about entertainment, movies, gossip, or inappropriate topics, politely refuse and redirect them to studying.\n" +
+      "3. Use simple language suitable for students.\n" +
+      "4. Do not provide code unless it's for Computer Science subjects.\n" +
+      "5. Answer clearly and simply.\n" +
+      "6. At the end of your explanation, suggest 2-3 relevant YouTube videos. Prefer specific video URLs (https://www.youtube.com/watch?v=...) if known, otherwise use search links.";
     }
     
     // Add context if provided (from PDF/image)
@@ -99,18 +117,28 @@ IMPORTANT: Provide a complete solution, but be concise. Do NOT repeat the same s
     // Choose model based on input type
     const model = context ? "llama-3.1-8b-instant" : "llama-3.1-8b-instant";
 
+    // Construct messages array
+    const messages = [
+      {
+        role: "system",
+        content: systemPrompt
+      }
+    ];
+
+    // Add conversation history if provided
+    if (history && Array.isArray(history)) {
+      messages.push(...history);
+    }
+
+    // Add current user question
+    messages.push({
+      role: "user",
+      content: question
+    });
+
     const completion = await groq.chat.completions.create({
       model: model,
-      messages: [
-        {
-          role: "system",
-          content: systemPrompt
-        },
-        {
-          role: "user",
-          content: question
-        }
-      ],
+      messages: messages,
       temperature: isMathProblem ? 0.1 : 0.3, // Lower temperature for math = more precise
       max_tokens: isMathProblem ? 1500 : 2000, // Limit tokens to prevent repetition
       stop: [] // Can add stop sequences if needed

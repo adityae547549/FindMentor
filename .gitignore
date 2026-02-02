@@ -4,3 +4,7 @@ backend/.env
 uploads/
 *.log
 .DS_Store
+*.traineddata
+backend/node_modules/
+.firebase/
+backend/.git_backup/

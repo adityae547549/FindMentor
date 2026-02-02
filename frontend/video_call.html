@@ -5,20 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Call | FindMentor</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Toast */
+        .toast-container {
+            position: fixed; top: 20px; right: 20px; z-index: 3000;
+            display: flex; flex-direction: column; gap: 10px; pointer-events: none;
+        }
+        .toast {
+            background: #fff; border-radius: 8px; padding: 12px 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px;
+            animation: slideIn 0.3s ease-out; pointer-events: auto; color: #333;
+        }
+        .toast.error { border-left: 4px solid #ef4444; }
+        .toast.success { border-left: 4px solid #10b981; }
+        .toast.info { border-left: 4px solid #3b82f6; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        
+        /* Generic Modal */
+        .generic-modal-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+            display: none; align-items: center; justify-content: center; z-index: 2000;
+        }
+        .generic-modal {
+            background: #fff; padding: 24px; border-radius: 12px; max-width: 400px; width: 90%;
+            text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        .generic-modal h3 { margin-bottom: 12px; color: #111; }
+        .generic-modal p { color: #555; margin-bottom: 20px; }
+        .generic-modal button {
+            padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600;
+        }
+        .modal-btn-primary { background: #4f46e5; color: white; }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background: #1a1a1a; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
         
+        /* VIDEO GRID */
         #videos-container {
             flex: 1;
             position: relative;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             background: #000;
+            padding: 10px;
+            gap: 10px;
         }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #222;
+        }
+        
+        /* Dynamic sizing for grid */
+        body.users-1 .video-wrapper { width: 100%; height: 100%; }
+        body.users-2 .video-wrapper { width: 48%; height: auto; aspect-ratio: 16/9; }
+        body.users-3 .video-wrapper, body.users-4 .video-wrapper { width: 48%; height: 48%; }
 
         video {
             width: 100%;
@@ -26,32 +77,28 @@
             object-fit: cover;
         }
 
-        #remote-video {
-            width: 100%;
-            height: 100%;
-        }
-
-        #local-video {
+        /* Local video (Picture-in-Picture style if only 1 remote, else part of grid) */
+        #local-video-wrapper {
             position: absolute;
             bottom: 20px;
             right: 20px;
             width: 200px;
             height: 150px;
-            background: #333;
             border-radius: 10px;
             border: 2px solid #fff;
-            object-fit: cover;
             z-index: 10;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-
+        
         #controls {
             height: 80px;
             background: #222;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
+            padding: 0 20px;
+            z-index: 20;
         }
 
         .control-btn {
@@ -67,14 +114,29 @@
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
+            position: relative;
         }
 
         .control-btn:hover { background: #555; }
-        
+        .control-btn.active { background: #fff; color: #000; }
         .btn-danger { background: #ef4444; }
         .btn-danger:hover { background: #dc2626; }
         
-        .btn-active { background: #fff; color: #000; }
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
 
         #room-info {
             position: absolute;
@@ -82,62 +144,227 @@
             left: 20px;
             background: rgba(0,0,0,0.6);
             color: white;
-            padding: 10px 15px;
+            padding: 8px 15px;
             border-radius: 8px;
             z-index: 20;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* CHAT SIDEBAR */
+        #chat-sidebar {
+            position: absolute;
+            top: 0;
+            right: -320px;
+            width: 320px;
+            height: calc(100% - 80px); /* subtract controls height */
+            background: #fff;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            z-index: 15;
+        }
+        #chat-sidebar.open { right: 0; }
+
+        .chat-header {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background: #f9fafb;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .chat-input-area {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 8px;
+        }
+        .chat-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+        }
+        .chat-msg {
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 85%;
+            font-size: 0.9rem;
+            word-wrap: break-word;
+        }
+        .chat-msg.mine {
+            background: #4f46e5;
+            color: white;
+            align-self: flex-end;
+        }
+        .chat-msg.others {
+            background: #e5e7eb;
+            color: #111827;
+            align-self: flex-start;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000;
+        }
+        .modal {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 450px;
+            text-align: center;
+        }
+        .modal h2 { margin-bottom: 15px; color: #111; }
+        .modal p { color: #555; margin-bottom: 25px; line-height: 1.5; }
+        .modal button {
+            background: #4f46e5; color: white;
+            border: none; padding: 12px 24px;
+            border-radius: 8px; cursor: pointer;
+            font-weight: 600; font-size: 1rem;
         }
 
         /* Mobile Responsive */
         @media (max-width: 600px) {
-            #local-video {
-                width: 120px;
-                height: 90px;
-                bottom: 100px;
+            #local-video-wrapper {
+                width: 100px;
+                height: 75px;
+                bottom: 90px;
                 right: 10px;
             }
+            #chat-sidebar { width: 100%; height: 100%; z-index: 25; }
+            .modal { width: 90%; }
         }
     </style>
-    <!-- Add FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div id="room-info">
-        <i class="fas fa-hashtag"></i> Meeting ID: <span id="meeting-id">Loading...</span>
+    <!-- Toast & Generic Modal -->
+    <div id="toast-container" class="toast-container"></div>
+    <div id="generic-modal" class="generic-modal-overlay">
+        <div class="generic-modal">
+            <h3 id="generic-modal-title">Title</h3>
+            <p id="generic-modal-msg">Message</p>
+            <button class="modal-btn-primary" onclick="closeGenericModal()">OK</button>
+        </div>
     </div>
 
+    <!-- DISCLAIMER MODAL -->
+    <div id="disclaimer-modal" class="modal-overlay">
+        <div class="modal">
+            <h2>⚠️ Important Notice</h2>
+            <p>All the mentors presented here are in real life so we recommend you to create a mentor account yourself to test the video call feature properly.</p>
+            <button onclick="acceptDisclaimer()">I Understand, Start Call</button>
+        </div>
+    </div>
+
+    <!-- ROOM INFO -->
+    <div id="room-info">
+        <i class="fas fa-hashtag"></i> ID: <span id="meeting-id">...</span>
+        <span style="margin-left:15px; border-left:1px solid #aaa; padding-left:15px;" id="timer">00:00</span>
+    </div>
+
+    <!-- VIDEOS -->
     <div id="videos-container">
-        <video id="remote-video" autoplay playsinline></video>
+        <!-- Remote videos go here -->
+    </div>
+
+    <!-- LOCAL VIDEO (Floating) -->
+    <div id="local-video-wrapper">
         <video id="local-video" autoplay playsinline muted></video>
     </div>
 
+    <!-- CHAT SIDEBAR -->
+    <div id="chat-sidebar">
+        <div class="chat-header">
+            In-Call Chat
+            <button onclick="toggleChat()" style="background:none;border:none;cursor:pointer">✕</button>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <div style="text-align:center;color:#999;font-size:0.8rem">Chat is encrypted and temporary.</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendChat()">
+            <button onclick="sendChat()" style="background:#4f46e5;color:white;border:none;padding:8px 12px;border-radius:6px"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- CONTROLS -->
     <div id="controls">
-        <button class="control-btn" id="mic-btn" onclick="toggleMic()" title="Toggle Microphone" aria-label="Toggle Microphone">
+        <button class="control-btn" id="mic-btn" onclick="toggleMic()" title="Mic">
             <i class="fas fa-microphone"></i>
         </button>
-        <button class="control-btn" id="camera-btn" onclick="toggleCamera()" title="Toggle Camera" aria-label="Toggle Camera">
+        <button class="control-btn" id="camera-btn" onclick="toggleCamera()" title="Camera">
             <i class="fas fa-video"></i>
         </button>
-        <button class="control-btn" id="switch-cam-btn" onclick="switchCamera()" title="Switch Camera" aria-label="Switch Camera">
+        <button class="control-btn" id="switch-cam-btn" onclick="switchCamera()" title="Switch Camera">
             <i class="fas fa-sync"></i>
         </button>
-        <button class="control-btn btn-danger" onclick="endCall()" title="End Call" aria-label="End Call">
+        <button class="control-btn" id="bandwidth-btn" onclick="toggleBandwidth()" title="Low Bandwidth Mode">
+            <i class="fas fa-signal"></i>
+        </button>
+        <button class="control-btn" id="chat-btn" onclick="toggleChat()" title="Chat">
+            <i class="fas fa-comment-alt"></i>
+            <span id="chat-badge" class="badge">!</span>
+        </button>
+        <button class="control-btn" style="background:#f59e0b" onclick="reconnect()" title="Reconnect">
+            <i class="fas fa-wifi"></i>
+        </button>
+        <button class="control-btn btn-danger" onclick="endCall()" title="End Call">
             <i class="fas fa-phone-slash"></i>
         </button>
     </div>
 
-    <script>
-        const socket = io('https://findmentor-backend.onrender.com', { transports: ['websocket', 'polling'] }); // Connect to root path
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { 
+            getFirestore, doc, getDoc, setDoc, deleteDoc, addDoc, collection, 
+            onSnapshot, query, where, serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+          authDomain: "studio-6680101022-359df.firebaseapp.com",
+          projectId: "studio-6680101022-359df",
+          storageBucket: "studio-6680101022-359df.firebasestorage.app",
+          messagingSenderId: "938584797960",
+          appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
         const localVideo = document.getElementById('local-video');
-        const remoteVideo = document.getElementById('remote-video');
+        const videosContainer = document.getElementById('videos-container');
         const meetingIdSpan = document.getElementById('meeting-id');
+        const chatSidebar = document.getElementById('chat-sidebar');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatBadge = document.getElementById('chat-badge');
 
         let localStream;
-        let peerConnection;
+        let peers = {}; // userId -> { connection, videoEl }
         let roomId;
+        let myId = null;
         let isAudioEnabled = true;
         let isVideoEnabled = true;
-        let currentFacingMode = 'user'; // 'user' (front) or 'environment' (back)
+        let currentFacingMode = 'user';
+        let participantRef = null;
 
         // WebRTC Config
         const rtcConfig = {
@@ -147,17 +374,218 @@
             ]
         };
 
-        // Get Room ID from URL
+        let callStartTime = null;
+        let timerInterval = null;
+        let isLowBandwidth = false;
+
+        // Get Room ID
         const urlParams = new URLSearchParams(window.location.search);
         roomId = urlParams.get('room');
         if (!roomId) {
-            alert('No meeting ID provided!');
-            window.location.href = 'dashboard.html';
+            showModal('Error', 'No meeting ID provided!');
+            const originalClose = window.closeGenericModal;
+            window.closeGenericModal = () => {
+                window.location.href = 'dashboard.html';
+                window.closeGenericModal = originalClose;
+            };
         }
         meetingIdSpan.textContent = roomId;
 
-        // Initialize Call
+        // Auth Listener
+        onAuthStateChanged(auth, async user => {
+            if (user) {
+                myId = user.uid;
+                const docRef = doc(db, "users", user.uid);
+                const snap = await getDoc(docRef);
+                if (snap.exists() && snap.data().isPremium) {
+                    window.isPremium = true;
+                    console.log("User is premium");
+                }
+            } else {
+                // Allow anonymous for testing or require login?
+                // For now, generate random ID if not logged in (fallback)
+                myId = 'anon_' + Math.random().toString(36).substr(2, 9);
+            }
+        });
+
+        window.showToast = (msg, type = 'info') => {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<span>${msg}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 4000);
+        };
+
+        window.showModal = (title, msg) => {
+            document.getElementById('generic-modal-title').textContent = title;
+            document.getElementById('generic-modal-msg').textContent = msg;
+            document.getElementById('generic-modal').style.display = 'flex';
+        };
+        
+        window.closeGenericModal = () => {
+            document.getElementById('generic-modal').style.display = 'none';
+        };
+
+        window.acceptDisclaimer = function() {
+            document.getElementById('disclaimer-modal').style.display = 'none';
+            init();
+            startTimer();
+        }
+
+        // --- CONTROLS ---
+        window.toggleMic = function() {
+            if (!localStream) return;
+            const track = localStream.getAudioTracks()[0];
+            if (track) {
+                isAudioEnabled = !isAudioEnabled;
+                track.enabled = isAudioEnabled;
+                const btn = document.getElementById('mic-btn');
+                btn.innerHTML = isAudioEnabled ? '<i class="fas fa-microphone"></i>' : '<i class="fas fa-microphone-slash"></i>';
+                btn.classList.toggle('btn-danger', !isAudioEnabled);
+            }
+        };
+
+        window.toggleCamera = function() {
+            if (!localStream) return;
+            const track = localStream.getVideoTracks()[0];
+            if (track) {
+                isVideoEnabled = !isVideoEnabled;
+                track.enabled = isVideoEnabled;
+                const btn = document.getElementById('camera-btn');
+                btn.innerHTML = isVideoEnabled ? '<i class="fas fa-video"></i>' : '<i class="fas fa-video-slash"></i>';
+                btn.classList.toggle('btn-danger', !isVideoEnabled);
+            }
+        };
+
+        window.switchCamera = async function() {
+            if (!localStream) return;
+            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+            
+            // Stop current video track
+            localStream.getVideoTracks().forEach(track => track.stop());
+            
+            try {
+                const newStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: currentFacingMode },
+                    audio: isAudioEnabled
+                });
+                
+                // Replace track in local stream
+                const newVideoTrack = newStream.getVideoTracks()[0];
+                const oldVideoTrack = localStream.getVideoTracks()[0]; // It's stopped but index 0 remains?
+                // Actually we need to remove old and add new
+                localStream.removeTrack(localStream.getVideoTracks()[0]);
+                localStream.addTrack(newVideoTrack);
+                
+                localVideo.srcObject = localStream;
+                
+                // Replace track in all peer connections
+                Object.values(peers).forEach(({ connection }) => {
+                    const sender = connection.getSenders().find(s => s.track.kind === 'video');
+                    if (sender) sender.replaceTrack(newVideoTrack);
+                });
+
+                // Update UI state based on isVideoEnabled (new track is enabled by default)
+                newVideoTrack.enabled = isVideoEnabled;
+                
+            } catch (err) {
+                console.error("Failed to switch camera", err);
+                showToast("Failed to switch camera", "error");
+            }
+        };
+
+        window.toggleBandwidth = function() {
+            isLowBandwidth = !isLowBandwidth;
+            const btn = document.getElementById('bandwidth-btn');
+            btn.classList.toggle('active', isLowBandwidth);
+            
+            const constraint = isLowBandwidth ? { width: 320, height: 240, frameRate: 15 } : { width: 640, height: 480, frameRate: 30 };
+            
+            if (localStream) {
+                const track = localStream.getVideoTracks()[0];
+                if (track) track.applyConstraints(constraint).catch(e => console.error(e));
+            }
+            showToast(isLowBandwidth ? "Low Bandwidth Mode On" : "Low Bandwidth Mode Off", "info");
+        };
+
+        window.toggleChat = function() {
+            chatSidebar.classList.toggle('open');
+            if (chatSidebar.classList.contains('open')) {
+                chatBadge.style.display = 'none';
+            }
+        };
+
+        window.reconnect = function() {
+            // Simple reload for now, or could try to re-init signaling
+            window.location.reload();
+        };
+
+        window.endCall = async function() {
+            if (participantRef) await deleteDoc(participantRef);
+            if (localStream) localStream.getTracks().forEach(t => t.stop());
+            window.location.href = 'dashboard.html';
+        };
+
+        window.sendChat = async function() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            input.value = '';
+            addMessage(text, 'mine');
+            
+            // Send to all peers via signaling collection (simpler than data channels for now)
+            // Or use a 'messages' subcollection in Firestore
+            try {
+                await addDoc(collection(db, 'calls', roomId, 'messages'), {
+                    senderId: myId,
+                    text: text,
+                    timestamp: serverTimestamp()
+                });
+            } catch(e) {
+                console.error("Send chat failed", e);
+            }
+        };
+
+        function addMessage(text, type) {
+            const div = document.createElement('div');
+            div.className = `chat-msg ${type}`;
+            div.textContent = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function startTimer() {
+            callStartTime = Date.now();
+            timerInterval = setInterval(() => {
+                const diff = Math.floor((Date.now() - callStartTime) / 1000);
+                const m = Math.floor(diff / 60).toString().padStart(2, '0');
+                const s = (diff % 60).toString().padStart(2, '0');
+                const timerEl = document.getElementById('timer');
+                timerEl.textContent = `${m}:${s}`;
+
+                if (!window.isPremium) {
+                    if (diff === 3300) {
+                        timerEl.style.color = 'red';
+                        showToast("5 minutes remaining for free call.", "info");
+                    }
+                    if (diff >= 3600) {
+                        clearInterval(timerInterval);
+                        showModal("Limit Reached", "Free call limit reached. Upgrade to Premium for unlimited duration.");
+                        endCall();
+                    }
+                }
+            }, 1000);
+        }
+
         async function init() {
+            if (!myId) {
+                // Wait a bit for auth or just proceed
+                await new Promise(r => setTimeout(r, 500));
+                if(!myId) myId = 'anon_' + Math.random().toString(36).substr(2, 9);
+            }
+
             try {
                 localStream = await navigator.mediaDevices.getUserMedia({ 
                     video: { facingMode: currentFacingMode }, 
@@ -165,149 +593,169 @@
                 });
                 localVideo.srcObject = localStream;
 
-                socket.emit('join-room', roomId, socket.id);
+                // 1. Join Room
+                participantRef = doc(db, 'calls', roomId, 'participants', myId);
+                await setDoc(participantRef, { 
+                    joinedAt: serverTimestamp(),
+                    name: "User" // could fetch real name
+                });
+                
+                window.addEventListener('beforeunload', () => deleteDoc(participantRef));
 
-                socket.on('user-connected', userId => {
-                    console.log('User connected:', userId);
-                    createOffer(userId);
+                // 2. Listen for Participants
+                onSnapshot(collection(db, 'calls', roomId, 'participants'), snapshot => {
+                    snapshot.docChanges().forEach(change => {
+                        if (change.type === 'added') {
+                            const otherId = change.doc.id;
+                            if (otherId !== myId) {
+                                console.log('User found:', otherId);
+                                // Collision handling: Larger ID offers to Smaller ID
+                                // This ensures only one connection is created per pair
+                                if (myId > otherId) {
+                                    console.log('Initiating offer to', otherId);
+                                    createOffer(otherId);
+                                }
+                            }
+                        }
+                        if (change.type === 'removed') {
+                            const otherId = change.doc.id;
+                            if (peers[otherId]) {
+                                peers[otherId].videoEl.remove();
+                                peers[otherId].connection.close();
+                                delete peers[otherId];
+                                updateGrid();
+                                showToast('User left', 'info');
+                            }
+                        }
+                    });
                 });
 
-                socket.on('offer', handleOffer);
-                socket.on('answer', handleAnswer);
-                socket.on('ice-candidate', handleCandidate);
-                socket.on('user-disconnected', () => {
-                    if (remoteVideo.srcObject) {
-                        remoteVideo.srcObject.getTracks().forEach(track => track.stop());
-                        remoteVideo.srcObject = null;
-                    }
-                    alert('User disconnected');
+                // 3. Listen for Signals
+                const q = query(collection(db, 'calls', roomId, 'signals'), where('to', '==', myId));
+                onSnapshot(q, snapshot => {
+                    snapshot.docChanges().forEach(async change => {
+                        if (change.type === 'added') {
+                            const data = change.doc.data();
+                            const fromId = data.from;
+                            
+                            if (data.type === 'offer') {
+                                await handleOffer(data.offer, fromId);
+                            } else if (data.type === 'answer') {
+                                await handleAnswer(data.answer, fromId);
+                            } else if (data.type === 'candidate') {
+                                await handleCandidate(data.candidate, fromId);
+                            }
+                            
+                            // Delete processed signal
+                            await deleteDoc(change.doc.ref);
+                        }
+                    });
+                });
+                
+                // 4. Listen for Chat
+                const chatQ = query(collection(db, 'calls', roomId, 'messages'));
+                onSnapshot(chatQ, snapshot => {
+                     snapshot.docChanges().forEach(change => {
+                        if (change.type === 'added') {
+                            const data = change.doc.data();
+                            if (data.senderId !== myId) {
+                                addMessage(data.text, 'others');
+                                if (!chatSidebar.classList.contains('open')) {
+                                    chatBadge.style.display = 'flex';
+                                }
+                            }
+                        }
+                     });
                 });
 
             } catch (err) {
-                console.error('Error accessing media devices:', err);
-                alert('Could not access camera/microphone. Please check permissions.');
+                console.error('Error accessing media:', err);
+                showModal('Error', 'Could not access camera/microphone.');
             }
         }
 
         async function createPeerConnection(targetId) {
-            peerConnection = new RTCPeerConnection(rtcConfig);
+            if (peers[targetId]) return peers[targetId].connection;
 
-            localStream.getTracks().forEach(track => {
-                peerConnection.addTrack(track, localStream);
-            });
+            const pc = new RTCPeerConnection(rtcConfig);
+            
+            // Create Video Element
+            const wrapper = document.createElement('div');
+            wrapper.className = 'video-wrapper';
+            const vid = document.createElement('video');
+            vid.autoplay = true;
+            vid.playsInline = true;
+            wrapper.appendChild(vid);
+            videosContainer.appendChild(wrapper);
+            
+            peers[targetId] = { connection: pc, videoEl: wrapper };
+            updateGrid();
 
-            peerConnection.ontrack = event => {
-                remoteVideo.srcObject = event.streams[0];
+            localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+
+            pc.ontrack = event => {
+                vid.srcObject = event.streams[0];
             };
 
-            peerConnection.onicecandidate = event => {
+            pc.onicecandidate = event => {
                 if (event.candidate) {
-                    socket.emit('ice-candidate', {
-                        target: targetId,
-                        candidate: event.candidate
-                    });
+                    sendSignal(targetId, 'candidate', { candidate: event.candidate });
                 }
             };
+            
+            return pc;
         }
 
         async function createOffer(targetId) {
-            await createPeerConnection(targetId);
-            const offer = await peerConnection.createOffer();
-            await peerConnection.setLocalDescription(offer);
+            const pc = await createPeerConnection(targetId);
+            const offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
             
-            socket.emit('offer', {
-                target: targetId,
-                offer: offer,
-                sender: socket.id
-            });
+            await sendSignal(targetId, 'offer', { offer: offer });
         }
 
-        async function handleOffer(payload) {
-            await createPeerConnection(payload.sender);
-            await peerConnection.setRemoteDescription(new RTCSessionDescription(payload.offer));
-            const answer = await peerConnection.createAnswer();
-            await peerConnection.setLocalDescription(answer);
-
-            socket.emit('answer', {
-                target: payload.sender,
-                answer: answer
-            });
+        async function handleOffer(offer, fromId) {
+            const pc = await createPeerConnection(fromId);
+            await pc.setRemoteDescription(new RTCSessionDescription(offer));
+            const answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+            
+            await sendSignal(fromId, 'answer', { answer: answer });
         }
 
-        async function handleAnswer(payload) {
-            await peerConnection.setRemoteDescription(new RTCSessionDescription(payload.answer));
-        }
-
-        async function handleCandidate(payload) {
-            try {
-                await peerConnection.addIceCandidate(new RTCIceCandidate(payload.candidate));
-            } catch (e) {
-                console.error('Error adding received ice candidate', e);
+        async function handleAnswer(answer, fromId) {
+            const peer = peers[fromId];
+            if (peer) {
+                await peer.connection.setRemoteDescription(new RTCSessionDescription(answer));
             }
         }
 
-        // Controls
-        function toggleMic() {
-            isAudioEnabled = !isAudioEnabled;
-            localStream.getAudioTracks()[0].enabled = isAudioEnabled;
-            document.getElementById('mic-btn').innerHTML = isAudioEnabled ? 
-                '<i class="fas fa-microphone"></i>' : '<i class="fas fa-microphone-slash"></i>';
-            document.getElementById('mic-btn').classList.toggle('btn-danger', !isAudioEnabled);
-        }
-
-        function toggleCamera() {
-            isVideoEnabled = !isVideoEnabled;
-            localStream.getVideoTracks()[0].enabled = isVideoEnabled;
-            document.getElementById('camera-btn').innerHTML = isVideoEnabled ? 
-                '<i class="fas fa-video"></i>' : '<i class="fas fa-video-slash"></i>';
-            document.getElementById('camera-btn').classList.toggle('btn-danger', !isVideoEnabled);
-        }
-
-        async function switchCamera() {
-            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
-            
-            if (localStream) {
-                localStream.getTracks().forEach(track => track.stop());
+        async function handleCandidate(candidate, fromId) {
+            const peer = peers[fromId];
+            if (peer) {
+                await peer.connection.addIceCandidate(new RTCIceCandidate(candidate));
             }
+        }
 
+        async function sendSignal(toId, type, payload) {
             try {
-                localStream = await navigator.mediaDevices.getUserMedia({ 
-                    video: { facingMode: currentFacingMode }, 
-                    audio: true // Ensure audio is kept
+                await addDoc(collection(db, 'calls', roomId, 'signals'), {
+                    to: toId,
+                    from: myId,
+                    type: type,
+                    ...payload,
+                    timestamp: serverTimestamp()
                 });
-                
-                // Restore mute states
-                localStream.getAudioTracks()[0].enabled = isAudioEnabled;
-                localStream.getVideoTracks()[0].enabled = isVideoEnabled;
-
-                localVideo.srcObject = localStream;
-
-                // Replace track in peer connection if active
-                if (peerConnection) {
-                    const videoTrack = localStream.getVideoTracks()[0];
-                    const sender = peerConnection.getSenders().find(s => s.track.kind === 'video');
-                    if (sender) {
-                        sender.replaceTrack(videoTrack);
-                    }
-                }
-            } catch (err) {
-                console.error('Error switching camera:', err);
-                alert('Unable to switch camera');
+            } catch(e) {
+                console.error("Signal send failed", e);
             }
         }
 
-        function endCall() {
-            if (localStream) {
-                localStream.getTracks().forEach(track => track.stop());
-            }
-            if (peerConnection) {
-                peerConnection.close();
-            }
-            window.location.href = 'dashboard.html';
+        function updateGrid() {
+            const count = Object.keys(peers).length;
+            document.body.className = `users-${count + 1}`;
         }
-
-        // Start
-        init();
     </script>
+
 </body>
 </html>

@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "findmentor-aditya"
-  }
+    "default": "studio-6680101022-359df",
+    "FindMentor": "studio-6680101022-359df"
+  },
+  "targets": {},
+  "etags": {}
 }
