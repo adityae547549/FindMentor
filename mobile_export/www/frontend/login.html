@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 <title>Login | FindMentor</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
 
@@ -104,6 +104,10 @@ button{
 
 <body>
 
+<a href="../index.html" style="position:absolute; top:20px; left:20px; text-decoration:none; color:#333; font-weight:600; font-size:0.9rem; display:flex; align-items:center; gap:5px; z-index:1000;">
+  &larr; Back to Home
+</a>
+
 <div class="card">
   <h1>Welcome Back 👋</h1>
   <p>Login to FindMentor</p>
@@ -125,8 +129,10 @@ button{
   <div class="footer">
     Don’t have an account? <a href="signup.html">Sign up</a>
     <div style="margin-top:10px;"><a href="privacy.html" style="color:#6b7280;font-size:0.8rem;text-decoration:none;">Privacy Policy</a></div>
+  </div>    <div style="margin-top:20px; text-align:center; font-size:0.85rem;">
+      <a href="privacy.html" style="color:#666; text-decoration:none;">Privacy Policy</a>
+    </div>
   </div>
-</div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -134,7 +140,8 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   setPersistence,
   browserLocalPersistence,
   onAuthStateChanged
@@ -225,32 +232,65 @@ window.login = async () => {
 
     await checkRoleAndRedirect(user);
   } catch (err) {
-    alert(err.message);
+    const msg = getFriendlyErrorMessage(err.code);
+    alert(msg);
   }
 };
 
 /* GOOGLE LOGIN */
 window.googleAuth = async () => {
   try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-
-    await setDoc(
-      doc(db, "users", user.uid),
-      {
-        uid: user.uid,
-        email: user.email,
-        name: user.displayName || "",
-        lastLogin: serverTimestamp()
-      },
-      { merge: true }
-    );
-
-    await checkRoleAndRedirect(user);
+    await signInWithRedirect(auth, provider);
+    // The redirect will happen, and we'll handle the result in getRedirectResult or onAuthStateChanged
   } catch (err) {
-    alert(err.message);
+    const msg = getFriendlyErrorMessage(err.code);
+    alert(msg);
   }
 };
+
+// Handle Redirect Result
+getRedirectResult(auth)
+  .then(async (result) => {
+    if (result) {
+      const user = result.user;
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          uid: user.uid,
+          email: user.email,
+          name: user.displayName || "",
+          lastLogin: serverTimestamp()
+        },
+        { merge: true }
+      );
+      await checkRoleAndRedirect(user);
+    }
+  })
+  .catch((error) => {
+    console.error("Redirect Error:", error);
+    const msg = getFriendlyErrorMessage(error.code);
+    alert("Google Login Failed: " + msg);
+  });
+
+function getFriendlyErrorMessage(errorCode) {
+    switch (errorCode) {
+        case 'auth/invalid-email':
+            return 'Please enter a valid email address.';
+        case 'auth/user-disabled':
+            return 'This account has been disabled.';
+        case 'auth/user-not-found':
+        case 'auth/invalid-credential':
+            return 'Incorrect email or password.';
+        case 'auth/wrong-password':
+            return 'Incorrect password.';
+        case 'auth/too-many-requests':
+            return 'Too many failed attempts. Please try again later.';
+        case 'auth/network-request-failed':
+            return 'Network error. Please check your connection.';
+        default:
+            return 'An error occurred. Please try again.';
+    }
+}
 </script>
 
 </body>

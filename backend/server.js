@@ -97,13 +97,13 @@ app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
-// Self-ping to keep Render awake (every 3 minutes)
+// Self-ping to keep Render awake (every 2 minutes)
 const PING_URL = process.env.RENDER_EXTERNAL_URL ? `${process.env.RENDER_EXTERNAL_URL}/ping` : "http://localhost:3000/ping";
 setInterval(() => {
     fetch(PING_URL)
         .then(res => console.log(`🏓 Self-ping status: ${res.status}`))
         .catch(err => console.error(`❌ Self-ping failed: ${err.message}`));
-}, 3 * 60 * 1000);
+}, 2 * 60 * 1000);
 
 // Serve static files with caching (1 day)
 const staticOptions = {

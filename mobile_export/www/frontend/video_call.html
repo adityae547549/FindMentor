@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Video Call | FindMentor</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -365,6 +365,7 @@
         let isVideoEnabled = true;
         let currentFacingMode = 'user';
         let participantRef = null;
+        let currentUserRole = null;
 
         // WebRTC Config
         const rtcConfig = {
@@ -393,20 +394,22 @@
 
         // Auth Listener
         onAuthStateChanged(auth, async user => {
-            if (user) {
-                myId = user.uid;
-                const docRef = doc(db, "users", user.uid);
-                const snap = await getDoc(docRef);
-                if (snap.exists() && snap.data().isPremium) {
-                    window.isPremium = true;
-                    console.log("User is premium");
-                }
-            } else {
-                // Allow anonymous for testing or require login?
-                // For now, generate random ID if not logged in (fallback)
-                myId = 'anon_' + Math.random().toString(36).substr(2, 9);
-            }
-        });
+      if (user) {
+        myId = user.uid;
+        const docRef = doc(db, "users", user.uid);
+        const snap = await getDoc(docRef);
+        if (snap.exists()) {
+           const data = snap.data();
+           currentUserRole = data.role || 'student';
+           window.isPremium = data.isPremium || false;
+        }
+      } else {
+        // Allow anonymous for testing or require login?
+        // For now, generate random ID if not logged in (fallback)
+        myId = 'anon_' + Math.random().toString(36).substr(2, 9);
+        currentUserRole = 'student';
+      }
+    });
 
         window.showToast = (msg, type = 'info') => {
             const container = document.getElementById('toast-container');
@@ -460,6 +463,15 @@
 
         window.switchCamera = async function() {
             if (!localStream) return;
+            
+            // Check if multiple cameras exist
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            const videoInputs = devices.filter(d => d.kind === 'videoinput');
+            if (videoInputs.length < 2) {
+                showToast("Only one camera available.", "info");
+                return;
+            }
+
             currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
             
             // Stop current video track
@@ -473,27 +485,52 @@
                 
                 // Replace track in local stream
                 const newVideoTrack = newStream.getVideoTracks()[0];
-                const oldVideoTrack = localStream.getVideoTracks()[0]; // It's stopped but index 0 remains?
-                // Actually we need to remove old and add new
-                localStream.removeTrack(localStream.getVideoTracks()[0]);
-                localStream.addTrack(newVideoTrack);
                 
+                // Remove old tracks
+                const oldTracks = localStream.getVideoTracks();
+                oldTracks.forEach(t => {
+                    localStream.removeTrack(t);
+                    t.stop();
+                });
+                
+                localStream.addTrack(newVideoTrack);
                 localVideo.srcObject = localStream;
                 
                 // Replace track in all peer connections
                 Object.values(peers).forEach(({ connection }) => {
                     const sender = connection.getSenders().find(s => s.track.kind === 'video');
-                    if (sender) sender.replaceTrack(newVideoTrack);
+                    if (sender) {
+                        sender.replaceTrack(newVideoTrack);
+                    }
                 });
 
-                // Update UI state based on isVideoEnabled (new track is enabled by default)
+                // Update UI state based on isVideoEnabled
                 newVideoTrack.enabled = isVideoEnabled;
+                
+                showToast(`Switched to ${currentFacingMode === 'user' ? 'Front' : 'Back'} Camera`, "success");
                 
             } catch (err) {
                 console.error("Failed to switch camera", err);
                 showToast("Failed to switch camera", "error");
+                // Fallback to old track if possible? 
+                // For now just error out.
             }
         };
+
+        // Check for camera count on load to show/hide button
+        async function checkCameras() {
+            try {
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const videoInputs = devices.filter(d => d.kind === 'videoinput');
+                const switchBtn = document.getElementById('switch-cam-btn');
+                if (videoInputs.length < 2) {
+                    switchBtn.style.display = 'none';
+                }
+            } catch(e) {
+                console.warn("Camera check failed", e);
+            }
+        }
+        checkCameras();
 
         window.toggleBandwidth = function() {
             isLowBandwidth = !isLowBandwidth;
@@ -524,7 +561,13 @@
         window.endCall = async function() {
             if (participantRef) await deleteDoc(participantRef);
             if (localStream) localStream.getTracks().forEach(t => t.stop());
-            window.location.href = 'dashboard.html';
+            
+            // Redirect based on role
+            if (currentUserRole === 'mentor') {
+                window.location.href = 'mentor-dashboard.html';
+            } else {
+                window.location.href = 'dashboard.html';
+            }
         };
 
         window.sendChat = async function() {
@@ -670,7 +713,7 @@
 
             } catch (err) {
                 console.error('Error accessing media:', err);
-                showModal('Error', 'Could not access camera/microphone.');
+                showModal('Error', 'Could not access camera/microphone. Please ensure you have granted camera/microphone permissions in your browser or app settings.');
             }
         }
 

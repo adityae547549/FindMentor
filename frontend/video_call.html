@@ -399,7 +399,9 @@
         const docRef = doc(db, "users", user.uid);
         const snap = await getDoc(docRef);
         if (snap.exists()) {
-           currentUserRole = snap.data().role || 'student';
+           const data = snap.data();
+           currentUserRole = data.role || 'student';
+           window.isPremium = data.isPremium || false;
         }
       } else {
         // Allow anonymous for testing or require login?

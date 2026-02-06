@@ -15,6 +15,12 @@
       "**/*.env"
     ],
     "rewrites": [
+      { "source": "/login", "destination": "/frontend/login.html" },
+      { "source": "/signup", "destination": "/frontend/signup.html" },
+      { "source": "/dashboard", "destination": "/frontend/dashboard.html" },
+      { "source": "/mentor-dashboard", "destination": "/frontend/mentor-dashboard.html" },
+      { "source": "/video-call", "destination": "/frontend/video_call.html" },
+      { "source": "/ai", "destination": "/frontend/ai_window.html" },
       {
         "source": "**",
         "destination": "/index.html"

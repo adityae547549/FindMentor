@@ -777,6 +777,7 @@ let currentAiDocs = [];
 let currentChatDocs = [];
 
 function loadDashboard(uid){
+  loadGreeting(uid);
   // Optimize: Limit queries to recent 100 items to prevent freeze
   const mentorQ=query(
     collection(db,"mentorRequests"),
@@ -1124,7 +1125,7 @@ const mentors = {
   'ankit-kumar': {
     name: 'Ankit Kumar',
     specialty: 'English & Social Studies',
-    avatar: '�',
+    avatar: '📚',
     expertise: 'english social studies',
     systemPrompt: 'You are Ankit Kumar, an expert in English and Social Studies. Help the student with language and humanities.'
   },

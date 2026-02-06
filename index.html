@@ -512,6 +512,59 @@
         }
     </style>
 
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+        <div class="container text-center">
+            <div class="mb-3">
+                <a href="frontend/privacy.html" class="text-white-50 text-decoration-none mx-2">Privacy Policy</a>
+                <span class="text-white-50">|</span>
+                <a href="#" class="text-white-50 text-decoration-none mx-2">Terms of Service</a>
+            </div>
+            <p class="mb-0 text-white-50">&copy; 2026 FindMentor. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyD6gXvi6bmPd5GCKQ-1kZ66YPCb-A34tqo",
+          authDomain: "studio-6680101022-359df.firebaseapp.com",
+          projectId: "studio-6680101022-359df",
+          storageBucket: "studio-6680101022-359df.firebasestorage.app",
+          messagingSenderId: "938584797960",
+          appId: "1:938584797960:web:e57f885a6be9bb4deab2bd"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            // User is signed in, check role and redirect
+            const userRef = doc(db, "users", user.uid);
+            try {
+                const snap = await getDoc(userRef);
+                if (snap.exists()) {
+                    const role = snap.data().role;
+                    if (role === 'mentor') {
+                        window.location.href = 'frontend/mentor-dashboard.html';
+                    } else {
+                        window.location.href = 'frontend/dashboard.html';
+                    }
+                } else {
+                    // No role, maybe new user? Let them stay or go to login
+                     window.location.href = 'frontend/login.html';
+                }
+            } catch (e) {
+                console.error("Error fetching user role:", e);
+            }
+          }
+        });
+    </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 <title>Sign Up | FindMentor</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
 
@@ -145,6 +145,10 @@
 
 <body>
 
+<a href="../index.html" style="position:absolute; top:20px; left:20px; text-decoration:none; color:#333; font-weight:600; font-size:0.9rem; display:flex; align-items:center; gap:5px; z-index:1000;">
+  &larr; Back to Home
+</a>
+
 <div class="card">
   <h1>Create Account 🚀</h1>
   <p>Join FindMentor </p>
@@ -178,8 +182,10 @@
     <h3 id="generic-modal-title">Notification</h3>
     <p id="generic-modal-msg">Message goes here</p>
     <button onclick="closeGenericModal()">OK</button>
+  </div>    <div style="margin-top:20px; text-align:center; font-size:0.85rem;">
+      <a href="privacy.html" style="color:#666; text-decoration:none;">Privacy Policy</a>
+    </div>
   </div>
-</div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -187,7 +193,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   setPersistence,
   browserLocalPersistence,
   onAuthStateChanged
@@ -310,33 +317,61 @@ window.signup = async () => {
     // However, to be safe/faster:
     window.location.href = "roles.html";
   } catch (err) {
-    showModal("Sign Up Failed", err.message);
+    const msg = getFriendlyErrorMessage(err.code);
+    showModal("Sign Up Failed", msg);
   }
 };
 
 /* GOOGLE SIGNUP */
 window.googleAuth = async () => {
   try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-
-    await setDoc(
-      doc(db, "users", user.uid),
-      {
-        uid: user.uid,
-        email: user.email,
-        name: user.displayName || "",
-        // Role removed to allow selection
-        createdAt: serverTimestamp()
-      },
-      { merge: true }
-    );
-
-    window.location.href = "roles.html";
+    await signInWithRedirect(auth, provider);
   } catch (err) {
-    showModal("Google Sign Up Failed", err.message);
+    const msg = getFriendlyErrorMessage(err.code);
+    showModal("Google Sign Up Failed", msg);
   }
 };
+
+// Handle Redirect Result
+getRedirectResult(auth)
+  .then(async (result) => {
+    if (result) {
+      const user = result.user;
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          uid: user.uid,
+          email: user.email,
+          name: user.displayName || "",
+          createdAt: serverTimestamp()
+        },
+        { merge: true }
+      );
+      window.location.href = "roles.html";
+    }
+  })
+  .catch((error) => {
+    console.error("Redirect Error:", error);
+    const msg = getFriendlyErrorMessage(error.code);
+    showModal("Google Sign Up Failed", msg);
+  });
+
+function getFriendlyErrorMessage(errorCode) {
+    switch (errorCode) {
+        case 'auth/email-already-in-use':
+            return 'This email is already registered. Please login instead.';
+        case 'auth/invalid-email':
+            return 'Please enter a valid email address.';
+        case 'auth/operation-not-allowed':
+            return 'Email/password accounts are not enabled.';
+        case 'auth/weak-password':
+            return 'Password should be at least 6 characters.';
+        case 'auth/network-request-failed':
+            return 'Network error. Please check your connection.';
+        default:
+            return 'An error occurred. Please try again.';
+    }
+}
 </script>
 
 </body>

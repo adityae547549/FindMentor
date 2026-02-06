@@ -147,7 +147,7 @@ button.save{
 
 <header>
   <div class="header-inner">
-    <div class="logo">Find<span>Mentor</span></div>
+    <div class="logo">Find<span>Mentor</span> <span id="planBadge" class="premium-badge">FREE</span></div>
     <button class="back" onclick="goBack()">← Dashboard</button>
   </div>
 </header>
@@ -288,6 +288,7 @@ const schoolClass = document.getElementById('schoolClass');
 const collegeYearBox = document.getElementById('collegeYearBox');
 const collegeYear = document.getElementById('collegeYear');
 const statusDiv = document.getElementById('status');
+const aiUsageLimit = document.getElementById('ai-usage-limit');
 const lastLoginDiv = document.getElementById('lastLogin');
 const planStatus = document.getElementById('plan-status');
 
@@ -342,9 +343,6 @@ async function loadSettings(){
     document.querySelectorAll(".checkbox-group input")
       .forEach(cb => cb.checked = d.subjects.includes(cb.value));
   }
-  const plan = d.plan || (d.isPremium ? 'plus' : 'free');
-  const label = plan === "pro" ? "Pro" : plan === "plus" ? "Plus" : "Free";
-  if (planStatus) planStatus.textContent = `Current plan: ${label}`;
 }
 
 window.saveSettings = async () => {
@@ -372,10 +370,7 @@ window.saveSettings = async () => {
   }
 };
 
-window.togglePremium = () => {
-    window.location.href = "plans.html";
-};
-
+/* NAV */
 window.goBack = () => location.href = "dashboard.html";
 </script>
 
