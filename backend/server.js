@@ -80,9 +80,10 @@ loadData();
 // IMPORTANT: Route handlers MUST come before static middleware
 // API Health Check
 app.get("/", (req, res) => {
-  // If request accepts HTML, serve the index.html from root
-  if (req.accepts('html')) {
-     res.sendFile(path.join(rootPath, "index.html"));
+  const indexPath = path.join(rootPath, "index.html");
+  // If request accepts HTML and file exists, serve it
+  if (req.accepts('html') && fs.existsSync(indexPath)) {
+     res.sendFile(indexPath);
      return;
   }
   res.json({
