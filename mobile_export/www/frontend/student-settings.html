@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Settings | FindMentor</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
 
@@ -215,6 +215,37 @@ button.save{
     <div id="status">✅ Settings saved successfully</div>
   </div>
 
+  <!-- AI USAGE STATS -->
+  <div class="card">
+      <h1>AI Usage Stats</h1>
+      <p class="subtitle">Your daily interaction with the AI Assistant.</p>
+      <div style="font-size:1.2rem; font-weight:600; display:flex; align-items:center; gap:10px;">
+          <span id="ai-usage-count">Loading...</span> <span id="ai-usage-limit" style="font-size:1rem; color:var(--muted);">/ 18 Requests</span>
+      </div>
+      <div style="margin-top:10px; height:8px; background:#f3f4f6; border-radius:4px; overflow:hidden;">
+          <div id="ai-usage-bar" style="width:0%; height:100%; background:var(--accent); transition:width 0.5s;"></div>
+      </div>
+      <p style="margin-top:8px; font-size:0.85rem; color:var(--muted);">Resets daily at midnight.</p>
+  </div>
+
+  <div class="card" style="border-color: var(--premium);">
+      <h2 style="color:var(--premium); margin-bottom:10px;">👑 Membership Plan</h2>
+      <p style="margin-bottom:16px; color:var(--muted);">Manage your subscription and plan benefits.</p>
+      
+      <div id="premium-actions">
+          <button class="save" style="background:var(--premium); width:100%;" onclick="togglePremium()">
+              Manage Plan
+          </button>
+      </div>
+  </div>
+
+  <div class="card">
+      <h2 style="margin-bottom:10px;">Payment Status</h2>
+      <p style="margin-bottom:16px; color:var(--muted);">Your latest payment requests.</p>
+      <div id="payment-requests" style="display:grid; gap:10px;">
+          <div style="color:var(--muted);">Loading…</div>
+      </div>
+  </div>
 </main>
 
 <!-- FIREBASE -->
@@ -283,7 +314,15 @@ window.closeGenericModal = () => {
 onAuthStateChanged(auth, async user => {
   if (!user) return location.href = "login.html";
   currentUser = user;
-  loadAIStats();
+  let plan = 'free';
+  try {
+    const data = await loadSettings();
+    plan = data?.plan || (data?.isPremium ? 'plus' : 'free');
+  } catch (e) {
+    console.error("Settings load failed", e);
+  }
+  loadAIStats(plan);
+  loadPaymentRequests();
 });
 
 /* LOAD SETTINGS */
@@ -295,17 +334,121 @@ async function loadSettings(){
   const d = snap.data();
   nameInput.value = d.name || "";
   avatarInput.value = d.avatar || "👨‍🎓";
+
+  // Handle Member Since
+  const msDiv = document.getElementById("memberSince");
+  if (msDiv) {
+      if (d.createdAt) {
+          try {
+              const date = d.createdAt.toDate ? d.createdAt.toDate() : new Date(d.createdAt);
+              msDiv.innerText = date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' });
+          } catch(e) {
+              msDiv.innerText = "Unknown Date";
+          }
+      } else {
+          msDiv.innerText = "Early Member (Date not recorded)";
+      }
+  }
   
-  // Load AI Stats simplified
-  loadAIStats();
+  updatePremiumUI(d.plan || (d.isPremium ? 'plus' : 'free'), d.paymentStatus);
+  return d;
 }
 
-function getLimit() {
-    return 18; // Default free limit
+function updatePremiumUI(plan, paymentStatus) {
+    const label = plan === "pro" ? "PRO" : plan === "plus" ? "PLUS" : "FREE";
+    planBadge.style.display = "inline-block";
+    planBadge.innerText = label;
+    let statusLine = "";
+    if (paymentStatus === "pending") {
+        statusLine = `<p style="color:var(--muted); font-weight:600; margin-bottom:10px;">Status: Payment verification pending</p>`;
+    } else if (paymentStatus === "paid") {
+        statusLine = `<p style="color:#10b981; font-weight:600; margin-bottom:10px;">Status: Payment received</p>`;
+    } else if (paymentStatus === "failed" || paymentStatus === "rejected") {
+        statusLine = `<p style="color:#ef4444; font-weight:600; margin-bottom:10px;">Status: Payment issue</p>`;
+    }
+    premiumActions.innerHTML = `
+        <p style="color:var(--muted); font-weight:600; margin-bottom:10px;">Current plan: ${label}</p>
+        ${statusLine}
+        <button class="save" style="background:var(--premium); width:100%;" onclick="togglePremium()">Manage Plan</button>
+    `;
 }
 
-async function loadAIStats() {
-    // No visual output for now as elements are removed
+function getPlanAndLimit(plan) {
+    const limits = { free: 18, plus: 100, pro: 300 };
+    return limits[plan] || limits.free;
+}
+
+async function loadAIStats(plan = "free") {
+    const countEl = document.getElementById("ai-usage-count");
+    if (countEl) countEl.textContent = "0";
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const todayTs = Timestamp.fromDate(today);
+    
+    try {
+        const q = query(collection(db, "aiLogs"), 
+            where("studentId", "==", currentUser.uid),
+            where("createdAt", ">=", todayTs)
+        );
+        const snap = await getDocs(q);
+        const count = snap.size;
+        
+        if (countEl) countEl.textContent = count;
+        const limit = getPlanAndLimit(plan);
+        if (aiUsageLimit) aiUsageLimit.textContent = `/ ${limit} Requests`;
+        const percent = Math.min((count / limit) * 100, 100);
+        document.getElementById("ai-usage-bar").style.width = `${percent}%`;
+        
+        if (count >= limit) {
+            document.getElementById("ai-usage-bar").style.background = "#ef4444";
+        }
+    } catch (e) {
+        console.error("Error loading stats", e);
+        if (countEl) countEl.textContent = "0";
+        if (aiUsageLimit) aiUsageLimit.textContent = `/ ${getPlanAndLimit(plan)} Requests`;
+        document.getElementById("ai-usage-bar").style.width = "0%";
+        showToast("AI usage stats unavailable. Check Firestore rules.", "error");
+    }
+}
+
+async function loadPaymentRequests() {
+    const container = document.getElementById("payment-requests");
+    if (!container || !currentUser) return;
+    try {
+        const q = query(
+            collection(db, "paymentRequests"),
+            where("userId", "==", currentUser.uid),
+            orderBy("createdAt", "desc"),
+            limit(5)
+        );
+        const snap = await getDocs(q);
+        if (snap.empty) {
+            container.innerHTML = `<div style="color:var(--muted);">No payment requests yet.</div>`;
+            return;
+        }
+        const rows = snap.docs.map(d => {
+            const data = d.data();
+            const status = (data.status || "pending").toUpperCase();
+            const amount = data.amount ? `₹${data.amount}` : "";
+            const plan = data.plan ? data.plan.toUpperCase() : "";
+            let color = "#f59e0b";
+            if (status === "PAID") color = "#10b981";
+            if (status === "REJECTED" || status === "FAILED") color = "#ef4444";
+            return `
+                <div style="border:1px solid var(--border); border-radius:10px; padding:12px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                    <div>
+                        <div style="font-weight:600;">${plan} ${amount}</div>
+                        <div style="color:var(--muted); font-size:0.85rem;">${data.payerUpiId || "UPI ID not provided"}</div>
+                    </div>
+                    <div style="font-weight:700; color:${color};">${status}</div>
+                </div>
+            `;
+        });
+        container.innerHTML = rows.join("");
+    } catch (e) {
+        console.error("Payment requests load failed", e);
+        container.innerHTML = `<div style="color:#ef4444;">Unable to load payment requests.</div>`;
+    }
 }
 
 /* SAVE SETTINGS */
@@ -326,6 +469,10 @@ window.saveSettings = async () => {
   );
 
   showToast("Settings saved successfully", "success");
+};
+
+window.togglePremium = () => {
+    window.location.href = "plans.html";
 };
 
 /* NAV */

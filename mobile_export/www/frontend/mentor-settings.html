@@ -77,11 +77,6 @@ input{
   gap:14px 24px;
   margin-bottom:20px
 }
-@media (max-width: 480px) {
-  .checkbox-group {
-    grid-template-columns: 1fr;
-  }
-}
 .checkbox-item{
   display:flex;
   align-items:center;
@@ -188,6 +183,16 @@ button.save{
     <div id="status">✅ Settings saved successfully</div>
   </div>
 
+  <div class="card" style="border-color: #f59e0b;">
+      <h2 style="color:#f59e0b; margin-bottom:10px;">👑 Mentor Premium</h2>
+      <p style="margin-bottom:16px; color:var(--muted);">Get featured in search results, unlimited class duration, and advanced analytics.</p>
+      
+      <div id="premium-actions">
+          <button class="save" style="background:#f59e0b; width:100%;" onclick="togglePremium()">
+              Upgrade to Premium (Free for Beta)
+          </button>
+      </div>
+  </div>
 </main>
 
 <!-- FIREBASE -->
@@ -250,6 +255,23 @@ async function loadSettings(){
     document.querySelectorAll(".checkbox-group input")
       .forEach(cb => cb.checked = d.subjects.includes(cb.value));
   }
+  
+  updatePremiumUI(d.isPremium);
+}
+
+function updatePremiumUI(isPremium) {
+    if (isPremium) {
+        premiumActions.innerHTML = `
+            <p style="color:green; font-weight:600; margin-bottom:10px;">✅ You are a Premium Mentor</p>
+            <button class="save" style="background:#ef4444; width:100%;" onclick="togglePremium()">Cancel Subscription</button>
+        `;
+    } else {
+        premiumActions.innerHTML = `
+            <button class="save" style="background:#f59e0b; width:100%;" onclick="togglePremium()">
+                Upgrade to Premium (Free for Beta)
+            </button>
+        `;
+    }
 }
 
 /* SAVE SETTINGS */
@@ -277,6 +299,10 @@ window.saveSettings = async () => {
 
   statusDiv.style.display = "block";
   setTimeout(()=>statusDiv.style.display="none",2500);
+};
+
+window.togglePremium = () => {
+    window.location.href = "plans.html";
 };
 
 /* NAV */

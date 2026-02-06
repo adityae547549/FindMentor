@@ -2,83 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Mentor Dashboard | FindMentor</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
-/* ========== MODAL & TOAST (Unified) ========== */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 3000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(2px);
-}
-.modal-box {
-    background: #fff;
-    padding: 24px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    animation: modalFadeIn 0.2s ease-out;
-}
-@keyframes modalFadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-.modal-box h3 { margin: 0 0 10px 0; color: #111827; font-size: 1.25rem; }
-.modal-box p { color: #6b7280; margin: 0 0 20px 0; font-size: 0.95rem; }
-.modal-actions { display: flex; justify-content: flex-end; gap: 10px; }
-.modal-btn {
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: opacity 0.2s;
-    font-weight: 500;
-}
-.modal-btn.cancel { background: transparent; color: #374151; border: 1px solid #d1d5db; }
-.modal-btn.confirm { background: #0d9488; color: white; }
-.modal-btn:hover { opacity: 0.9; }
-
+/* Toast */
 .toast-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 3100;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    pointer-events: none;
+    position: fixed; top: 20px; right: 20px; z-index: 3000;
+    display: flex; flex-direction: column; gap: 10px; pointer-events: none;
 }
 .toast {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    color: #1f2937;
-    padding: 12px 16px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 250px;
-    animation: toastSlideIn 0.3s ease-out forwards;
-    pointer-events: auto;
+    background: #fff; border-radius: 8px; padding: 12px 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px;
+    animation: slideIn 0.3s ease-out; pointer-events: auto; color: #333;
 }
-@keyframes toastSlideIn {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
+.toast.error { border-left: 4px solid #ef4444; }
+.toast.success { border-left: 4px solid #10b981; }
+.toast.info { border-left: 4px solid #3b82f6; }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* Generic Modal */
+.generic-modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    display: none; align-items: center; justify-content: center; z-index: 2000;
 }
-.toast.error i { color: #ef4444; }
-.toast.success i { color: #10b981; }
-.toast.info i { color: #3b82f6; }
+.generic-modal {
+    background: #fff; padding: 24px; border-radius: 12px; max-width: 400px; width: 90%;
+    text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+.generic-modal h3 { margin-bottom: 12px; color: #111; }
+.generic-modal p { color: #555; margin-bottom: 20px; }
+.generic-modal button {
+    padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600;
+}
+.modal-btn-primary { background: #0d9488; color: white; }
+.modal-btn-secondary { background: transparent; border: 1px solid #d1d5db; color: #374151; }
 
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
 :root{
@@ -180,19 +140,6 @@ button.accept{
 
 @media(max-width:900px){
   .grid{grid-template-columns:1fr}
-  .header-inner{flex-direction:column;gap:10px;text-align:center}
-  /* Fix Chat Grid Stacking */
-  .grid[style*="grid-template-columns: 1fr 2fr"] {
-      grid-template-columns: 1fr !important;
-      height: auto !important;
-  }
-  .card[style*="overflow-y:auto"] {
-      height: 300px;
-      margin-bottom: 20px;
-  }
-  .card[style*="display:flex; flex-direction:column"] {
-      height: 500px;
-  }
 }
 
 /* ========== SKELETON LOADING ========== */
@@ -323,17 +270,13 @@ button.accept{
 
 <!-- CHARTS -->
 <div class="grid" style="margin-bottom:28px">
-  <div class="card" style="height: 350px; position: relative;">
+  <div class="card">
     <h3>Weekly Activity</h3>
-    <div style="position: relative; height: 280px; width: 100%;">
-        <canvas id="mentorLineChart"></canvas>
-    </div>
+    <canvas id="mentorLineChart"></canvas>
   </div>
-  <div class="card" style="height: 350px; position: relative;">
+  <div class="card">
     <h3>Request Status</h3>
-    <div style="position: relative; height: 280px; width: 100%;">
-        <canvas id="mentorDoughnutChart"></canvas>
-    </div>
+    <canvas id="mentorDoughnutChart"></canvas>
   </div>
 </div>
 
@@ -387,7 +330,7 @@ button.accept{
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import {
   getFirestore,
   collection,
@@ -418,7 +361,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-setPersistence(auth, browserLocalPersistence).catch(console.error);
 const db = getFirestore(app);
 
 // Enable offline persistence
@@ -439,8 +381,8 @@ const dashboardContent = document.getElementById("dashboard-content");
 const loadingOverlay = document.getElementById("loadingOverlay");
 
 window.openAiWindow = () => {
-    // Open AI Window (WebView friendly)
-    window.location.href = 'ai_window.html';
+    // Open AI Window
+    window.open('ai_window.html', 'FindMentorAI', 'width=1200,height=800');
 };
 
 window.showToast = (msg, type='info') => {
@@ -500,9 +442,6 @@ onAuthStateChanged(auth, async user => {
   
   // Show loading
   toggleLoading(true);
-  
-  // Safety timeout
-  setTimeout(() => toggleLoading(false), 8000);
 
   try {
     await setDoc(doc(db, "users", currentUser.uid), {
@@ -551,7 +490,7 @@ onAuthStateChanged(auth, async user => {
 
   if (!snap.exists() || snap.data().role !== "mentor") {
     showModal("Access Denied", "You do not have permission to view this page.");
-    setTimeout(() => location.href = "index.html", 2000);
+    setTimeout(() => location.href = "login.html", 2000);
     return;
   }
 
@@ -563,19 +502,6 @@ onAuthStateChanged(auth, async user => {
 });
 
 /* LOAD REQUESTS */
-async function loadGreeting(uid) {
-    try {
-        const snap = await getDoc(doc(db, "users", uid));
-        if (snap.exists()) {
-            const name = snap.data().name || "Mentor";
-            const greetingEl = document.getElementById("greeting");
-            if (greetingEl) greetingEl.innerHTML = `Hello, ${name} 👋`;
-        }
-    } catch (e) {
-        console.error("Error loading greeting:", e);
-    }
-}
-
 async function loadRequests(){
   // Parallelize loading
   await Promise.all([loadPending(), loadMine()]);
@@ -792,19 +718,16 @@ window.declineRequest = async (id) => {
 };
 
 window.startVideoCall = async (reqId) => {
+  // room ID is "class_" + request ID
   const room = `class_${reqId}`;
+  
   try {
-      // Update request status
       await updateDoc(doc(db, "mentorRequests", reqId), {
           status: "live",
           startedAt: serverTimestamp()
       });
-      
-      // Open video call room (WebView friendly)
-      window.location.href = `video_call.html?room=${room}`;
-      
-      // Refresh list
-      loadRequests();
+      window.open(`video_call.html?room=${room}`, '_blank');
+      loadRequests(); // Refresh UI
   } catch(e) {
       console.error(e);
       showToast("Error starting call: " + e.message, "error");
@@ -1103,8 +1026,8 @@ window.handleCallResponse = async (reqId, action) => {
             startedAt: serverTimestamp()
         });
         
-        // Open Video Call (WebView friendly)
-        window.location.href = `video_call.html?room=${roomId}`;
+        // Open Video Call
+        window.open(`video_call.html?room=${roomId}`, '_blank');
     }
 };
 

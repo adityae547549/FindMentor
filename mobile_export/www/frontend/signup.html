@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Sign Up | FindMentor</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
 
@@ -145,10 +145,6 @@
 
 <body>
 
-<a href="../index.html" style="position:absolute; top:20px; left:20px; text-decoration:none; color:#333; font-weight:600; font-size:0.9rem; display:flex; align-items:center; gap:5px; z-index:1000;">
-  &larr; Back to Home
-</a>
-
 <div class="card">
   <h1>Create Account 🚀</h1>
   <p>Join FindMentor </p>
@@ -191,8 +187,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
+  signInWithPopup,
   setPersistence,
   browserLocalPersistence,
   onAuthStateChanged
@@ -315,61 +310,33 @@ window.signup = async () => {
     // However, to be safe/faster:
     window.location.href = "roles.html";
   } catch (err) {
-    const msg = getFriendlyErrorMessage(err.code);
-    showModal("Sign Up Failed", msg);
+    showModal("Sign Up Failed", err.message);
   }
 };
 
 /* GOOGLE SIGNUP */
 window.googleAuth = async () => {
   try {
-    await signInWithRedirect(auth, provider);
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName || "",
+        // Role removed to allow selection
+        createdAt: serverTimestamp()
+      },
+      { merge: true }
+    );
+
+    window.location.href = "roles.html";
   } catch (err) {
-    const msg = getFriendlyErrorMessage(err.code);
-    showModal("Google Sign Up Failed", msg);
+    showModal("Google Sign Up Failed", err.message);
   }
 };
-
-// Handle Redirect Result
-getRedirectResult(auth)
-  .then(async (result) => {
-    if (result) {
-      const user = result.user;
-      await setDoc(
-        doc(db, "users", user.uid),
-        {
-          uid: user.uid,
-          email: user.email,
-          name: user.displayName || "",
-          createdAt: serverTimestamp()
-        },
-        { merge: true }
-      );
-      window.location.href = "roles.html";
-    }
-  })
-  .catch((error) => {
-    console.error("Redirect Error:", error);
-    const msg = getFriendlyErrorMessage(error.code);
-    showModal("Google Sign Up Failed", msg);
-  });
-
-function getFriendlyErrorMessage(errorCode) {
-    switch (errorCode) {
-        case 'auth/email-already-in-use':
-            return 'This email is already registered. Please login instead.';
-        case 'auth/invalid-email':
-            return 'Please enter a valid email address.';
-        case 'auth/operation-not-allowed':
-            return 'Email/password accounts are not enabled.';
-        case 'auth/weak-password':
-            return 'Password should be at least 6 characters.';
-        case 'auth/network-request-failed':
-            return 'Network error. Please check your connection.';
-        default:
-            return 'An error occurred. Please try again.';
-    }
-}
 </script>
 
 </body>

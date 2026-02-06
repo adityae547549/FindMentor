@@ -1,0 +1,15 @@
+{
+  "appId": "com.findmentor.app",
+  "appName": "FindMentor",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000
+    }
+  }
+}

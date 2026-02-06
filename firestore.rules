@@ -64,11 +64,5 @@ service cloud.firestore {
         allow update, delete: if false;
       }
     }
-
-    match /paymentRequests/{paymentId} {
-      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid && request.resource.data.status == "pending";
-      allow read: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
-      allow update, delete: if isAdmin();
-    }
   }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Student Dashboard | FindMentor</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
 
@@ -376,7 +376,7 @@ select{
   font-size:.9rem
 }
 @media(max-width:900px){
-  .header-inner{flex-direction:column;align-items:center;gap:10px;text-align:center}
+  .header-inner{flex-direction:column;align-items:flex-start;gap:10px}
   .stats{grid-template-columns:repeat(2,1fr)}
   .charts{grid-template-columns:1fr}
   .grid{grid-template-columns:1fr}
@@ -452,6 +452,10 @@ select{
   <p style="color:#6b7280;font-size:.9rem">
     Here’s your learning activity overview.
   </p>
+  <div id="plan-summary" style="margin-top:8px;color:#6b7280;font-size:.9rem;">
+    <span id="plan-label">Plan: Free / Explorer</span>
+    <span id="plan-status-text" style="margin-left:10px;"></span>
+  </div>
 </div>
 
 
@@ -612,7 +616,7 @@ function showToast(msg, type='info') {
 <!-- ===== FIREBASE + LOGIC ===== -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, collection, query, where, getDocs, addDoc, setDoc, serverTimestamp, getDoc, doc, updateDoc, onSnapshot, orderBy, limit, enableIndexedDbPersistence, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import CONFIG from "./config.js";
 
@@ -627,7 +631,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-setPersistence(auth, browserLocalPersistence).catch(console.error);
 const db = getFirestore(app);
 
 // Explicitly attach global functions to window
@@ -635,22 +638,14 @@ window.joinClass = (reqId) => {
     console.log("Joining class with ID:", reqId);
     try {
         const url = `video_call.html?room=class_${reqId}`;
-        // WebView friendly navigation
-        window.location.href = url;
+        const win = window.open(url, '_blank');
+        if (!win) {
+            alert("Please allow popups to join the video call.");
+        }
     } catch (e) {
         console.error("Error joining class:", e);
         alert("Error joining class: " + e.message);
     }
-};
-
-window.openAI = () => {
-    // Open AI Window (WebView friendly)
-    window.location.href = 'ai_window.html';
-};
-
-window.closeAI = () => {
-    const modal = document.getElementById('aiModal');
-    if (modal) modal.style.display = 'none';
 };
 
 // Enable offline persistence
@@ -672,6 +667,8 @@ const statTotal = document.getElementById("statTotal");
 const statMentor = document.getElementById("statMentor");
 const statAI = document.getElementById("statAI");
 const statDays = document.getElementById("statDays");
+const planLabelEl = document.getElementById("plan-label");
+const planStatusTextEl = document.getElementById("plan-status-text");
 const questionInput = document.getElementById("question");
 const subjectSelect = document.getElementById("subject");
 const aiModalEl = document.getElementById("aiModal");
@@ -707,7 +704,7 @@ function checkLoadingDone() {
 }
 
 onAuthStateChanged(auth, async user=>{
-  if(!user) return location.href="index.html";
+  if(!user) return location.href="login.html";
   currentUser=user;
   
   // Show loading initially
@@ -756,11 +753,33 @@ onAuthStateChanged(auth, async user=>{
 function listenUserDoc(uid) {
   if (userDocUnsubscribe) userDocUnsubscribe();
   userDocUnsubscribe = onSnapshot(doc(db, "users", uid), (snap) => {
-    // Plan summary removed
+    if (snap.exists()) {
+      renderPlanSummary(snap.data());
+    }
   });
 }
 
-// Plan summary function removed
+function renderPlanSummary(userData) {
+  if (!planLabelEl || !planStatusTextEl) return;
+  const plan = userData?.plan || (userData?.isPremium ? "plus" : "free");
+  const planLabel = plan === "pro" ? "Student Pro" : plan === "plus" ? "Student Plus" : "Free / Explorer";
+  planLabelEl.textContent = `Plan: ${planLabel}`;
+  const status = userData?.paymentStatus || "";
+  let statusText = "";
+  let statusColor = "#6b7280";
+  if (status === "pending") {
+    statusText = "Payment verification pending";
+    statusColor = "#f59e0b";
+  } else if (status === "paid") {
+    statusText = "Payment received";
+    statusColor = "#10b981";
+  } else if (status === "failed" || status === "rejected") {
+    statusText = "Payment issue";
+    statusColor = "#ef4444";
+  }
+  planStatusTextEl.textContent = statusText ? `• ${statusText}` : "";
+  planStatusTextEl.style.color = statusColor;
+}
 
 window.logout = async () => {
   if (currentUser) {
@@ -787,16 +806,14 @@ function loadDashboard(uid){
   
   const aiQ=query(
     collection(db,"aiLogs"),
-    where("studentId","==",uid),
-    orderBy("createdAt", "desc"),
-    limit(50)
+    where("studentId","==",uid)
+    // Removed orderBy/limit to avoid missing index errors. 
+    // We will sort and limit in memory (recalcAndRender).
   );
 
   const chatQ = query(
     collection(db, "chats"),
-    where("participants", "array-contains", uid),
-    orderBy("updatedAt", "desc"),
-    limit(50)
+    where("participants", "array-contains", uid)
   );
 
   // Real-time listener for Mentor Requests
@@ -1192,14 +1209,16 @@ function checkMentorsAvailability() {
         // Check core/online status logic
         let isCore = !!mentors[m.id];
         if (!isCore) isCore = Object.values(mentors).some(cm => cm.name.toLowerCase() === m.name.toLowerCase());
+        // STRICT: Only show if actually online (even for core mentors)
+        const showOnline = m.isOnline; 
         
-        // LOGIC: Core Mentors always show as Online (due to AI). Others show real status.
-        const showOnline = isCore ? true : (m.isOnline || false);
-        
-        allMentorsMap[m.id] = { ...m, isOnline: showOnline, realOnline: m.isOnline, isCore: isCore };
+        allMentorsMap[m.id] = { ...m, isOnline: showOnline, realOnline: m.isOnline };
     });
 
-    const displayMentors = combinedMentors; // SHOW ALL (No filtering)
+    const displayMentors = combinedMentors.filter(m => {
+        const mapped = allMentorsMap[m.id];
+        return mapped?.isOnline;
+    });
 
     if (displayMentors.length === 0) {
         grid.innerHTML = '<p class="status">No mentors found.</p>';
@@ -1207,29 +1226,17 @@ function checkMentorsAvailability() {
         displayMentors.forEach(m => {
             const mapped = allMentorsMap[m.id];
             const showOnline = mapped.isOnline;
-            const isCore = mapped.isCore;
 
             const div = document.createElement('div');
             div.className = `mentor-card ${showOnline ? 'online' : ''}`;
-            // Important: Pass realOnline status for chat logic
             div.onclick = () => openMentorChat(m.id, m.name, m.specialty, mapped.realOnline);
-            
-            let statusText = showOnline ? "Online" : "Offline";
-            let statusColor = showOnline ? "#10b981" : "#9ca3af";
-            
-            // Optional: Distinguish AI availability
-            if (isCore && !mapped.realOnline) {
-                statusText = "Online (AI)";
-            }
-
-            div.title = statusText;
+            div.title = showOnline ? "Online Now" : "Offline";
             
             div.innerHTML = `
                 <div class="mentor-avatar">${m.avatar}</div>
                 <div class="mentor-info">
                     <strong>${m.name}</strong>
                     <p>${m.specialty}</p>
-                    <span style="font-size:0.75rem; color:${statusColor}; font-weight:600">● ${statusText}</span>
                 </div>
             `;
             grid.appendChild(div);
@@ -1472,9 +1479,41 @@ let targetMentorName = "";
 window.startVideoCallFromChat = async () => {
     if (!currentChatMentor) return;
     
-    // 1. Check Plan & Limits - REMOVED for now
+    // 1. Check Plan & Limits
     if (!currentUser) return;
+    const userRef = doc(db, "users", currentUser.uid);
+    const userSnap = await getDoc(userRef);
+    const userData = userSnap.data();
+    const plan = userData.plan || 'free';
 
+    // Free Tier Block
+    if (plan === 'free') {
+        showToast("Video calls are available on Student Plus plans.", "error");
+        setTimeout(() => window.open('plans.html', '_blank'), 1500);
+        return;
+    }
+
+    // Check Monthly Limits
+    const limit = plan === 'pro' ? 15 : 5; // Plus=5, Pro=15
+    
+    // Count calls this month
+    const now = new Date();
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+    
+    const qCalls = query(
+        collection(db, "callRequests"),
+        where("studentId", "==", currentUser.uid),
+        where("createdAt", ">=", startOfMonth)
+    );
+    
+    const snapCalls = await getDocs(qCalls);
+    const used = snapCalls.size;
+    
+    if (used >= limit) {
+        showToast(`Monthly video call limit reached (${used}/${limit}). Upgrade for more!`, "error");
+        return;
+    }
+    
     // 2. Check if mentor is REALLY online
     // Note: We need to trust the 'isOnline' property passed to openMentorChat, 
     // but we might need to fetch the latest status to be sure.
@@ -1537,8 +1576,7 @@ function listenForCallResponse(mentorId) {
                 if (data.status === "accepted") {
                      showToast("Mentor accepted! Joining call...", "success");
                      setTimeout(() => {
-                         // WebView friendly navigation
-                         window.location.href = `video_call.html?room=${data.roomId}`;
+                         window.open(`video_call.html?room=${data.roomId}`, '_blank');
                      }, 1500);
                      // Cleanup
                      if (callResponseUnsubscribe) callResponseUnsubscribe();
@@ -1609,31 +1647,61 @@ window.confirmVideoCall = async () => {
   }
   
   // Redirect to video call page
-  window.location.href = `video_call.html?room=${meetingId}`;
+  window.open(`video_call.html?room=${meetingId}`, '_blank');
   
   closeVideoNotice();
 };
 
 /* ===== AI FIRST FLOW ===== */
-// Plan limits removed
+function getPlanAndLimit(userData) {
+  const plan = userData?.plan || (userData?.isPremium ? 'plus' : 'free');
+  const limits = { free: 18, plus: 100, pro: 300 };
+  return { plan, limit: limits[plan] || limits.free };
+}
 
 async function checkAiDailyLimit() {
-  // Always allowed
-  return { allowed: true, plan: 'free', limit: 1000, used: 0 };
+  if (!currentUser) return { allowed: false, plan: 'free', limit: 18, used: 0 };
+
+  try {
+    const userSnap = await getDoc(doc(db, "users", currentUser.uid));
+    const { plan, limit } = getPlanAndLimit(userSnap.exists() ? userSnap.data() : {});
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const q = query(
+      collection(db, "aiLogs"),
+      where("studentId", "==", currentUser.uid),
+      where("createdAt", ">=", Timestamp.fromDate(today))
+    );
+    const snap = await getDocs(q);
+    return { allowed: snap.size < limit, plan, limit, used: snap.size };
+  } catch (error) {
+    console.error("AI limit check failed:", error);
+    return { allowed: true, plan: 'free', limit: 18, used: 0 };
+  }
 }
 
 window.submitDoubt=async()=>{
   if(!questionInput.value||!subjectSelect.value) return showToast("Please fill all fields", "error");
 
-  // Limit check removed
-
+  const limitStatus = await checkAiDailyLimit();
+  if (!limitStatus.allowed) {
+    const message = limitStatus.plan === 'free'
+      ? `Daily AI limit reached (${limitStatus.used}/${limitStatus.limit}). Upgrade to Plus for more.`
+      : `Daily AI fair-usage limit reached (${limitStatus.used}/${limitStatus.limit}). Try again tomorrow.`;
+    showToast(message, "error");
+    if (limitStatus.plan === 'free') {
+      setTimeout(() => window.open('plans.html', '_blank'), 1500);
+    }
+    return;
+  }
+  
   const questionText = questionInput.value;
   const subjectText = subjectSelect.value;
   
   localStorage.setItem('prefillQuestion', questionText);
   localStorage.setItem('prefillSubject', subjectText);
   
-  window.location.href = 'ai_window.html';
+  window.open('ai_window.html', '_blank');
   
   questionInput.value = '';
   subjectSelect.value = '';
@@ -1678,7 +1746,15 @@ window.requestMentor=async()=>{
 };
 
 /* ===== UI ===== */
-// Removed duplicate window.openAI, window.closeAI, window.logout to avoid overriding earlier definitions
+window.openAI=()=>{
+  window.open("ai_window.html","_blank");
+};
+window.closeAI=()=>{
+  aiModalEl.style.display="none";
+  aiActions.innerHTML="";
+};
+window.logout=()=>signOut(auth);
+
 window.goToSettings = () => {
   window.location.href = "student-settings.html";
 };

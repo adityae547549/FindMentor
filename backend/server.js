@@ -15,6 +15,7 @@ console.log("🔎 ENV FILE PATH:", envPath);
 
 import express from "express";
 import cors from "cors";
+import compression from "compression";
 import multer from "multer";
 import fs from "fs";
 import Groq from "groq-sdk";
@@ -51,6 +52,7 @@ const groq = new Groq({
 });
 
 app.use(cors());
+app.use(compression());
 app.use(express.json({ limit: "2gb" }));
 app.use(express.urlencoded({ extended: true, limit: "2gb" }));
 
@@ -70,14 +72,19 @@ const upload = multer({
 });
 
 // Define paths
-const rootPath = __dirname;
-// const frontendPath = path.join(__dirname, "..", "frontend"); // Frontend is hosted separately
+const rootPath = path.join(__dirname, ".."); // Go up one level to project root
+const frontendPath = path.join(rootPath, "frontend"); 
 
 loadData();
 
 // IMPORTANT: Route handlers MUST come before static middleware
 // API Health Check
 app.get("/", (req, res) => {
+  // If request accepts HTML, serve the index.html from root
+  if (req.accepts('html')) {
+     res.sendFile(path.join(rootPath, "index.html"));
+     return;
+  }
   res.json({
     status: "active",
     message: "FindMentor Backend API is Running 🚀",
@@ -85,27 +92,35 @@ app.get("/", (req, res) => {
   });
 });
 
-/*
-// Serve index.html as the landing page (root route)
-app.get("/", (req, res) => {
-  // res.send("FindMentor Backend API is Running 🚀");
-  const indexPath = path.join(rootPath, "index.html");
-  res.sendFile(indexPath);
+app.get("/ping", (req, res) => {
+  res.send("pong");
 });
 
-// Serve ai_window.html at root level for cleaner URLs if needed
+// Self-ping to keep Render awake (every 3 minutes)
+const PING_URL = process.env.RENDER_EXTERNAL_URL ? `${process.env.RENDER_EXTERNAL_URL}/ping` : "http://localhost:3000/ping";
+setInterval(() => {
+    fetch(PING_URL)
+        .then(res => console.log(`🏓 Self-ping status: ${res.status}`))
+        .catch(err => console.error(`❌ Self-ping failed: ${err.message}`));
+}, 3 * 60 * 1000);
+
+// Serve static files with caching (1 day)
+const staticOptions = {
+  maxAge: '1d',
+  etag: true
+};
+
+// Serve root static files (styles.css, etc)
+app.use(express.static(rootPath, staticOptions));
+
+// Serve frontend directory explicitly
+app.use("/frontend", express.static(frontendPath, staticOptions));
+
+// Catch-all for other HTML files if needed (e.g. ai_window.html)
 app.get("/ai_window.html", (req, res) => {
   res.sendFile(path.join(frontendPath, "ai_window.html"));
 });
 
-// Serve CSS and other root static files explicitly (avoid serving root index.html via static)
-app.get("/styles.css", (req, res) => {
-  res.sendFile(path.join(rootPath, "styles.css"));
-});
-
-// Serve static files from frontend directory
-app.use("/frontend", express.static(frontendPath));
-*/
 
 // =========================
 // SOCKET.IO SIGNALING
