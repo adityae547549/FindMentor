@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>FindMentor AI | Study Companion</title>
+  <title>Study Assistant | FindMentor</title>
   <link rel="icon" type="image/png" href="assets/logo.png">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -570,15 +570,15 @@
 
       <div class="chat-container" id="chat-container">
         <div class="welcome-container" id="welcome-screen">
-            <div class="welcome-logo"><i class="fas fa-microchip"></i></div>
-            <h1 class="welcome-title">FindMentor AI</h1>
-            <p class="welcome-subtitle">Accelerate your learning journey.</p>
+            <div class="welcome-logo"><i class="fas fa-book-reader"></i></div>
+            <h1 class="welcome-title">Study Assistant</h1>
+            <p class="welcome-subtitle">Your personal study companion.</p>
             
             <div class="cards-grid">
                 <div class="card-item" onclick="triggerUpload('image/*')">
                     <i class="fas fa-shapes" style="color:#10a37f;"></i>
                     <div class="card-title">Solve Math</div>
-                    <p class="card-desc">Upload a photo for step-by-step solutions.</p>
+                    <p class="card-desc">Get help with math problems.</p>
                 </div>
                 <div class="card-item" onclick="triggerUpload('application/pdf')">
                     <i class="fas fa-file-invoice" style="color:#ef4444;"></i>
@@ -607,7 +607,7 @@
               <i class="fas fa-paper-plane action-btn send-btn" id="send-btn" onclick="handleSend()"></i>
           </div>
         </div>
-        <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:15px;">Built for students. Powered by AI.</p>
+        <p style="text-align:center; font-size:0.7rem; color:var(--text-muted); margin-top:15px;">Built for students.</p>
       </div>
   </div>
 
@@ -665,15 +665,15 @@
     // Store Welcome Screen HTML for restoration
     const welcomeScreenHTML = `
         <div class="welcome-container" id="welcome-screen">
-            <div class="welcome-logo"><i class="fas fa-microchip"></i></div>
-            <h1 style="font-weight: 600; font-size: 2.2rem; margin: 0;">FindMentor AI</h1>
-            <p style="color:var(--text-muted); margin-top: 10px; font-size: 1.1rem;">Accelerate your learning journey.</p>
+            <div class="welcome-logo"><i class="fas fa-book-reader"></i></div>
+            <h1 style="font-weight: 600; font-size: 2.2rem; margin: 0;">Study Assistant</h1>
+            <p style="color:var(--text-muted); margin-top: 10px; font-size: 1.1rem;">Your personal study companion.</p>
             
             <div class="cards-grid">
                 <div class="card-item" onclick="triggerUpload('image/*')">
                     <i class="fas fa-shapes" style="color:#10a37f;"></i>
                     <div style="font-weight:600; margin-bottom:5px;">Solve Math</div>
-                    <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Upload a photo for step-by-step solutions.</p>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">Get help with math problems.</p>
                 </div>
                 <div class="card-item" onclick="triggerUpload('application/pdf')">
                     <i class="fas fa-file-invoice" style="color:#ef4444;"></i>
@@ -719,17 +719,17 @@
                 
                 // Simulate AI Message
                 setTimeout(() => {
-                    const greeting = `**AI Assistant:** Hello! ${name} is currently offline. I am here to help you with **${specialty}**. What is your question?`;
+                    const greeting = `**Assistant:** Hello! ${name} is currently away. I can help you with **${specialty}** questions. What is your question?`;
                     appendMessage('ai', greeting, true); 
                     
                     // Optional: Set title
                     if (currentChatId) {
                          const chatRef = doc(db, "users", currentUser.uid, "ai_chats", currentChatId);
-                         setDoc(chatRef, { title: `Chat with ${name} (AI)` }, { merge: true });
+                         setDoc(chatRef, { title: `Chat with ${name}` }, { merge: true });
                          
                          // Update sidebar item if exists
                          const item = document.getElementById(`chat-item-${currentChatId}`);
-                         if (item) item.querySelector('span').textContent = `Chat with ${name} (AI)`;
+                         if (item) item.querySelector('span').textContent = `Chat with ${name}`;
                     }
                 }, 800);
             } catch(e) { console.error(e); }

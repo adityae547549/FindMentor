@@ -23,26 +23,47 @@
         .toast.info { border-left: 4px solid #3b82f6; }
         @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         
-        /* Generic Modal */
-        .generic-modal-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.7);
-            display: none; align-items: center; justify-content: center; z-index: 2000;
+        /* MODAL (Unified) */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: none; align-items: center; justify-content: center;
+            z-index: 3000;
+            backdrop-filter: blur(4px);
         }
-        .generic-modal {
-            background: #fff; padding: 24px; border-radius: 12px; max-width: 400px; width: 90%;
-            text-align: center; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        .modal-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            animation: modalFadeIn 0.2s ease-out;
         }
-        .generic-modal h3 { margin-bottom: 12px; color: #111; }
-        .generic-modal p { color: #555; margin-bottom: 20px; }
-        .generic-modal button {
-            padding: 8px 16px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600;
-        }
-        .modal-btn-primary { background: #4f46e5; color: white; }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: #1a1a1a; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         
-        /* VIDEO GRID */
+        .modal-box h3, .modal-box h2 { margin-bottom: 15px; color: #111; font-size: 1.25rem; font-weight: 600; }
+        .modal-box p { color: #555; margin-bottom: 25px; line-height: 1.5; font-size: 0.95rem; }
+        
+        .modal-btn {
+            padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .modal-btn.primary { background: #4f46e5; color: white; }
+        .modal-btn.primary:hover { background: #4338ca; }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            #local-video-wrapper {
+                width: 100px;
+                height: 75px;
+                bottom: 90px;
+                right: 10px;
+            }
+            #chat-sidebar { width: 100%; height: 100%; z-index: 25; }
+            .modal-box { width: 95%; padding: 20px; }
+        }
         #videos-container {
             flex: 1;
             position: relative;
@@ -216,28 +237,8 @@
         }
 
         /* MODAL */
-        .modal-overlay {
-            position: fixed; inset: 0;
-            background: rgba(0,0,0,0.85);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 1000;
-        }
-        .modal {
-            background: #fff;
-            padding: 30px;
-            border-radius: 16px;
-            max-width: 450px;
-            text-align: center;
-        }
-        .modal h2 { margin-bottom: 15px; color: #111; }
-        .modal p { color: #555; margin-bottom: 25px; line-height: 1.5; }
-        .modal button {
-            background: #4f46e5; color: white;
-            border: none; padding: 12px 24px;
-            border-radius: 8px; cursor: pointer;
-            font-weight: 600; font-size: 1rem;
-        }
-
+        /* Replaced by Unified Modal styles above */
+        
         /* Mobile Responsive */
         @media (max-width: 600px) {
             #local-video-wrapper {
@@ -247,7 +248,7 @@
                 right: 10px;
             }
             #chat-sidebar { width: 100%; height: 100%; z-index: 25; }
-            .modal { width: 90%; }
+            .modal-box { width: 95%; padding: 20px; }
         }
     </style>
 </head>
@@ -334,7 +335,7 @@
         import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
         import { 
             getFirestore, doc, getDoc, setDoc, deleteDoc, addDoc, collection, 
-            onSnapshot, query, where, serverTimestamp 
+            onSnapshot, query, where, serverTimestamp, updateDoc, arrayUnion 
         } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -394,22 +395,82 @@
 
         // Auth Listener
         onAuthStateChanged(auth, async user => {
-      if (user) {
-        myId = user.uid;
-        const docRef = doc(db, "users", user.uid);
-        const snap = await getDoc(docRef);
-        if (snap.exists()) {
-           const data = snap.data();
-           currentUserRole = data.role || 'student';
-           window.isPremium = data.isPremium || false;
+            if (user) {
+                myId = user.uid;
+                const docRef = doc(db, "users", user.uid);
+                const snap = await getDoc(docRef);
+                if (snap.exists()) {
+                    const data = snap.data();
+                    currentUserRole = data.role || 'student';
+                    window.isPremium = data.isPremium || false;
+                    
+                    // Access Control Logic
+                    await checkRoomAccess(roomId, user.uid, currentUserRole);
+                }
+            } else {
+                // Not logged in -> Redirect to login
+                window.location.href = 'login.html';
+            }
+        });
+
+        async function checkRoomAccess(roomId, uid, role) {
+            if (!roomId) return;
+            
+            const callRef = doc(db, "calls", roomId);
+            const callSnap = await getDoc(callRef);
+            
+            if (!callSnap.exists()) {
+                // Room doesn't exist.
+                // If Student: Create it (They are creating the meeting)
+                // If Mentor: Also allow creating? The prompt says "student can create". Let's allow both to create for flexibility, or restrict.
+                // Prompt: "student can create the metting"
+                
+                await setDoc(callRef, {
+                    createdBy: uid,
+                    creatorRole: role,
+                    createdAt: serverTimestamp(),
+                    status: 'active',
+                    participants: [uid]
+                });
+                console.log("Room created by", role);
+                init(); // Start the call
+            } else {
+                // Room exists.
+                const callData = callSnap.data();
+                
+                // If I am the creator, allow.
+                if (callData.createdBy === uid) {
+                    console.log("Re-joining own room");
+                    init();
+                    return;
+                }
+                
+                // If I am a Mentor, allow. (Only mentors should be able to join)
+                if (role === 'mentor') {
+                    console.log("Mentor joining");
+                    // Add to participants if not present
+                    await updateDoc(callRef, { participants: arrayUnion(uid) }); 
+                    init();
+                    return;
+                }
+                
+                // If I am a Student and NOT the creator -> BLOCK.
+                if (role === 'student') {
+                    showModal("Access Denied", "Only mentors can join this meeting.");
+                    // Override close to redirect
+                     window.closeGenericModal = () => {
+                        window.location.href = 'dashboard.html';
+                    };
+                    return;
+                }
+                
+                // Track participant (Fallback for any other allowed roles)
+                await updateDoc(callRef, {
+                    participants: arrayUnion(uid)
+                });
+                init();
+            }
         }
-      } else {
-        // Allow anonymous for testing or require login?
-        // For now, generate random ID if not logged in (fallback)
-        myId = 'anon_' + Math.random().toString(36).substr(2, 9);
-        currentUserRole = 'student';
-      }
-    });
 
         window.showToast = (msg, type = 'info') => {
             const container = document.getElementById('toast-container');

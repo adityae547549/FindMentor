@@ -64,5 +64,21 @@ service cloud.firestore {
         allow update, delete: if false;
       }
     }
+
+    match /calls/{callId} {
+      allow read, create: if isSignedIn();
+      
+      match /participants/{userId} {
+        allow read, write: if isSignedIn();
+      }
+      
+      match /signals/{signalId} {
+        allow read, write: if isSignedIn();
+      }
+      
+      match /messages/{messageId} {
+        allow read, write: if isSignedIn();
+      }
+    }
   }
 }

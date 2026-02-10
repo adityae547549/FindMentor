@@ -113,7 +113,7 @@ button{
   <p>Login to FindMentor</p>
 
   <!-- GOOGLE LOGIN -->
-  <button class="google" onclick="googleAuth()">
+  <button type="button" class="google" onclick="googleAuth()">
     <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" alt="Google logo">
     Continue with Google
   </button>
@@ -124,15 +124,20 @@ button{
   <input id="email" type="email" placeholder="Email" />
   <input id="password" type="password" placeholder="Password" />
 
-  <button class="primary" onclick="login()">Login</button>
+  <button type="button" class="primary" onclick="login()">Login</button>
 
   <div class="footer">
-    Don’t have an account? <a href="signup.html">Sign up</a>
-    <div style="margin-top:10px;"><a href="privacy.html" style="color:#6b7280;font-size:0.8rem;text-decoration:none;">Privacy Policy</a></div>
-  </div>    <div style="margin-top:20px; text-align:center; font-size:0.85rem;">
-      <a href="privacy.html" style="color:#666; text-decoration:none;">Privacy Policy</a>
+      Don’t have an account? <a href="signup.html">Sign up</a>
+      <div style="margin-top:10px;"><a href="privacy.html" style="color:#6b7280;font-size:0.8rem;text-decoration:none;">Privacy Policy</a></div>
     </div>
   </div>
+
+<div id="loadingOverlay" style="display:none; position:fixed; inset:0; background:rgba(255,255,255,0.9); z-index:9999; flex-direction:column; align-items:center; justify-content:center;">
+    <div style="width:40px; height:40px; border:4px solid #e5e7eb; border-top-color:#db2777; border-radius:50%; animation:spin 1s linear infinite;"></div>
+    <div style="margin-top:16px; color:#374151; font-weight:600;">Checking session...</div>
+  </div>
+  <div id="toast-container" class="toast-container"></div>
+<style>@keyframes spin { to { transform: rotate(360deg); } }</style>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -141,6 +146,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithRedirect,
+  signInWithPopup,
   getRedirectResult,
   setPersistence,
   browserLocalPersistence,
@@ -172,9 +178,20 @@ const provider = new GoogleAuthProvider();
 // Force persistence
 setPersistence(auth, browserLocalPersistence).catch(console.error);
 
+const loadingOverlay = document.getElementById('loadingOverlay');
+
+function showLoading() {
+    if(loadingOverlay) loadingOverlay.style.display = 'flex';
+}
+
+function hideLoading() {
+    if(loadingOverlay) loadingOverlay.style.display = 'none';
+}
+
 // Redirect if already logged in
 onAuthStateChanged(auth, async (user) => {
   if (user) {
+    showLoading();
     await checkRoleAndRedirect(user);
   }
 });
@@ -196,6 +213,7 @@ async function checkRoleAndRedirect(user) {
         window.location.href = "roles.html";
     } catch (e) {
         console.error("Redirect Error:", e);
+        hideLoading();
         window.location.href = "roles.html";
     }
 }
@@ -206,11 +224,14 @@ const passwordInput = document.getElementById("password");
 /* EMAIL LOGIN */
 window.login = async () => {
   if (!emailInput.value || !passwordInput.value) {
-    alert("Please enter email and password");
+    showToast("Please enter email and password", "error");
     return;
   }
 
+  showLoading();
+
   try {
+    await setPersistence(auth, browserLocalPersistence);
     const result = await signInWithEmailAndPassword(
       auth,
       emailInput.value,
@@ -232,26 +253,48 @@ window.login = async () => {
 
     await checkRoleAndRedirect(user);
   } catch (err) {
+    hideLoading();
     const msg = getFriendlyErrorMessage(err.code);
-    alert(msg);
+    showToast(msg, "error");
   }
 };
 
 /* GOOGLE LOGIN */
 window.googleAuth = async () => {
   try {
-    await signInWithRedirect(auth, provider);
-    // The redirect will happen, and we'll handle the result in getRedirectResult or onAuthStateChanged
+    showLoading();
+    await setPersistence(auth, browserLocalPersistence);
+    
+    // Use Popup instead of Redirect to avoid state loss/reload issues
+    const result = await signInWithPopup(auth, provider);
+    
+    // Handle success directly
+    const user = result.user;
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName || "",
+        lastLogin: serverTimestamp()
+      },
+      { merge: true }
+    );
+    await checkRoleAndRedirect(user);
+
   } catch (err) {
+    hideLoading();
+    console.error("Google Login Error:", err);
     const msg = getFriendlyErrorMessage(err.code);
-    alert(msg);
+    showToast(msg, "error");
   }
 };
 
-// Handle Redirect Result
+// Handle Redirect Result (Legacy/Backup)
 getRedirectResult(auth)
   .then(async (result) => {
     if (result) {
+      showLoading();
       const user = result.user;
       await setDoc(
         doc(db, "users", user.uid),
@@ -267,9 +310,10 @@ getRedirectResult(auth)
     }
   })
   .catch((error) => {
+    hideLoading();
     console.error("Redirect Error:", error);
     const msg = getFriendlyErrorMessage(error.code);
-    alert("Google Login Failed: " + msg);
+    showToast("Google Login Failed: " + msg, "error");
   });
 
 function getFriendlyErrorMessage(errorCode) {
@@ -290,6 +334,16 @@ function getFriendlyErrorMessage(errorCode) {
         default:
             return 'An error occurred. Please try again.';
     }
+}
+
+function showToast(msg, type='error') {
+    const container = document.getElementById('toast-container');
+    if(!container) return;
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerText = msg;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 4000);
 }
 </script>
 

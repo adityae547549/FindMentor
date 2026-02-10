@@ -8,3 +8,5 @@ uploads/
 backend/node_modules/
 .firebase/
 backend/.git_backup/
+www/
+android/

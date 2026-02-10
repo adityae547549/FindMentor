@@ -154,7 +154,7 @@
   <p>Join FindMentor </p>
 
   <!-- GOOGLE SIGNUP -->
-  <button class="google" onclick="googleAuth()">
+  <button type="button" class="google" onclick="googleAuth()">
     <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" alt="Google logo">
     Continue with Google
   </button>
@@ -165,7 +165,7 @@
   <input id="email" type="email" placeholder="Email" />
   <input id="password" type="password" placeholder="Password" />
 
-  <button class="primary" onclick="signup()">Sign Up</button>
+  <button type="button" class="primary" onclick="signup()">Sign Up</button>
 
   <div class="footer">
     Already have an account? <a href="login.html">Login</a>
@@ -182,7 +182,8 @@
     <h3 id="generic-modal-title">Notification</h3>
     <p id="generic-modal-msg">Message goes here</p>
     <button onclick="closeGenericModal()">OK</button>
-  </div>    <div style="margin-top:20px; text-align:center; font-size:0.85rem;">
+  </div>
+    <div style="margin-top:20px; text-align:center; font-size:0.85rem;">
       <a href="privacy.html" style="color:#666; text-decoration:none;">Privacy Policy</a>
     </div>
   </div>
@@ -194,6 +195,7 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithRedirect,
+  signInWithPopup,
   getRedirectResult,
   setPersistence,
   browserLocalPersistence,
@@ -292,6 +294,7 @@ window.signup = async () => {
   }
 
   try {
+    await setPersistence(auth, browserLocalPersistence);
     const result = await createUserWithEmailAndPassword(
       auth,
       emailInput.value,
@@ -325,8 +328,27 @@ window.signup = async () => {
 /* GOOGLE SIGNUP */
 window.googleAuth = async () => {
   try {
-    await signInWithRedirect(auth, provider);
+    await setPersistence(auth, browserLocalPersistence);
+    
+    // Use Popup for better stability
+    const result = await signInWithPopup(auth, provider);
+    
+    // Handle success
+    const user = result.user;
+    await setDoc(
+      doc(db, "users", user.uid),
+      {
+        uid: user.uid,
+        email: user.email,
+        name: user.displayName || "",
+        createdAt: serverTimestamp()
+      },
+      { merge: true }
+    );
+    window.location.href = "roles.html";
+
   } catch (err) {
+    console.error("Google Signup Error:", err);
     const msg = getFriendlyErrorMessage(err.code);
     showModal("Google Sign Up Failed", msg);
   }

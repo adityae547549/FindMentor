@@ -158,7 +158,12 @@
   <!-- 🔥 FIREBASE -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { 
+      getAuth, 
+      onAuthStateChanged,
+      setPersistence,
+      browserLocalPersistence
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
     import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
     /* UI HELPERS */
@@ -197,6 +202,9 @@
     const auth = getAuth(app);
     const db = getFirestore(app);
 
+    // Ensure persistence is set
+    setPersistence(auth, browserLocalPersistence).catch(console.error);
+
     let currentUser = null;
 
     onAuthStateChanged(auth, async user => {
@@ -230,6 +238,7 @@
         await setDoc(doc(db, "users", currentUser.uid), {
           uid: currentUser.uid,
           email: currentUser.email,
+          name: currentUser.displayName || "", 
           role: role,
           createdAt: serverTimestamp()
         }, { merge: true });
