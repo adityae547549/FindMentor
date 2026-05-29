@@ -103,7 +103,7 @@ export function detectLanguage(text) {
 export function getMultiLingualPrompt(detectedLanguage) {
   const languageName = detectedLanguage.language || "English";
   
-  return `You are an educational AI assistant. The user is asking in ${languageName}. 
+  return `You are an educational tutor. The user is asking in ${languageName}. 
 Please respond in the SAME language (${languageName}) that the user used.
 
 Important:

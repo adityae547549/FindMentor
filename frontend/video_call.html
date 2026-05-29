@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Video Call | FindMentor</title>
-    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="icon" type="image/png" href="/frontend/assets/logo.png">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -387,7 +387,7 @@
             showModal('Error', 'No meeting ID provided!');
             const originalClose = window.closeGenericModal;
             window.closeGenericModal = () => {
-                window.location.href = 'dashboard.html';
+                window.location.href = '/dashboard';
                 window.closeGenericModal = originalClose;
             };
         }
@@ -409,7 +409,7 @@
                 }
             } else {
                 // Not logged in -> Redirect to login
-                window.location.href = 'login.html';
+                window.location.href = '/login';
             }
         });
 
@@ -459,7 +459,7 @@
                     showModal("Access Denied", "Only mentors can join this meeting.");
                     // Override close to redirect
                      window.closeGenericModal = () => {
-                        window.location.href = 'dashboard.html';
+                        window.location.href = '/dashboard';
                     };
                     return;
                 }
@@ -625,9 +625,9 @@
             
             // Redirect based on role
             if (currentUserRole === 'mentor') {
-                window.location.href = 'mentor-dashboard.html';
+                window.location.href = '/mentor-dashboard';
             } else {
-                window.location.href = 'dashboard.html';
+                window.location.href = '/dashboard';
             }
         };
 

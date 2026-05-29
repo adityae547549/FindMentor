@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Chat | FindMentor</title>
-<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
 <style>
 body{font-family:Inter,sans-serif;background:#f9fafb;margin:0;height:100vh;display:flex;flex-direction:column}
 .chat{
@@ -79,7 +79,7 @@ const textInput = document.getElementById("text");
 
 onAuthStateChanged(auth, user => {
   if (!user) {
-    location.href = "login.html";
+    location.href = "/login";
     return;
   }
 

@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
   <title>Select Role | FindMentor</title>
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="/frontend/assets/logo.png">
 
   <style>
     * {
@@ -130,18 +130,18 @@
 
     <div class="roles">
       <div class="role" onclick="selectRole('student')">
-        <h3>🎓 Student</h3>
+        <h3>ðŸŽ“ Student</h3>
         <p>I want to ask doubts and learn from mentors</p>
       </div>
 
       <div class="role" onclick="selectRole('mentor')">
-        <h3>👨‍🏫 Mentor</h3>
+        <h3>ðŸ‘¨â€ðŸ« Mentor</h3>
         <p>I want to help students by answering questions</p>
       </div>
     </div>
 
     <div class="footer">
-      You can’t change this later.
+      You canâ€™t change this later.
     </div>
   </div>
 
@@ -155,7 +155,7 @@
     </div>
   </div>
 
-  <!-- 🔥 FIREBASE -->
+  <!-- ðŸ”¥ FIREBASE -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { 
@@ -204,12 +204,40 @@
 
     // Ensure persistence is set
     setPersistence(auth, browserLocalPersistence).catch(console.error);
+function resolveRoute(route) {
+  const routeToFile = {
+    "/login": "login.html",
+    "/signup": "signup.html",
+    "/roles": "roles.html",
+    "/dashboard": "dashboard.html",
+    "/mentor-dashboard": "mentor-dashboard.html",
+    "/mentor-settings": "mentor-settings.html",
+    "/student-settings": "student-settings.html",
+    "/settings": "settings.html",
+    "/chat": "chat.html",
+    "/ai": "ai_window.html",
+    "/video-call": "video_call.html",
+    "/privacy": "privacy.html",
+    "/mentors": "mentors.html"
+  };
+
+  const file = routeToFile[route];
+  if (!file) return route;
+
+  const proto = window.location.protocol;
+  if (proto === 'http:' || proto === 'https:') return route;
+  if (proto !== 'file:') return `/frontend/${file}`;
+
+  const p = window.location.pathname.replace(/\\/g, '/');
+  const inFrontend = p.includes('/frontend/');
+  return inFrontend ? file : `frontend/${file}`;
+}
 
     let currentUser = null;
 
     onAuthStateChanged(auth, async user => {
       if (!user) {
-        window.location.href = "login.html";
+        window.location.href = resolveRoute("/login");
       } else {
         currentUser = user;
         try {
@@ -222,8 +250,8 @@
           const snap = await getDoc(userRef);
           if (snap.exists() && snap.data().role) {
             const role = snap.data().role;
-            if (role === "student") window.location.href = "dashboard.html";
-            else if (role === "mentor") window.location.href = "mentor-dashboard.html";
+            if (role === "student") window.location.href = resolveRoute("/dashboard");
+            else if (role === "mentor") window.location.href = resolveRoute("/mentor-dashboard");
           }
         } catch (err) {
           console.error('Failed to check role/update:', err);
@@ -244,9 +272,9 @@
         }, { merge: true });
 
         if (role === "student") {
-          window.location.href = "dashboard.html";
+          window.location.href = resolveRoute("/dashboard");
         } else {
-          window.location.href = "mentor-dashboard.html";
+          window.location.href = resolveRoute("/mentor-dashboard");
         }
       } catch (err) {
         console.error('Failed to save role:', err);
@@ -257,3 +285,4 @@
 
 </body>
 </html>
+

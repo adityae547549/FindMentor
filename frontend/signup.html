@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 <title>Sign Up | FindMentor</title>
-<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
 
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Segoe UI, system-ui, sans-serif; }
@@ -145,12 +145,12 @@
 
 <body>
 
-<a href="../index.html" style="position:absolute; top:20px; left:20px; text-decoration:none; color:#333; font-weight:600; font-size:0.9rem; display:flex; align-items:center; gap:5px; z-index:1000;">
+<a href="/" style="position:absolute; top:20px; left:20px; text-decoration:none; color:#333; font-weight:600; font-size:0.9rem; display:flex; align-items:center; gap:5px; z-index:1000;">
   &larr; Back to Home
 </a>
 
 <div class="card">
-  <h1>Create Account 🚀</h1>
+  <h1>Create Account ðŸš€</h1>
   <p>Join FindMentor </p>
 
   <!-- GOOGLE SIGNUP -->
@@ -168,8 +168,8 @@
   <button type="button" class="primary" onclick="signup()">Sign Up</button>
 
   <div class="footer">
-    Already have an account? <a href="login.html">Login</a>
-    <div style="margin-top:10px;"><a href="privacy.html" style="color:#6b7280;font-size:0.8rem;text-decoration:none;">Privacy Policy</a></div>
+    Already have an account? <a href="/login">Login</a>
+    <div style="margin-top:10px;"><a href="/privacy" style="color:#6b7280;font-size:0.8rem;text-decoration:none;">Privacy Policy</a></div>
   </div>
 </div>
 
@@ -184,7 +184,7 @@
     <button onclick="closeGenericModal()">OK</button>
   </div>
     <div style="margin-top:20px; text-align:center; font-size:0.85rem;">
-      <a href="privacy.html" style="color:#666; text-decoration:none;">Privacy Policy</a>
+      <a href="/privacy" style="color:#666; text-decoration:none;">Privacy Policy</a>
     </div>
   </div>
 
@@ -254,6 +254,34 @@ const provider = new GoogleAuthProvider();
 
 // Force persistence
 setPersistence(auth, browserLocalPersistence).catch(console.error);
+function resolveRoute(route) {
+  const routeToFile = {
+    "/login": "login.html",
+    "/signup": "signup.html",
+    "/roles": "roles.html",
+    "/dashboard": "dashboard.html",
+    "/mentor-dashboard": "mentor-dashboard.html",
+    "/mentor-settings": "mentor-settings.html",
+    "/student-settings": "student-settings.html",
+    "/settings": "settings.html",
+    "/chat": "chat.html",
+    "/ai": "ai_window.html",
+    "/video-call": "video_call.html",
+    "/privacy": "privacy.html",
+    "/mentors": "mentors.html"
+  };
+
+  const file = routeToFile[route];
+  if (!file) return route;
+
+  const proto = window.location.protocol;
+  if (proto === 'http:' || proto === 'https:') return route;
+  if (proto !== 'file:') return `/frontend/${file}`;
+
+  const p = window.location.pathname.replace(/\\/g, '/');
+  const inFrontend = p.includes('/frontend/');
+  return inFrontend ? file : `frontend/${file}`;
+}
 
 // Redirect if already logged in
 onAuthStateChanged(auth, async (user) => {
@@ -268,18 +296,18 @@ async function checkRoleAndRedirect(user) {
         if (docSnap.exists()) {
             const data = docSnap.data();
             if (data.role === "student") {
-                window.location.href = "dashboard.html";
+                window.location.href = resolveRoute("/dashboard");
                 return;
             } else if (data.role === "mentor") {
-                window.location.href = "mentor-dashboard.html";
+                window.location.href = resolveRoute("/mentor-dashboard");
                 return;
             }
         }
         // No role or unknown role -> Go to selection
-        window.location.href = "roles.html";
+        window.location.href = resolveRoute("/roles");
     } catch (e) {
         console.error("Redirect Error:", e);
-        window.location.href = "roles.html";
+        window.location.href = resolveRoute("/roles");
     }
 }
 
@@ -318,7 +346,7 @@ window.signup = async () => {
     // checkRoleAndRedirect will handle it via onAuthStateChanged or explicit call
     // But onAuthStateChanged triggers automatically on signup success too.
     // However, to be safe/faster:
-    window.location.href = "roles.html";
+    window.location.href = resolveRoute("/roles");
   } catch (err) {
     const msg = getFriendlyErrorMessage(err.code);
     showModal("Sign Up Failed", msg);
@@ -345,7 +373,7 @@ window.googleAuth = async () => {
       },
       { merge: true }
     );
-    window.location.href = "roles.html";
+    window.location.href = resolveRoute("/roles");
 
   } catch (err) {
     console.error("Google Signup Error:", err);
@@ -369,7 +397,7 @@ getRedirectResult(auth)
         },
         { merge: true }
       );
-      window.location.href = "roles.html";
+      window.location.href = resolveRoute("/roles");
     }
   })
   .catch((error) => {
@@ -398,3 +426,4 @@ function getFriendlyErrorMessage(errorCode) {
 
 </body>
 </html>
+

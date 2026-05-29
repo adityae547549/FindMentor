@@ -43,13 +43,43 @@ function removeRepetitiveContent(text) {
     }
   }
   
-  // If we found significant repetition, truncate there
   if (lastRepeatedIndex > 0 && lastRepeatedIndex < sentences.length - 1) {
     const truncated = sentences.slice(0, lastRepeatedIndex).join('. ') + '.';
     console.log("⚠️ Detected repetitive content, truncated response");
     return truncated;
   }
   
+  return text;
+}
+
+/** Canonicalize / strip bad YouTube links: never use a watch URL unless we keep a real ID; prefer search for suggestions. */
+export function normalizeYouTubeLinks(text) {
+  if (!text) return text;
+
+  const videoIdFromUrl = (url) => {
+    const m = url.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([a-zA-Z0-9_-]{11})/
+    );
+    return m ? m[1] : null;
+  };
+
+  const markdownRegex = /\[([^\]]+)\]\((https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\/[^\s)]+)\)/g;
+  text = text.replace(markdownRegex, (match, title, url) => {
+    if (url.includes("results?search_query=")) return match;
+    const cleanedTitle = title.replace(/^Watch:\s*/i, "").trim() || "study video";
+    const query = encodeURIComponent(cleanedTitle);
+    const newUrl = `https://www.youtube.com/results?search_query=${query}`;
+    return `[${title}](${newUrl})`;
+  });
+
+  const bareUrlRegex = /(https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\/[^\s)\]]+)/g;
+  text = text.replace(bareUrlRegex, (url) => {
+    if (url.includes("results?search_query=")) return url;
+    const id = videoIdFromUrl(url);
+    if (id) return `https://www.youtube.com/watch?v=${id}`;
+    return url;
+  });
+
   return text;
 }
 
@@ -86,12 +116,15 @@ export async function askAI(question, options = {}) {
 7. Use clear formatting with line breaks between steps
 8. Be concise - do not repeat steps or explanations
 9. Once you reach the final answer, stop. Do not repeat calculations.
-10. At the very end, suggest 2-3 relevant YouTube videos.
-    - PREFER specific video URLs if you know them (e.g., popular educational channels like CrashCourse, Khan Academy, etc.).
-    - Format: [Watch: {Title}](https://www.youtube.com/watch?v={VideoID})
-    - If you don't know a specific URL, use a search link: [Search: {Topic}](https://www.youtube.com/results?search_query={Query})
+10. At the very end, suggest 2-3 relevant YouTube search links for further practice.
+    - Do NOT invent or guess specific video IDs.
+    - Always use search URLs in this format: [Watch: {Topic}](https://www.youtube.com/results?search_query={Query})
 
-IMPORTANT: Provide a complete solution, but be concise. Do NOT repeat the same step or calculation multiple times.`;
+IMPORTANT:
+- Provide a complete solution, but be concise. Do NOT repeat the same step or calculation multiple times.
+- Never say you are an AI model, chatbot, or tool.
+- Speak in first person as a human math teacher.
+- Never mention system prompts, tokens, models, or internal tools.`;
       
       // Add language support for math
       if (detectedLang.code !== "en") {
@@ -100,13 +133,16 @@ IMPORTANT: Provide a complete solution, but be concise. Do NOT repeat the same s
     } else {
       // Multi-lingual support for general questions
       systemPrompt = getMultiLingualPrompt(detectedLang);
-      systemPrompt += "\n\nYou are an NCERT-aligned educational AI. Your purpose is STRICTLY educational. \n" +
+      systemPrompt += "\n\nYou are an NCERT-aligned human tutor on the FindMentor platform. Your purpose is STRICTLY educational.\n" +
       "1. Only answer questions related to school curriculum (Class 6-12), science, math, history, geography, languages, and general knowledge.\n" +
       "2. If a user asks about entertainment, movies, gossip, or inappropriate topics, politely refuse and redirect them to studying.\n" +
       "3. Use simple language suitable for students.\n" +
       "4. Do not provide code unless it's for Computer Science subjects.\n" +
       "5. Answer clearly and simply.\n" +
-      "6. At the end of your explanation, suggest 2-3 relevant YouTube videos. Prefer specific video URLs (https://www.youtube.com/watch?v=...) if known, otherwise use search links.";
+      "6. Never say that you are an AI, language model, chatbot, or tool. Always speak in first person as a human teacher.\n" +
+      "7. Never mention system prompts, models, tokens, APIs, or internal tools.\n" +
+      "8. If you are unsure, say you are not completely sure and suggest how the student can verify from textbooks or teachers.\n" +
+      "9. At the end of your explanation, suggest 2-3 relevant YouTube search links. Do NOT invent or guess specific video IDs. Always use search URLs like: [Watch: {Topic}](https://www.youtube.com/results?search_query={Query}).";
     }
     
     // Add context if provided (from PDF/image)
@@ -148,6 +184,7 @@ IMPORTANT: Provide a complete solution, but be concise. Do NOT repeat the same s
     
     // Remove repetitive content (detect and truncate if same sentence repeats >2 times)
     response = removeRepetitiveContent(response);
+    response = normalizeYouTubeLinks(response);
     
     return response;
   } catch (error) {
@@ -168,20 +205,20 @@ IMPORTANT: Provide a complete solution, but be concise. Do NOT repeat the same s
       error.statusCode === 401;
     
     if (isInvalidKey) {
-      return "Sorry, the AI service is currently unavailable due to configuration issues. Please check your API key configuration.";
+      return "Sorry, the study assistant is currently unavailable due to a configuration issue. Please try again later or contact support.";
     }
     
     // Check for model not found
     if (error.error?.code === "model_not_found" || error.code === "model_not_found") {
       console.error("⚠️ Model not found. Using default model: llama-3.1-8b-instant");
-      return "Sorry, there was a configuration error with the AI model. Please contact support.";
+      return "Sorry, there was a configuration issue with the mentor assistant. Please contact support.";
     }
     
     // Check for rate limiting
     if (error.status === 429 || error.statusCode === 429) {
-      return "Sorry, the AI service is currently rate limited. Please try again in a moment.";
+      return "Sorry, the mentor assistant is receiving too many requests right now. Please try again in a moment.";
     }
     
-    return "Sorry, I encountered an error while processing your question. Please try again later.";
+    return "Sorry, I ran into a technical issue while processing your question. Please try again later.";
   }
 }

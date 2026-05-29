@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Study Assistant | FindMentor</title>
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="/frontend/assets/logo.png">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
@@ -547,7 +547,7 @@
 <body>
   
   <div class="sidebar" id="sidebar">
-    <button class="new-chat-btn" onclick="window.location.href='dashboard.html'" style="background: transparent; border: 1px solid var(--border); margin-bottom: 10px;">
+    <button class="new-chat-btn" onclick="window.location.href='/dashboard'" style="background: transparent; border: 1px solid var(--border); margin-bottom: 10px;">
       <i class="fas fa-arrow-left"></i> Back to Dashboard
     </button>
     <button class="new-chat-btn" onclick="startNewChat()">
@@ -632,7 +632,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
     import { getFirestore, collection, addDoc, serverTimestamp, query, where, getDocs, Timestamp, doc, setDoc, getDoc, updateDoc, arrayUnion, orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-    import CONFIG from "./config.js";
+    import CONFIG from "/frontend/config.js";
 
     // Firebase Config
     const firebaseConfig = {
@@ -715,11 +715,11 @@
                  // Clear welcome screen for this specific flow
                  chatContainer.innerHTML = '';
                  
-                 showToast(`Connecting to AI for ${name}...`, 'info');
+                 showToast(`Connecting you to ${name}'s study helper...`, 'info');
                 
                 // Simulate AI Message
                 setTimeout(() => {
-                    const greeting = `**Assistant:** Hello! ${name} is currently away. I can help you with **${specialty}** questions. What is your question?`;
+                    const greeting = `**${name} (Study Mentor):** I’m here to help you with **${specialty}** questions. What would you like to work on first?`;
                     appendMessage('ai', greeting, true); 
                     
                     // Optional: Set title
@@ -1368,6 +1368,86 @@
         }
     }
 
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    /** Thumbnail cards for real watch/embed URLs (11-char video IDs). */
+    function buildWatchVideoCardsHTML(content) {
+      const ytRegex =
+        /(?:https?:\/\/)?(?:[\w-]+\.)?(?:youtube\.com|youtu\.?be)\/(?:watch\?v=|embed\/|v\/|shorts\/|)([\w-]{11})/g;
+      const matches = [...content.matchAll(ytRegex)];
+      const uniqueVideoIds = [...new Set(matches.map((m) => m[1]))];
+      if (uniqueVideoIds.length === 0) return "";
+
+      let html = `<div class="video-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:15px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05);">`;
+      uniqueVideoIds.forEach((videoId) => {
+        const url = `https://www.youtube.com/watch?v=${videoId}`;
+        html += `
+                  <div class="video-card" style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); transition:transform 0.2s;">
+                      <div style="position:relative; padding-bottom:56.25%; height:0;">
+                          <a href="${url}" target="_blank" rel="noopener noreferrer">
+                              <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg"
+                                   style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;"
+                                   alt="Video thumbnail" loading="lazy">
+                              <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+                                          background:rgba(0,0,0,0.7); width:40px; height:40px; border-radius:50%;
+                                          display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.3);">
+                                  <i class="fas fa-play" style="color:white; font-size:1rem; margin-left:3px;"></i>
+                              </div>
+                          </a>
+                      </div>
+                      <div style="padding:10px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:500;">YouTube</span>
+                          <button type="button" onclick="event.preventDefault(); triggerVideoSummary('${url.replace(/'/g, "\\'")}')"
+                                  style="background:var(--primary); color:white; border:none; border-radius:6px; padding:6px 10px; font-size:0.75rem; cursor:pointer; font-weight:500; display:flex; align-items:center; gap:5px; transition:opacity 0.2s;">
+                              <i class="fas fa-magic"></i> Summarize
+                          </button>
+                      </div>
+                  </div>`;
+      });
+      return html + `</div>`;
+    }
+
+    /** Cards for YouTube search links (always opens real results on YouTube). */
+    function buildYoutubeSearchCardsHTML(content) {
+      const re =
+        /\[([^\]]+)\]\(https:\/\/www\.youtube\.com\/results\?search_query=([^)]+)\)/gi;
+      const seen = new Set();
+      const rows = [];
+      let m;
+      while ((m = re.exec(content)) !== null) {
+        const enc = m[2].trim();
+        const href = `https://www.youtube.com/results?search_query=${enc}`;
+        if (seen.has(href)) continue;
+        seen.add(href);
+        const linkTitle = m[1].replace(/^Watch:\s*/i, "").trim();
+        let displayLabel = linkTitle;
+        try {
+          const decoded = decodeURIComponent(enc.replace(/\+/g, "%20"));
+          if (decoded) displayLabel = decoded;
+        } catch (_) {}
+        rows.push({ href, label: displayLabel || linkTitle || "YouTube search" });
+      }
+      if (rows.length === 0) return "";
+
+      let html = `<div class="yt-search-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:10px; margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05);">`;
+      rows.forEach(({ href, label }) => {
+        const safeHref = escapeHtml(href);
+        const safeLabel = escapeHtml(label);
+        html += `<a href="${safeHref}" target="_blank" rel="noopener noreferrer" class="yt-search-card"
+          style="display:block; text-decoration:none; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:12px 14px; border-left:3px solid #ff0000; transition:background 0.2s;">
+          <div style="font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Search on YouTube</div>
+          <div style="font-size:0.9rem; color:var(--text-main); font-weight:600; line-height:1.35;">${safeLabel}</div>
+          <div style="margin-top:8px; font-size:0.75rem; color:var(--accent); font-weight:500;">Open results <i class="fas fa-external-link-alt" style="font-size:0.65rem;"></i></div>
+        </a>`;
+      });
+      return html + `</div>`;
+    }
+
     // Helper to Trigger Video Summary
     window.triggerVideoSummary = (url) => {
         // Prevent accidental form submits or propagation
@@ -1427,45 +1507,8 @@
           }
       }
 
-      // Check for YouTube Links (Multiple) to show Thumbnails
-      const ytRegex = /(?:https?:\/\/)?(?:[\w-]+\.)?(?:youtube\.com|youtu\.?be)\/(?:watch\?v=|embed\/|v\/|shorts\/|)([\w-]{11})/g;
-      const matches = [...content.matchAll(ytRegex)];
-      const uniqueVideoIds = [...new Set(matches.map(m => m[1]))];
-
-      let videosHTML = '';
-      if (uniqueVideoIds.length > 0) {
-          // Grid layout for videos
-          videosHTML = `<div class="video-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:15px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05);">`;
-          
-          uniqueVideoIds.forEach(videoId => {
-              const url = `https://www.youtube.com/watch?v=${videoId}`;
-              videosHTML += `
-                  <div class="video-card" style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); transition:transform 0.2s;">
-                      <div style="position:relative; padding-bottom:56.25%; height:0;">
-                          <a href="${url}" target="_blank">
-                              <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" 
-                                   style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;" 
-                                   alt="Video Thumbnail">
-                              <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); 
-                                          background:rgba(0,0,0,0.7); width:40px; height:40px; border-radius:50%; 
-                                          display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.3);">
-                                  <i class="fas fa-play" style="color:white; font-size:1rem; margin-left:3px;"></i>
-                              </div>
-                          </a>
-                      </div>
-                      <div style="padding:10px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
-                          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:500;">YouTube Video</span>
-                          <button type="button" onclick="event.preventDefault(); triggerVideoSummary('${url}')" 
-                                  style="background:var(--primary); color:white; border:none; border-radius:6px; padding:6px 10px; font-size:0.75rem; cursor:pointer; font-weight:500; display:flex; align-items:center; gap:5px; transition:opacity 0.2s;">
-                              <i class="fas fa-magic"></i> Summarize
-                          </button>
-                      </div>
-                  </div>
-              `;
-          });
-          
-          videosHTML += `</div>`;
-      }
+      const videosHTML = !isLoading ? buildWatchVideoCardsHTML(content) : "";
+      const ytSearchHTML = !isLoading ? buildYoutubeSearchCardsHTML(content) : "";
 
       div.innerHTML = `
         <div class="message-content">
@@ -1475,6 +1518,7 @@
           <div class="text">
             ${innerHTML}
             ${videosHTML}
+            ${ytSearchHTML}
           </div>
         </div>
       `;
@@ -1511,47 +1555,10 @@
               </button>
           </div>`;
 
-        // Check for YouTube Links (Multiple) to show Thumbnails (Same logic as appendMessage)
-        const ytRegex = /(?:https?:\/\/)?(?:[\w-]+\.)?(?:youtube\.com|youtu\.?be)\/(?:watch\?v=|embed\/|v\/|shorts\/|)([\w-]{11})/g;
-        const matches = [...newContent.matchAll(ytRegex)];
-        const uniqueVideoIds = [...new Set(matches.map(m => m[1]))];
+        const videosHTML = buildWatchVideoCardsHTML(newContent);
+        const ytSearchHTML = buildYoutubeSearchCardsHTML(newContent);
 
-        let videosHTML = '';
-        if (uniqueVideoIds.length > 0) {
-            // Grid layout for videos
-            videosHTML = `<div class="video-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:15px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.05);">`;
-            
-            uniqueVideoIds.forEach(videoId => {
-                const url = `https://www.youtube.com/watch?v=${videoId}`;
-                videosHTML += `
-                    <div class="video-card" style="background:rgba(255,255,255,0.03); border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); transition:transform 0.2s;">
-                        <div style="position:relative; padding-bottom:56.25%; height:0;">
-                            <a href="${url}" target="_blank">
-                              <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" 
-                                   style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;" 
-                                   alt="Video Thumbnail">
-                              <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); 
-                                            background:rgba(0,0,0,0.7); width:40px; height:40px; border-radius:50%; 
-                                            display:flex; align-items:center; justify-content:center; box-shadow:0 2px 5px rgba(0,0,0,0.3);">
-                                    <i class="fas fa-play" style="color:white; font-size:1rem; margin-left:3px;"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div style="padding:10px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
-                            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:500;">YouTube Video</span>
-                            <button type="button" onclick="event.preventDefault(); triggerVideoSummary('${url}')" 
-                                    style="background:var(--primary); color:white; border:none; border-radius:6px; padding:6px 10px; font-size:0.75rem; cursor:pointer; font-weight:500; display:flex; align-items:center; gap:5px; transition:opacity 0.2s;">
-                                <i class="fas fa-magic"></i> Summarize
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-            
-            videosHTML += `</div>`;
-        }
-
-        textContainer.innerHTML = finalHtml + videosHTML;
+        textContainer.innerHTML = finalHtml + videosHTML + ytSearchHTML;
         addCodeCopyButtons(id);
         
         // Scroll to bottom to ensure visibility
@@ -1590,13 +1597,13 @@
       
       doc.setFontSize(16);
       doc.setTextColor(40, 40, 40);
-      doc.text("FindMentor AI Notes", 10, 10);
+      doc.text("FindMentor Study Notes", 10, 10);
       
       doc.setFontSize(11);
       const splitText = doc.splitTextToSize(content, 180);
       doc.text(splitText, 10, 20);
       
-      doc.save("FindMentor-AI-Notes.pdf");
+      doc.save("FindMentor-Study-Notes.pdf");
     };
 
     // Allow Enter key to send

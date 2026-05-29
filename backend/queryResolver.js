@@ -77,7 +77,8 @@ export async function resolveQuery(question, options = {}) {
         isMathProblem: true,
         language: detectedLang,
         context,
-        history
+        history,
+        systemPrompt
       });
       
       if (aiAnswer && aiAnswer.includes("Sorry")) {
@@ -115,7 +116,8 @@ export async function resolveQuery(question, options = {}) {
       isMathProblem: false,
       language: detectedLang,
       context,
-      history
+      history,
+      systemPrompt
     });
     
     // Check if AI returned an error message
@@ -124,7 +126,7 @@ export async function resolveQuery(question, options = {}) {
         success: false,
         source: "ai",
         error: aiAnswer,
-        message: "AI service unavailable. Please try a different question or check your API configuration."
+        message: "Study helper service unavailable. Please try a different question or check your configuration."
       };
     }
 

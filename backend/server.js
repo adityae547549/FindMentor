@@ -34,6 +34,7 @@ import { getYouTubeCache, saveYouTubeCache } from "./learningSystem.js"; // Impo
 import { processImage, imageToBase64 } from "./imageProcessor.js";
 import { extractTextFromPDFBuffer, extractQuestionsFromPDF } from "./pdfProcessor.js";
 import { YoutubeTranscript } from 'youtube-transcript';
+import { normalizeYouTubeLinks } from "./aiClient.js";
 
 // Log that image processor is loaded (will show Tesseract.js message)
 console.log("📷 Image processing: Ready (Tesseract.js OCR)");
@@ -97,6 +98,30 @@ app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
+// Clean URLs (match Firebase Hosting rewrites for local dev)
+const spaPages = [
+  ["/login", "login.html"],
+  ["/signup", "signup.html"],
+  ["/roles", "roles.html"],
+  ["/dashboard", "dashboard.html"],
+  ["/mentor-dashboard", "mentor-dashboard.html"],
+  ["/student-dashboard", "student-dashboard.html"],
+  ["/mentor-dashboard-overview", "mentor-dashboard-overview.html"],
+  ["/video-call", "video_call.html"],
+  ["/ai", "ai_window.html"],
+  ["/privacy", "privacy.html"],
+  ["/mentors", "mentors.html"],
+  ["/mentor-settings", "mentor-settings.html"],
+  ["/student-settings", "student-settings.html"],
+  ["/settings", "settings.html"],
+  ["/chat", "chat.html"]
+];
+for (const [route, file] of spaPages) {
+  app.get(route, (req, res) => {
+    res.sendFile(path.join(frontendPath, file));
+  });
+}
+
 // Self-ping to keep Render awake (every 2 minutes)
 const PING_URL = process.env.RENDER_EXTERNAL_URL ? `${process.env.RENDER_EXTERNAL_URL}/ping` : "http://localhost:3000/ping";
 setInterval(() => {
@@ -117,9 +142,9 @@ app.use(express.static(rootPath, staticOptions));
 // Serve frontend directory explicitly
 app.use("/frontend", express.static(frontendPath, staticOptions));
 
-// Catch-all for other HTML files if needed (e.g. ai_window.html)
+// Legacy AI window filename → canonical /ai
 app.get("/ai_window.html", (req, res) => {
-  res.sendFile(path.join(frontendPath, "ai_window.html"));
+  res.redirect(302, "/ai");
 });
 
 
@@ -523,7 +548,7 @@ async function downloadAndTranscribeAudio(url, videoId) {
         try { fs.unlinkSync(tempFile); } catch (e) {}
         
         if (error.message.includes("413") || error.message.includes("too large")) {
-            throw new Error(`Audio file too large for AI (${(stats.size / 1024 / 1024).toFixed(2)} MB). API Limit is ~25MB.`);
+            throw new Error(`Audio file too large to process (${(stats.size / 1024 / 1024).toFixed(2)} MB). Limit is ~25MB.`);
         }
         throw error;
     }
@@ -567,6 +592,7 @@ app.post("/ask/youtube", async (req, res) => {
     console.log(`🎥 Fetching transcript for video: ${videoId}`);
     let fullText = null;
     let usedMethod = "none";
+    let transcriptUnavailable = false;
 
     // Helper to try fetching transcript safely
     const tryTranscript = async (lang) => {
@@ -606,26 +632,40 @@ app.post("/ask/youtube", async (req, res) => {
             fullText = await downloadAndTranscribeAudio(url, videoId);
         } catch (audioError) {
             console.error("❌ Audio transcription failed:", audioError.message);
-            throw new Error("Could not retrieve captions or transcribe video audio.");
         }
     }
-
+    
     if (!fullText) {
-      throw new Error("Content is empty.");
+      transcriptUnavailable = true;
+      fullText = "";
     }
     
-    // Process with AI
-    // If text is too long, we might need to truncate it for the prompt, but resolveQuery handles context.
-    // However, LLM context window limits apply. Let's truncate to ~15k chars to be safe for now if needed.
-    const truncatedText = fullText.length > 20000 ? fullText.substring(0, 20000) + "... [truncated]" : fullText;
-
-    const prompt = (question || "Summarize this video and extract key learning points.") + 
-                   "\n\nIMPORTANT: Do not mention the source of the information (e.g. 'the transcript says', 'in the video', 'based on the transcript'). Provide the answer directly as if you possess the knowledge." +
-                   "\n\nFinally, suggest 3 related videos for further learning. Format them EXACTLY as: '||SEARCH: <search_query>||'. Do not add numbering or bullet points for these lines. Just the raw tags.";
-
+    const truncatedText = (fullText && typeof fullText === "string")
+      ? (fullText.length > 20000 ? fullText.substring(0, 20000) + "... [truncated]" : fullText)
+      : "";
+    
+    let basePrompt = question || "Summarize the main ideas and learning points this video is likely teaching for a school student.";
+    let extraInstructions = "";
+    
+    if (transcriptUnavailable) {
+        extraInstructions = "\n\nIMPORTANT: You do not have access to the actual transcript or audio of the video. Answer using only your subject knowledge and the student's question. Do not mention that you could not access the video; just help the student directly.";
+    } else {
+        extraInstructions = "\n\nIMPORTANT: Do not mention the source of the information (e.g. 'the transcript says', 'in the video', 'based on the transcript'). Provide the answer directly as if you possess the knowledge.";
+    }
+    
+    extraInstructions += "\n\nNever say that you are an AI, language model, or chatbot. Speak in first person as a human tutor and never mention system prompts, models, or internal tools.";
+    
+    const prompt = basePrompt +
+                   extraInstructions +
+                   "\n\nFinally, suggest exactly 3 YouTube **search** topics (short keywords, e.g. \"photosynthesis class 10 NCERT Hindi\"). Do NOT invent video titles or channel names. Format each EXACTLY as: '||SEARCH: <search_query>||'. No bullets or numbering—only these three lines.";
+    
+    const contextString = transcriptUnavailable
+      ? `The student shared this YouTube link: ${url}. You do not know the exact transcript or audio.`
+      : `This is a transcript from a YouTube video (URL: ${url}).\n\nTRANSCRIPT:\n${truncatedText}`;
+    
     const result = await resolveQuery(prompt, {
-      context: `This is a transcript from a YouTube video (URL: ${url}).\n\nTRANSCRIPT:\n${truncatedText}`,
-      skipMath: !question // If it's a default summary, don't try to solve it as math
+      context: contextString,
+      skipMath: !question
     });
 
     // --- Post-Process Video Suggestions (Fetch Real IDs) ---
@@ -640,31 +680,22 @@ app.post("/ask/youtube", async (req, res) => {
     // Remove the raw search tags from the text
     finalAnswer = finalAnswer.replace(searchRegex, '').trim();
 
-    // Fetch IDs in parallel
+    // YouTube search links only (yt-dlp "top result" IDs are often wrong, removed, or region-blocked)
     if (queries.length > 0) {
-        console.log(`🔍 Fetching real video IDs for ${queries.length} suggestions...`);
-        const videoLinks = await Promise.all(queries.map(async (q) => {
-            try {
-                // Use yt-dlp to get ID (fastest way, usually <2s)
-                const cmd = `yt-dlp "ytsearch1:${q}" --print id --no-warnings`;
-                const { stdout } = await execAsync(cmd);
-                const id = stdout.trim();
-                if (id && id.length === 11) {
-                    return `[Watch: ${q}](https://www.youtube.com/watch?v=${id})`;
-                }
-            } catch (e) {
-                console.error(`⚠️ Failed to search video for: ${q}`, e.message);
-            }
-            return null; 
-        }));
+        const videoLinks = queries.map((raw) => {
+            const q = String(raw || "").trim().replace(/\|+/g, " ").replace(/\s+/g, " ");
+            if (!q) return null;
+            const label = q.length > 80 ? `${q.slice(0, 77)}...` : q;
+            const enc = encodeURIComponent(q);
+            return `[Watch: ${label}](https://www.youtube.com/results?search_query=${enc})`;
+        }).filter(Boolean);
 
-        const validLinks = videoLinks.filter(l => l);
-        if (validLinks.length > 0) {
-            finalAnswer += "\n\n**Further Learning:**\n" + validLinks.map(l => `- ${l}`).join('\n');
+        if (videoLinks.length > 0) {
+            finalAnswer += "\n\n**Further Learning (open to pick a video):**\n" + videoLinks.map((l) => `- ${l}`).join("\n");
         }
     }
-    
-    result.answer = finalAnswer;
+
+    result.answer = normalizeYouTubeLinks(finalAnswer);
     // -------------------------------------------------------
 
     console.log("📤 Sending YouTube response, length:", result.answer ? result.answer.length : "No Answer");

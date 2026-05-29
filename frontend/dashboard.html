@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<meta name="robots" content="noindex, nofollow"/>
 <title>Student Dashboard | FindMentor</title>
-<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
 
 <!-- Fonts & Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -231,6 +233,89 @@ header {
   .chat-list { height: 200px; border-right: none; border-bottom: 1px solid var(--border); }
   .chat-window { height: 400px; }
 }
+
+/* ===== UI Refresh Overrides (Dashboards) ===== */
+:root{
+  --brand-pink:#db2777;
+  --brand-indigo:#4f46e5;
+  --accent:var(--brand-pink);
+  --accent-hover:#be185d;
+  --panel:rgba(255,255,255,.84);
+  --panel-2:rgba(255,255,255,.72);
+  --border-soft:rgba(229,231,235,.78);
+  --shadow:0 18px 45px rgba(15,23,42,.08);
+  --shadow-soft:0 10px 28px rgba(15,23,42,.06);
+  --muted:#9ca3af;
+}
+
+body{
+  background:
+    radial-gradient(900px 520px at 12% 8%, rgba(219,39,119,.16), transparent 60%),
+    radial-gradient(980px 560px at 88% 10%, rgba(79,70,229,.14), transparent 62%),
+    linear-gradient(180deg, #f8fafc 0%, #f3f4f6 100%);
+}
+
+h1,h2,h3,.page-title,.brand{font-family:"Space Grotesk",Inter,system-ui,sans-serif}
+
+#sidebar{
+  background:rgba(255,255,255,.78);
+  border-right:1px solid var(--border-soft);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.55) inset;
+}
+
+.brand{color:var(--text); letter-spacing:.2px;}
+.brand i{color:var(--accent);}
+
+.nav-item:hover{background:rgba(255,255,255,.75); color:var(--text); box-shadow:0 0 0 1px rgba(229,231,235,.8) inset;}
+.nav-item.active{
+  background:linear-gradient(135deg, rgba(219,39,119,.16), rgba(79,70,229,.10));
+  color:var(--text);
+  box-shadow:0 0 0 1px rgba(219,39,119,.18) inset;
+}
+
+.avatar{box-shadow:0 10px 22px rgba(219,39,119,.25);}
+
+header{
+  background:var(--panel-2);
+  border-bottom:1px solid var(--border-soft);
+  backdrop-filter: blur(10px);
+}
+
+.btn-icon{background:rgba(255,255,255,.85);}
+.btn-icon:hover{border-color:rgba(219,39,119,.5); color:var(--accent); box-shadow:0 10px 22px rgba(15,23,42,.06);}
+
+.dashboard-container{padding:28px 28px 36px;}
+
+.stat-card,
+.card,
+.mentor-card{
+  background:var(--panel);
+  border:1px solid var(--border-soft);
+  border-radius:18px;
+  box-shadow:var(--shadow-soft);
+}
+
+.mentor-grid{padding:0;}
+.mentor-card:hover{box-shadow:var(--shadow); border-color:rgba(219,39,119,.35);}
+
+.mentor-avatar{
+  background:linear-gradient(135deg, rgba(219,39,119,.16), rgba(79,70,229,.10));
+  color:var(--text);
+  font-weight:700;
+}
+
+.btn-request{
+  border-radius:12px;
+  border-color:rgba(219,39,119,.35);
+  color:var(--text);
+}
+.btn-request:hover{
+  background:linear-gradient(135deg, rgba(219,39,119,.16), rgba(79,70,229,.10));
+  border-color:rgba(219,39,119,.55);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
@@ -250,7 +335,7 @@ header {
       <div class="nav-item" onclick="switchTab('messages')">
         <i class="fas fa-comment-dots"></i> Messages
       </div>
-      <div class="nav-item" onclick="window.location.href='ai_window.html'">
+      <div class="nav-item" onclick="openCoreMentorAiChat('')">
         <i class="fas fa-book-reader"></i> Study Assistant
       </div>
     </nav>
@@ -406,13 +491,24 @@ header {
       </div>
   </div>
 
+  <div id="ask-mentor-modal" class="modal-overlay hidden" style="display:none;">
+      <div class="modal-box">
+          <h3 id="ask-mentor-title">Ask a Question</h3>
+          <p id="ask-mentor-subtitle">Your question will be sent to the mentor.</p>
+          <input type="text" id="ask-subject" placeholder="Subject (e.g. Algebra, Biology)" style="width:100%; padding:10px; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:10px;">
+          <textarea id="ask-question" placeholder="Type your question..." style="width:100%; padding:10px; border:1px solid #e5e7eb; border-radius:8px; height:100px; margin-bottom:10px;"></textarea>
+          <div class="modal-actions">
+              <button type="button" class="modal-btn cancel" onclick="window.closeAskMentorModal()">Cancel</button>
+              <button type="button" id="btn-send-mentor-question" class="modal-btn confirm" style="background:var(--accent);">Send</button>
+          </div>
+      </div>
+  </div>
+
   <!-- LOADING OVERLAY -->
   <div id="loadingOverlay" style="position:fixed;inset:0;background:#fff;z-index:2000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.3s;">
     <div style="width:40px;height:40px;border:4px solid #e5e7eb;border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;"></div>
     <div style="margin-top:16px;color:var(--text-gray);font-weight:500;">Loading dashboard...</div>
   </div>
-  <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
-
   <!-- JAVASCRIPT LOGIC -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -434,6 +530,7 @@ header {
       orderBy
     } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
     import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+    import CONFIG from "/frontend/config.js";
 
     /* FIREBASE CONFIG */
     const firebaseConfig = {
@@ -465,10 +562,15 @@ header {
     window.toggleSidebar = () => {
         document.getElementById('sidebar').classList.toggle('open');
     };
+ 
+    window.openCoreMentorAiChat = (initialQuery = '') => {
+        window.location.href = '/ai';
+    };
+
 
     window.startInstantMeeting = () => {
         const roomId = 'meet_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
-        window.location.href = `video_call.html?room=${roomId}`;
+        window.location.href = `/video-call?room=${roomId}`;
     };
 
     window.switchTab = (tab) => {
@@ -526,7 +628,7 @@ header {
 
     /* ===== DATA LOADING ===== */
     onAuthStateChanged(auth, async user => {
-        if (!user) return location.href = "login.html";
+        if (!user) return location.href = "/login";
         currentUser = user;
 
         try {
@@ -546,12 +648,12 @@ header {
                          
                          const confirmBtn = document.getElementById('modal-confirm-btn');
                          confirmBtn.innerText = 'Go Home';
-                         confirmBtn.onclick = () => location.href = 'index.html';
+                         confirmBtn.onclick = () => location.href = '/';
                          
                          modal.style.display = 'flex';
                          return;
                     }
-                    return location.href = 'index.html';
+                    return location.href = '/';
                 }
                 const name = data.name || "Student";
                 document.getElementById('headerName').innerText = name;
@@ -584,11 +686,9 @@ header {
         const list = document.getElementById('mentorList');
         if(mentorsUnsubscribe) mentorsUnsubscribe();
 
-        // Query: Mentors who are Online
         const q = query(collection(db, "users"), where("role", "==", "mentor"), where("isOnline", "==", true));
         
         mentorsUnsubscribe = onSnapshot(q, (snap) => {
-            // Core Mentors Data (From index.html)
             const coreMentorsData = [
                 {
                     name: "Ankush Kumar",
@@ -619,33 +719,37 @@ header {
             let onlineCount = 0;
             list.innerHTML = '';
 
-            // Create a map of Online Core Mentors
             const onlineMap = new Map();
+            const otherOnlineMentors = [];
+            const now = Date.now();
+            const STALE_MS = 90 * 1000;
+
             snap.forEach(doc => {
                 const d = doc.data();
+                const lastActiveAt = d.lastActiveAt && d.lastActiveAt.seconds ? d.lastActiveAt.seconds * 1000 : null;
+                if(!lastActiveAt || now - lastActiveAt > STALE_MS) {
+                    return;
+                }
                 const mName = d.name || '';
-                // Check if this online mentor matches any core mentor
                 const matchedCore = coreMentorsData.find(cm => mName.includes(cm.name) || cm.name.includes(mName));
                 if(matchedCore) {
                     onlineMap.set(matchedCore.name, { docId: doc.id, ...d });
                     onlineCount++;
+                } else {
+                    otherOnlineMentors.push({ docId: doc.id, ...d });
                 }
             });
 
-            // Render ALL Core Mentors
             coreMentorsData.forEach(cm => {
                 const onlineData = onlineMap.get(cm.name);
                 const isOnline = !!onlineData;
                 
                 const statusText = isOnline ? 'Online' : 'Available via Chat';
-                
-                const btnAction = isOnline 
-                    ? `onclick="openRequestModal('${onlineData.docId}')">Request Help`
-                    : `onclick="window.location.href='ai_window.html'">Chat Now`;
-                
                 const statusIndicatorStyle = isOnline 
                     ? 'background: var(--success); box-shadow: 0 0 0 2px white;'
-                    : 'background: #8b5cf6; box-shadow: 0 0 0 2px white;'; // Purple for Chat
+                    : 'background: #8b5cf6; box-shadow: 0 0 0 2px white;';
+
+                const mentorId = onlineData ? onlineData.docId : '';
 
                 list.innerHTML += `
                 <div class="mentor-card">
@@ -661,12 +765,176 @@ header {
                     <div style="font-size:0.75rem; color:${isOnline ? 'var(--success)' : '#8b5cf6'}; margin-bottom:8px; font-weight:600;">
                         <i class="fas ${isOnline ? 'fa-user' : 'fa-comment-dots'}"></i> ${statusText}
                     </div>
-                    <button class="btn-request" ${btnAction}</button>
+                    <button class="btn-request" onclick="openAskMentorModal('${mentorId}', '${cm.name}', '${cm.expertise}', ${isOnline})">Ask Question</button>
                 </div>`;
             });
 
-            document.getElementById('statMentors').innerText = onlineCount;
+            otherOnlineMentors.forEach(m => {
+                const name = m.name || 'Mentor';
+                const expertise = m.expertise || 'Subject Mentor';
+                const bio = m.bio || '';
+
+                list.innerHTML += `
+                <div class="mentor-card">
+                    <div class="mentor-status" style="background: var(--success); box-shadow: 0 0 0 2px white;" title="Online"></div>
+                    <div class="mentor-header">
+                        <div class="mentor-avatar">${name.charAt(0).toUpperCase()}</div>
+                        <div class="mentor-details">
+                            <div class="mentor-name">${name}</div>
+                            <div class="mentor-role">${expertise}</div>
+                        </div>
+                    </div>
+                    <div class="mentor-bio">${bio}</div>
+                    <div style="font-size:0.75rem; color:var(--success); margin-bottom:8px; font-weight:600;">
+                        <i class="fas fa-user"></i> Online
+                    </div>
+                    <button class="btn-request" onclick="openRequestModal('${m.docId}')">Request Help</button>
+                </div>`;
+            });
+
+            document.getElementById('statMentors').innerText = onlineCount + otherOnlineMentors.length;
         });
+    }
+
+    let askMentorContext = null;
+
+    window.openAskMentorModal = (mentorId, mentorName, expertise, isOnline) => {
+        askMentorContext = {
+            mentorId: mentorId || null,
+            mentorName,
+            expertise,
+            isOnline: !!isOnline
+        };
+        const modal = document.getElementById('ask-mentor-modal');
+        const subtitle = document.getElementById('ask-mentor-subtitle');
+        const subjectInput = document.getElementById('ask-subject');
+        const questionInput = document.getElementById('ask-question');
+        if (subtitle) {
+            subtitle.textContent = isOnline
+                ? `Your question will be sent to ${mentorName}.`
+                : `Your question will be answered immediately using ${mentorName}'s study helper.`;
+        }
+        if (subjectInput) {
+            subjectInput.value = expertise || '';
+        }
+        if (questionInput) {
+            questionInput.value = '';
+            questionInput.focus();
+        }
+        if (modal) {
+            modal.style.display = 'flex';
+        }
+    };
+
+    window.closeAskMentorModal = () => {
+        const modal = document.getElementById('ask-mentor-modal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+        askMentorContext = null;
+    };
+
+    async function sendAskMentorQuestion() {
+        const btn = document.getElementById('btn-send-mentor-question');
+        const subjectEl = document.getElementById('ask-subject');
+        const questionEl = document.getElementById('ask-question');
+        if (!askMentorContext || !subjectEl || !questionEl || !btn) return;
+
+        const subject = subjectEl.value.trim();
+        const question = questionEl.value.trim();
+        if (!subject || !question) {
+            showToast('Please enter subject and question', 'error');
+            return;
+        }
+
+        const { mentorId, mentorName, expertise, isOnline } = askMentorContext;
+
+        try {
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            if (isOnline && mentorId && currentUser) {
+                const sortedIds = [currentUser.uid, mentorId].sort();
+                const chatId = `${sortedIds[0]}_${sortedIds[1]}`;
+
+                const chatRef = doc(db, "chats", chatId);
+                const chatSnap = await getDoc(chatRef);
+                const previewText = `${subject}: ${question}`.slice(0, 120);
+
+                if (!chatSnap.exists()) {
+                    await setDoc(chatRef, {
+                        participants: [currentUser.uid, mentorId],
+                        createdAt: serverTimestamp(),
+                        updatedAt: serverTimestamp(),
+                        lastMessage: previewText
+                    });
+                } else {
+                    await updateDoc(chatRef, {
+                        updatedAt: serverTimestamp(),
+                        lastMessage: previewText
+                    });
+                }
+
+                await addDoc(collection(db, "chats", chatId, "messages"), {
+                    text: `${subject}: ${question}`,
+                    type: "text",
+                    mediaUrl: null,
+                    senderId: currentUser.uid,
+                    createdAt: serverTimestamp()
+                });
+
+                showToast('Question sent to mentor', 'success');
+                window.closeAskMentorModal();
+                switchTab('messages');
+                window.selectChat(chatId, mentorName || 'Mentor', mentorId);
+            } else {
+                const baseUrl = CONFIG.API_BASE_URL;
+                const payload = {
+                    question: question,
+                    systemPrompt: `You are acting as ${mentorName}, a ${expertise} tutor on the FindMentor platform. Answer the student's question in a friendly, clear way. Never say that you are an AI, language model, chatbot, or tool. Always speak in first person as a human tutor.`
+                };
+
+                const res = await fetch(`${baseUrl}/ask`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+                if (!res.ok || !data || !data.answer) {
+                    throw new Error(data && (data.message || data.error) || "Unable to get answer");
+                }
+
+                const genericModal = document.getElementById('generic-modal');
+                const titleEl = document.getElementById('generic-modal-title');
+                const msgEl = document.getElementById('generic-modal-msg');
+
+                const plainAnswer = (data.answer || '').replace(/[*#`]/g, '');
+
+                if (genericModal && titleEl && msgEl) {
+                    titleEl.innerText = mentorName || 'Mentor';
+                    msgEl.innerText = plainAnswer;
+                    genericModal.style.display = 'flex';
+                } else {
+                    alert(plainAnswer);
+                }
+
+                window.closeAskMentorModal();
+            }
+        } catch (e) {
+            console.error(e);
+            showToast('Unable to send question', 'error');
+        } finally {
+            btn.innerText = 'Send';
+            btn.disabled = false;
+        }
+    }
+
+    const askBtn = document.getElementById('btn-send-mentor-question');
+    if (askBtn) {
+        askBtn.onclick = () => sendAskMentorQuestion();
     }
 
     window.openRequestModal = (mentorId) => {
@@ -741,7 +1009,7 @@ header {
                     
                     let actionBtn = '';
                     if(d.status === 'accepted') {
-                        actionBtn = `<button class="btn-view" onclick="window.location.href='video_call.html'">Join Call</button>`;
+                        actionBtn = `<button class="btn-view" onclick="window.location.href='/video-call'">Join Call</button>`;
                     }
                     
                     let attachmentLink = '';
@@ -956,3 +1224,6 @@ header {
   </script>
 </body>
 </html>
+
+
+

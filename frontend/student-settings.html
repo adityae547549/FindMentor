@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
 <title>Settings | FindMentor</title>
-<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="icon" type="image/png" href="/frontend/assets/logo.png">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
@@ -281,7 +281,7 @@ window.closeGenericModal = () => {
 
 /* AUTH GUARD + LOAD */
 onAuthStateChanged(auth, async user => {
-  if (!user) return location.href = "login.html";
+  if (!user) return location.href = "/login";
   currentUser = user;
   loadAIStats();
 });
@@ -329,7 +329,7 @@ window.saveSettings = async () => {
 };
 
 /* NAV */
-window.goBack = () => location.href = "dashboard.html";
+window.goBack = () => location.href = "/dashboard";
 </script>
 
 </body>

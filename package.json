@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "build:mobile": "node scripts/prepare-mobile.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --check backend/server.js && node --check backend/queryResolver.js && node --check backend/aiClient.js"
   },
   "keywords": [],
   "author": "",
